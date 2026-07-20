@@ -39,6 +39,7 @@ export function DropshipPitch() {
                   className="text-sm font-semibold text-brand hover:text-brand-dark"
                 >
                   Learn more <span className="sr-only">about {lander.title}</span>
+                  <span className="ml-0.5" aria-hidden="true">→</span>
                 </Link>
               </div>
             </Card>
