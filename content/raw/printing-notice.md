@@ -1,0 +1,23 @@
+---
+title: "⚠️ Important Printing Notice"
+source: /pages/⚠️-important-printing-notice
+---
+
+We always set up prints **by eye** to achieve the best possible visual balance.  
+If you require **specific print dimensions or placement**, you **must** provide this information:
+
+- In the **Notes** section at checkout, **or**
+    
+- By **email or phone** **before** we begin production.
+    
+
+If no instructions are provided, we will proceed using our professional judgment.  
+Please note: we **do not** automatically resize logos based on garment size (e.g., Small vs. XL).
+
+🖨️ **Printing Method:** We use **Direct to Film (DTF)** printing — a process where your design is printed on a special film and then heat-pressed directly onto the garment for vibrant, durable results.
+
+### ⚠️ Printing Notice
+
+We use **Direct to Film (DTF)** printing — your design is printed on film and heat-pressed for vibrant, durable results.  
+All prints are positioned **by eye**, unless you provide **exact dimensions or placement** in the **checkout notes**, or by **email/phone before production**.  
+We **do not** resize logos based on shirt size.

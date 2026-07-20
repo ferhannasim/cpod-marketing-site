@@ -1,0 +1,41 @@
+---
+title: "🎨 Artwork & Mockup Approval"
+source: /pages/🎨-artwork-mockup-approval
+---
+
+### **Please Review Before Completing Your Order**
+
+All items are printed exactly as submitted and approved.
+
+By proceeding with your order, you confirm that:
+
+- You have carefully reviewed your uploaded artwork.
+- Your file is high resolution (300 DPI or higher recommended).
+- Your design does not contain unwanted backgrounds.
+- Transparency, layers, sizing, spelling, alignment, and colors are correct.
+- You approve your artwork exactly as uploaded.
+
+We print your design exactly as received. We do not edit, redesign, remove backgrounds, correct spelling, or adjust artwork.
+
+If your uploaded file contains low resolution, pixelation, background boxes, layering errors, or transparency issues, it will print exactly as submitted.
+
+Because all items are custom-made, refunds or reprints cannot be issued due to artwork errors in the uploaded file.
+
+* * *
+
+## **📏 Mockup Size & Placement Notice**
+
+Our mockup generator uses a **Large size garment** and follows industry-standard sizing and placement guidelines.
+
+This means:
+
+- Design proportions may appear different on smaller or larger garment sizes.
+- Measurements shown in the mockup are based on industry standards.
+
+If you require exact measurements or precise placement for specific sizes, you must clearly include detailed instructions (in inches) in the Notes section at checkout.
+
+If no sizing or placement instructions are provided in the Notes section, we will print using standard industry placement and proportional scaling.
+
+## **Required Approval**
+
+**I confirm that I have reviewed and approved my artwork and understand that it will be printed exactly as uploaded and according to industry-standard sizing and placement unless I provide specific written instructions.**

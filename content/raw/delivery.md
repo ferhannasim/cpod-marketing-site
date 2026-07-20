@@ -1,0 +1,14 @@
+---
+title: "Delivery Speed"
+source: /pages/delivery-speed
+---
+
+**Ground Shipping**
+
+- If the shipping address is in ON, QC, NB: 1-2 business days
+- If the shipping address is in MB, SK, NS, NL, PE: 2-4 business days
+- If the shipping address is in AB, BC: 3-5 business days
+
+**Express Shipping**
+
+- If the shipping address is in ON, QC, NB, MB, SK, NS, NL, PE, AB, BC: 1-2 business days
