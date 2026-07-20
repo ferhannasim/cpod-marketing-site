@@ -32,7 +32,7 @@ export function extractFaqPage(html) {
   const $ = cheerio.load(html);
   const title = $("h1.page__title").first().text().trim();
   const groups = $(".faq__group");
-  if (groups.length === 0) throw new Error("faq structure not found");
+  if (!title || groups.length === 0) throw new Error("faq structure not found");
 
   const root = $("<div></div>");
   groups.each((_, groupEl) => {
@@ -62,7 +62,7 @@ export function extractContactPage(html) {
   const $ = cheerio.load(html);
   const title = $("h1.page__title").first().text().trim();
   const storeInfos = $(".contact__store-info");
-  if (storeInfos.length === 0) throw new Error("contact structure not found");
+  if (!title || storeInfos.length === 0) throw new Error("contact structure not found");
 
   const root = $("<div></div>");
   storeInfos.each((_, infoEl) => {

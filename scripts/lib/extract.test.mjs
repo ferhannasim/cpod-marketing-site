@@ -87,6 +87,37 @@ const CONTACT_HTML = `<html><body>
 </div>
 </body></html>`;
 
+const FAQ_HTML_NO_TITLE = `<html><body>
+<div class="faq" itemscope itemtype="https://schema.org/FAQPage">
+  <div class="faq__group-list">
+    <div class="faq__group">
+      <h1 class="faq__group-title heading h2">Information</h1>
+      <div class="faq__item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+        <button class="faq__question heading h4" itemprop="name">Are you affiliated with X?</button>
+        <div class="faq__answer-wrapper" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+          <div class="faq__answer rte" itemprop="text">
+            <p>No, we are not affiliated.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>`;
+
+const CONTACT_HTML_NO_TITLE = `<html><body>
+<div class="layout">
+  <div class="layout__section layout__section--large-secondary">
+    <div class="contact__store-info">
+      <h2 class="contact__store-heading heading h3">Find Us</h2>
+      <div class="contact__store-text rte">
+        <p>72-C Brunswick, Dollard, QC, H9B 2C5</p>
+      </div>
+    </div>
+  </div>
+</div>
+</body></html>`;
+
 describe("extractPage", () => {
   it("pulls the title and body, stripping scripts", () => {
     const { title, bodyHtml } = extractPage(PAGE_HTML);
@@ -134,6 +165,10 @@ describe("extractFaqPage", () => {
     expect(() => extractFaqPage("<html><body><p>nope</p></body></html>")).toThrow();
   });
 
+  it("throws when the title is missing even if groups exist", () => {
+    expect(() => extractFaqPage(FAQ_HTML_NO_TITLE)).toThrow();
+  });
+
   it("converts to markdown with group/question headings", () => {
     const md = toMarkdown(extractFaqPage(FAQ_HTML).bodyHtml);
     expect(md).toContain("## Information");
@@ -155,5 +190,9 @@ describe("extractContactPage", () => {
 
   it("throws when no store info block is found", () => {
     expect(() => extractContactPage("<html><body><p>nope</p></body></html>")).toThrow();
+  });
+
+  it("throws when the title is missing even if store info exists", () => {
+    expect(() => extractContactPage(CONTACT_HTML_NO_TITLE)).toThrow();
   });
 });
