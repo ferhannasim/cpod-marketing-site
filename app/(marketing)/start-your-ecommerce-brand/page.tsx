@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <PageShell title="Start Your Ecommerce Brand Without Tech or High Costs">
+      <PageShell eyebrow="Start a brand" title="Start Your Ecommerce Brand Without Tech or High Costs">
         <Body />
       </PageShell>
       <Container className="pb-16">

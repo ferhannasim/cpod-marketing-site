@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="How to Measure">
+    <PageShell eyebrow="Sizing" title="How to Measure">
       <Body />
     </PageShell>
   );

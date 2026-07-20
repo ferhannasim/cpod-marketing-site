@@ -11,7 +11,7 @@ export function Accordion({ items }: { items: FaqItem[] }) {
         <AccordionPrimitive.Item key={index} value={`item-${index}`}>
           <AccordionPrimitive.Header asChild>
             <h3>
-              <AccordionPrimitive.Trigger className="group flex w-full items-center justify-between gap-4 py-4 text-left font-semibold text-ink">
+              <AccordionPrimitive.Trigger className="group flex w-full items-center justify-between gap-4 rounded-lg px-3 -mx-3 py-4 text-left font-semibold text-ink transition-colors hover:bg-surface">
                 {item.question}
                 <ChevronDown
                   aria-hidden

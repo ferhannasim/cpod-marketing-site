@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="Terms of Service">
+    <PageShell eyebrow="Legal" variant="quiet" title="Terms of Service">
       <Body />
     </PageShell>
   );

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/ui/container";
+import { PageHero } from "@/components/page-hero";
 import { chartsByBrand } from "@/lib/size-charts";
 
 export const metadata: Metadata = {
@@ -10,32 +11,40 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Container className="py-12 sm:py-16">
-      <h1 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">Size Charts</h1>
-      <p className="mt-4 max-w-2xl text-lg text-zinc-600">
-        Find the measurements for your product, or read{" "}
-        <Link href="/measuring" className="font-medium text-brand hover:text-brand-dark">
-          how to measure
-        </Link>
-        .
-      </p>
-      {chartsByBrand().map(([brand, charts]) => (
-        <section key={brand} className="mt-10">
-          <h2 className="font-display text-2xl font-bold text-ink">{brand}</h2>
-          <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-            {charts.map((chart) => (
-              <li key={chart.handle}>
-                <Link
-                  href={`/size-charts/${chart.handle}`}
-                  className="block rounded-lg border border-zinc-200 px-4 py-3 text-sm font-medium text-zinc-700 hover:border-ink hover:text-ink"
-                >
-                  {chart.brand} {chart.model}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </Container>
+    <>
+      <PageHero
+        eyebrow="Sizing"
+        title="Size Charts"
+        lede="Find the measurements for your product, or read how to measure."
+      />
+      <Container className="py-10">
+        <p className="text-sm text-zinc-600">
+          Not sure how to measure?{" "}
+          <Link href="/measuring" className="font-medium text-brand hover:text-brand-dark">
+            Read the measuring guide
+          </Link>
+          .
+        </p>
+        {chartsByBrand().map(([brand, charts]) => (
+          <section key={brand} className="mt-10">
+            <h2 className="font-display text-2xl font-bold text-ink">
+              {brand} <span className="ml-1 text-sm font-normal text-zinc-500">({charts.length})</span>
+            </h2>
+            <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {charts.map((chart) => (
+                <li key={chart.handle}>
+                  <Link
+                    href={`/size-charts/${chart.handle}`}
+                    className="block rounded-lg border border-zinc-200 px-4 py-3 text-sm font-medium text-zinc-700 transition-all hover:border-brand/50 hover:text-ink hover:shadow-sm"
+                  >
+                    {chart.brand} {chart.model}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </Container>
+    </>
   );
 }

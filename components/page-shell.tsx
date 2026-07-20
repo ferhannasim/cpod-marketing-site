@@ -1,20 +1,40 @@
+import { TriangleAlert } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Prose } from "@/components/ui/prose";
+import { PageHero } from "@/components/page-hero";
 
 export function PageShell({
+  eyebrow,
   title,
   lede,
+  alert,
+  variant = "default",
   children,
 }: {
+  eyebrow?: string;
   title: string;
   lede?: string;
+  alert?: string;
+  variant?: "default" | "quiet";
   children: React.ReactNode;
 }) {
   return (
-    <Container className="py-12 sm:py-16">
-      <h1 className="font-display text-4xl font-bold tracking-tight text-ink sm:text-5xl">{title}</h1>
-      {lede ? <p className="mt-4 max-w-2xl text-lg text-zinc-600">{lede}</p> : null}
-      <Prose className="mt-8">{children}</Prose>
-    </Container>
+    <>
+      <PageHero eyebrow={eyebrow} title={title} lede={lede} variant={variant} />
+      {alert ? (
+        <Container className="mt-8">
+          <div
+            role="note"
+            className="flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900"
+          >
+            <TriangleAlert aria-hidden className="mt-0.5 h-4 w-4 shrink-0" />
+            {alert}
+          </div>
+        </Container>
+      ) : null}
+      <Container className="py-10 sm:py-12">
+        <Prose>{children}</Prose>
+      </Container>
+    </>
   );
 }

@@ -17,7 +17,7 @@ export function SizeChartTable({ chart }: { chart: SizeChart }) {
           </thead>
           <tbody className="divide-y divide-zinc-200">
             {chart.rows.map((row, rowIndex) => (
-              <tr key={rowIndex}>
+              <tr key={rowIndex} className="odd:bg-white even:bg-surface/60">
                 {row.map((cell, cellIndex) => (
                   <td key={cellIndex} className="px-4 py-3 text-zinc-700">
                     {cell}

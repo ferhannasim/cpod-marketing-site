@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="About Us">
+    <PageShell eyebrow="Company" title="About Us">
       <Body />
     </PageShell>
   );

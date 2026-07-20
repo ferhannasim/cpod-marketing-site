@@ -13,4 +13,14 @@ describe("PageShell", () => {
     expect(screen.getByText("From blank to shipped.")).toBeInTheDocument();
     expect(screen.getByText("Body copy")).toBeInTheDocument();
   });
+
+  it("renders an eyebrow and an alert note when provided", () => {
+    render(
+      <PageShell eyebrow="Please read" title="Printing Notice" alert="Read before ordering.">
+        <p>Body</p>
+      </PageShell>,
+    );
+    expect(screen.getByText("Please read")).toBeInTheDocument();
+    expect(screen.getByRole("note")).toHaveTextContent("Read before ordering.");
+  });
 });

@@ -9,7 +9,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="Artwork & Mockup Approval">
+    <PageShell
+      eyebrow="Please read"
+      title="Artwork & Mockup Approval"
+      alert="Orders only go to production after you approve the mockup."
+    >
       <Body />
     </PageShell>
   );

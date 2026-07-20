@@ -9,7 +9,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="Important Printing Notice">
+    <PageShell
+      eyebrow="Please read"
+      title="Important Printing Notice"
+      alert="Please read this notice in full before placing an order — it affects how your prints will look."
+    >
       <Body />
     </PageShell>
   );
