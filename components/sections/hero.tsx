@@ -34,9 +34,9 @@ export function Hero() {
             Print-on-demand dropshipping · Canada
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl xl:text-6xl">
-            Launch your{" "}
-            <span className="relative inline-block">
-              print-on-demand brand.
+            Launch your print-on-demand{" "}
+            <span className="relative inline-block whitespace-nowrap">
+              brand.
               <SwooshUnderline />
             </span>{" "}
             We print, pack &amp; ship.
