@@ -14,7 +14,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🔹 1. Printing Process",
+    question: "1. Printing Process",
     answer: (
       <>
         <p>
@@ -38,7 +38,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🔹 2. Materials/Substrates Supported",
+    question: "2. Materials/Substrates Supported",
     answer: (
       <>
         <p>
@@ -60,7 +60,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🔹 3. Feel & Durability",
+    question: "3. Feel & Durability",
     answer: (
       <>
         <p>
@@ -81,7 +81,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🔹 4. Color Vibrancy & Detail",
+    question: "4. Color Vibrancy & Detail",
     answer: (
       <>
         <p>
@@ -105,7 +105,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🔹 5. Equipment Cost & Ease of Use",
+    question: "5. Equipment Cost & Ease of Use",
     answer: (
       <>
         <p>
@@ -126,7 +126,7 @@ export const sublimationFaq: FaqItem[] = [
     ),
   },
   {
-    question: "✅ Side-by-Side Summary Table",
+    question: "Side-by-Side Summary Table",
     answer: (
       <>
         <table>

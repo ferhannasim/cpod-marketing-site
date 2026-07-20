@@ -2,7 +2,7 @@ import type { FaqItem } from "./types";
 
 export const dtfFaq: FaqItem[] = [
   {
-    question: "🎨 What Are DTF Transfers?",
+    question: "What Are DTF Transfers?",
     answer: (
       <>
         <p>
@@ -16,15 +16,15 @@ export const dtfFaq: FaqItem[] = [
           fabric of choice.
         </p>
         <ul>
-          <li>✅ Vivid color, high detail</li>
-          <li>✅ Works on dark and light fabrics</li>
-          <li>✅ Long-lasting + flexible finish</li>
+          <li>Vivid color, high detail</li>
+          <li>Works on dark and light fabrics</li>
+          <li>Long-lasting + flexible finish</li>
         </ul>
       </>
     ),
   },
   {
-    question: "👕 What Fabrics Work with DTF?",
+    question: "What Fabrics Work with DTF?",
     answer: (
       <>
         <p>
@@ -50,19 +50,19 @@ export const dtfFaq: FaqItem[] = [
             <strong>Lycra &amp; Spandex</strong> – Flexible and durable
           </li>
         </ul>
-        <p>If it holds heat, DTF can stick to it. 💥</p>
+        <p>If it holds heat, DTF can stick to it.</p>
       </>
     ),
   },
   {
-    question: "🔥 How to Apply DTF Transfers",
+    question: "How to Apply DTF Transfers",
     answer: (
       <>
         <p>
           Whether you&rsquo;ve got a heat press or just a household iron — here&rsquo;s how to get a clean, durable
           finish:
         </p>
-        <h4>🛠️ With a Heat Press (Best Results)</h4>
+        <h4>With a Heat Press (Best Results)</h4>
         <p>
           <strong>1. Preheat Your Press</strong>
         </p>
@@ -96,7 +96,7 @@ export const dtfFaq: FaqItem[] = [
         <p>
           Cover again and press for <strong>another 20 seconds</strong> to seal and smooth the print.
         </p>
-        <h4>🔥 Using a Household Iron</h4>
+        <h4>Using a Household Iron</h4>
         <p>
           <strong>1. Heat It Up</strong>
         </p>
@@ -121,7 +121,7 @@ export const dtfFaq: FaqItem[] = [
     ),
   },
   {
-    question: "🧼 Garment Care Instructions",
+    question: "Garment Care Instructions",
     answer: (
       <>
         <p>Want your designs to last? Follow these simple tips:</p>
@@ -139,23 +139,23 @@ export const dtfFaq: FaqItem[] = [
         </ul>
         <p>
           Properly applied and cared for, our DTF transfers can last <strong>60+ washes</strong> or{" "}
-          <strong>2–5 years</strong>! 💪
+          <strong>2–5 years</strong>!
         </p>
       </>
     ),
   },
   {
-    question: "🇨🇦 Why Choose DropShipPOD?",
+    question: "Why Choose DropShipPOD?",
     answer: (
       <>
         <p>
           We&rsquo;re here to make custom apparel <strong>easy, affordable, and high quality</strong> — every time.
         </p>
         <ul>
-          <li>✨ High-detail, full-color prints</li>
-          <li>🚚 Fast, reliable shipping across Canada</li>
-          <li>💬 Friendly, responsive customer support</li>
-          <li>💸 The best prices in the game (without cutting corners)</li>
+          <li>High-detail, full-color prints</li>
+          <li>Fast, reliable shipping across Canada</li>
+          <li>Friendly, responsive customer support</li>
+          <li>The best prices in the game (without cutting corners)</li>
         </ul>
         <p>Whether you&rsquo;re a small shop, a big brand, or printing just for fun — we&rsquo;ve got your back.</p>
       </>
