@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-manrope), ui-sans-serif, sans-serif;
+
+  --color-brand: #cb1836;
+  --color-brand-dark: #a31029;
+  --color-ink: #1e2d7d;
+  --color-ink-soft: #144579;
+  --color-surface: #f7f7f8;
+}
