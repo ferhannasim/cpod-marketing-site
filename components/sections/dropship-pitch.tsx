@@ -22,9 +22,9 @@ const landers = [
 
 export function DropshipPitch() {
   return (
-    <Section id="dropship" className="bg-surface">
+    <Section id="dropship" className="bg-gradient-to-br from-ink to-ink-deep">
       <Container>
-        <SectionHeading eyebrow="Dropship + Shopify app" title="Built for dropshipping" />
+        <SectionHeading dark eyebrow="Dropship + Shopify app" title="Built for dropshipping" />
         <div className="grid gap-6 md:grid-cols-2">
           {landers.map((lander) => (
             <Card key={lander.href} className="flex flex-col">

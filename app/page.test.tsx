@@ -31,4 +31,10 @@ describe("HomePage", () => {
     render(<HomePage />);
     expect(screen.getAllByRole("button", { name: /^Play video:/ })).toHaveLength(6);
   });
+  it("shows the trust markers in the hero", () => {
+    render(<HomePage />);
+    for (const marker of ["Printed in Canada", "No minimums", "Ground shipping in 1–5 days"]) {
+      expect(screen.getByText(marker)).toBeInTheDocument();
+    }
+  });
 });

@@ -16,9 +16,10 @@ export function TestimonialList() {
   return (
     <div className="grid gap-6 md:grid-cols-3">
       {testimonials.map((testimonial) => (
-        <Card key={testimonial.name} className="flex flex-col gap-4">
+        <Card key={testimonial.name} className="flex flex-col gap-3 shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg motion-reduce:transform-none">
+          <p aria-hidden className="font-display text-5xl leading-none text-brand">“</p>
           <Stars />
-          <blockquote className="text-sm leading-relaxed text-zinc-600">"{testimonial.quote}"</blockquote>
+          <blockquote className="text-sm leading-relaxed text-zinc-600">“{testimonial.quote}”</blockquote>
           <p className="mt-auto font-semibold text-ink">{testimonial.name}</p>
         </Card>
       ))}
