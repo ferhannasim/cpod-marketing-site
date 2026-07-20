@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { isGroup, primaryNav } from "@/lib/nav";
-import { cn } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/button";
 
 function Wordmark() {
@@ -83,38 +82,40 @@ export function Header() {
         </button>
       </div>
 
-      <div className={cn("border-t border-zinc-200 bg-white lg:hidden", mobileOpen ? "block" : "hidden")}>
-        <nav aria-label="Mobile" className="space-y-1 px-4 py-4">
-          {primaryNav.map((entry) =>
-            isGroup(entry) ? (
-              <div key={entry.label} className="py-1">
-                <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+      {mobileOpen ? (
+        <div className="border-t border-zinc-200 bg-white lg:hidden">
+          <nav aria-label="Mobile" className="space-y-1 px-4 py-4">
+            {primaryNav.map((entry) =>
+              isGroup(entry) ? (
+                <div key={entry.label} className="py-1">
+                  <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+                    {entry.label}
+                  </p>
+                  {entry.links.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-surface"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : (
+                <Link
+                  key={entry.href}
+                  href={entry.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="block rounded-lg px-3 py-2 text-sm font-medium text-zinc-800 hover:bg-surface"
+                >
                   {entry.label}
-                </p>
-                {entry.links.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-surface"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            ) : (
-              <Link
-                key={entry.href}
-                href={entry.href}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-zinc-800 hover:bg-surface"
-              >
-                {entry.label}
-              </Link>
-            ),
-          )}
-        </nav>
-      </div>
+                </Link>
+              ),
+            )}
+          </nav>
+        </div>
+      ) : null}
     </header>
   );
 }
