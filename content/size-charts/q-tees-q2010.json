@@ -1,0 +1,29 @@
+{
+  "handle": "q-tees-q2010",
+  "brand": "Q-Tees",
+  "model": "Q2010",
+  "title": "Size Chart | Q-TEES Q2010",
+  "columns": [
+    "Specifications (inches)",
+    "One Size"
+  ],
+  "rows": [
+    [
+      "Length Tolerance",
+      "+/- 1"
+    ],
+    [
+      "Measurements",
+      "28\"W x 34\"L"
+    ],
+    [
+      "Suggested Imprint Area",
+      "14\"W x 14\"H"
+    ],
+    [
+      "Width Tolerance",
+      "+/- 1"
+    ]
+  ],
+  "notes": []
+}

@@ -1,0 +1,65 @@
+{
+  "handle": "gildan-sf500b",
+  "brand": "Gildan",
+  "model": "SF500B",
+  "title": "Size Chart | Gildan SF500B",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "20 1/4",
+      "21 3/4",
+      "23",
+      "24 1/2",
+      "26"
+    ],
+    [
+      "Body Length Tolerance",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1"
+    ],
+    [
+      "Chest Tolerance",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20"
+    ],
+    [
+      "Sleeve Length (From Center Back)",
+      "23 1/2",
+      "26 1/2",
+      "27 3/4",
+      "30 1/4",
+      "33"
+    ],
+    [
+      "Sleeve Tolerance",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1"
+    ]
+  ],
+  "notes": []
+}

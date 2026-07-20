@@ -1,0 +1,57 @@
+{
+  "handle": "gildan-8000b",
+  "brand": "Gildan",
+  "model": "8000B",
+  "title": "Size Chart | Gildan 8000B",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "18",
+      "20 1/2",
+      "22",
+      "23 1/2",
+      "25"
+    ],
+    [
+      "Body Length Tolerance",
+      "+/- 1",
+      "+/- 1",
+      "+/- 1",
+      "+/- 1",
+      "+/- 1"
+    ],
+    [
+      "Chest Tolerance",
+      "+/- 1/2",
+      "+/- 1/2",
+      "+/- 1/2",
+      "+/- 1/2",
+      "+/- 1/2"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "14",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    [
+      "Numerical Sizes",
+      "2-4",
+      "6-8",
+      "10-12",
+      "14-16",
+      "18-20"
+    ]
+  ],
+  "notes": []
+}

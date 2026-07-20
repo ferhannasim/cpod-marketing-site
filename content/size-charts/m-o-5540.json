@@ -1,0 +1,41 @@
+{
+  "handle": "m-o-5540",
+  "brand": "M&O",
+  "model": "5540",
+  "title": "Size Chart | M&O 5540",
+  "columns": [
+    "Specifications (inches)",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "18",
+      "20",
+      "22",
+      "24",
+      "26"
+    ],
+    [
+      "Sleeve Length",
+      "22 1/2",
+      "23 1/2",
+      "24 1/2",
+      "25 1/2",
+      "26 1/2"
+    ]
+  ],
+  "notes": []
+}

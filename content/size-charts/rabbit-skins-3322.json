@@ -1,0 +1,51 @@
+{
+  "handle": "rabbit-skins-3322",
+  "brand": "Rabbit Skins",
+  "model": "3322",
+  "title": "Size Chart | Rabbit Skins 3322",
+  "columns": [
+    "Specifications (inches)",
+    "6M",
+    "12M",
+    "18M",
+    "24M"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "12 1/2",
+      "13 1/2",
+      "14 1/2",
+      "15 1/2"
+    ],
+    [
+      "Body Length Tolerance",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    [
+      "Chest Tolerance",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "10",
+      "11",
+      "12",
+      "13"
+    ],
+    [
+      "Sleeve Length",
+      "3 3/4",
+      "4",
+      "4 1/4",
+      "4 3/4"
+    ]
+  ],
+  "notes": []
+}

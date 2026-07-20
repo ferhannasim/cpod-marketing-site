@@ -1,0 +1,33 @@
+{
+  "handle": "m-o-3590",
+  "brand": "M&O",
+  "model": "3590",
+  "title": "Size Chart | M&O 3590",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "13 1/2",
+      "14 1/2",
+      "15 1/2",
+      "16 1/2",
+      "17 1/2"
+    ]
+  ],
+  "notes": []
+}

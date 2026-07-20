@@ -1,0 +1,29 @@
+{
+  "handle": "q-tees-q600",
+  "brand": "Q-Tees",
+  "model": "Q600",
+  "title": "Size Chart | Q-TEES Q600",
+  "columns": [
+    "Specifications (inches)",
+    "One Size"
+  ],
+  "rows": [
+    [
+      "Length Tolerance",
+      "+/- 1"
+    ],
+    [
+      "Measurements",
+      "20\"W x 15\"H x 5\"D"
+    ],
+    [
+      "Suggested Imprint Area",
+      "14\"W x 10\"H"
+    ],
+    [
+      "Width Tolerance",
+      "+/- 1"
+    ]
+  ],
+  "notes": []
+}
