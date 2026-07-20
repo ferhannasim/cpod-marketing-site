@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 const ROOTS = ["content/pages", "content/faqs", "components", "app"];
 const ALLOWED = new Set(["©", "®", "™"]);
-const EMOJI = /\p{Extended_Pictographic}/gu;
+const EMOJI = /[\p{Extended_Pictographic}\u{1F1E6}-\u{1F1FF}]/gu;
 
 function walk(dir: string, out: string[] = []): string[] {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
