@@ -39,4 +39,6 @@ domain at the Vercel project. permanent (308) redirects from every old Shopify U
 ## Legacy Shopify theme
 
 `assets/ config/ layout/ locales/ sections/ snippets/ templates/` are the old Shopify theme,
-kept as reference until after launch. Do not develop against them; see `CLAUDE.md`.
+present in this working copy only (untracked, git-ignored) — not in git history or fresh
+clones; retained locally as reference until post-launch removal. Do not develop against them;
+see `CLAUDE.md`.

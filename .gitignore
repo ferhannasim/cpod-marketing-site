@@ -5,3 +5,14 @@ out/
 .env*
 .DS_Store
 .idea/
+
+# Legacy Shopify theme — working-copy reference only, never committed (post-launch: delete)
+/assets/
+/config/
+/layout/
+/locales/
+/sections/
+/snippets/
+/templates/
+# SDD controller scratch
+/.superpowers/

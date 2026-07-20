@@ -4,8 +4,9 @@
 > site** at the repo root (`app/`, `components/`, `content/`, `lib/`, `public/`, `scripts/`) —
 > this is the active codebase; see `README.md` — and (2) the **legacy Shopify theme**
 > (`assets/`, `config/`, `layout/`, `locales/`, `sections/`, `snippets/`, `templates/`),
-> retained as reference until post-launch removal. Everything below this note describes the
-> legacy theme only.
+> present in this working copy only (untracked, git-ignored) — not in git history or fresh
+> clones; retained locally as reference until post-launch removal. Everything below this note
+> describes the legacy theme only.
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
