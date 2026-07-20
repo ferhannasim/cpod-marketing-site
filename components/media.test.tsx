@@ -50,6 +50,6 @@ describe("StepList", () => {
     expect(steps).toHaveLength(5);
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(5);
-    expect(items[0]).toHaveTextContent("Pick a product");
+    expect(items[0]).toHaveTextContent("Pick your products");
   });
 });
