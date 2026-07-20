@@ -40,7 +40,7 @@ describe("Button", () => {
 describe("layout primitives", () => {
   it("Container centers content", () => {
     const { container } = render(<Container>x</Container>);
-    expect((container.firstChild as HTMLElement).className).toContain("max-w-6xl");
+    expect((container.firstChild as HTMLElement).className).toContain("max-w-7xl");
   });
   it("Section renders a section element with an id", () => {
     const { container } = render(<Section id="s1">x</Section>);

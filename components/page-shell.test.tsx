@@ -23,4 +23,13 @@ describe("PageShell", () => {
     expect(screen.getByText("Please read")).toBeInTheDocument();
     expect(screen.getByRole("note")).toHaveTextContent("Read before ordering.");
   });
+
+  it("forwards proseClassName to the prose wrapper", () => {
+    render(
+      <PageShell title="T" proseClassName="prose-img:max-h-52">
+        <p>x</p>
+      </PageShell>,
+    );
+    expect(document.querySelector(".prose-img\\:max-h-52")).not.toBeNull();
+  });
 });

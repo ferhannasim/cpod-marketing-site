@@ -9,6 +9,7 @@ export function PageShell({
   lede,
   alert,
   variant = "default",
+  proseClassName,
   children,
 }: {
   eyebrow?: string;
@@ -16,6 +17,7 @@ export function PageShell({
   lede?: string;
   alert?: string;
   variant?: "default" | "quiet";
+  proseClassName?: string;
   children: React.ReactNode;
 }) {
   return (
@@ -33,7 +35,7 @@ export function PageShell({
         </Container>
       ) : null}
       <Container className="py-10 sm:py-12">
-        <Prose>{children}</Prose>
+        <Prose className={proseClassName}>{children}</Prose>
       </Container>
     </>
   );
