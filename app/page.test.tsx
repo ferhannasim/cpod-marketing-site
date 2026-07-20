@@ -11,16 +11,20 @@ describe("HomePage", () => {
   });
   it("renders every homepage section in spec order", () => {
     render(<HomePage />);
-    for (const heading of [
+    const allH2s = screen.getAllByRole("heading", { level: 2 });
+    const h2Texts = allH2s.map((h) => h.textContent);
+    const expectedSections = [
       "How it works",
       "Printing methods",
       "Top Selling Brands",
       "What sellers say",
       "Built for dropshipping",
       "Ready to launch your brand?",
-    ]) {
-      expect(screen.getByRole("heading", { name: heading })).toBeInTheDocument();
-    }
+    ];
+    const actualSections = h2Texts.filter((text) =>
+      expectedSections.includes(text)
+    );
+    expect(actualSections).toEqual(expectedSections);
     expect(screen.getByText(/free shipping on all orders over \$199/i)).toBeInTheDocument();
   });
   it("renders the featured video facade plus the 5-video strip", () => {
