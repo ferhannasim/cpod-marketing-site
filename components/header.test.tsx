@@ -55,4 +55,11 @@ describe("Header", () => {
       "/faq/dtf",
     );
   });
+
+  it("renders the brand logo image as the home link", () => {
+    render(<Header />);
+    const home = screen.getByRole("link", { name: "DropShipPOD" });
+    expect(home).toHaveAttribute("href", "/");
+    expect(home.querySelector("img")).not.toBeNull();
+  });
 });

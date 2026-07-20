@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { isGroup, primaryNav } from "@/lib/nav";
@@ -9,8 +10,15 @@ import { SHOPIFY_APP_URL } from "@/lib/site";
 
 function Wordmark() {
   return (
-    <Link href="/" className="font-display text-xl font-bold tracking-tight text-ink">
-      DropShip<span className="text-brand">POD</span>
+    <Link href="/" className="flex items-center">
+      <Image
+        src="/images/logo.png"
+        alt="DropShipPOD"
+        width={198}
+        height={60}
+        priority
+        className="h-10 w-auto sm:h-11"
+      />
     </Link>
   );
 }

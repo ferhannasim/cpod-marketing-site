@@ -15,6 +15,24 @@ export const metadata: Metadata = {
   },
   description:
     "DropShipPOD is a Canadian print-on-demand dropshipping service and Shopify app. We print, pack and ship your custom apparel — no inventory, no tech headaches.",
+  openGraph: {
+    title: "DropShipPOD — Print-on-Demand Dropshipping in Canada",
+    description:
+      "DropShipPOD is a Canadian print-on-demand dropshipping service and Shopify app. We print, pack and ship your custom apparel — no inventory, no tech headaches.",
+    url: "https://dropshippod.ca",
+    siteName: "DropShipPOD",
+    locale: "en_CA",
+    type: "website",
+    images: [
+      {
+        url: "/images/logo.png",
+        width: 1188,
+        height: 359,
+        alt: "DropShipPOD — Your Brand. Your Platform.",
+      },
+    ],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

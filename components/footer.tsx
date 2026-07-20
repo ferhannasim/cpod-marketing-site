@@ -1,11 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 import { footerColumns, socialLinks } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
+import { TAGLINE } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="border-t border-zinc-200 bg-surface">
       <Container className="py-12">
+        <div className="mb-10 flex flex-col items-start justify-between gap-4 border-b border-zinc-200 pb-8 sm:flex-row sm:items-center">
+          <Link href="/" className="flex items-center">
+            <Image src="/images/logo.png" alt="DropShipPOD" width={165} height={50} className="h-9 w-auto" />
+          </Link>
+          <p className="font-display text-sm font-semibold text-ink">{TAGLINE}</p>
+        </div>
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {footerColumns.map((column) => (
             <nav key={column.label} aria-label={column.label}>
