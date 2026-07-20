@@ -15,7 +15,7 @@ export default function Page() {
       <PageHero
         eyebrow="Sizing"
         title="Size Charts"
-        lede="Find the measurements for your product, or read how to measure."
+        lede="Find the measurements for your product."
       />
       <Container className="py-10">
         <p className="text-sm text-zinc-600">
