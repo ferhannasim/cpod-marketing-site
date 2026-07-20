@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { PageShell } from "@/components/page-shell";
+import { AppCta } from "@/components/app-cta";
+import { Container } from "@/components/ui/container";
 import Body from "@/content/pages/launch-automated-brand.mdx";
 
 export const metadata: Metadata = {
@@ -9,8 +11,13 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell title="Launch a Fully Automated Ecommerce Brand">
-      <Body />
-    </PageShell>
+    <>
+      <PageShell title="Launch a Fully Automated Ecommerce Brand">
+        <Body />
+      </PageShell>
+      <Container className="pb-16">
+        <AppCta />
+      </Container>
+    </>
   );
 }

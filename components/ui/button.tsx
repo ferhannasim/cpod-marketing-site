@@ -8,6 +8,7 @@ const variants = {
   primary: "bg-brand text-white hover:bg-brand-dark",
   secondary: "bg-ink text-white hover:bg-ink-soft",
   outline: "border border-zinc-300 bg-white text-zinc-900 hover:border-zinc-900",
+  "outline-dark": "border border-white/30 text-white hover:bg-white/10",
 };
 
 export type ButtonVariant = keyof typeof variants;
@@ -35,8 +36,16 @@ export function ButtonLink({
   className?: string;
   children: React.ReactNode;
 }) {
+  const classes = buttonClasses(variant, className);
+  if (href.startsWith("http")) {
+    return (
+      <a href={href} target="_blank" rel="noopener noreferrer" className={classes}>
+        {children}
+      </a>
+    );
+  }
   return (
-    <Link href={href} className={buttonClasses(variant, className)}>
+    <Link href={href} className={classes}>
       {children}
     </Link>
   );

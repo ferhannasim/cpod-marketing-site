@@ -2,6 +2,7 @@ import { VideoEmbed } from "@/components/video-embed";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { featuredVideo, moreVideos } from "@/content/videos";
+import { SHOPIFY_APP_URL } from "@/lib/site";
 
 export function Hero() {
   return (
@@ -19,7 +20,7 @@ export function Hero() {
             inventory, no tech headaches, wholesale pricing on t-shirts, hoodies, DTF and more.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <ButtonLink href="/contact">Get started</ButtonLink>
+            <ButtonLink href={SHOPIFY_APP_URL}>Get started</ButtonLink>
             <ButtonLink href="/how-it-works" variant="outline">
               See how it works
             </ButtonLink>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { isGroup, primaryNav } from "@/lib/nav";
 import { ButtonLink } from "@/components/ui/button";
+import { SHOPIFY_APP_URL } from "@/lib/site";
 
 function Wordmark() {
   return (
@@ -116,7 +117,7 @@ export function Header() {
               </Link>
             ),
           )}
-          <ButtonLink href="/contact" className="ml-3 px-4 py-2">
+          <ButtonLink href={SHOPIFY_APP_URL} className="ml-3 px-4 py-2">
             Get started
           </ButtonLink>
         </nav>

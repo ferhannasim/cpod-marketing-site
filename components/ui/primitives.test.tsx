@@ -21,6 +21,20 @@ describe("Button", () => {
     expect(link).toHaveAttribute("href", "/contact");
     expect(link.className).toContain("bg-brand");
   });
+  it("ButtonLink renders external links as new-tab anchors", () => {
+    render(<ButtonLink href="https://example.com/x">Ext</ButtonLink>);
+    const link = screen.getByRole("link", { name: "Ext" });
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  });
+  it("ButtonLink keeps internal links same-tab", () => {
+    render(<ButtonLink href="/faq">Int</ButtonLink>);
+    expect(screen.getByRole("link", { name: "Int" })).not.toHaveAttribute("target");
+  });
+  it("renders the outline-dark variant", () => {
+    render(<Button variant="outline-dark">Dark</Button>);
+    expect(screen.getByRole("button", { name: "Dark" }).className).toContain("border-white/30");
+  });
 });
 
 describe("layout primitives", () => {

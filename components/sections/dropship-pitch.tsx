@@ -1,7 +1,9 @@
 import Link from "next/link";
+import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section, SectionHeading } from "@/components/ui/section";
+import { SHOPIFY_APP_URL } from "@/lib/site";
 
 const landers = [
   {
@@ -28,12 +30,17 @@ export function DropshipPitch() {
             <Card key={lander.href} className="flex flex-col">
               <h3 className="font-display text-xl font-bold text-ink">{lander.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-zinc-600">{lander.description}</p>
-              <Link
-                href={lander.href}
-                className="mt-4 inline-block text-sm font-semibold text-brand hover:text-brand-dark"
-              >
-                Learn more →
-              </Link>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <ButtonLink href={SHOPIFY_APP_URL} className="px-5 py-2.5">
+                  Get the app
+                </ButtonLink>
+                <Link
+                  href={lander.href}
+                  className="text-sm font-semibold text-brand hover:text-brand-dark"
+                >
+                  Learn more <span className="sr-only">about {lander.title}</span>
+                </Link>
+              </div>
             </Card>
           ))}
         </div>
