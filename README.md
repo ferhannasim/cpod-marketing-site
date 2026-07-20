@@ -33,7 +33,7 @@ Wire Resend/Formspree there when ready (schema already shared between client and
 ## Deploy
 
 Import the repo into Vercel (defaults work; build = `pnpm build`). Point the `dropshippod.ca`
-domain at the Vercel project. 301 redirects from every old Shopify URL ship in
+domain at the Vercel project. permanent (308) redirects from every old Shopify URL ship in
 `next.config.ts` (`lib/redirects.ts`).
 
 ## Legacy Shopify theme
