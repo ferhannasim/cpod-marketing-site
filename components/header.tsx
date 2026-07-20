@@ -174,6 +174,11 @@ export function Header() {
                 </Link>
               ),
             )}
+            <div className="px-3 pt-3">
+              <ButtonLink href={SHOPIFY_APP_URL} className="w-full">
+                Get started
+              </ButtonLink>
+            </div>
           </nav>
         </div>
       ) : null}
