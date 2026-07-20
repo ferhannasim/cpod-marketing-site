@@ -32,7 +32,7 @@ async function fetchHtml(pathname) {
   for (const base of [LOCAL, LIVE]) {
     try {
       const res = await fetch(base + pathname, { redirect: "follow" });
-      if (res.ok) return await res.text();
+      if (res.ok) return { text: await res.text(), base };
     } catch {
       // try next base
     }
@@ -43,8 +43,16 @@ async function fetchHtml(pathname) {
 async function download(url, dest) {
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`${res.status} for ${url}`);
+  const contentType = res.headers.get("content-type") ?? "";
+  if (!contentType.startsWith("image/")) {
+    throw new Error(`unexpected content-type "${contentType}" for ${url}`);
+  }
+  const buffer = Buffer.from(await res.arrayBuffer());
+  if (buffer.length === 0) {
+    throw new Error(`empty response body for ${url}`);
+  }
   await mkdir(path.dirname(dest), { recursive: true });
-  await writeFile(dest, Buffer.from(await res.arrayBuffer()));
+  await writeFile(dest, buffer);
   console.log(`ok  ${url} -> ${path.relative(process.cwd(), dest)}`);
 }
 
@@ -58,8 +66,8 @@ async function tryDownload(url, dest, label) {
 }
 
 // 1. Supplier logos + shipping badge, located by scanning the homepage's CDN images
-const homeHtml = await fetchHtml("/");
-const homeUrls = collectCdnImageUrls(homeHtml).map(normalizeCdnUrl);
+const home = await fetchHtml("/");
+const homeUrls = collectCdnImageUrls(home.text, home.base).map(normalizeCdnUrl);
 
 for (const seed of LOGO_SEEDS) {
   const url = matchAsset(homeUrls, seed.key);
@@ -70,7 +78,9 @@ for (const seed of LOGO_SEEDS) {
   await tryDownload(url, path.join(PUBLIC, "logos", seed.out), seed.key);
 }
 const shippingUrl = matchAsset(homeUrls, "shipping_logo");
-if (shippingUrl) await tryDownload(shippingUrl, path.join(PUBLIC, "shipping.webp"), "shipping_logo");
+// Source bytes are PNG despite the CDN filename's .webp extension (confirmed via
+// `curl -I`: content-type: image/png) — saved with an honest .png extension.
+if (shippingUrl) await tryDownload(shippingUrl, path.join(PUBLIC, "shipping.png"), "shipping_logo");
 else failures.push("shipping_logo not found on homepage");
 
 // 2. Known standalone assets
