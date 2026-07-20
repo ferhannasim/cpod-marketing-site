@@ -9,17 +9,20 @@ import { testimonials } from "@/content/testimonials";
 import { steps } from "@/content/steps";
 
 describe("VideoEmbed", () => {
-  it("renders a poster button and no iframe before click", () => {
-    const { container } = render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
+  it("renders a poster button and no dialog before click", () => {
+    render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
     expect(screen.getByRole("button", { name: "Play video: Intro" })).toBeInTheDocument();
-    expect(container.querySelector("iframe")).toBeNull();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
-  it("swaps to a titled YouTube iframe on click", () => {
-    const { container } = render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
+  it("opens a modal with the playing video on click, and closes it", () => {
+    render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
     fireEvent.click(screen.getByRole("button", { name: "Play video: Intro" }));
-    const iframe = container.querySelector("iframe");
+    const dialog = screen.getByRole("dialog");
+    const iframe = dialog.querySelector("iframe");
     expect(iframe?.getAttribute("src")).toContain("youtube-nocookie.com/embed/Hz8PK6i8ZsE");
     expect(iframe?.getAttribute("title")).toBe("Intro");
+    fireEvent.click(screen.getByRole("button", { name: "Close video" }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 });
 
