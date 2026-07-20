@@ -3,7 +3,7 @@ title: "How it Works"
 source: /pages/how-it-works
 ---
 
-![](https://cdn.shopify.com/s/files/1/0646/3881/2399/files/steps.png?v=1658933900)
+![](/images/content/steps.png)
 
 Step 1: Select the product you wish to print on from our vast selection  
 Step 2: Choose your favourite color for the product you picked  
