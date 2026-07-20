@@ -26,13 +26,15 @@ export function FaqPage({
         {related.length > 0 ? (
           <nav aria-label="Related FAQs" className="mt-10">
             <p className="text-sm font-semibold text-ink">More FAQs</p>
-            <div className="mt-2 flex flex-wrap gap-4">
+            <ul className="mt-2 flex flex-wrap gap-3">
               {related.map((link) => (
-                <Link key={link.href} href={link.href} className={buttonClasses("outline", "px-4 py-2 text-xs")}>
-                  {link.label}
-                </Link>
+                <li key={link.href}>
+                  <Link href={link.href} className={buttonClasses("outline", "px-4 py-2 text-xs")}>
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </nav>
         ) : null}
       </Container>
