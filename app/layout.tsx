@@ -18,9 +18,26 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "DropShipPOD",
+    url: "https://dropshippod.ca",
+    sameAs: [
+      "https://www.facebook.com/CheapestPrintOnDemand/",
+      "https://www.instagram.com/cheapestprintondemand/",
+      "https://www.tiktok.com/@cheapest.print.on.demand",
+      "https://www.youtube.com/@DropShipPOD",
+    ],
+  };
+
   return (
     <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
       <body className="bg-white font-sans text-zinc-900 antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         <main>{children}</main>
         <Footer />
