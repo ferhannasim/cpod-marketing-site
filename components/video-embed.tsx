@@ -33,15 +33,18 @@ export function VideoEmbed({ id, title, priority = false }: { id: string; title:
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" />
-        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(92vw,64rem)] -translate-x-1/2 -translate-y-1/2 focus:outline-none">
+        <Dialog.Content
+          aria-describedby={undefined}
+          className="fixed left-1/2 top-1/2 z-50 w-[min(92vw,64rem)] -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+        >
           <Dialog.Title className="sr-only">{title}</Dialog.Title>
-          <Dialog.Close
-            aria-label="Close video"
-            className="absolute -top-12 right-0 rounded-full p-2 text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white"
-          >
-            <X aria-hidden className="h-7 w-7" />
-          </Dialog.Close>
           <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl">
+            <Dialog.Close
+              aria-label="Close video"
+              className="absolute right-2 top-2 z-10 rounded-full bg-black/60 p-2 text-white hover:bg-black/80 focus-visible:outline-2 focus-visible:outline-white"
+            >
+              <X aria-hidden className="h-7 w-7" />
+            </Dialog.Close>
             {open ? (
               <iframe
                 className="absolute inset-0 h-full w-full"
