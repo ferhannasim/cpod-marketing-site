@@ -25,9 +25,9 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/logo.png",
-        width: 1188,
-        height: 359,
+        url: "/images/og-card.png",
+        width: 1200,
+        height: 630,
         alt: "DropShipPOD — Your Brand. Your Platform.",
       },
     ],
@@ -41,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@type": "Organization",
     name: "DropShipPOD",
     url: "https://dropshippod.ca",
+    logo: "https://dropshippod.ca/images/logo.png",
     sameAs: [
       "https://www.facebook.com/CheapestPrintOnDemand/",
       "https://www.instagram.com/cheapestprintondemand/",
