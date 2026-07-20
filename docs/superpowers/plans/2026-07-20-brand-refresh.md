@@ -1042,3 +1042,337 @@ git commit -m "test: add site completeness audit (routes, orphans, nav integrity
 - **Spec coverage:** §3 CTA map → Task 1 (every row, exact labels, constant-only URL enforced by Task 5's grep); §4 logo/favicon/OG → Task 2 (exact source URL, sips crop with visual-verify + fallback); §5 tokens → Task 1 Step 4; §6 treatment matrix → Task 3 (homepage rows) + Task 4 (shells, eyebrow/alert table, FAQ/size/contact/policies/404); §7 audit → Task 5 (all five checks; manual sweep scripted with blocking MISS rule); §8 testing → each task's test steps.
 - **Placeholder scan:** none — the only executor-judgment step is the favicon crop quality check, which has an explicit fallback path.
 - **Type consistency:** `SHOPIFY_APP_URL`/`TAGLINE` (T1) match usage in T2–T5; `ButtonVariant` gains `outline-dark` (T1) before T3/T4 use it; `SectionHeading.dark` defined T3, used only T3; `PageHero`/`PageShell` props (T4) match the route table and tests; audit imports are all existing exports verified against the codebase.
+
+---
+
+## Addendum (owner punch list, same execution rules)
+
+### Task 6: Wider container + measuring image sizing
+
+**Files:**
+- Modify: `components/ui/container.tsx`, `components/header.tsx` (its own width wrapper), `components/ui/primitives.test.tsx` (width assertion), `components/page-shell.tsx` (`proseClassName` passthrough), `app/(marketing)/measuring/page.tsx`
+
+**Interfaces:**
+- Produces: site content width becomes `max-w-7xl`; `PageShell` gains `proseClassName?: string` forwarded to `Prose`.
+
+- [ ] **Step 1: Update the width test first** — in `components/ui/primitives.test.tsx`, change the Container assertion to `expect(...).toContain("max-w-7xl")`. Run `pnpm test components` → FAIL.
+- [ ] **Step 2: Implement** — `components/ui/container.tsx`: `max-w-6xl` → `max-w-7xl`. `components/header.tsx`: the header's inner `div` class `max-w-6xl` → `max-w-7xl` (one occurrence). Run tests → PASS.
+- [ ] **Step 3: `PageShell` passthrough** — add `proseClassName?: string` to props and render `<Prose className={proseClassName}>{children}</Prose>`. Append a test to `components/page-shell.test.tsx`:
+
+```tsx
+  it("forwards proseClassName to the prose wrapper", () => {
+    render(
+      <PageShell title="T" proseClassName="prose-img:max-h-52">
+        <p>x</p>
+      </PageShell>,
+    );
+    expect(document.querySelector(".prose-img\\:max-h-52")).not.toBeNull();
+  });
+```
+
+(RED first, then implement.)
+- [ ] **Step 4: Measuring page** — `app/(marketing)/measuring/page.tsx`: add `proseClassName="prose-img:max-h-52 prose-img:w-auto"` to its `PageShell`.
+- [ ] **Step 5: Verify + commit** — full `pnpm test` pristine; `pnpm build` green.
+
+```bash
+git add components/ "app/(marketing)/measuring"
+git commit -m "feat: widen site container to 7xl; compact measuring images"
+```
+
+### Task 7: Video modal
+
+**Files:**
+- Modify: `components/video-embed.tsx` (full rewrite below), `components/media.test.tsx` (facade tests updated), `package.json` (`pnpm add @radix-ui/react-dialog`)
+
+**Interfaces:**
+- `VideoEmbed({ id, title, priority? })` signature unchanged; clicking the poster now opens a modal (Radix Dialog) that plays the video; closing stops it (iframe unmounts).
+
+- [ ] **Step 1: Update the two facade tests** in `components/media.test.tsx` (replace the existing `VideoEmbed` describe body):
+
+```tsx
+  it("renders a poster button and no dialog before click", () => {
+    render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
+    expect(screen.getByRole("button", { name: "Play video: Intro" })).toBeInTheDocument();
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+  it("opens a modal with the playing video on click, and closes it", () => {
+    render(<VideoEmbed id="Hz8PK6i8ZsE" title="Intro" />);
+    fireEvent.click(screen.getByRole("button", { name: "Play video: Intro" }));
+    const dialog = screen.getByRole("dialog");
+    const iframe = dialog.querySelector("iframe");
+    expect(iframe?.getAttribute("src")).toContain("youtube-nocookie.com/embed/Hz8PK6i8ZsE");
+    expect(iframe?.getAttribute("title")).toBe("Intro");
+    fireEvent.click(screen.getByRole("button", { name: "Close video" }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+```
+
+Run → FAIL. Then `pnpm add @radix-ui/react-dialog`.
+
+- [ ] **Step 2: Rewrite `components/video-embed.tsx`** (full file):
+
+```tsx
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
+import { Play, X } from "lucide-react";
+
+export function VideoEmbed({ id, title, priority = false }: { id: string; title: string; priority?: boolean }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger asChild>
+        <button
+          type="button"
+          aria-label={`Play video: ${title}`}
+          className="group relative block aspect-video w-full overflow-hidden rounded-xl"
+        >
+          <Image
+            src={`/images/videos/${id}.jpg`}
+            alt=""
+            fill
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            priority={priority}
+            className="object-cover transition-transform duration-300 group-hover:scale-105 motion-reduce:transform-none"
+          />
+          <span className="absolute inset-0 grid place-items-center bg-black/30">
+            <span className="grid h-16 w-16 place-items-center rounded-full bg-brand text-white shadow-lg">
+              <Play aria-hidden className="h-7 w-7 translate-x-0.5" fill="currentColor" />
+            </span>
+          </span>
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm" />
+        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[min(92vw,64rem)] -translate-x-1/2 -translate-y-1/2 focus:outline-none">
+          <Dialog.Title className="sr-only">{title}</Dialog.Title>
+          <Dialog.Close
+            aria-label="Close video"
+            className="absolute -top-12 right-0 rounded-full p-2 text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-white"
+          >
+            <X aria-hidden className="h-7 w-7" />
+          </Dialog.Close>
+          <div className="relative aspect-video w-full overflow-hidden rounded-xl bg-black shadow-2xl">
+            {open ? (
+              <iframe
+                className="absolute inset-0 h-full w-full"
+                src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1`}
+                title={title}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            ) : null}
+          </div>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}
+```
+
+- [ ] **Step 3: Verify + commit** — full `pnpm test` pristine (homepage 6-facade count test unaffected); `pnpm build`.
+
+```bash
+git add components/video-embed.tsx components/media.test.tsx package.json pnpm-lock.yaml
+git commit -m "feat: play videos in an accessible modal instead of inline swap"
+```
+
+### Task 8: how-it-works redesign (re-authored, owner-approved)
+
+**Files:**
+- Rewrite: `app/(marketing)/how-it-works/page.tsx` (structured TSX page below — no longer imports the MDX body)
+- Delete: `content/pages/how-it-works.mdx`
+- Test: extend `app/page.test.tsx`? No — new `app/(marketing)/how-it-works/page.test.tsx`
+
+**Notes:** The owner asked for more content and better design on this page; that authorizes re-authoring (and retires the stale "Click add to cart" copy — note this resolves a queued content question). The dated `steps.png` screenshot is dropped.
+
+- [ ] **Step 1: Failing test** — `app/(marketing)/how-it-works/page.test.tsx`:
+
+```tsx
+import { describe, expect, it } from "vitest";
+import { render, screen } from "@testing-library/react";
+import Page from "./page";
+import { SHOPIFY_APP_URL } from "@/lib/site";
+
+describe("How it works page", () => {
+  it("renders the five steps as an ordered timeline", () => {
+    render(<Page />);
+    expect(screen.getByRole("heading", { level: 1, name: "How It Works" })).toBeInTheDocument();
+    const steps = screen.getAllByRole("listitem").filter((li) => li.dataset.step);
+    expect(steps).toHaveLength(5);
+    expect(steps[0]).toHaveTextContent("Pick your products");
+    expect(steps[4]).toHaveTextContent("We print, pack & ship");
+  });
+  it("links to the app and support resources", () => {
+    render(<Page />);
+    expect(screen.getByRole("link", { name: "Install the Shopify app" })).toHaveAttribute("href", SHOPIFY_APP_URL);
+    expect(screen.getByRole("link", { name: "Delivery speed" })).toHaveAttribute("href", "/delivery");
+  });
+});
+```
+
+Run → FAIL.
+
+- [ ] **Step 2: Rewrite `app/(marketing)/how-it-works/page.tsx`** (full file; then `git rm content/pages/how-it-works.mdx`):
+
+```tsx
+import type { Metadata } from "next";
+import Link from "next/link";
+import { AppCta } from "@/components/app-cta";
+import { PageHero } from "@/components/page-hero";
+import { Container } from "@/components/ui/container";
+
+export const metadata: Metadata = {
+  title: "How It Works",
+  description: "The five steps from blank product to shipped order with DropShipPOD.",
+};
+
+const steps = [
+  {
+    label: "Pick your products",
+    detail:
+      "Browse our catalog of blanks from Gildan, Bella + Canvas, Comfort Colors, American Apparel and more — t-shirts, hoodies, sweatshirts, caps and drinkware, all stocked in Canada.",
+  },
+  {
+    label: "Choose colors and sizes",
+    detail:
+      "Pick the colorways that fit your brand and the size range you want to offer. Check the size charts to make sure every product fits the way your customers expect.",
+  },
+  {
+    label: "Upload your design",
+    detail:
+      "Send print-ready artwork or choose from our design library. Every file goes through artwork and mockup approval before it prints, so nothing ships that you haven't seen.",
+  },
+  {
+    label: "Connect your store — or order direct",
+    detail:
+      "Install the DropShipPOD Shopify app and orders flow straight to production automatically. No store yet? Order directly for events, teams and one-off runs.",
+  },
+  {
+    label: "We print, pack & ship",
+    detail:
+      "Your order is produced in Canada with DTG, DTF or sublimation, then packed and shipped to your customer — ground delivery in 1–5 business days, express in 1–2.",
+  },
+];
+
+const resources = [
+  { label: "Delivery speed", href: "/delivery" },
+  { label: "Artwork & mockup approval", href: "/artwork-approval" },
+  { label: "Size charts", href: "/size-charts" },
+  { label: "Printing FAQs", href: "/faq" },
+];
+
+export default function Page() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Getting started"
+        title="How It Works"
+        lede="Five steps from blank product to shipped order — no inventory, no equipment, no tech headaches."
+      />
+      <Container className="py-12 sm:py-16">
+        <ol className="relative max-w-3xl space-y-10 border-l-2 border-ink-tint pl-8">
+          {steps.map((step, index) => (
+            <li key={step.label} data-step={index + 1} className="relative">
+              <span
+                aria-hidden
+                className="absolute -left-[3.05rem] grid h-9 w-9 place-items-center rounded-full bg-brand font-display text-sm font-bold text-white ring-4 ring-white"
+              >
+                {index + 1}
+              </span>
+              <h2 className="font-display text-xl font-bold text-ink">{step.label}</h2>
+              <p className="mt-2 max-w-2xl leading-relaxed text-zinc-600">{step.detail}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-10 max-w-2xl text-sm text-zinc-500">
+          If you run into any difficulty at any step, give us a call — our friendly staff is always
+          eager and ready to help.
+        </p>
+        <div className="mt-12 rounded-2xl border border-zinc-200 bg-surface p-6">
+          <h2 className="font-display text-lg font-bold text-ink">Good to know</h2>
+          <ul className="mt-3 flex flex-wrap gap-x-8 gap-y-2">
+            {resources.map((resource) => (
+              <li key={resource.href}>
+                <Link
+                  href={resource.href}
+                  className="text-sm font-semibold text-brand hover:text-brand-dark"
+                >
+                  {resource.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="mt-12">
+          <AppCta />
+        </div>
+      </Container>
+    </>
+  );
+}
+```
+
+- [ ] **Step 3: Verify + commit** — full `pnpm test` pristine; `pnpm build` (route still static; no missing-MDX import errors).
+
+```bash
+git add "app/(marketing)/how-it-works" && git rm -q content/pages/how-it-works.mdx
+git commit -m "feat: redesign how-it-works as a rich timeline page"
+```
+
+### Task 9: Emoji sweep + guard
+
+**Files:**
+- Modify: `content/pages/artwork-approval.mdx`, `content/pages/policies/refund.mdx`, `content/pages/policies/shipping.mdx`, `content/pages/printing-notice.mdx`, `content/pages/sublimation-printing-notice.mdx`, `content/faqs/dtf.tsx`, `content/faqs/general.tsx`, `content/faqs/sublimation.tsx`
+- Create: `lib/no-emoji.test.ts`
+
+**Rules:** delete each pictographic emoji plus any orphaned adjacent space/separator; never delete words; where an emoji served as a list bullet marker (e.g. `✅ item` / `🔹 item`), the text keeps its list structure without the glyph. Allowlist: `©`, `®`, `™` (typography, not emoji). Do NOT touch `content/raw/` (frozen record) or `lib/redirects.ts` (emoji URL sources are addresses).
+
+- [ ] **Step 1: Write the guard test** — `lib/no-emoji.test.ts`:
+
+```ts
+import fs from "node:fs";
+import path from "node:path";
+import { describe, expect, it } from "vitest";
+
+const ROOTS = ["content/pages", "content/faqs", "components", "app"];
+const ALLOWED = new Set(["©", "®", "™"]);
+const EMOJI = /\p{Extended_Pictographic}/gu;
+
+function walk(dir: string, out: string[] = []): string[] {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(full, out);
+    else if (/\.(mdx|tsx|ts)$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
+
+describe("no emoji in rendered copy", () => {
+  it("finds zero pictographic characters outside the allowlist", () => {
+    const offenders: string[] = [];
+    for (const root of ROOTS) {
+      for (const file of walk(path.join(process.cwd(), root))) {
+        const text = fs.readFileSync(file, "utf8");
+        for (const match of text.match(EMOJI) ?? []) {
+          if (!ALLOWED.has(match)) offenders.push(`${file}: ${match}`);
+        }
+      }
+    }
+    expect(offenders, offenders.join("\n")).toHaveLength(0);
+  });
+});
+```
+
+Run `pnpm test lib` → FAIL listing every current emoji (8 files — the RED output is your work list).
+
+- [ ] **Step 2: Sweep the 8 files** per the rules until the guard passes. Spot-check meaning survived (e.g. "🇨🇦 Why Choose DropShipPOD?" → "Why Choose DropShipPOD?"; "✅ Yes —" → "Yes —").
+- [ ] **Step 3: Verify + commit** — full `pnpm test` pristine (FAQ uniqueness/count tests still green); `pnpm build`.
+
+```bash
+git add content/ lib/no-emoji.test.ts
+git commit -m "content: remove pictographic emoji from copy; add guard test"
+```
