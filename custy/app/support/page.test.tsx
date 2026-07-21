@@ -8,4 +8,9 @@ describe("Support page", () => {
     expect(screen.getByRole("heading", { level: 1, name: /support/i })).toBeInTheDocument();
     expect(metadata.title).toBeTruthy();
   });
+
+  it("renders the contact form below the support content", () => {
+    render(<SupportPage />);
+    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
+  });
 });
