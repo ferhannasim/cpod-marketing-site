@@ -20,6 +20,11 @@ describe("Features page", () => {
     expect(screen.getByRole("heading", { name: "Seamless Shopify Integration" })).toBeInTheDocument();
   });
 
+  it("renders the first feature card's decorative icon glyph", () => {
+    render(<FeaturesPage />);
+    expect(screen.getByText("🎨")).toBeInTheDocument();
+  });
+
   it("renders the how-it-works steps and the perfect-for audience cards", () => {
     render(<FeaturesPage />);
     expect(screen.getByRole("heading", { name: "Install Custy" })).toBeInTheDocument();
