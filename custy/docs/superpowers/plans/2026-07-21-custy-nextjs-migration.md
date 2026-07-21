@@ -990,6 +990,7 @@ git commit -m "feat(custy): support and policy pages from MDX"
 
 **Files:**
 - Create: `custy/lib/contact-schema.ts`, `custy/lib/contact-schema.test.ts`, `custy/app/api/contact/route.ts`, `custy/app/api/contact/route.test.ts`, `custy/components/contact-form.tsx`, `custy/components/contact-form.test.tsx`, `custy/app/contact/page.tsx`
+- Modify: `custy/app/support/page.tsx` — the live `/pages/support` renders the Horizon contact-form section (verified 2026-07-21), so the faithful port mounts `<ContactForm />` under the Support h1 as well (its scraped prose is empty; the form IS the page content).
 
 **Interfaces:**
 - Consumes: `Prose`, `Container`, `Button` styles; `content/pages/contact.mdx` intro copy.
