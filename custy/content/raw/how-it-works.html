@@ -1,0 +1,514 @@
+<style>
+
+    .custy-how-page {
+      --custy-blue: #18b7f5;
+      --custy-pink: #ec008c;
+      --custy-yellow: #ffd400;
+      --custy-dark: #1d1d1f;
+      --custy-text: #555b66;
+      --custy-light: #f8fbff;
+      --custy-border: #e9eef5;
+      --custy-white: #ffffff;
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      font-family: Arial, sans-serif;
+      color: var(--custy-dark);
+      box-sizing: border-box;
+    }
+
+    .custy-how-page * {
+      box-sizing: border-box;
+    }
+
+    .custy-how-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 70px 60px;
+      background:
+        radial-gradient(circle at top left, rgba(24,183,245,0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(236,0,140,0.14), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #fbfdff 45%, #f6fbff 100%);
+      border: 1px solid var(--custy-border);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.05);
+    }
+
+    .custy-rainbow-bar {
+      width: 190px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #18b7f5 0%, #3f7cff 20%, #ec008c 48%, #ffb800 72%, #1d1d1f 100%);
+      margin-bottom: 22px;
+    }
+
+    .custy-how-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .custy-eyebrow {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(24,183,245,0.1);
+      color: #0d83b0;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+    }
+
+    .custy-how-hero h1 {
+      margin: 0 0 18px;
+      font-size: 54px;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--custy-dark);
+    }
+
+    .custy-how-hero p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--custy-text);
+      max-width: 760px;
+    }
+
+    .custy-how-hero p strong {
+      color: var(--custy-dark);
+    }
+
+    .custy-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .custy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .custy-btn-primary {
+      background: linear-gradient(90deg, var(--custy-blue), #4b7cff);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(24,183,245,0.22);
+    }
+
+    .custy-btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .custy-btn-secondary {
+      background: #fff;
+      color: var(--custy-dark);
+      border: 1px solid var(--custy-border);
+    }
+
+    .custy-btn-secondary:hover {
+      background: #f9fbfd;
+    }
+
+    .custy-quick-card {
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+
+    .custy-quick-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .custy-quick-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-quick-list li {
+      position: relative;
+      padding: 12px 0 12px 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--custy-text);
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .custy-quick-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .custy-quick-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-weight: 700;
+      color: var(--custy-pink);
+    }
+
+    .custy-section {
+      margin-top: 34px;
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 30px;
+      padding: 56px 40px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+    }
+
+    .custy-section-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 40px;
+    }
+
+    .custy-section-header h2 {
+      margin: 0 0 14px;
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--custy-dark);
+    }
+
+    .custy-section-header p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-steps {
+      display: grid;
+      gap: 22px;
+    }
+
+    .custy-step {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 28px;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border: 1px solid var(--custy-border);
+      border-radius: 24px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-step-badge {
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(24,183,245,0.12), rgba(236,0,140,0.12));
+      color: var(--custy-dark);
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .custy-step h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+      line-height: 1.3;
+      color: var(--custy-dark);
+    }
+
+    .custy-step p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-step p:last-child {
+      margin-bottom: 0;
+    }
+
+    .custy-why-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .custy-why-card {
+      padding: 24px 18px;
+      border-radius: 22px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      text-align: center;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-why-icon {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+
+    .custy-why-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      line-height: 1.35;
+      color: var(--custy-dark);
+    }
+
+    .custy-why-card p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--custy-text);
+    }
+
+    .custy-cta-box {
+      margin-top: 34px;
+      padding: 44px 38px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at left top, rgba(255,212,0,0.18), transparent 26%),
+        radial-gradient(circle at right bottom, rgba(236,0,140,0.16), transparent 30%),
+        linear-gradient(135deg, #101827 0%, #0f172a 55%, #1f2937 100%);
+      color: #fff;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.14);
+    }
+
+    .custy-cta-box h2 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      line-height: 1.15;
+      color: #fff;
+    }
+
+    .custy-cta-box p {
+      margin: 0;
+      max-width: 860px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .custy-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .custy-btn-light {
+      background: #fff;
+      color: #101827;
+    }
+
+    .custy-btn-light:hover {
+      background: #f5f5f5;
+    }
+
+    .custy-btn-outline {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .custy-btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 1200px) {
+      .custy-how-hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .custy-how-page {
+        padding: 20px 14px 60px;
+      }
+
+      .custy-how-hero,
+      .custy-section,
+      .custy-cta-box {
+        padding: 34px 22px;
+        border-radius: 22px;
+      }
+
+      .custy-how-hero h1 {
+        font-size: 36px;
+      }
+
+      .custy-section-header h2,
+      .custy-cta-box h2 {
+        font-size: 30px;
+      }
+
+      .custy-step {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 22px;
+      }
+
+      .custy-why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-hero-actions,
+      .custy-cta-actions {
+        flex-direction: column;
+      }
+
+      .custy-btn {
+        width: 100%;
+      }
+    }
+  
+</style>
+<div class="custy-how-page">
+<section class="custy-how-hero">
+<div class="custy-rainbow-bar"><br></div>
+<div class="custy-how-hero-grid">
+<div>
+<div class="custy-eyebrow">How It Works • Custy for Shopify</div>
+<h1>From Product Setup to Print-Ready Orders, Custy Keeps It Simple</h1>
+<p><strong>Custy</strong> makes it easy for Shopify merchants to sell personalized products with a smooth, real-time customization experience. From setup to order fulfillment, the workflow is designed to be simple, fast, and scalable.</p>
+<p>Whether you sell custom t-shirts, hoodies, caps, mugs, or other personalized products, Custy helps you give customers creative freedom while keeping your production process organized behind the scenes.</p>
+<div class="custy-hero-actions">
+<a class="custy-btn custy-btn-primary" href="/pages/pricing">Start 21-Day Free Trial</a> <a class="custy-btn custy-btn-secondary" href="https://apps.shopify.com/custy">Install on Shopify</a>
+</div>
+</div>
+<div class="custy-quick-card">
+<h3>What happens with Custy</h3>
+<ul class="custy-quick-list">
+<li>Install the app and connect it to your Shopify store</li>
+<li>Set up products, print areas, and customization rules</li>
+<li>Let customers design products in real time</li>
+<li>Receive clean order data with design details attached</li>
+<li>Generate print-ready files for smoother fulfillment</li>
+</ul>
+</div>
+</div>
+</section>
+<section class="custy-section">
+<div class="custy-section-header">
+<h2>How Custy Works Step by Step</h2>
+<p>Every stage of the Custy workflow is built to help merchants launch faster, sell with confidence, and process personalized orders with less manual effort.</p>
+</div>
+<div class="custy-steps">
+<div class="custy-step">
+<div class="custy-step-badge">1</div>
+<div>
+<h3>Install Custy on Your Shopify Store</h3>
+<p>Start by installing Custy from the Shopify App Store. Once installed, you can connect the app to your store and begin setting up customizable products in just a few steps.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">2</div>
+<div>
+<h3>Set Up Your Products</h3>
+<p>Choose which products you want to make customizable, such as t-shirts, hoodies, caps, mugs, and more. You can define the available print areas like front, back, left sleeve, right sleeve, and other supported sides.</p>
+<p>Custy also lets you configure product options such as size, color, print type, and design rules based on your business needs.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">3</div>
+<div>
+<h3>Configure Pricing Rules</h3>
+<p>With Custy, you can apply dynamic pricing based on the customization options your customer selects. For example, you can charge different prices for extra print sides, premium print methods, larger design areas, or special product options.</p>
+<p>This helps you keep pricing flexible while protecting your profit margin.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">4</div>
+<div>
+<h3>Let Customers Design in Real Time</h3>
+<p>Once your products are set up, customers can customize them directly on your Shopify store using Custy’s design panel. They can add text, upload images, place artwork, and personalize different sides of the product while seeing changes instantly.</p>
+<p>This interactive experience makes shopping more engaging and helps customers feel confident before placing an order.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">5</div>
+<div>
+<h3>Receive Orders with Full Design Details</h3>
+<p>When a customer places an order, Custy captures the selected customization data and attaches it to the order. This includes product options, design placements, selected sides, and uploaded assets.</p>
+<p>Everything is organized clearly so you can review each order without confusion.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">6</div>
+<div>
+<h3>Generate Print-Ready Files</h3>
+<p>Custy helps streamline production by preparing design data in a fulfillment-friendly format. This makes it easier for your team or print partner to process customized orders accurately for DTG, DTF, and other supported print workflows.</p>
+<p>By reducing manual steps, Custy helps save time and minimize production errors.</p>
+</div>
+</div>
+<div class="custy-step">
+<div class="custy-step-badge">7</div>
+<div>
+<h3>Fulfill and Grow</h3>
+<p>With a smoother workflow from customization to fulfillment, you can focus on growing your business. Custy helps improve customer experience, increase conversion rates, and make custom product selling easier at scale.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="custy-section">
+<div class="custy-section-header">
+<h2>Why Merchants Choose Custy</h2>
+<p>Merchants choose Custy because it combines ease of use with powerful customization features. It is built for modern Shopify stores that want to offer personalized products without creating a complex buying experience.</p>
+</div>
+<div class="custy-why-grid">
+<div class="custy-why-card">
+<div class="custy-why-icon">🎨</div>
+<h3>Real-Time Customization</h3>
+<p>Let customers personalize products live with instant visual feedback directly on your storefront.</p>
+</div>
+<div class="custy-why-card">
+<div class="custy-why-icon">🔄</div>
+<h3>Multi-Side Design</h3>
+<p>Support front, back, sleeves, and more so customers can create truly personalized products.</p>
+</div>
+<div class="custy-why-card">
+<div class="custy-why-icon">💰</div>
+<h3>Dynamic Pricing</h3>
+<p>Adjust pricing based on selected design areas, extra options, and different print methods.</p>
+</div>
+<div class="custy-why-card">
+<div class="custy-why-icon">🖨️</div>
+<h3>Print-Ready Order Data</h3>
+<p>Get organized design details and production-friendly files to make fulfillment easier.</p>
+</div>
+<div class="custy-why-card">
+<div class="custy-why-icon">✨</div>
+<h3>Better Customer Experience</h3>
+<p>Create a smooth and interactive customization journey that builds confidence before purchase.</p>
+</div>
+</div>
+</section>
+<section class="custy-cta-box">
+<h2>Start with Custy</h2>
+<p>Install Custy and give your customers the freedom to create products they love while you simplify your custom order workflow behind the scenes.</p>
+<div class="custy-cta-actions">
+<a class="custy-btn custy-btn-light" href="/pages/pricing">Start Free Trial</a> <a class="custy-btn custy-btn-outline" href="/pages/features">View Features</a>
+</div>
+</section>
+</div>

@@ -26,8 +26,11 @@ export function extractLander(html) {
 export function extractProsePage(html) {
   const $ = cheerio.load(html);
   const title = $("main h1").first().text().trim();
+  if (!title) throw new Error("prose page structure not found");
+  // Some prose pages (e.g. support/contact on the current theme) are just a
+  // title section plus a contact form, with no `.rte` rich-text block at all —
+  // that's a legitimately empty body, not an extraction failure.
   const blocks = $("main .rte");
-  if (!title || blocks.length === 0) throw new Error("prose page structure not found");
   const root = $("<div></div>");
   blocks.each((_, el) => root.append($(el).clone()));
   return { title, bodyHtml: cleanBody($, root) };

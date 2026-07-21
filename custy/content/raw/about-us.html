@@ -1,0 +1,1049 @@
+<style>
+
+    .custy-about-page {
+      --custy-blue: #18b7f5;
+      --custy-pink: #ec008c;
+      --custy-yellow: #ffd400;
+      --custy-dark: #1d1d1f;
+      --custy-text: #555b66;
+      --custy-light: #f8fbff;
+      --custy-border: #e9eef5;
+      --custy-white: #ffffff;
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      font-family: Arial, sans-serif;
+      color: var(--custy-dark);
+      box-sizing: border-box;
+    }
+
+    .custy-about-page * {
+      box-sizing: border-box;
+    }
+
+    .custy-about-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 70px 60px;
+      background:
+        radial-gradient(circle at top left, rgba(24,183,245,0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(236,0,140,0.14), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #fbfdff 45%, #f6fbff 100%);
+      border: 1px solid var(--custy-border);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.05);
+    }
+
+    .custy-rainbow-bar {
+      width: 190px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #18b7f5 0%, #3f7cff 20%, #ec008c 48%, #ffb800 72%, #1d1d1f 100%);
+      margin-bottom: 22px;
+    }
+
+    .custy-about-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .custy-eyebrow {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(24,183,245,0.1);
+      color: #0d83b0;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+    }
+
+    .custy-about-hero h1 {
+      margin: 0 0 18px;
+      font-size: 54px;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--custy-dark);
+    }
+
+    .custy-about-hero p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--custy-text);
+      max-width: 760px;
+    }
+
+    .custy-about-hero p strong {
+      color: var(--custy-dark);
+    }
+
+    .custy-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .custy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .custy-btn-primary {
+      background: linear-gradient(90deg, var(--custy-blue), #4b7cff);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(24,183,245,0.22);
+    }
+
+    .custy-btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .custy-btn-secondary {
+      background: #fff;
+      color: var(--custy-dark);
+      border: 1px solid var(--custy-border);
+    }
+
+    .custy-btn-secondary:hover {
+      background: #f9fbfd;
+    }
+
+    .custy-quick-card {
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+
+    .custy-quick-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .custy-quick-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-quick-list li {
+      position: relative;
+      padding: 12px 0 12px 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--custy-text);
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .custy-quick-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .custy-quick-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-weight: 700;
+      color: var(--custy-pink);
+    }
+
+    .custy-section {
+      margin-top: 34px;
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 30px;
+      padding: 56px 40px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+    }
+
+    .custy-section-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 40px;
+    }
+
+    .custy-section-header h2 {
+      margin: 0 0 14px;
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--custy-dark);
+    }
+
+    .custy-section-header p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .custy-card {
+      padding: 30px 26px;
+      border-radius: 24px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-card h3 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.25;
+      color: var(--custy-dark);
+    }
+
+    .custy-card p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .custy-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .custy-feature-card {
+      padding: 28px 24px;
+      border-radius: 22px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-feature-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(24,183,245,0.12), rgba(236,0,140,0.12));
+    }
+
+    .custy-feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--custy-dark);
+    }
+
+    .custy-feature-card p {
+      margin: 0;
+      color: var(--custy-text);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .custy-list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 12px;
+    }
+
+    .custy-list-card {
+      padding: 28px 24px;
+      border-radius: 22px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-list-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--custy-dark);
+    }
+
+    .custy-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-list li {
+      position: relative;
+      padding: 12px 0 12px 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--custy-text);
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .custy-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .custy-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-weight: 700;
+      color: var(--custy-pink);
+    }
+
+    .custy-cta-box {
+      margin-top: 34px;
+      padding: 44px 38px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at left top, rgba(255,212,0,0.18), transparent 26%),
+        radial-gradient(circle at right bottom, rgba(236,0,140,0.16), transparent 30%),
+        linear-gradient(135deg, #101827 0%, #0f172a 55%, #1f2937 100%);
+      color: #fff;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.14);
+    }
+
+    .custy-cta-box h2 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      line-height: 1.15;
+      color: #fff;
+    }
+
+    .custy-cta-box p {
+      margin: 0;
+      max-width: 860px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .custy-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .custy-btn-light {
+      background: #fff;
+      color: #101827;
+    }
+
+    .custy-btn-light:hover {
+      background: #f5f5f5;
+    }
+
+    .custy-btn-outline {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .custy-btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 1200px) {
+      .custy-about-hero-grid,
+      .custy-two-col,
+      .custy-list-grid,
+      .custy-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .custy-about-page {
+        padding: 20px 14px 60px;
+      }
+
+      .custy-about-hero,
+      .custy-section,
+      .custy-cta-box {
+        padding: 34px 22px;
+        border-radius: 22px;
+      }
+
+      .custy-about-hero h1 {
+        font-size: 36px;
+      }
+
+      .custy-section-header h2,
+      .custy-cta-box h2 {
+        font-size: 30px;
+      }
+
+      .custy-hero-actions,
+      .custy-cta-actions {
+        flex-direction: column;
+      }
+
+      .custy-btn {
+        width: 100%;
+      }
+    }
+  
+</style>
+<div class="custy-about-page">
+  <style>
+    .custy-about-page {
+      --custy-blue: #18b7f5;
+      --custy-pink: #ec008c;
+      --custy-yellow: #ffd400;
+      --custy-dark: #1d1d1f;
+      --custy-text: #555b66;
+      --custy-light: #f8fbff;
+      --custy-border: #e9eef5;
+      --custy-white: #ffffff;
+      max-width: 1450px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+      font-family: Arial, sans-serif;
+      color: var(--custy-dark);
+      box-sizing: border-box;
+    }
+
+    .custy-about-page * {
+      box-sizing: border-box;
+    }
+
+    .custy-about-hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 70px 60px;
+      background:
+        radial-gradient(circle at top left, rgba(24,183,245,0.16), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(236,0,140,0.14), transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #fbfdff 45%, #f6fbff 100%);
+      border: 1px solid var(--custy-border);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.05);
+    }
+
+    .custy-rainbow-bar {
+      width: 190px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #18b7f5 0%, #3f7cff 20%, #ec008c 48%, #ffb800 72%, #1d1d1f 100%);
+      margin-bottom: 22px;
+    }
+
+    .custy-about-hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .custy-eyebrow {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(24,183,245,0.1);
+      color: #0d83b0;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 18px;
+    }
+
+    .custy-about-hero h1 {
+      margin: 0 0 18px;
+      font-size: 54px;
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--custy-dark);
+    }
+
+    .custy-about-hero p {
+      margin: 0 0 18px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--custy-text);
+      max-width: 760px;
+    }
+
+    .custy-about-hero p strong {
+      color: var(--custy-dark);
+    }
+
+    .custy-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .custy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .custy-btn-primary {
+      background: linear-gradient(90deg, var(--custy-blue), #4b7cff);
+      color: #fff;
+      box-shadow: 0 12px 26px rgba(24,183,245,0.22);
+    }
+
+    .custy-btn-primary:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
+    }
+
+    .custy-btn-secondary {
+      background: #fff;
+      color: var(--custy-dark);
+      border: 1px solid var(--custy-border);
+    }
+
+    .custy-btn-secondary:hover {
+      background: #f9fbfd;
+    }
+
+    .custy-quick-card {
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+    }
+
+    .custy-quick-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .custy-quick-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-quick-list li {
+      position: relative;
+      padding: 12px 0 12px 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--custy-text);
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .custy-quick-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .custy-quick-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-weight: 700;
+      color: var(--custy-pink);
+    }
+
+    .custy-section {
+      margin-top: 34px;
+      background: #fff;
+      border: 1px solid var(--custy-border);
+      border-radius: 30px;
+      padding: 56px 40px;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.04);
+    }
+
+    .custy-section-header {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 40px;
+    }
+
+    .custy-section-header h2 {
+      margin: 0 0 14px;
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 800;
+      color: var(--custy-dark);
+    }
+
+    .custy-section-header p {
+      margin: 0;
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .custy-card {
+      padding: 30px 26px;
+      border-radius: 24px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-card h3 {
+      margin: 0 0 14px;
+      font-size: 28px;
+      line-height: 1.25;
+      color: var(--custy-dark);
+    }
+
+    .custy-card p {
+      margin: 0 0 14px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--custy-text);
+    }
+
+    .custy-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .custy-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .custy-feature-card {
+      padding: 28px 24px;
+      border-radius: 22px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-feature-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, rgba(24,183,245,0.12), rgba(236,0,140,0.12));
+    }
+
+    .custy-feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.3;
+      color: var(--custy-dark);
+    }
+
+    .custy-feature-card p {
+      margin: 0;
+      color: var(--custy-text);
+      font-size: 15px;
+      line-height: 1.75;
+    }
+
+    .custy-list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 12px;
+    }
+
+    .custy-list-card {
+      padding: 28px 24px;
+      border-radius: 22px;
+      border: 1px solid var(--custy-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.03);
+    }
+
+    .custy-list-card h3 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      line-height: 1.3;
+      color: var(--custy-dark);
+    }
+
+    .custy-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-list li {
+      position: relative;
+      padding: 12px 0 12px 30px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--custy-text);
+      border-bottom: 1px solid #f0f3f7;
+    }
+
+    .custy-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .custy-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 12px;
+      font-weight: 700;
+      color: var(--custy-pink);
+    }
+
+    .custy-cta-box {
+      margin-top: 34px;
+      padding: 44px 38px;
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at left top, rgba(255,212,0,0.18), transparent 26%),
+        radial-gradient(circle at right bottom, rgba(236,0,140,0.16), transparent 30%),
+        linear-gradient(135deg, #101827 0%, #0f172a 55%, #1f2937 100%);
+      color: #fff;
+      box-shadow: 0 20px 44px rgba(0,0,0,0.14);
+    }
+
+    .custy-cta-box h2 {
+      margin: 0 0 14px;
+      font-size: 42px;
+      line-height: 1.15;
+      color: #fff;
+    }
+
+    .custy-cta-box p {
+      margin: 0;
+      max-width: 860px;
+      font-size: 17px;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .custy-cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .custy-btn-light {
+      background: #fff;
+      color: #101827;
+    }
+
+    .custy-btn-light:hover {
+      background: #f5f5f5;
+    }
+
+    .custy-btn-outline {
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #fff;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .custy-btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    @media (max-width: 1200px) {
+      .custy-about-hero-grid,
+      .custy-two-col,
+      .custy-list-grid,
+      .custy-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .custy-about-page {
+        padding: 20px 14px 60px;
+      }
+
+      .custy-about-hero,
+      .custy-section,
+      .custy-cta-box {
+        padding: 34px 22px;
+        border-radius: 22px;
+      }
+
+      .custy-about-hero h1 {
+        font-size: 36px;
+      }
+
+      .custy-section-header h2,
+      .custy-cta-box h2 {
+        font-size: 30px;
+      }
+
+      .custy-hero-actions,
+      .custy-cta-actions {
+        flex-direction: column;
+      }
+
+      .custy-btn {
+        width: 100%;
+      }
+    }
+  </style>
+
+  <section class="custy-about-hero">
+    <div class="custy-rainbow-bar"></div>
+    <div class="custy-about-hero-grid">
+      <div>
+        <div class="custy-eyebrow">About Custy • Built for Shopify</div>
+        <h1>Helping Shopify Merchants Create, Customize, and Sell Without Limits</h1>
+        <p>
+          At <strong>Custy</strong>, our mission is simple — to empower Shopify merchants to create, customize, and sell products without limits.
+        </p>
+        <p>
+          We built Custy to solve one of the biggest challenges in eCommerce: offering seamless, real-time product customization while keeping the experience fast, intuitive, and conversion-focused. Whether it’s a t-shirt, hoodie, cap, or any print-on-demand product, Custy gives your customers the freedom to design exactly what they want and see it instantly.
+        </p>
+        <div class="custy-hero-actions">
+          <a href="#" class="custy-btn custy-btn-primary">Start 14-Day Free Trial</a>
+          <a href="#" class="custy-btn custy-btn-secondary">View Features</a>
+        </div>
+      </div>
+
+      <div class="custy-quick-card">
+        <h3>What defines Custy</h3>
+        <ul class="custy-quick-list">
+          <li>Built specifically for Shopify merchants and POD workflows</li>
+          <li>Focused on real-time customization and better conversion</li>
+          <li>Designed to simplify fulfillment with print-ready files</li>
+          <li>Made for stores that want scalable growth, not complexity</li>
+          <li>Committed to support, transparency, and merchant success</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-section">
+    <div class="custy-section-header">
+      <h2>Our Vision</h2>
+      <p>
+        We believe the future of eCommerce is personalization. Customers no longer want generic products — they want something unique, something personal.
+      </p>
+    </div>
+
+    <div class="custy-two-col">
+      <div class="custy-card">
+        <h3>Personalization Is the Future</h3>
+        <p>
+          Modern shoppers expect more than a standard product page. They want the ability to make products feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a powerful customization experience that feels simple for the customer and practical for the business.
+        </p>
+      </div>
+
+      <div class="custy-card">
+        <h3>Turning Products into Experiences</h3>
+        <p>
+          Custy helps merchants tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-section">
+    <div class="custy-section-header">
+      <h2>What We Do</h2>
+      <p>
+        Custy is a Shopify app designed specifically for print-on-demand businesses, custom product stores, and merchants who want to increase engagement and sales.
+      </p>
+    </div>
+
+    <div class="custy-feature-grid">
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">👕</div>
+        <h3>Built for POD</h3>
+        <p>Custy supports print-on-demand businesses that need a smooth path from product customization to production-ready fulfillment.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">🛍️</div>
+        <h3>Made for Custom Stores</h3>
+        <p>From apparel to personalized gifts, Custy gives merchants flexible tools to sell products customers can truly make their own.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">📈</div>
+        <h3>Focused on Growth</h3>
+        <p>By improving engagement and making customization easier, Custy helps merchants drive higher conversion and stronger average order value.</p>
+      </div>
+    </div>
+
+    <div class="custy-list-grid">
+      <div class="custy-list-card">
+        <h3>What customers can do</h3>
+        <ul class="custy-list">
+          <li>Customize products in real time</li>
+          <li>Design across multiple print areas like front, back, and sleeves</li>
+          <li>Choose sizes, colors, and styles</li>
+          <li>Preview designs instantly before purchase</li>
+        </ul>
+      </div>
+
+      <div class="custy-list-card">
+        <h3>What merchants get behind the scenes</h3>
+        <ul class="custy-list">
+          <li>Automatic print-ready file generation</li>
+          <li>Cleaner fulfillment workflows</li>
+          <li>Faster and more accurate order processing</li>
+          <li>Better structure for scaling custom product operations</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-section">
+    <div class="custy-section-header">
+      <h2>Why Custy</h2>
+      <p>
+        We didn’t just build another product customizer — we built a tool focused on performance, scalability, and revenue growth.
+      </p>
+    </div>
+
+    <div class="custy-feature-grid">
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">💰</div>
+        <h3>Dynamic Pricing</h3>
+        <p>Adjust prices based on real customization choices so you stay flexible while protecting your margins.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">🖨️</div>
+        <h3>Modern Print Support</h3>
+        <p>Support DTG, DTF, and other production workflows with design data prepared for real-world fulfillment.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">🧩</div>
+        <h3>Seamless Shopify Integration</h3>
+        <p>Connect directly with your Shopify store so orders, product options, and design details flow more smoothly.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">⚡</div>
+        <h3>Fast User Experience</h3>
+        <p>Deliver an intuitive customization experience that feels easy to use and keeps shoppers engaged.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">🏗️</div>
+        <h3>Reliable Infrastructure</h3>
+        <p>Built for growing stores that need dependable performance and a platform that can evolve with their business.</p>
+      </div>
+
+      <div class="custy-feature-card">
+        <div class="custy-feature-icon">📊</div>
+        <h3>Growth-Oriented Design</h3>
+        <p>Everything in Custy is created to help merchants improve conversion, efficiency, and long-term store performance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-section">
+    <div class="custy-section-header">
+      <h2>Built for Modern eCommerce</h2>
+      <p>
+        Custy is designed for merchants around the world who want to launch a POD business, scale an existing store, offer a better customer experience, and increase average order value.
+      </p>
+    </div>
+
+    <div class="custy-two-col">
+      <div class="custy-card">
+        <h3>For Merchants at Every Stage</h3>
+        <p>
+          Whether you are just starting a custom product business or already running an established Shopify store, Custy is built to support your next step. The platform is designed to remove friction from customization while helping merchants operate more efficiently.
+        </p>
+      </div>
+
+      <div class="custy-card">
+        <h3>Continuously Improving</h3>
+        <p>
+          We continuously improve our platform based on real merchant needs and changing industry trends. Our goal is to keep Custy practical, scalable, and valuable for modern eCommerce businesses that want to stay ahead.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-section">
+    <div class="custy-section-header">
+      <h2>Our Commitment</h2>
+      <p>
+        We are committed to providing reliable and scalable solutions, delivering excellent support, helping merchants grow their business, and maintaining transparency and data privacy.
+      </p>
+    </div>
+
+    <div class="custy-list-grid">
+      <div class="custy-list-card">
+        <h3>What we stand for</h3>
+        <ul class="custy-list">
+          <li>Reliable and scalable solutions for growing Shopify stores</li>
+          <li>Excellent support that helps merchants move faster</li>
+          <li>Tools designed to support real business growth</li>
+          <li>Transparency in how we operate and improve the product</li>
+        </ul>
+      </div>
+
+      <div class="custy-list-card">
+        <h3>What merchants can expect</h3>
+        <ul class="custy-list">
+          <li>A product experience built with real store needs in mind</li>
+          <li>Ongoing improvements guided by merchant feedback</li>
+          <li>Respect for privacy and responsible data handling</li>
+          <li>A long-term partner for custom product success</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="custy-cta-box">
+    <h2>Build Better Custom Product Experiences with Custy</h2>
+    <p>
+      Give your customers the freedom to create products they love while you simplify the workflow behind the scenes. Start with Custy and bring real-time product customization to your Shopify store.
+    </p>
+    <div class="custy-cta-actions">
+      <a href="#" class="custy-btn custy-btn-light">Start Free Trial</a>
+      <a href="#" class="custy-btn custy-btn-outline">Install on Shopify</a>
+    </div>
+  </section>
+</div>

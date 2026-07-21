@@ -82,7 +82,14 @@ const postRelFiles = postFiles.map((f) => path.join("posts", f));
 for (const rel of [...topLevelFiles, ...postRelFiles]) {
   const filePath = path.join(RAW, rel);
   const text = await readFile(filePath, "utf8");
-  const refs = [...new Set(text.match(/https?:\/\/cdn\.shopify\.com\/[^\s)"']+/g) ?? [])];
+  // Restrict to actual image files: cdn.shopify.com also serves platform JS (shop-js,
+  // storefront web-components, hCaptcha widget scripts) referenced from <script src>
+  // tags on the raw home.html, which would otherwise 404/mismatch content-type here.
+  const refs = [
+    ...new Set(
+      text.match(/https?:\/\/cdn\.shopify\.com\/[^\s)"']+\.(?:png|jpe?g|gif|webp|svg|avif)(?:\?[^\s)"']*)?/gi) ?? [],
+    ),
+  ];
   const mapping = {};
   for (const ref of refs) {
     const clean = normalizeCdnUrl(ref);
