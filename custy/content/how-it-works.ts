@@ -94,7 +94,7 @@ export const howItWorks = {
         number: 3,
         title: "Configure Pricing Rules",
         text: [
-          "Apply dynamic pricing based on the customization options your customer selects — for example, charging more for extra print sides, premium print methods, larger design areas, or special product options.",
+          "Apply dynamic pricing based on the customization options your customer selects — for example, charging different prices for extra print sides, premium print methods, larger design areas, or special product options.",
           "This helps you keep pricing flexible while protecting your profit margin.",
         ],
       },
