@@ -21,6 +21,7 @@
 - Dependency versions: copy exactly from `../dropship/package.json` (Next `^15.5.20`, React `^19.2.7`, Tailwind `^4.3.3`, zod `^3.25.76`, vitest `^4.1.10`, etc.).
 - Every commit message ends with `Co-Authored-By: Claude Fable 5 <noreply@anthropic.com>`.
 - Content rule (from dropship): no pictographic emoji in site copy.
+- Every test file begins with explicit vitest imports (`import { describe, expect, it } from "vitest";` — plus `vi` where used). Vitest globals are NOT enabled, and `next build` type-checks test files. Plan snippets that omit the import line are shorthand; add it.
 
 ---
 
