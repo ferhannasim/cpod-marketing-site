@@ -28,13 +28,16 @@ export type HowCta = {
   secondaryCta: CtaLink;
 };
 
-// Transcribed verbatim from content/raw/how-it-works.html (custy-how-page). No
-// <img> tags on this page, so no images to localize. The `.custy-why-card`
-// icons are the exact emoji from the source (decorative design elements per
-// the same ruling applied on the features page), and the curly apostrophe in
-// "Custy's design panel" (step 4) is kept verbatim as ordinary punctuation —
-// confirmed with `grep -noP '[^\x00-\x7F]'` that no other non-ASCII prose
-// exists on this page.
+// Originally transcribed verbatim from content/raw/how-it-works.html
+// (custy-how-page); the four longest step paragraphs (steps 2, 3, 4, and 6's
+// first paragraph) were later condensed for the professionalize pass — same
+// claims, tighter wording, still ≤ 2 sentences each. No <img> tags on this
+// page, so no images to localize. The `.custy-why-card` icons are the exact
+// emoji from the source (decorative design elements per the same ruling
+// applied on the features page), and the curly apostrophe in "Custy's design
+// panel" (step 4) is kept verbatim as ordinary punctuation — confirmed with
+// `grep -noP '[^\x00-\x7F]'` that no other non-ASCII prose exists on this
+// page.
 //
 // Old Shopify-relative hrefs are rewritten to the equivalent Next.js routes
 // per the established ruling: `/pages/pricing` → `/pricing`, `/pages/features`
@@ -83,7 +86,7 @@ export const howItWorks = {
         number: 2,
         title: "Set Up Your Products",
         text: [
-          "Choose which products you want to make customizable, such as t-shirts, hoodies, caps, mugs, and more. You can define the available print areas like front, back, left sleeve, right sleeve, and other supported sides.",
+          "Choose which products to make customizable — t-shirts, hoodies, caps, mugs, and more — then define the available print areas: front, back, left sleeve, right sleeve, and other supported sides.",
           "Custy also lets you configure product options such as size, color, print type, and design rules based on your business needs.",
         ],
       },
@@ -91,7 +94,7 @@ export const howItWorks = {
         number: 3,
         title: "Configure Pricing Rules",
         text: [
-          "With Custy, you can apply dynamic pricing based on the customization options your customer selects. For example, you can charge different prices for extra print sides, premium print methods, larger design areas, or special product options.",
+          "Apply dynamic pricing based on the customization options your customer selects — for example, charging more for extra print sides, premium print methods, larger design areas, or special product options.",
           "This helps you keep pricing flexible while protecting your profit margin.",
         ],
       },
@@ -99,7 +102,7 @@ export const howItWorks = {
         number: 4,
         title: "Let Customers Design in Real Time",
         text: [
-          "Once your products are set up, customers can customize them directly on your Shopify store using Custy’s design panel. They can add text, upload images, place artwork, and personalize different sides of the product while seeing changes instantly.",
+          "Once your products are set up, customers can customize them directly on your Shopify store using Custy’s design panel — adding text, uploading images, placing artwork, and personalizing different sides while seeing changes instantly.",
           "This interactive experience makes shopping more engaging and helps customers feel confident before placing an order.",
         ],
       },
@@ -115,7 +118,7 @@ export const howItWorks = {
         number: 6,
         title: "Generate Print-Ready Files",
         text: [
-          "Custy helps streamline production by preparing design data in a fulfillment-friendly format. This makes it easier for your team or print partner to process customized orders accurately for DTG, DTF, and other supported print workflows.",
+          "Custy helps streamline production by preparing design data in a fulfillment-friendly format, making it easier for your team or print partner to accurately process customized orders for DTG, DTF, and other supported print workflows.",
           "By reducing manual steps, Custy helps save time and minimize production errors.",
         ],
       },
