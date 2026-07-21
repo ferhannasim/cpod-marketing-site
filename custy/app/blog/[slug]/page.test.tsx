@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PostPage, { generateMetadata, generateStaticParams } from "./page";
+import { heroImageDims } from "./hero-image-dims";
 import { posts } from "@/content/posts";
 
 describe("Blog post page", () => {
@@ -9,6 +10,18 @@ describe("Blog post page", () => {
   it("generates static params for every post", async () => {
     const params = await generateStaticParams();
     expect(params).toEqual(posts.map((p) => ({ slug: p.slug })));
+  });
+
+  it("has a hero image dims entry with positive width/height for every registry post", () => {
+    // Guards against a future post being added to the registry without a matching
+    // heroImageDims entry, which would silently drop its hero image ({dims && ...}
+    // in page.tsx renders nothing rather than erroring).
+    for (const p of posts) {
+      const dims = heroImageDims[p.slug];
+      expect(dims, `missing heroImageDims entry for "${p.slug}"`).toBeDefined();
+      expect(dims.width).toBeGreaterThan(0);
+      expect(dims.height).toBeGreaterThan(0);
+    }
   });
 
   it("generates per-post metadata with title, description, and an OG image", async () => {
