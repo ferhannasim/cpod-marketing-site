@@ -71,4 +71,28 @@ describe("PricingTable", () => {
     expect(screen.getByText("100 custom products")).toBeInTheDocument();
     expect(screen.getByText("Priority support")).toBeInTheDocument();
   });
+
+  it("exposes plan names as headings and does not make 'Features' a heading", () => {
+    const plans = [
+      {
+        name: "Free",
+        price: "$0",
+        features: ["5 custom products"],
+        cta: { label: "Get Started Free", href: "https://apps.shopify.com/custy" },
+      },
+      {
+        name: "Growth",
+        price: "$39.99",
+        features: ["100 custom products"],
+        cta: { label: "Start Free Trial", href: "https://apps.shopify.com/custy" },
+        featured: true,
+      },
+    ];
+
+    render(<PricingTable plans={plans} />);
+
+    expect(screen.getByRole("heading", { name: "Free" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Growth" })).toBeInTheDocument();
+    expect(screen.queryAllByRole("heading", { name: /features/i })).toHaveLength(0);
+  });
 });

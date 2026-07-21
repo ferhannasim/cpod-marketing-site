@@ -77,7 +77,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
           ) : null}
 
           <div className="flex-1 p-[34px_30px_28px] max-md:px-[22px]">
-            <div className="mb-2.5 text-lg font-bold text-[#666]">{plan.name}</div>
+            <h3 className="mb-2.5 text-lg font-bold text-[#666]">{plan.name}</h3>
             <div className="mb-2.5 flex flex-wrap items-baseline gap-1.5">
               <div className="text-[52px] leading-none font-extrabold text-[#111] max-md:text-[42px]">
                 {plan.price}
@@ -93,9 +93,11 @@ export function PricingTable({ plans, className }: PricingTableProps) {
               <div className="mb-7 text-[15px] leading-[1.6] text-[#666]">{plan.description}</div>
             ) : null}
 
-            <h2 className="mb-[18px] text-2xl font-bold text-[#111]">
+            {/* Not a heading: four identical "Features" labels would pollute the
+                heading outline; plan names carry the card-level h3 instead. */}
+            <div className="mb-[18px] text-2xl font-bold text-[#111]">
               {plan.featureTitle ?? "Features"}
-            </h2>
+            </div>
             <ul className="m-0 list-none p-0">
               {plan.features.map((feature) => (
                 <li

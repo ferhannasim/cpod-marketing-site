@@ -4,7 +4,8 @@ export type CardItem = {
   /** Emoji or short glyph. Rendered in a gradient tile (left) or bare (center). */
   icon?: string;
   title: string;
-  text: string;
+  /** One or more body paragraphs (about-us prose cards carry two). */
+  text: string | string[];
 };
 
 /**
@@ -66,7 +67,14 @@ export function CardGrid({ items, columns = 3, align = "left", className }: Card
           >
             {item.title}
           </h3>
-          <p className="text-[15px] leading-[1.75] text-lander-text">{item.text}</p>
+          {(Array.isArray(item.text) ? item.text : [item.text]).map((paragraph, index) => (
+            <p
+              key={index}
+              className="mb-3.5 text-[15px] leading-[1.75] text-lander-text last:mb-0"
+            >
+              {paragraph}
+            </p>
+          ))}
         </div>
       ))}
     </div>
