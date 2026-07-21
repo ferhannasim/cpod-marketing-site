@@ -28,9 +28,11 @@ async function download(url, dest) {
 async function tryDownload(url, dest, label) {
   try {
     await download(url, dest);
+    return true;
   } catch (error) {
     failures.push(`${label}: ${error.message}`);
     console.error(`FAIL ${label}: ${error.message}`);
+    return false;
   }
 }
 
@@ -63,10 +65,12 @@ for (const file of postFiles) {
   }
   const slug = file.replace(/\.md$/, "");
   const url = match[1];
-  await tryDownload(url, path.join(PUBLIC, "blog", `${slug}.jpg`), `${file}: og image`);
+  const ok = await tryDownload(url, path.join(PUBLIC, "blog", `${slug}.jpg`), `${file}: og image`);
   // Rewrite just the frontmatter field in place so step 3 below (which sweeps every
   // remaining cdn.shopify.com reference in content/raw/**) doesn't re-download this
-  // same URL into public/images/content/ under a different name.
+  // same URL into public/images/content/ under a different name. Only rewrite on a
+  // successful download — otherwise the raw URL must survive so a re-run can retry it.
+  if (!ok) continue;
   const rewritten = text.replace(/^image:\s*\S+\s*$/m, `image: /images/blog/${slug}.jpg`);
   if (rewritten !== text) await writeFile(filePath, rewritten);
 }
@@ -83,8 +87,10 @@ for (const rel of [...topLevelFiles, ...postRelFiles]) {
   for (const ref of refs) {
     const clean = normalizeCdnUrl(ref);
     const basename = decodeURIComponent(clean.split("/").pop());
-    await tryDownload(clean, path.join(PUBLIC, "content", basename), `${rel}: ${basename}`);
-    mapping[ref] = `/images/content/${basename}`;
+    const ok = await tryDownload(clean, path.join(PUBLIC, "content", basename), `${rel}: ${basename}`);
+    // Only rewrite the reference once the download actually succeeded — otherwise the raw
+    // cdn.shopify.com URL must survive in the file so a re-run can find and retry it.
+    if (ok) mapping[ref] = `/images/content/${basename}`;
   }
   if (refs.length > 0) await writeFile(filePath, rewriteCdnUrls(text, mapping));
 }

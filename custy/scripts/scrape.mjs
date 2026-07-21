@@ -53,6 +53,7 @@ function recordMeta(pathname, html) {
   try {
     meta[pathname] = extractMeta(html);
   } catch (error) {
+    failures.push(`${pathname} (meta): ${error.message}`);
     console.error(`FAIL ${pathname} (meta): ${error.message}`);
   }
 }
