@@ -13,7 +13,8 @@ export function StepsTeaser({ steps }: { steps: StepItem[] }) {
   return (
     <section className="bg-scheme1-bg">
       <Container className="py-14 md:py-20">
-        <div className="grid gap-6 sm:grid-cols-4">
+        <h2 className="text-2xl font-bold text-ink sm:text-3xl">How Custy works</h2>
+        <div className="mt-8 grid gap-6 sm:grid-cols-4">
           {steps.map((step) => (
             <div key={step.number}>
               <div className="mb-3 flex h-8 w-8 items-center justify-center rounded-full bg-ink text-sm font-bold text-white">

@@ -11,6 +11,8 @@ describe("homepage", () => {
     expect(screen.getByRole("link", { name: /see how it works/i })).toHaveAttribute("href", "/how-it-works");
     expect(screen.getByRole("link", { name: /compare plans/i })).toHaveAttribute("href", "/pricing");
     expect(screen.getByText(/custy blog/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /how custy works/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /simple, transparent pricing/i })).toBeInTheDocument();
   });
   it("drops the demo product grid", () => {
     render(<HomePage />);
