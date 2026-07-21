@@ -1,19 +1,22 @@
 import Link from "next/link";
-import { AtSign, Camera, Music2, PlayCircle, ThumbsUp } from "lucide-react";
-import type { LucideIcon } from "lucide-react";
 import { Container } from "./container";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  TiktokIcon,
+  XIcon,
+  YoutubeIcon,
+} from "./social-icons";
 import { footerColumns, socialLinks } from "@/lib/nav";
 import { SITE_NAME } from "@/lib/site";
 
-// lucide-react dropped brand/logo icons; stand-ins picked for closest concept
-// per platform (Facebook -> ThumbsUp, Instagram -> Camera, YouTube -> PlayCircle,
-// Twitter/X -> AtSign). TikTok -> Music2 as specified in the brief.
-const socialIcons: Record<string, LucideIcon> = {
-  Facebook: ThumbsUp,
-  Instagram: Camera,
-  YouTube: PlayCircle,
-  TikTok: Music2,
-  Twitter: AtSign,
+// Brand glyphs for a faithful port of the live footer's social row.
+const socialIcons: Record<string, (props: { className?: string }) => React.JSX.Element> = {
+  Facebook: FacebookIcon,
+  Instagram: InstagramIcon,
+  YouTube: YoutubeIcon,
+  TikTok: TiktokIcon,
+  Twitter: XIcon,
 };
 
 export function Footer() {
@@ -51,7 +54,7 @@ export function Footer() {
         <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-8">
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => {
-              const Icon = socialIcons[social.label] ?? AtSign;
+              const Icon = socialIcons[social.label] ?? XIcon;
               return (
                 <a
                   key={social.href}
@@ -61,7 +64,7 @@ export function Footer() {
                   aria-label={social.label}
                   className="text-body hover:text-ink"
                 >
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+                  <Icon className="h-5 w-5" />
                   <span className="sr-only">{social.label}</span>
                 </a>
               );
