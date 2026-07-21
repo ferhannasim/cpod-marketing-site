@@ -20,8 +20,9 @@ export type PricingFaq = {
 // Transcribed verbatim from content/raw/pricing.html (custy-pricing-page). No
 // <img> tags and no pictographic emoji anywhere on this page (confirmed with
 // `grep -noP '[^\x00-\x7F]'` — the only non-ASCII characters are the curly
-// apostrophes in "Custy's"/"Shopify's" and the bullet separator in the note
-// pill, both kept verbatim as ordinary punctuation), so there's nothing to
+// apostrophes in "Custy's"/"Shopify's", the bullet separator in the note
+// pill, and (after the Task 4 copy pass, below) a few em dashes in the
+// tightened prose, all kept as ordinary punctuation), so there's nothing to
 // strip or localize.
 //
 // The four `.custy-plan` cards map directly onto the Task 9 `Plan` type
@@ -34,12 +35,17 @@ export type PricingFaq = {
 //
 // Inline <strong> emphasis inside the header lead ("21-day free trial") and
 // the bottom disclaimer ("No hidden fees. No commission.") is flattened to
-// plain text, per the established lead/text plain-string component contract
-// — no words added, removed, or reordered.
+// plain text, per the established lead/text plain-string component contract.
+//
+// Task 4 professionalize pass: the header lead, bottom disclaimer, and FAQ
+// answers were tightened (shorter, fixed a subject/verb slip in the lead,
+// collapsed redundant sentences) — same claims, tighter wording, FAQ answers
+// kept to ≤ 2 sentences. Plan names, prices, periods, and all 45 features are
+// untouched and remain verbatim.
 export const pricing = {
   header: {
     title: "Simple Pricing for Growing Custom Product Stores",
-    lead: "Choose the plan that fits your business today and scale with confidence tomorrow. Every paid plan includes Custy’s powerful Shopify product customizer, easy setup, and a 21-day free trial.",
+    lead: "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy’s Shopify product customizer, easy setup, and a 21-day free trial.",
     note: "No setup fee • Cancel anytime • 21-day free trial on paid plans",
   } satisfies PricingHeader,
 
@@ -141,7 +147,7 @@ export const pricing = {
   ] satisfies Plan[],
 
   bottomNote:
-    "All prices are billed in USD. Recurring charges are billed every 30 days unless you choose annual billing. You can cancel your subscription anytime through Shopify. No hidden fees. No commission.",
+    "All prices are billed in USD, charged every 30 days unless you choose annual billing. You can cancel anytime through Shopify — no hidden fees, no commission.",
 
   faq: {
     title: "Frequently Asked Questions",
@@ -149,22 +155,21 @@ export const pricing = {
       {
         question: "Does every plan include a free trial?",
         answer:
-          "Paid plans include a 21-day free trial so you can explore Custy and test it on your Shopify store before committing. The Free plan is available without a trial.",
+          "Paid plans include a 21-day free trial so you can test Custy on your Shopify store before committing. The Free plan doesn’t require a trial.",
       },
       {
         question: "Can I change my plan later?",
-        answer:
-          "Yes. You can upgrade or downgrade your plan at any time as your business grows or your needs change.",
+        answer: "Yes — you can upgrade or downgrade at any time as your business grows or your needs change.",
       },
       {
         question: "Do you charge any commission on orders?",
         answer:
-          "No. Custy does not charge commission on your sales. Your monthly subscription gives you access to the features included in your selected plan.",
+          "No. Custy doesn’t charge commission on your sales — your monthly subscription covers the features included in your plan.",
       },
       {
         question: "How does billing work?",
         answer:
-          "Billing is handled through Shopify’s billing system. Charges are added to your Shopify invoice based on the plan you choose.",
+          "Billing runs through Shopify’s billing system, with charges added to your invoice based on your plan.",
       },
     ],
   } satisfies PricingFaq,
