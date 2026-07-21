@@ -14,10 +14,24 @@ the approach used for `dropship/`.
 - **Faithful port** of the current Horizon design — same layout, colors, typography.
   A visual refresh is explicitly out of scope.
 - **Pages migrated:** Home, Features, How it works, Pricing, About us, Support, Contact,
-  Blog index + 3 posts, 404.
-- **Dropped:** all 15 demo products, `/collections/*`, `/cart`, `/search`, and
+  Blog index + 3 posts, policies (Privacy, Terms — both footer-linked), 404.
+- **Dropped:** all 15 demo products, `/collections/*`, `/cart`, `/search`,
   `/pages/custydesignlab` (the product-editor iframe page — confirmed nothing depends on
-  it). All dropped URLs get permanent redirects (see Redirects).
+  it), and `/policies/contact-information` (unlinked; redirects to `/contact`). All
+  dropped URLs get permanent redirects (see Redirects).
+
+### Page kinds (discovered from the live site)
+
+Features, Pricing, How-it-works, and About-us are **hand-built HTML landing pages**: each
+page body is a `div.custy-*-page` root (`custy-features-page`, `custy-pricing-page`,
+`custy-how-page`, `custy-about-page`) inside a `.shopify-block.rte`, with one scoped
+`<style>` block per page defining a shared design language (`--custy-blue: #17b6f4`,
+`--custy-pink: #ec008c`, `--custy-yellow: #ffd400`, `--custy-dark: #1c1c1c`,
+`--custy-text: #4b4b4b`, `--custy-light: #f8fafc`, `--custy-border: #eceff3`,
+`--custy-radius: 24px`). Per the dropship playbook these are **rebuilt as React/Tailwind
+components** with per-page structured content data — not shipped as raw HTML — matching
+the current look (faithful port). Support, Contact, policies, and blog posts are prose →
+MDX via the scrape pipeline.
 
 ## Architecture
 
@@ -40,7 +54,11 @@ removal — same convention as `dropship/`.
   (white foreground). Foreground: `#000000` headings, `#000000cf` body. Primary buttons:
   black bg, pill radius 25px, no border. Secondary: 1px border, radius 14px. Inputs:
   1px border, radius 4px. Cards: radius 4px.
-- **Container:** narrow page width (Horizon "narrow" ≈ 1000–1100px content column).
+- **Accent palette** (from the lander pages' shared scoped CSS): blue `#17b6f4`, pink
+  `#ec008c`, yellow `#ffd400`, dark `#1c1c1c`, text gray `#4b4b4b`, light `#f8fafc`,
+  border `#eceff3`, lander card radius 24px.
+- **Container:** narrow page width (Horizon "narrow" ≈ 1000–1100px content column);
+  landers use their own 1450px max width.
 - Encoded as Tailwind v4 theme variables in `app/globals.css`.
 
 ## Content pipeline
@@ -48,9 +66,15 @@ removal — same convention as `dropship/`.
 One-time scrape scripts in `scripts/` (adapted from dropship's, pointed at
 `custyapp.com`, `SCRAPE_BASE` overridable):
 
-- Marketing pages → `content/pages/*.mdx` (body) + titles/descriptions in each
-  `app/**/page.tsx`.
-- Blog posts → `content/posts/*.mdx` with frontmatter (title, description, date, image).
+- Landers (features, pricing, how-it-works, about-us) → raw HTML + scoped CSS captured
+  to `content/raw/<slug>.html`, then hand-rebuilt as components + per-page content data
+  in `content/*.ts`.
+- Prose pages (support, contact) → `content/pages/*.mdx`; policies →
+  `content/policies/*.mdx` (Horizon text-block / `shopify-policy__body` extraction).
+- Blog posts → `content/posts/*.mdx` with frontmatter (title, description, date, image)
+  from `h1`, `<time datetime>`, and `.blog-post-content.rte`.
+- Live `<title>`/meta-description per page → `content/raw/meta.json` (source for each
+  route's `metadata`).
 - Images → `public/images/`, referenced with `next/image`.
 - Homepage structured data (hero copy, feature cards, blog teasers) → `content/*.ts`.
 - `content/raw/` holds the untouched scrape record — never edited or rendered.
@@ -63,11 +87,14 @@ One-time scrape scripts in `scripts/` (adapted from dropship's, pointed at
 | `/features` `/how-it-works` `/pricing` `/about-us` `/support` `/contact` | `/pages/*` MDX |
 | `/blog` | blog index (`/blogs/custy-blog`) |
 | `/blog/<slug>` | 3 articles |
+| `/policies/privacy` `/policies/terms` | `/policies/privacy-policy`, `/policies/terms-of-service` MDX |
 | `not-found.tsx` | static 404 |
 
 ## Redirects (permanent 308, `lib/redirects.ts` → `next.config.ts`)
 
 - `/pages/<slug>` → `/<slug>` for the six migrated pages.
+- `/policies/privacy-policy` → `/policies/privacy`; `/policies/terms-of-service` →
+  `/policies/terms`; `/policies/contact-information` → `/contact`.
 - `/blogs/custy-blog` → `/blog`; `/blogs/custy-blog/:slug` → `/blog/:slug`.
 - `/products/:path*` → `https://apps.shopify.com/custy`.
 - `/collections/:path*`, `/cart`, `/search`, `/pages/custydesignlab` → `/`.
@@ -75,10 +102,23 @@ One-time scrape scripts in `scripts/` (adapted from dropship's, pointed at
 ## Components
 
 Built fresh to match Horizon (near-zero visual overlap with dropship): `Header` (logo,
-nav, "Install app" CTA, mobile drawer), `Footer` (menus, policy links, social icons),
-`Hero`, `Section` wrapper carrying the color-scheme backgrounds, `FeatureCard`,
+nav, "Install Now on Shopify" CTA, mobile drawer), `Footer` (menus, policy links, social
+icons), `Hero`, `Section` wrapper carrying the color-scheme backgrounds,
 `MediaWithContent` (image/text split rows), `BlogPostCard`, `Button` (pill primary /
-outline secondary), MDX prose styling. No cart, search, or product components.
+outline secondary), MDX prose styling — plus a **lander component family** replicating
+the shared `custy-*` design language of the four landing pages (hero with rainbow accent
+bar, eyebrow label, highlight/feature cards, section headings, step rows, pricing table,
+CTA band). No cart, search, or product components.
+
+## Navigation (captured from the live site)
+
+- **Header:** How it Work · Pricing · Features + CTA "Install Now on Shopify" →
+  <https://apps.shopify.com/custy>. (Login/"Continue shopping" links dropped.)
+- **Footer:** Privacy Policy, Terms of Service · How it Work, Pricing, Features,
+  Install Now on Shopify · About Us, Contact Us. (Search link and "Powered by Shopify"
+  dropped; dead `#` FAQ link dropped.)
+- **Social:** facebook.com/CustyAPP, instagram.com/CustyAPP, youtube.com/@CustyAPP,
+  tiktok.com/CustyAPP, x.com/CustyAPP.
 
 ## Contact form
 
