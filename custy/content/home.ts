@@ -17,27 +17,11 @@ export type DemoProduct = { title: string; image: ImageField };
 // and settings) and content/raw/home.html (what's actually rendered). See
 // .superpowers/sdd/task-8-report.md for the full copy-fidelity + image-source notes.
 export const home = {
-  // The Horizon "hero" section (hero_jVaWmY) is disabled in index.json and renders
-  // nothing live; the actual first thing on the page is a full-width autoplay video
-  // (section_dciahV) whose own caption block is also disabled, so there is no on-page
-  // heading/copy for this slot. Heading/text below are transcribed verbatim from the
-  // page's own <title>/og:title and meta description (the site's real, un-invented
-  // tagline, also used as the default document title in app/layout.tsx), the image is
-  // the video's real poster frame, and the CTA label matches the header drawer's
-  // existing "Install Now on Shopify" link verbatim.
-  hero: {
-    heading: "Best Shopify POD Customizer App for T-Shirts, Caps & Apparel",
-    text: "Custy is a powerful Shopify product customizer app for POD stores. Enable multi-side design, dynamic pricing, DTG/DTF printing, and boost sales easily.",
-    image: {
-      src: "/images/content/Screenshot_2026-05-01_at_3.37.49_AM.png",
-      width: 2968,
-      height: 1670,
-      alt: "",
-    },
-    ctas: [{ label: "Install Now on Shopify", href: APP_URL, external: true }],
-  },
-
   // section_KdywkE ("Powerful Product Customization for Shopify POD Stores").
+  // This is the first section on the live page: the Horizon "hero" section
+  // (hero_jVaWmY) is disabled in index.json and renders nothing, and this section's
+  // own heading is the first real content on the page. Rendered as the page's <h1>
+  // (see rich-section.tsx) even though the live source styles it as an h3-look <p>.
   // CTA label had a leading "🎉" emoji in the source; stripped per no-emoji rule.
   intro: {
     heading: "Powerful Product Customization for Shopify POD Stores",

@@ -1,4 +1,3 @@
-import { Hero } from "@/components/sections/hero";
 import { RichSection } from "@/components/sections/rich-section";
 import { DemoShowcase } from "@/components/sections/demo-showcase";
 import { MediaWithContent } from "@/components/sections/media-with-content";
@@ -39,8 +38,7 @@ const posts: BlogTeaserPost[] = [
 export default function HomePage() {
   return (
     <main>
-      <Hero hero={home.hero} />
-      <RichSection block={home.intro} scheme="bg-scheme1-bg" imagePosition="left" />
+      <RichSection block={home.intro} scheme="bg-scheme1-bg" imagePosition="left" headingLevel="h1" />
       <DemoShowcase demo={home.demo} />
       <MediaWithContent media={home.media} />
       <BlogTeasers heading="Custy Blog" posts={posts} />

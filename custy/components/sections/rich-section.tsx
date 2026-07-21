@@ -10,9 +10,23 @@ type RichSectionProps = {
   scheme: string;
   /** Which side the image sits on when both an image and text are present. */
   imagePosition?: "left" | "right";
+  /**
+   * Heading tag to render `block.heading` as. Defaults to "h2". Pass "h1" for the
+   * page's single top-level heading (used for the intro section, whose lead line is
+   * the first real content on the live page since the Horizon hero section is
+   * disabled) — live itself renders this text as a plain, h3-styled `<p>`, not a real
+   * heading tag at all; promoting it to `h1` here is a deliberate a11y/SEO adaptation.
+   */
+  headingLevel?: "h1" | "h2";
 };
 
-export function RichSection({ block, scheme, imagePosition = "left" }: RichSectionProps) {
+export function RichSection({ block, scheme, imagePosition = "left", headingLevel = "h2" }: RichSectionProps) {
+  const HeadingTag = headingLevel;
+  const headingClasses =
+    headingLevel === "h1"
+      ? "text-3xl font-bold text-ink sm:text-4xl md:text-5xl"
+      : "text-2xl font-bold text-ink sm:text-3xl";
+
   const image = block.image ? (
     <div className="overflow-hidden rounded-card" key="image">
       <Image
@@ -27,9 +41,7 @@ export function RichSection({ block, scheme, imagePosition = "left" }: RichSecti
 
   const text = (
     <div key="text">
-      {block.heading && (
-        <h2 className="text-2xl font-bold text-ink sm:text-3xl">{block.heading}</h2>
-      )}
+      {block.heading && <HeadingTag className={headingClasses}>{block.heading}</HeadingTag>}
       <div
         className={cn("prose prose-neutral max-w-none text-body", block.heading && "mt-4")}
         dangerouslySetInnerHTML={{ __html: block.html }}
