@@ -16,7 +16,7 @@ export default function PricingPage() {
             hero/section shape (no border, no panel, no gradient), so it's a
             minimal page-scoped block rather than a shared component. */}
         <div className="mx-auto max-w-[850px] text-center">
-          <h1 className="mb-4 text-[48px] leading-[1.15] font-extrabold text-lander-dark max-md:text-[34px]">
+          <h1 className="mb-4 text-[48px] leading-[1.15] font-bold text-lander-dark max-md:text-[34px]">
             {pricing.header.title}
           </h1>
           <p className="text-lg leading-[1.7] text-lander-text">{pricing.header.lead}</p>

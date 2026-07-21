@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const TITLE = "Custy | Best Shopify POD Customizer App for T-Shirts, Caps & Apparel";
 const DESCRIPTION =
-  "Custy is a next-generation Shopify product customizer built for print-on-demand businesses. Let customers personalize t-shirts, caps and apparel in real time.";
+  "Custy is a powerful Shopify product customizer app for POD stores. Enable multi-side design, dynamic pricing, DTG/DTF printing, and boost sales easily.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

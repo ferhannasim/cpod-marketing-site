@@ -7,7 +7,7 @@ design spec: `docs/superpowers/specs/`, plan: `docs/superpowers/plans/`).
 ## Stack
 
 Next.js 15 (App Router, SSG) · React 19 · TypeScript · Tailwind CSS v4 · MDX (`@next/mdx`) ·
-Radix Dialog (mobile nav drawer) · react-hook-form + zod · Vitest + Testing Library · pnpm.
+Plain React state-driven overlay (mobile nav drawer) · react-hook-form + zod · Vitest + Testing Library · pnpm.
 
 ## Commands
 

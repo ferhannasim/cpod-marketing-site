@@ -23,7 +23,7 @@ export function Footer() {
   return (
     <footer className="bg-scheme2-bg">
       <Container className="py-12">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           {footerColumns.map((column) => (
             <div key={column.title}>
               <h3 className="text-sm font-semibold text-ink">{column.title}</h3>
