@@ -34,9 +34,9 @@ export function ContactForm() {
     }
   }
 
-  const fieldError = (message?: string) =>
+  const fieldError = (id: string, message?: string) =>
     message ? (
-      <p role="alert" className="mt-1 text-sm text-red-600">
+      <p id={id} role="alert" className="mt-1 text-sm text-red-600">
         {message}
       </p>
     ) : null;
@@ -47,8 +47,14 @@ export function ContactForm() {
         <label htmlFor="name" className={labelClasses}>
           Name
         </label>
-        <input id="name" {...register("name")} aria-invalid={!!errors.name} className={inputClasses} />
-        {fieldError(errors.name?.message)}
+        <input
+          id="name"
+          {...register("name")}
+          aria-invalid={!!errors.name}
+          aria-describedby={errors.name ? "name-error" : undefined}
+          className={inputClasses}
+        />
+        {fieldError("name-error", errors.name?.message)}
       </div>
       <div>
         <label htmlFor="email" className={labelClasses}>
@@ -59,16 +65,23 @@ export function ContactForm() {
           type="email"
           {...register("email")}
           aria-invalid={!!errors.email}
+          aria-describedby={errors.email ? "email-error" : undefined}
           className={inputClasses}
         />
-        {fieldError(errors.email?.message)}
+        {fieldError("email-error", errors.email?.message)}
       </div>
       <div>
         <label htmlFor="subject" className={labelClasses}>
           Subject
         </label>
-        <input id="subject" {...register("subject")} aria-invalid={!!errors.subject} className={inputClasses} />
-        {fieldError(errors.subject?.message)}
+        <input
+          id="subject"
+          {...register("subject")}
+          aria-invalid={!!errors.subject}
+          aria-describedby={errors.subject ? "subject-error" : undefined}
+          className={inputClasses}
+        />
+        {fieldError("subject-error", errors.subject?.message)}
       </div>
       <div>
         <label htmlFor="message" className={labelClasses}>
@@ -79,9 +92,10 @@ export function ContactForm() {
           rows={6}
           {...register("message")}
           aria-invalid={!!errors.message}
+          aria-describedby={errors.message ? "message-error" : undefined}
           className={inputClasses}
         />
-        {fieldError(errors.message?.message)}
+        {fieldError("message-error", errors.message?.message)}
       </div>
       <button
         type="submit"

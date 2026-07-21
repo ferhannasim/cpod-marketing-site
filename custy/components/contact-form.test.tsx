@@ -32,6 +32,18 @@ describe("ContactForm", () => {
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
+  it("associates the name field's error with its input via aria-describedby", async () => {
+    vi.stubGlobal("fetch", vi.fn());
+    render(<ContactForm />);
+    fireEvent.click(screen.getByRole("button", { name: /send/i }));
+    const nameInput = await screen.findByLabelText(/name/i);
+    await waitFor(() => expect(nameInput).toHaveAttribute("aria-describedby", "name-error"));
+    const describedById = nameInput.getAttribute("aria-describedby");
+    expect(describedById).toBeTruthy();
+    const errorEl = document.getElementById(describedById as string);
+    expect(errorEl).toHaveTextContent(/please enter your name/i);
+  });
+
   it("shows the success message after a successful submit", async () => {
     vi.stubGlobal(
       "fetch",
