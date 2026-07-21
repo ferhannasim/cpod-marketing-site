@@ -1244,7 +1244,7 @@ git commit -m "feat(custy): sitemap, robots, 404, JSON-LD, OG card"
 - Create: `custy/README.md`, `custy/CLAUDE.md`, `custy/lib/no-emoji.test.ts`
 - Modify: repo-root `CLAUDE.md` (custy is no longer an "empty scaffold")
 
-- [ ] **Step 0: Emoji guard (spec testing requirement)** — copy `../dropship/lib/no-emoji.test.ts` → `lib/no-emoji.test.ts` and adapt its source globs to custy's content sources (`content/**/*.{mdx,ts}`, `components/**/*.tsx`, `app/**/*.tsx`, excluding `content/raw/`). Run `pnpm vitest run lib/no-emoji.test.ts`; if scraped copy contains pictographic emoji, remove them from the cleaned content files (never from `content/raw/`).
+- [ ] **Step 0: Emoji guard (spec testing requirement)** — copy `../dropship/lib/no-emoji.test.ts` → `lib/no-emoji.test.ts` and adapt its source globs to custy's content sources (`content/**/*.{mdx,ts}`, `components/**/*.tsx`, `app/**/*.tsx`, excluding `content/raw/`). **Exemption (controller ruling, Task 10):** emoji glyphs in `icon:` fields of content data files are decorative design elements ported from the live landers (58px gradient icon tiles), not site copy — the guard must skip lines matching `icon:` (or equivalent) so those survive while prose stays emoji-free. Run `pnpm vitest run lib/no-emoji.test.ts`; if scraped *copy* contains pictographic emoji, remove it from the cleaned content files (never from `content/raw/`).
 
 - [ ] **Step 1: Full test + build + route sweep**
 
