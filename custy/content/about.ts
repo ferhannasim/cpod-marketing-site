@@ -33,8 +33,8 @@ export type AboutCta = {
 };
 
 // Transcribed verbatim from content/raw/about-us.html (custy-about-page). No <img>
-// tags on this page, so no images to localize. Card `icon` glyphs (👕🛍️📈 on "What
-// We Do", 💰🖨️🧩⚡🏗️📊 on "Why Custy") are the exact emoji from the source's
+// tags on this page, so no images to localize. Each card's `icon:` value below (three
+// glyphs on "What We Do", six on "Why Custy") is the exact emoji from the source's
 // `.custy-feature-icon` tiles (decorative design elements per the ruling applied on
 // the features/how-it-works pages); prose itself is emoji-free. The em dashes and
 // curly apostrophes/bullet ("it's", "didn't", the eyebrow's "•") are kept verbatim

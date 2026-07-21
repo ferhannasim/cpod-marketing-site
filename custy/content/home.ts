@@ -22,7 +22,7 @@ export const home = {
   // (hero_jVaWmY) is disabled in index.json and renders nothing, and this section's
   // own heading is the first real content on the page. Rendered as the page's <h1>
   // (see rich-section.tsx) even though the live source styles it as an h3-look <p>.
-  // CTA label had a leading "🎉" emoji in the source; stripped per no-emoji rule.
+  // CTA label had a leading party-popper emoji in the source; stripped per no-emoji rule.
   intro: {
     heading: "Powerful Product Customization for Shopify POD Stores",
     html: `<p>Custy is a next-generation Shopify product customizer built specifically for print-on-demand (POD) businesses. It allows your customers to design products in real-time with an intuitive and interactive design panel. From t-shirts and hoodies to caps and more, users can personalize every detail before placing an order.</p>
