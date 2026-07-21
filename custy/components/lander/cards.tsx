@@ -41,36 +41,29 @@ export function CardGrid({ items, columns = 3, align = "left", className }: Card
   const centered = align === "center";
 
   return (
-    <div className={cn("grid gap-[22px]", columnClasses[columns] ?? columnClasses[3], className)}>
+    <div className={cn("grid gap-4", columnClasses[columns] ?? columnClasses[3], className)}>
       {items.map((item) => (
         <div
           key={item.title}
           className={cn(
-            "rounded-[22px] border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fafcff_100%)] p-[28px_24px] shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_28px_rgba(0,0,0,0.06)]",
+            "rounded-lander border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fafcff_100%)] p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_28px_rgba(0,0,0,0.06)]",
             centered && "text-center",
           )}
         >
           {item.icon ? (
             centered ? (
-              <div className="mb-3.5 text-[34px]">{item.icon}</div>
+              <div className="mb-2.5 text-[24px]">{item.icon}</div>
             ) : (
-              <div className="mb-[18px] flex h-[58px] w-[58px] items-center justify-center rounded-[18px] bg-[linear-gradient(135deg,rgba(23,182,244,0.12),rgba(236,0,140,0.1))] text-[28px]">
+              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-secondary bg-[linear-gradient(135deg,rgba(23,182,244,0.12),rgba(236,0,140,0.1))] text-[22px]">
                 {item.icon}
               </div>
             )
           ) : null}
-          <h3
-            className={cn(
-              "mb-2.5 leading-[1.3] text-lander-dark",
-              centered ? "text-xl" : "text-[22px]",
-            )}
-          >
-            {item.title}
-          </h3>
+          <h3 className="mb-2.5 text-[17px] leading-snug text-lander-dark">{item.title}</h3>
           {(Array.isArray(item.text) ? item.text : [item.text]).map((paragraph, index) => (
             <p
               key={index}
-              className="mb-3.5 text-[15px] leading-[1.75] text-lander-text last:mb-0"
+              className="mb-3 text-[15px] leading-relaxed text-lander-text last:mb-0"
             >
               {paragraph}
             </p>

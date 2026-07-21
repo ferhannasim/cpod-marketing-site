@@ -34,16 +34,16 @@ export function HighlightCard({
   return (
     <div
       className={cn(
-        "rounded-lander border border-lander-border bg-white p-7 shadow-[0_12px_30px_rgba(0,0,0,0.05)]",
+        "rounded-lander border border-lander-border bg-white p-5 shadow-[0_12px_30px_rgba(0,0,0,0.05)]",
         className,
       )}
     >
-      <h3 className="mb-[18px] text-2xl leading-tight text-lander-dark">{title}</h3>
+      <h3 className="mb-3 text-[17px] leading-snug text-lander-dark">{title}</h3>
       <ul className="m-0 list-none p-0">
         {items.map((item) => (
           <li
             key={item}
-            className="relative border-b border-[#f2f4f7] py-3 pl-7 text-[15px] leading-[1.65] text-lander-text last:border-b-0 before:absolute before:top-3 before:left-0 before:font-bold before:text-accent-pink before:content-['✓']"
+            className="relative border-b border-[#f2f4f7] py-2.5 pl-7 text-[15px] leading-[1.65] text-lander-text last:border-b-0 before:absolute before:top-2.5 before:left-0 before:font-bold before:text-accent-pink before:content-['✓']"
           >
             {item}
           </li>
@@ -86,32 +86,32 @@ export function LanderHero({
   return (
     <section
       className={cn(
-        "relative overflow-hidden rounded-[30px] border border-lander-border p-[70px_60px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] max-md:rounded-[22px] max-md:p-[34px_22px]",
+        "relative overflow-hidden rounded-[30px] border border-lander-border p-[42px_36px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] max-md:rounded-[22px] max-md:p-[20px_14px]",
         className,
       )}
       style={{ background: heroBackground }}
     >
       <RainbowBar />
-      <div className="grid items-center gap-9 min-[1200px]:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid items-center gap-6 min-[1200px]:grid-cols-[1.15fr_0.85fr]">
         <div>
           {eyebrow ? (
-            <div className="mb-[18px] inline-block rounded-full bg-[rgba(23,182,244,0.1)] px-4 py-2.5 text-[13px] font-bold tracking-[0.4px] text-[#0d86b4] uppercase">
+            <div className="mb-3 inline-block rounded-full bg-[rgba(23,182,244,0.1)] px-3.5 py-1.5 text-[12px] font-bold tracking-[0.4px] text-[#0d86b4] uppercase">
               {eyebrow}
             </div>
           ) : null}
-          <h1 className="mb-[18px] text-[54px] leading-[1.08] font-extrabold tracking-[-1px] text-lander-dark max-md:text-4xl">
+          <h1 className="mb-3 text-[clamp(1.875rem,4vw,2.375rem)] leading-[1.15] font-extrabold text-lander-dark">
             {title}
           </h1>
           {leads.map((paragraph, index) => (
             <p
               key={index}
-              className="mb-[18px] max-w-[760px] text-lg leading-[1.8] text-lander-text"
+              className="mb-3 max-w-[760px] text-[17px] leading-[1.7] text-lander-text"
             >
               {paragraph}
             </p>
           ))}
           {ctas && ctas.length > 0 ? (
-            <div className="mt-7 flex flex-wrap gap-3.5 max-md:flex-col">
+            <div className="mt-5 flex flex-wrap gap-3 max-md:flex-col">
               {ctas.map((cta, index) => (
                 <LanderCta
                   key={cta.href + cta.label}

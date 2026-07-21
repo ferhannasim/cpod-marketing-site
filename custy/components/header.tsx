@@ -16,7 +16,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line bg-scheme1-bg">
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="shrink-0">
-          <Image src="/images/logo.png" alt={SITE_NAME} width={209} height={60} priority />
+          <Image src="/images/logo.png" alt={SITE_NAME} width={139} height={40} priority />
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
@@ -51,7 +51,7 @@ export function Header() {
         <div className="fixed inset-0 z-50 flex flex-col bg-scheme1-bg md:hidden">
           <Container className="flex h-16 items-center justify-between border-b border-line">
             <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
-              <Image src="/images/logo.png" alt={SITE_NAME} width={209} height={60} />
+              <Image src="/images/logo.png" alt={SITE_NAME} width={139} height={40} />
             </Link>
             <button type="button" aria-label="Close menu" onClick={() => setOpen(false)}>
               <X className="h-6 w-6" aria-hidden="true" />

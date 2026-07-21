@@ -41,22 +41,22 @@ export function LanderSection({
     <section
       id={id}
       className={cn(
-        "mt-[34px] rounded-[30px] border p-[56px_40px] shadow-[0_16px_40px_rgba(0,0,0,0.04)] max-md:rounded-[22px] max-md:p-[34px_22px]",
+        "mt-[34px] rounded-[30px] border px-10 py-14 shadow-[0_16px_40px_rgba(0,0,0,0.04)] md:py-16 max-md:rounded-[22px] max-md:p-[34px_22px]",
         toneShell[tone],
         className,
       )}
     >
       {hasHeader ? (
-        <div className="mx-auto mb-[38px] max-w-[840px] text-center">
+        <div className="mx-auto mb-7 max-w-[840px] text-center">
           {eyebrow ? (
-            <div className="mb-[18px] inline-block rounded-full bg-[rgba(23,182,244,0.1)] px-4 py-2.5 text-[13px] font-bold tracking-[0.4px] text-[#0d86b4] uppercase">
+            <div className="mb-3 inline-block rounded-full bg-[rgba(23,182,244,0.1)] px-3.5 py-1.5 text-[12px] font-bold tracking-[0.4px] text-[#0d86b4] uppercase">
               {eyebrow}
             </div>
           ) : null}
           {title ? (
             <h2
               className={cn(
-                "mb-3.5 text-[40px] leading-[1.15] font-extrabold max-md:text-3xl",
+                "mb-3.5 text-[1.625rem] leading-[1.2] font-extrabold md:text-[1.75rem]",
                 isDark ? "text-white" : "text-lander-dark",
               )}
             >
@@ -66,7 +66,7 @@ export function LanderSection({
           {lead ? (
             <p
               className={cn(
-                "text-[17px] leading-[1.75]",
+                "text-[15px] leading-[1.7]",
                 isDark ? "text-white/[0.86]" : "text-lander-text",
               )}
             >

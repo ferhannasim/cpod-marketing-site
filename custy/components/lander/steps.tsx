@@ -41,24 +41,24 @@ function bodyParagraphs(text: StepItem["text"]): string[] {
 export function Steps({ items, layout = "grid", columns = 4, className }: StepsProps) {
   if (layout === "rows") {
     return (
-      <div className={cn("grid gap-[22px]", className)}>
+      <div className={cn("grid gap-4", className)}>
         {items.map((step) => (
           <div
             key={step.number}
-            className="grid grid-cols-[90px_1fr] items-start gap-6 rounded-lander border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-7 shadow-[0_10px_24px_rgba(0,0,0,0.03)] max-md:grid-cols-1 max-md:gap-[18px] max-md:p-[22px]"
+            className="grid grid-cols-[auto_1fr] items-start gap-4 rounded-lander border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fbfdff_100%)] p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)] max-md:grid-cols-1 max-md:gap-3 max-md:p-4"
           >
-            <div className="flex h-[72px] w-[72px] items-center justify-center rounded-[22px] bg-[linear-gradient(135deg,rgba(24,183,245,0.12),rgba(236,0,140,0.12))] text-[28px] font-extrabold text-lander-dark">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgba(24,183,245,0.12),rgba(236,0,140,0.12))] text-[15px] font-extrabold text-lander-dark">
               {step.number}
             </div>
             <div>
               {step.image ? (
                 <img src={step.image} alt="" className="mb-3.5 max-w-full rounded-[18px]" />
               ) : null}
-              <h3 className="mb-2.5 text-[26px] leading-[1.3] text-lander-dark">{step.title}</h3>
+              <h3 className="mb-2.5 text-[17px] leading-snug text-lander-dark">{step.title}</h3>
               {bodyParagraphs(step.text).map((paragraph, index) => (
                 <p
                   key={index}
-                  className="mb-3.5 text-base leading-[1.8] text-lander-text last:mb-0"
+                  className="mb-3 text-[15px] leading-relaxed text-lander-text last:mb-0"
                 >
                   {paragraph}
                 </p>
@@ -71,21 +71,21 @@ export function Steps({ items, layout = "grid", columns = 4, className }: StepsP
   }
 
   return (
-    <div className={cn("mt-3 grid gap-5", gridColumnClasses[columns] ?? gridColumnClasses[4], className)}>
+    <div className={cn("mt-3 grid gap-3.5", gridColumnClasses[columns] ?? gridColumnClasses[4], className)}>
       {items.map((step) => (
         <div
           key={step.number}
-          className="relative rounded-[22px] border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fbfcff_100%)] p-[28px_22px] shadow-[0_10px_24px_rgba(0,0,0,0.03)]"
+          className="relative rounded-lander border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fbfcff_100%)] p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)]"
         >
-          <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-[linear-gradient(90deg,#17b6f4,#ec008c)] text-base font-extrabold text-white">
+          <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-[linear-gradient(90deg,#17b6f4,#ec008c)] text-[15px] font-extrabold text-white">
             {step.number}
           </div>
           {step.image ? (
             <img src={step.image} alt="" className="mb-3.5 max-w-full rounded-[18px]" />
           ) : null}
-          <h3 className="mb-2.5 text-xl leading-[1.3] text-lander-dark">{step.title}</h3>
+          <h3 className="mb-2.5 text-[17px] leading-snug text-lander-dark">{step.title}</h3>
           {bodyParagraphs(step.text).map((paragraph, index) => (
-            <p key={index} className="mb-2.5 text-[15px] leading-[1.75] text-lander-text last:mb-0">
+            <p key={index} className="mb-2.5 text-[15px] leading-relaxed text-lander-text last:mb-0">
               {paragraph}
             </p>
           ))}

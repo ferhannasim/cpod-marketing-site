@@ -23,7 +23,7 @@ export type Plan = {
 
 function PlanCta({ label, href, featured }: { label: string; href: string; featured?: boolean }) {
   const className = cn(
-    "block w-full rounded-xl px-5 py-3.5 text-center text-base font-bold no-underline transition-all duration-200",
+    "block w-full rounded-xl px-5 py-3 text-center text-sm font-bold no-underline transition-all duration-200",
     featured
       ? "bg-[linear-gradient(90deg,#1fb6ff,#7855ff)] text-white hover:opacity-90"
       : "bg-[#111] text-white hover:bg-black",
@@ -56,7 +56,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
   return (
     <div
       className={cn(
-        "mt-10 grid gap-6 md:grid-cols-2 min-[1200px]:grid-cols-4",
+        "mt-8 grid gap-5 md:grid-cols-2 min-[1200px]:grid-cols-4",
         className,
       )}
     >
@@ -76,33 +76,33 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </div>
           ) : null}
 
-          <div className="flex-1 p-[34px_30px_28px] max-md:px-[22px]">
+          <div className="flex-1 p-5">
             <h3 className="mb-2.5 text-lg font-bold text-[#666]">{plan.name}</h3>
             <div className="mb-2.5 flex flex-wrap items-baseline gap-1.5">
-              <div className="text-[52px] leading-none font-extrabold text-[#111] max-md:text-[42px]">
+              <div className="text-[2rem] leading-none font-extrabold text-[#111]">
                 {plan.price}
               </div>
               {plan.period ? (
-                <div className="text-lg font-medium text-[#666]">{plan.period}</div>
+                <div className="text-sm font-medium text-[#666]">{plan.period}</div>
               ) : null}
             </div>
             {plan.yearly ? (
-              <div className="mb-7 text-base leading-[1.5] text-[#128a43]">{plan.yearly}</div>
+              <div className="mb-5 text-sm leading-[1.5] text-[#128a43]">{plan.yearly}</div>
             ) : null}
             {plan.description ? (
-              <div className="mb-7 text-[15px] leading-[1.6] text-[#666]">{plan.description}</div>
+              <div className="mb-5 text-[15px] leading-[1.6] text-[#666]">{plan.description}</div>
             ) : null}
 
             {/* Not a heading: four identical "Features" labels would pollute the
                 heading outline; plan names carry the card-level h3 instead. */}
-            <div className="mb-[18px] text-2xl font-bold text-[#111]">
+            <div className="mb-3 text-lg font-bold text-[#111]">
               {plan.featureTitle ?? "Features"}
             </div>
             <ul className="m-0 list-none p-0">
               {plan.features.map((feature) => (
                 <li
                   key={feature}
-                  className="relative mb-3.5 pl-7 text-base leading-[1.6] text-[#444] before:absolute before:top-0 before:left-0 before:font-bold before:text-[#111] before:content-['✓']"
+                  className="relative mb-2.5 pl-7 text-sm leading-6 text-[#444] before:absolute before:top-0 before:left-0 before:font-bold before:text-[#111] before:content-['✓']"
                 >
                   {feature}
                 </li>
@@ -110,9 +110,9 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </ul>
           </div>
 
-          <div className="border-t border-[#ececec] bg-[#f7f7f7] p-[18px_30px_24px] max-md:px-[22px]">
+          <div className="border-t border-[#ececec] bg-[#f7f7f7] p-5">
             {plan.trialNote ? (
-              <div className="mb-3.5 text-[15px] font-bold text-[#333]">{plan.trialNote}</div>
+              <div className="mb-2.5 text-[15px] font-bold text-[#333]">{plan.trialNote}</div>
             ) : null}
             <PlanCta label={plan.cta.label} href={plan.cta.href} featured={plan.featured} />
           </div>

@@ -23,14 +23,14 @@ export function CtaBand({ title, text, cta, secondaryCta, className }: CtaBandPr
   return (
     <section
       className={cn(
-        "mt-[34px] overflow-hidden rounded-[30px] p-[42px_36px] text-white shadow-[0_20px_45px_rgba(0,0,0,0.14)] max-md:rounded-[22px] max-md:p-[34px_22px]",
+        "mt-[34px] overflow-hidden rounded-[30px] px-9 py-12 text-white shadow-[0_20px_45px_rgba(0,0,0,0.14)] max-md:rounded-[22px] max-md:p-[34px_22px]",
         className,
       )}
       style={{ background: bandBackground }}
     >
-      <h2 className="mb-3.5 text-[42px] leading-[1.15] text-white max-md:text-3xl">{title}</h2>
-      <p className="max-w-[840px] text-[17px] leading-[1.8] text-white/[0.86]">{text}</p>
-      <div className="mt-[26px] flex flex-wrap gap-3.5 max-md:flex-col">
+      <h2 className="mb-3.5 text-[1.625rem] leading-[1.2] md:text-[1.75rem] text-white">{title}</h2>
+      <p className="max-w-[840px] text-[15px] leading-[1.7] text-white/[0.86]">{text}</p>
+      <div className="mt-5 flex flex-wrap gap-3 max-md:flex-col">
         <LanderCta {...cta} variant={cta.variant ?? "light"} />
         {secondaryCta ? (
           <LanderCta {...secondaryCta} variant={secondaryCta.variant ?? "outline"} />

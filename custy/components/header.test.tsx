@@ -4,7 +4,7 @@ import { Header } from "./header";
 
 it("renders nav links and the install CTA", () => {
   render(<Header />);
-  expect(screen.getAllByRole("link", { name: "How it Work" }).length).toBeGreaterThan(0);
+  expect(screen.getAllByRole("link", { name: "How it Works" }).length).toBeGreaterThan(0);
   const cta = screen.getAllByRole("link", { name: "Install Now on Shopify" })[0];
   expect(cta).toHaveAttribute("href", "https://apps.shopify.com/custy");
   expect(cta).toHaveAttribute("target", "_blank");

@@ -5,7 +5,7 @@ export type FooterColumn = { title: string; links: NavLink[] };
 export type SocialLink = { label: string; href: string };
 
 export const headerNav: NavLink[] = [
-  { label: "How it Work", href: "/how-it-works" },
+  { label: "How it Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Features", href: "/features" },
 ];
@@ -21,7 +21,7 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Explore",
     links: [
-      { label: "How it Work", href: "/how-it-works" },
+      { label: "How it Works", href: "/how-it-works" },
       { label: "Pricing", href: "/pricing" },
       { label: "Features", href: "/features" },
       { label: "Install Now on Shopify", href: APP_URL, external: true },

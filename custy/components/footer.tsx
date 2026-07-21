@@ -22,12 +22,12 @@ const socialIcons: Record<string, (props: { className?: string }) => React.JSX.E
 export function Footer() {
   return (
     <footer className="bg-scheme2-bg">
-      <Container className="py-12">
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+      <Container className="py-9">
+        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
           {footerColumns.map((column) => (
             <div key={column.title}>
               <h3 className="text-sm font-semibold text-ink">{column.title}</h3>
-              <ul className="mt-4 space-y-2">
+              <ul className="mt-3 space-y-1.5">
                 {column.links.map((link) => (
                   <li key={link.href}>
                     {link.external ? (
@@ -51,7 +51,7 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-8">
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-5 border-t border-line pt-6">
           <div className="flex items-center gap-4">
             {socialLinks.map((social) => {
               const Icon = socialIcons[social.label] ?? XIcon;
@@ -71,7 +71,7 @@ export function Footer() {
             })}
           </div>
 
-          <p className="text-sm text-body">
+          <p className="text-[13px] text-body">
             © {new Date().getFullYear()} {SITE_NAME}
           </p>
         </div>
