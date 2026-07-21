@@ -2,24 +2,51 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { socialLinks } from "@/lib/nav";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const TITLE = "Custy | Best Shopify POD Customizer App for T-Shirts, Caps & Apparel";
+const DESCRIPTION =
+  "Custy is a next-generation Shopify product customizer built for print-on-demand businesses. Let customers personalize t-shirts, caps and apparel in real time.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://custyapp.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Custy | Best Shopify POD Customizer App for T-Shirts, Caps & Apparel",
+    default: TITLE,
     template: "%s | Custy",
   },
-  description:
-    "Custy is a next-generation Shopify product customizer built for print-on-demand businesses. Let customers personalize t-shirts, caps and apparel in real time.",
+  description: DESCRIPTION,
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: "website",
+    images: [{ url: "/images/og-card.png", width: 1200, height: 630, alt: "Custy" }],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const organizationJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo.png`,
+    sameAs: socialLinks.map((s) => s.href),
+  };
+
   return (
     <html lang="en" className={inter.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Header />
         {children}
         <Footer />
