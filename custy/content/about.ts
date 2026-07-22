@@ -65,8 +65,8 @@ export const about = {
     eyebrow: "About Custy • Built for Shopify",
     title: "Helping Shopify Merchants Create, Customize, and Sell Without Limits",
     lead: [
-      "At Custy, our mission is simple — to empower Shopify merchants to create, customize, and sell products without limits.",
-      "We built Custy to solve one of the biggest challenges in eCommerce: offering seamless, real-time product customization while keeping the experience fast, intuitive, and conversion-focused. Whether it’s a t-shirt, hoodie, cap, or any print-on-demand product, Custy gives your customers the freedom to design exactly what they want and see it instantly.",
+      "At Custy, our mission is simple — to empower Shopify merchants to create, customize, and sell products without limits by solving one of eCommerce’s biggest challenges: seamless, real-time product customization that stays fast, intuitive, and conversion-focused.",
+      "Whether it’s a t-shirt, hoodie, cap, or any print-on-demand product, Custy gives your customers the freedom to design exactly what they want and see it instantly.",
     ],
     ctas: [
       { label: "Start 14-Day Free Trial", href: "/pricing", variant: "primary" },
@@ -90,11 +90,11 @@ export const about = {
     cards: [
       {
         title: "Personalization Is the Future",
-        text: "Modern shoppers expect more than a standard product page. They want the ability to make products feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a powerful customization experience that feels simple for the customer and practical for the business.",
+        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy meets that demand with a powerful customization experience that stays simple for the customer and practical for the business.",
       },
       {
         title: "Turning Products into Experiences",
-        text: "Custy helps merchants tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.",
+        text: "Merchants can tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.",
       },
     ] satisfies CardItem[],
   } satisfies AboutCardSection,

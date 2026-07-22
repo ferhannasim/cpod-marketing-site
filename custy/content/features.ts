@@ -36,8 +36,8 @@ export const features = {
     eyebrow: "Custy for Shopify • POD Ready",
     title: "Powerful Product Customization for Modern Shopify Stores",
     lead: [
-      "Custy is a powerful and easy-to-use product customizer app built for Shopify merchants who want to sell personalized products. Whether you run a print-on-demand store or offer custom-made items, Custy lets your customers design products directly on your store in real time.",
-      "With an intuitive design panel, shoppers can personalize t-shirts, hoodies, caps, and more by adding text, images, and artwork across multiple print areas like the front, back, and sleeves. Custy helps create a better shopping experience while increasing engagement, conversions, and average order value.",
+      "Custy is a powerful, easy-to-use product customizer built for Shopify merchants selling personalized products — from print-on-demand stores to custom-made items — letting customers design directly on your store in real time through an intuitive design panel.",
+      "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — creating a better shopping experience that boosts engagement, conversions, and average order value.",
     ],
     ctas: [
       { label: "Start 21-Day Free Trial", href: APP_URL, variant: "primary" },
@@ -163,7 +163,7 @@ export const features = {
 
   cta: {
     title: "Start with Custy Risk-Free",
-    text: "Enjoy a 21-day free trial with full access to Custy’s core features. Test the experience on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
+    text: "Enjoy a 21-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
     cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
     secondaryCta: { label: "View Pricing", href: "/pricing", variant: "outline" },
   } satisfies FeaturesCta,
