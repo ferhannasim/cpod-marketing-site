@@ -7,6 +7,7 @@ const STATIC_ROUTES = [
   "/features",
   "/pricing",
   "/how-it-works",
+  "/live-demo",
   "/about-us",
   "/support",
   "/contact",
