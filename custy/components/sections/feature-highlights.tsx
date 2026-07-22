@@ -7,9 +7,9 @@ import { CardGrid, type CardItem } from "@/components/lander";
 // link through to the full list. Heading is authored fresh for this teaser
 // context — it's a factual summary of what the card grid below it shows, not a
 // copy/paste of any single source string.
-export function FeatureHighlights({ cards }: { cards: CardItem[] }) {
+export function FeatureHighlights({ cards, scheme = "bg-scheme2-bg" }: { cards: CardItem[]; scheme?: string }) {
   return (
-    <section className="bg-scheme2-bg">
+    <section className={scheme}>
       <Container className="py-14 md:py-20">
         <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
           Everything a POD store needs

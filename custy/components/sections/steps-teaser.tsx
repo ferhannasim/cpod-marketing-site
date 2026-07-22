@@ -9,9 +9,9 @@ function firstLine(text: StepItem["text"]): string {
 // Compact horizontal preview of the how-it-works steps (first 4 of the 7 detailed
 // rows on content/how-it-works.ts), condensed to one line per step so it reads as
 // a quick strip rather than the full stacked walkthrough on the dedicated page.
-export function StepsTeaser({ steps }: { steps: StepItem[] }) {
+export function StepsTeaser({ steps, scheme = "bg-scheme1-bg" }: { steps: StepItem[]; scheme?: string }) {
   return (
-    <section className="bg-scheme1-bg">
+    <section className={scheme}>
       <Container className="py-14 md:py-20">
         <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
           How Custy works

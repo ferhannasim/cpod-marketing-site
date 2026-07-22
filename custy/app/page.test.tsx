@@ -33,6 +33,25 @@ describe("homepage", () => {
     const firstFaq = pricing.faq.items[0];
     expect(screen.getByText(firstFaq.question)).toBeInTheDocument();
 
+    // R2: why-cards section heading reuses the exact "Why merchants choose Custy"
+    // phrase already published as content/features.ts's hero highlight title
+    // (self-updating, not a fresh duplicate string).
+    expect(screen.getByRole("heading", { name: features.hero.highlight.title })).toBeInTheDocument();
+
+    // R2: trust band shows one of its three plan-guarantee items.
+    expect(screen.getByText("21-Day Free Trial")).toBeInTheDocument();
+
+    // R2: pricing teaser now renders each plan's first 3 features (not just the
+    // first) — pin the 3rd feature so a regression to "first 1" fails this.
+    const firstPlanThirdFeature = pricing.plans[0].features[2];
+    expect(firstPlanThirdFeature).toBeDefined();
+    expect(screen.getByText(firstPlanThirdFeature)).toBeInTheDocument();
+
+    // R2: pricing teaser microcopy under the grid.
+    expect(
+      screen.getByText("All prices billed in USD · 21-day free trial on paid plans"),
+    ).toBeInTheDocument();
+
     expect(home.closing.title).toBe("Start with Custy");
     expect(screen.getByRole("heading", { name: home.closing.title })).toBeInTheDocument();
 
