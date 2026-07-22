@@ -2,33 +2,34 @@ import { Container } from "@/components/container";
 import { CardGrid, type CardItem } from "@/components/lander";
 import { features } from "@/content/features";
 
-// Three benefit cards distilled from copy already published elsewhere on the
-// site — no new claims, tightened for a compact homepage card. Icons are the
-// exact glyphs already used for these same features in their source files.
-// See task-R2-report.md for the full old-source -> new-copy table:
-//   1. "Real-Time Customization" <- content/features.ts sections[0].cards[0]
-//      ("Real-Time Product Customizer").
-//   2. "Dynamic Pricing" <- content/about.ts whyCusty.cards[0] ("Dynamic
-//      Pricing"), with "automatically" carried over from features.ts's
-//      sibling "Dynamic Pricing Engine" card.
-//   3. "Built for POD Workflows" <- content/about.ts whyCusty.cards[1]
-//      ("Modern Print Support") + content/features.ts sections[0].cards[3]
-//      ("DTG, DTF & Print-Ready Files").
+// Three benefit cards, each a single-source trim of one existing
+// content/features.ts key-feature card (cards 7-9 of the 9 on
+// sections[0].cards — none of which overlap the first 6 already shown one
+// section up in FeatureHighlights). Icon + title are pulled directly from
+// that same source card so they can never drift; only the body copy is
+// authored here, as a trim (not a merge) of that one card's own text. See
+// task-R2-report.md for the full old-source -> new-copy table:
+//   1. "Fast & User-Friendly UI" <- sections[0].cards[6]
+//   2. "Higher Conversion Potential" <- sections[0].cards[7]
+//   3. "Built for Scalable Custom Selling" <- sections[0].cards[8]
+const keyFeatureCards = features.sections[0].cards ?? [];
+const [fastUx, conversion, scalable] = [keyFeatureCards[6], keyFeatureCards[7], keyFeatureCards[8]];
+
 const cards: CardItem[] = [
   {
-    icon: "🎨",
-    title: "Real-Time Customization",
-    text: "Customers design products live on your storefront with an instant preview that feels smooth, visual, and easy to use.",
+    icon: fastUx.icon,
+    title: fastUx.title,
+    text: "Built for performance and ease of use, so customers can customize products without confusion or unnecessary steps.",
   },
   {
-    icon: "💰",
-    title: "Dynamic Pricing",
-    text: "Prices adjust automatically based on real customization choices, so you stay flexible while protecting your margins.",
+    icon: conversion.icon,
+    title: conversion.title,
+    text: "An interactive design experience keeps customers engaged, builds purchase confidence, and can improve average order value.",
   },
   {
-    icon: "🖨️",
-    title: "Built for POD Workflows",
-    text: "Supports DTG, DTF, and other print workflows with print-ready design files prepared for real-world fulfillment.",
+    icon: scalable.icon,
+    title: scalable.title,
+    text: "Whether you're launching a new custom store or expanding a growing POD brand, Custy supports long-term growth.",
   },
 ];
 

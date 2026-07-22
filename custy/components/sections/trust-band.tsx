@@ -3,37 +3,46 @@ import { Container } from "@/components/container";
 export type TrustItem = { title: string; text: string };
 
 // Three plan guarantees already promised on the pricing page — no new claims,
-// just restated compactly for the homepage. Sourced from content/pricing.ts:
-//   1. "21-Day Free Trial" <- pricing.faq.items[0].answer ("Paid plans
-//      include a 21-day free trial so you can test Custy on your Shopify
-//      store before committing.")
-//   2. "Cancel Anytime" <- pricing.bottomNote ("You can cancel anytime
-//      through Shopify").
-//   3. "No Hidden Fees" <- pricing.bottomNote ("no hidden fees, no
-//      commission") + pricing.faq.items[2].answer ("your monthly
-//      subscription covers the features included in your plan").
+// just restated compactly for the homepage. Titles are the exact labels used
+// in the R2 spec; one-liners are direct trims of a single content/pricing.ts
+// field each (cited per item):
+//   1. "21-day free trial on paid plans" — title is verbatim the tail clause
+//      of pricing.header.note ("No setup fee • Cancel anytime • 21-day free
+//      trial on paid plans"). Body trims pricing.faq.items[0].answer ("Paid
+//      plans include a 21-day free trial so you can test Custy on your
+//      Shopify store before committing. The Free plan doesn't require a
+//      trial.").
+//   2. "Cancel anytime through Shopify" — title trims pricing.bottomNote
+//      ("You can cancel anytime through Shopify — no hidden fees, no
+//      commission."). Body trims the same single field (no "billing"
+//      phrasing borrowed from the FAQ, to keep this one-field-sourced).
+//   3. "No hidden fees or commissions" — title paraphrases pricing.bottomNote
+//      /header.note's "no hidden fees" + "no commission" claims into one
+//      label (per the R2 spec). Body is pricing.bottomNote's own clause
+//      verbatim ("no hidden fees, no commission").
 const items: TrustItem[] = [
   {
-    title: "21-Day Free Trial",
-    text: "Every paid plan includes a 21-day free trial so you can test Custy before committing.",
+    title: "21-day free trial on paid plans",
+    text: "Paid plans include a 21-day free trial so you can test Custy before committing.",
   },
   {
-    title: "Cancel Anytime",
-    text: "You can cancel anytime through Shopify's billing.",
+    title: "Cancel anytime through Shopify",
+    text: "You can cancel anytime through Shopify.",
   },
   {
-    title: "No Hidden Fees",
-    text: "No commission on your sales — your subscription covers it all.",
+    title: "No hidden fees or commissions",
+    text: "No hidden fees, no commission.",
   },
 ];
 
-// A slim, compact strip between the pricing teaser and the FAQ — no section
-// heading (kept out of the page's heading outline on purpose), just an
-// aria-label naming the landmark for screen-reader users.
+// A slim, compact strip between the pricing teaser and the FAQ. Carries its
+// own sr-only h2 (rather than an aria-label) so the page's heading outline
+// doesn't skip from WhyCusty's h2 straight to these items' h3s.
 export function TrustBand({ scheme = "bg-scheme2-bg" }: { scheme?: string }) {
   return (
-    <section className={scheme} aria-label="Custy plan guarantees">
+    <section className={scheme}>
       <Container className="py-8 md:py-10">
+        <h2 className="sr-only">Plan guarantees</h2>
         <div className="grid gap-6 sm:grid-cols-3">
           {items.map((item) => (
             <div key={item.title}>

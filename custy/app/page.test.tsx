@@ -38,8 +38,20 @@ describe("homepage", () => {
     // (self-updating, not a fresh duplicate string).
     expect(screen.getByRole("heading", { name: features.hero.highlight.title })).toBeInTheDocument();
 
-    // R2: trust band shows one of its three plan-guarantee items.
-    expect(screen.getByText("21-Day Free Trial")).toBeInTheDocument();
+    // R2: a why-card title is pulled straight from its source key-feature card
+    // (content/features.ts sections[0].cards[6]), so this stays in sync and
+    // fails if the card is ever swapped for one that duplicates FeatureHighlights.
+    const whyCard = features.sections[0].cards?.[6];
+    expect(whyCard).toBeDefined();
+    expect(screen.getByRole("heading", { name: whyCard!.title })).toBeInTheDocument();
+
+    // R2: trust band shows one of its three plan-guarantee items — its title is
+    // the verbatim tail clause of pricing.header.note, so this stays in sync.
+    const noteParts = pricing.header.note.split(" • ");
+    const trialTitle = noteParts[noteParts.length - 1];
+    expect(trialTitle).toBe("21-day free trial on paid plans");
+    expect(screen.getByText(trialTitle)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /plan guarantees/i })).toBeInTheDocument();
 
     // R2: pricing teaser now renders each plan's first 3 features (not just the
     // first) — pin the 3rd feature so a regression to "first 1" fails this.
