@@ -56,7 +56,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
   return (
     <div
       className={cn(
-        "mt-8 grid gap-5 md:grid-cols-2 min-[1200px]:grid-cols-4",
+        "mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4",
         className,
       )}
     >
@@ -66,7 +66,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
           className={cn(
             "relative flex flex-col overflow-hidden rounded-[20px] border bg-white shadow-[0_8px_24px_rgba(0,0,0,0.06)]",
             plan.featured
-              ? "border-2 border-[#1fb6ff] shadow-[0_12px_32px_rgba(31,182,255,0.16)] min-[1101px]:scale-[1.02]"
+              ? "border-2 border-[#1fb6ff] shadow-[0_12px_32px_rgba(31,182,255,0.16)] lg:scale-[1.02]"
               : "border border-[#e7e7e7]",
           )}
         >
@@ -76,7 +76,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </div>
           ) : null}
 
-          <div className="flex-1 p-5">
+          <div className="flex-1 p-5 lg:p-4">
             <h3 className="mb-2.5 text-lg font-bold text-[#666]">{plan.name}</h3>
             <div className="mb-2.5 flex flex-wrap items-baseline gap-1.5">
               <div className="text-[2rem] leading-none font-extrabold text-[#111]">
@@ -110,7 +110,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </ul>
           </div>
 
-          <div className="border-t border-[#ececec] bg-[#f7f7f7] p-5">
+          <div className="border-t border-[#ececec] bg-[#f7f7f7] p-5 lg:p-4">
             {plan.trialNote ? (
               <div className="mb-2.5 text-[15px] font-bold text-[#333]">{plan.trialNote}</div>
             ) : null}
