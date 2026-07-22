@@ -90,11 +90,11 @@ export const about = {
     cards: [
       {
         title: "Personalization Is the Future",
-        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy meets that demand with a powerful customization experience that stays simple for the customer and practical for the business.",
+        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a powerful customization experience that stays simple for the customer and practical for the business.",
       },
       {
         title: "Turning Products into Experiences",
-        text: "Merchants can tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.",
+        text: "Custy helps merchants tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.",
       },
     ] satisfies CardItem[],
   } satisfies AboutCardSection,

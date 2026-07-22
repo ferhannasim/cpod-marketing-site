@@ -36,8 +36,8 @@ export const features = {
     eyebrow: "Custy for Shopify • POD Ready",
     title: "Powerful Product Customization for Modern Shopify Stores",
     lead: [
-      "Custy is a powerful, easy-to-use product customizer built for Shopify merchants selling personalized products — from print-on-demand stores to custom-made items — letting customers design directly on your store in real time through an intuitive design panel.",
-      "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — creating a better shopping experience that boosts engagement, conversions, and average order value.",
+      "Custy is a powerful, easy-to-use product customizer app built for Shopify merchants selling personalized products — from print-on-demand stores to custom-made items — letting customers design directly on your store in real time through an intuitive design panel.",
+      "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — helping create a better shopping experience that boosts engagement, conversions, and average order value.",
     ],
     ctas: [
       { label: "Start 21-Day Free Trial", href: APP_URL, variant: "primary" },
