@@ -1,0 +1,29 @@
+{
+  "handle": "q-tees-qtb",
+  "brand": "Q-Tees",
+  "model": "QTB",
+  "title": "Size Chart | Q-TEES QTB",
+  "columns": [
+    "Specifications (inches)",
+    "One Size"
+  ],
+  "rows": [
+    [
+      "Length Tolerance",
+      "+/- 1"
+    ],
+    [
+      "Measurements",
+      "15\"L x 16\"H"
+    ],
+    [
+      "Suggested Imprint Area",
+      "10\"W x 12\"H"
+    ],
+    [
+      "Width Tolerance",
+      "+/- 1"
+    ]
+  ],
+  "notes": []
+}

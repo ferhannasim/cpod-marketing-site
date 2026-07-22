@@ -1,0 +1,93 @@
+---
+title: "Billing Information"
+source: /pages/billing-information
+---
+
+# Billing Information
+
+This Billing Information page explains how merchants are charged for using the DropShipPOD Shopify app and related dropshipping, print-on-demand, fulfillment, and automation services. DropShipPOD billing is processed outside of Shopify through Stripe under a Shopify-approved billing exemption.
+
+Last updated: June 5, 2026
+
+## Overview
+
+DropShipPOD helps Shopify merchants import products from DropShipPOD.ca, set their own profit margins, sell customized products, and automatically forward eligible orders to DropShipPOD for production, fulfillment, and blind shipping.
+
+Because DropShipPOD provides external production, fulfillment, and payment processing services outside the Shopify platform, merchant billing is handled externally through Stripe instead of the Shopify Billing API.
+
+**Shopify-approved exemption:** Billing for DropShipPOD is processed externally under an exemption reviewed and approved by Shopify. Merchants are informed before entering payment details or authorizing charges.
+
+## How Merchants Are Charged
+
+Merchants may be charged for products, printing, fulfillment, shipping, and any applicable service-related costs when using DropShipPOD to fulfill orders.
+
+- **Product cost:** The base cost of the product imported from DropShipPOD.ca.
+- **Printing cost:** The cost of printing or customization, depending on product type, print method, design area, and selected options.
+- **Shipping cost:** Shipping fees required to deliver the order to the merchant’s customer.
+- **Applicable taxes or fees:** Any applicable taxes, payment processing fees, or additional charges may apply depending on the transaction and location.
+
+Merchants can set their own retail prices and profit margins inside the DropShipPOD app. The merchant’s customer pays the merchant through the merchant’s Shopify store. DropShipPOD charges the merchant separately for the applicable fulfillment-related costs.
+
+## Fulfillment Billing Modes
+
+### Automatic Fulfillment
+
+If automatic fulfillment is enabled, eligible dropship orders may be automatically charged to the merchant’s saved payment method and forwarded to DropShipPOD for processing after the merchant’s customer completes payment on the merchant’s Shopify store.
+
+### Manual Review
+
+If manual review is selected, orders are reviewed by the merchant before being sent to DropShipPOD. The merchant can confirm and place the order before their saved payment method is charged and the order is forwarded for fulfillment.
+
+## Payment Methods
+
+DropShipPOD uses Stripe to securely process merchant billing outside of Shopify. Merchants may be asked to add or save a payment method, such as a credit or debit card, inside the DropShipPOD app or through a Stripe-hosted payment flow.
+
+**Payment processor** Stripe
+
+**Payment method** Credit/debit card or other Stripe-supported methods
+
+**Billing location** Processed externally, outside Shopify Billing API
+
+DropShipPOD does not store full card numbers on its own servers. Payment details are handled securely by Stripe according to Stripe’s security and compliance standards.
+
+## Pricing and Variable Charges
+
+DropShipPOD charges may vary based on the product selected, print method, order quantity, customization details, shipping destination, and fulfillment requirements.
+
+- Product prices may vary by product type, size, color, and inventory source.
+- Printing charges may vary based on the selected printing method and design setup.
+- Shipping fees may vary based on shipping location, package weight, and carrier rates.
+- Additional fees may apply for special handling, optional services, or failed payments.
+
+Available pricing and order costs are shown to the merchant inside the DropShipPOD app before or during order processing, depending on the merchant’s selected fulfillment mode.
+
+## Subscriptions, App Fees, and Service Fees
+
+DropShipPOD may offer free or paid access plans, usage-based charges, or service fees depending on the app configuration and services used by the merchant.
+
+Any applicable subscription, platform, service, product, printing, fulfillment, or shipping charges will be disclosed to merchants before payment authorization where required.
+
+## Refunds, Cancellations, and Failed Payments
+
+Because DropShipPOD orders may involve customized products, printing, production, fulfillment, and shipping, refunds or cancellations may be limited after an order has entered production or fulfillment.
+
+- Orders not yet processed may be eligible for cancellation where possible.
+- Customized or printed products may not be refundable once production begins.
+- Failed payments may delay or prevent an order from being processed.
+- Merchants are responsible for keeping payment information accurate and up to date.
+
+## Relationship With Shopify Billing
+
+DropShipPOD billing is not processed through the Shopify Billing API. Instead, billing is processed externally through Stripe under a Shopify-approved exemption.
+
+Charges from DropShipPOD may appear separately from Shopify invoices or Shopify app subscription charges. Merchants should review their Stripe/payment method statements and DropShipPOD account information for billing details.
+
+## Billing Support
+
+For billing questions, payment issues, charge inquiries, invoice requests, or fulfillment-related billing support, please contact DropShipPOD:
+
+- Email: [info@CheapestPOD.ca](mailto:info@CheapestPOD.ca)
+- Toll Free: [833-640-4111](tel:18336404111)
+- Website: [DropShipPOD.ca](https://dropshippod.ca)
+
+This Billing Information page is provided for Shopify merchants using the DropShipPOD app. It is intended to explain external billing, Stripe payment processing, applicable charges, and billing support in connection with the DropShipPOD Shopify app.

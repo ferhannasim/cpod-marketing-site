@@ -1,0 +1,41 @@
+{
+  "handle": "rabbit-skins-3317",
+  "brand": "Rabbit Skins",
+  "model": "3317",
+  "title": "Size Chart | Rabbit Skins 3317",
+  "columns": [
+    "Specifications (inches)",
+    "2T",
+    "3T",
+    "4T",
+    "5/6",
+    "7"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "13",
+      "13 1/2",
+      "14",
+      "15",
+      "15 1/2"
+    ],
+    [
+      "Sleeve Length",
+      "11 3/4",
+      "12 1/4",
+      "13 3/4",
+      "16",
+      "16 3/4"
+    ]
+  ],
+  "notes": []
+}

@@ -1,0 +1,57 @@
+{
+  "handle": "rabbit-skins-4400",
+  "brand": "Rabbit Skins",
+  "model": "4400",
+  "title": "Size Chart | Rabbit Skins 4400",
+  "columns": [
+    "Specifications (inches)",
+    "NB",
+    "6M",
+    "12M",
+    "18M",
+    "24M"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "10 3/4",
+      "11 3/4",
+      "12 3/4",
+      "13 3/4",
+      "14 3/4"
+    ],
+    [
+      "Body Length Tolerance",
+      "1",
+      "1",
+      "1",
+      "1",
+      "1"
+    ],
+    [
+      "Chest Tolerance",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2",
+      "1/2"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "7 1/4",
+      "8 3/4",
+      "9 3/4",
+      "10 3/4",
+      "11 3/4"
+    ],
+    [
+      "Sleeve Length",
+      "2 1/2",
+      "2 3/4",
+      "3",
+      "3 1/4",
+      "3 1/2"
+    ]
+  ],
+  "notes": []
+}

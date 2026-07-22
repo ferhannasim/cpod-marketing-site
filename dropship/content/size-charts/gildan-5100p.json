@@ -1,0 +1,57 @@
+{
+  "handle": "gildan-5100p",
+  "brand": "Gildan",
+  "model": "5100P",
+  "title": "Size Chart | Gildan 5100P",
+  "columns": [
+    "Specifications (inches)",
+    "2T",
+    "3T",
+    "4T",
+    "5T",
+    "6T"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19"
+    ],
+    [
+      "Body Length Tolerance",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1"
+    ],
+    [
+      "Chest Tolerance",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15"
+    ],
+    [
+      "Sizes (CA)",
+      "2-4",
+      "6-8",
+      "10-12",
+      "14-16",
+      "18-20"
+    ]
+  ],
+  "notes": []
+}

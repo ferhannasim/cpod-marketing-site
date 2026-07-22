@@ -1,0 +1,63 @@
+{
+  "handle": "gildan-64000l",
+  "brand": "Gildan",
+  "model": "64000L",
+  "title": "Size Chart | Gildan 64000L",
+  "columns": [
+    "Specifications (inches)",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL",
+    "3XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "25",
+      "26",
+      "27",
+      "27 3/4",
+      "28",
+      "29"
+    ],
+    [
+      "Body Length Tolerance",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "1"
+    ],
+    [
+      "Chest Tolerance",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "+/-1",
+      "1"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "17",
+      "18",
+      "19 1/2",
+      "20 1/2",
+      "23",
+      "23 1/2"
+    ],
+    [
+      "Sleeve Length (From Center Back)",
+      "11 1/2",
+      "12",
+      "12 1/2",
+      "13",
+      "14 1/4",
+      "15 1/4"
+    ]
+  ],
+  "notes": []
+}

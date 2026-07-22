@@ -1,0 +1,45 @@
+{
+  "handle": "independent-trading-co-ind5000p",
+  "brand": "Independent Trading Co.",
+  "model": "IND5000P",
+  "title": "Size Chart | Independent Trading Co. IND5000P",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27 1/2"
+    ],
+    [
+      "Sleeve Length (From Center Back)",
+      "35 1/4",
+      "36 1/4",
+      "37 1/4",
+      "38 1/4",
+      "39 1/4",
+      "40 1/4"
+    ]
+  ],
+  "notes": []
+}

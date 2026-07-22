@@ -1,0 +1,57 @@
+{
+  "handle": "gildan-18600b",
+  "brand": "Gildan",
+  "model": "18600B",
+  "title": "Size Chart | Gildan 18600B",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "20 1/4",
+      "21 3/4",
+      "23",
+      "24 1/2",
+      "26"
+    ],
+    [
+      "Body Length Tolerance",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1",
+      "-/+ 1"
+    ],
+    [
+      "Chest Tolerance",
+      "-/+ 1/2",
+      "-/+ 1/2",
+      "-/+ 1/2",
+      "-/+ 1/2",
+      "-/+ 1/2"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "15 1/4",
+      "16 1/4",
+      "17 1/4",
+      "18 1/4",
+      "19 1/4"
+    ],
+    [
+      "Numerical Sizes",
+      "6-8",
+      "10-12",
+      "14-16",
+      "18-20",
+      "22-24"
+    ]
+  ],
+  "notes": []
+}

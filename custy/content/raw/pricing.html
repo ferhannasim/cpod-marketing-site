@@ -1,0 +1,778 @@
+<style>
+
+    .custy-pricing-page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    .custy-pricing-header {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 50px;
+    }
+
+    .custy-pricing-header h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin: 0 0 16px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .custy-pricing-header p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0;
+      color: #555;
+    }
+
+    .custy-pricing-note {
+      display: inline-block;
+      margin-top: 18px;
+      background: #fce4f1;
+      color: #e5007d;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .custy-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .custy-plan {
+      background: #fff;
+      border: 1px solid #e7e7e7;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .custy-plan-inner {
+      padding: 34px 30px 28px;
+      flex: 1;
+    }
+
+    .custy-plan-popular {
+      border: 2px solid #1fb6ff;
+      box-shadow: 0 12px 32px rgba(31,182,255,0.16);
+      transform: scale(1.02);
+    }
+
+    .custy-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(90deg, #1fb6ff, #7855ff);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+
+    .custy-plan-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .custy-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .custy-price {
+      font-size: 52px;
+      line-height: 1;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .custy-price-term {
+      font-size: 18px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .custy-yearly {
+      font-size: 16px;
+      color: #128a43;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .custy-plan-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 28px;
+    }
+
+    .custy-feature-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      color: #111;
+    }
+
+    .custy-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-feature-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #444;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .custy-feature-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .custy-plan-footer {
+      background: #f7f7f7;
+      padding: 18px 30px 24px;
+      border-top: 1px solid #ececec;
+    }
+
+    .custy-trial {
+      font-size: 15px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 14px;
+    }
+
+    .custy-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .custy-btn-primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .custy-btn-primary:hover {
+      background: #000;
+    }
+
+    .custy-btn-accent {
+      background: linear-gradient(90deg, #1fb6ff, #7855ff);
+      color: #fff;
+    }
+
+    .custy-btn-accent:hover {
+      opacity: 0.92;
+    }
+
+    .custy-pricing-bottom {
+      max-width: 980px;
+      margin: 48px auto 0;
+      text-align: center;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .custy-pricing-bottom strong {
+      color: #111;
+    }
+
+    .custy-faq {
+      margin-top: 70px;
+    }
+
+    .custy-faq h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 28px;
+      color: #111;
+    }
+
+    .custy-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .custy-faq-item {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .custy-faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .custy-faq-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    @media (max-width: 1200px) {
+      .custy-pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .custy-faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-plan-popular {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .custy-pricing-page {
+        padding: 40px 16px;
+      }
+
+      .custy-pricing-header h1 {
+        font-size: 34px;
+      }
+
+      .custy-price {
+        font-size: 42px;
+      }
+
+      .custy-pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-plan-inner,
+      .custy-plan-footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+    }
+  
+</style>
+<div class="custy-pricing-page">
+  <style>
+    .custy-pricing-page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      font-family: Arial, sans-serif;
+      color: #222;
+    }
+
+    .custy-pricing-header {
+      text-align: center;
+      max-width: 850px;
+      margin: 0 auto 50px;
+    }
+
+    .custy-pricing-header h1 {
+      font-size: 48px;
+      line-height: 1.15;
+      margin: 0 0 16px;
+      font-weight: 700;
+      color: #111;
+    }
+
+    .custy-pricing-header p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin: 0;
+      color: #555;
+    }
+
+    .custy-pricing-note {
+      display: inline-block;
+      margin-top: 18px;
+      background: #fce4f1;
+      color: #e5007d;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .custy-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .custy-plan {
+      background: #fff;
+      border: 1px solid #e7e7e7;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .custy-plan-inner {
+      padding: 34px 30px 28px;
+      flex: 1;
+    }
+
+    .custy-plan-popular {
+      border: 2px solid #1fb6ff;
+      box-shadow: 0 12px 32px rgba(31,182,255,0.16);
+      transform: scale(1.02);
+    }
+
+    .custy-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(90deg, #1fb6ff, #7855ff);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.3px;
+    }
+
+    .custy-plan-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .custy-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .custy-price {
+      font-size: 52px;
+      line-height: 1;
+      font-weight: 800;
+      color: #111;
+    }
+
+    .custy-price-term {
+      font-size: 18px;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .custy-yearly {
+      font-size: 16px;
+      color: #128a43;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .custy-plan-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: #666;
+      margin-bottom: 28px;
+    }
+
+    .custy-feature-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 18px;
+      color: #111;
+    }
+
+    .custy-feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .custy-feature-list li {
+      position: relative;
+      padding-left: 28px;
+      margin-bottom: 14px;
+      color: #444;
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .custy-feature-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #111;
+      font-weight: 700;
+    }
+
+    .custy-plan-footer {
+      background: #f7f7f7;
+      padding: 18px 30px 24px;
+      border-top: 1px solid #ececec;
+    }
+
+    .custy-trial {
+      font-size: 15px;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 14px;
+    }
+
+    .custy-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .custy-btn-primary {
+      background: #111;
+      color: #fff;
+    }
+
+    .custy-btn-primary:hover {
+      background: #000;
+    }
+
+    .custy-btn-accent {
+      background: linear-gradient(90deg, #1fb6ff, #7855ff);
+      color: #fff;
+    }
+
+    .custy-btn-accent:hover {
+      opacity: 0.92;
+    }
+
+    .custy-pricing-bottom {
+      max-width: 980px;
+      margin: 48px auto 0;
+      text-align: center;
+      color: #666;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .custy-pricing-bottom strong {
+      color: #111;
+    }
+
+    .custy-faq {
+      margin-top: 70px;
+    }
+
+    .custy-faq h2 {
+      text-align: center;
+      font-size: 34px;
+      margin-bottom: 28px;
+      color: #111;
+    }
+
+    .custy-faq-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .custy-faq-item {
+      background: #fff;
+      border: 1px solid #ececec;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
+
+    .custy-faq-item h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: #111;
+    }
+
+    .custy-faq-item p {
+      margin: 0;
+      color: #555;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    @media (max-width: 1200px) {
+      .custy-pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .custy-faq-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-plan-popular {
+        transform: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .custy-pricing-page {
+        padding: 40px 16px;
+      }
+
+      .custy-pricing-header h1 {
+        font-size: 34px;
+      }
+
+      .custy-price {
+        font-size: 42px;
+      }
+
+      .custy-pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .custy-plan-inner,
+      .custy-plan-footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+    }
+  </style>
+
+  <div class="custy-pricing-header">
+    <h1>Simple Pricing for Growing Custom Product Stores</h1>
+    <p>
+      Choose the plan that fits your business today and scale with confidence tomorrow.
+      Every paid plan includes Custy’s powerful Shopify product customizer, easy setup, and a
+      <strong>21-day free trial</strong>.
+    </p>
+    <div class="custy-pricing-note">No setup fee • Cancel anytime • 21-day free trial on paid plans</div>
+  </div>
+
+  <div class="custy-pricing-grid">
+    <div class="custy-plan">
+      <div class="custy-plan-inner">
+        <div class="custy-plan-name">Free</div>
+        <div class="custy-price-row">
+          <div class="custy-price">$0</div>
+          <div class="custy-price-term">/ month</div>
+        </div>
+        <div class="custy-yearly">Free forever • No credit card required</div>
+        <div class="custy-plan-desc">
+          A great starting point for testing Custy with limited usage before upgrading.
+        </div>
+
+        <h2 class="custy-feature-title">Features</h2>
+        <ul class="custy-feature-list">
+          <li>5 custom products</li>
+          <li>20 custom orders per month</li>
+          <li>1 GB storage</li>
+          <li>Up to 1 print side</li>
+          <li>Basic product customization</li>
+          <li>Email support</li>
+          <li>"Powered by Custy" footer shown in editor</li>
+        </ul>
+      </div>
+
+      <div class="custy-plan-footer">
+        <div class="custy-trial">No trial needed</div>
+        <a href="https://apps.shopify.com/custy" class="custy-btn custy-btn-primary">Get Started Free</a>
+      </div>
+    </div>
+
+    <div class="custy-plan">
+      <div class="custy-plan-inner">
+        <div class="custy-plan-name">Starter</div>
+        <div class="custy-price-row">
+          <div class="custy-price">$12.99</div>
+          <div class="custy-price-term">/ month</div>
+        </div>
+        <div class="custy-yearly">or $124.70/year and save 20%</div>
+        <div class="custy-plan-desc">
+          A solid starting point for small Shopify stores that want to offer product customization
+          without complexity.
+        </div>
+
+        <h2 class="custy-feature-title">Features</h2>
+        <ul class="custy-feature-list">
+          <li>0% commission</li>
+          <li>10 custom products</li>
+          <li>50 custom orders per month</li>
+          <li>5 GB storage</li>
+          <li>Up to 2 print sides</li>
+          <li>Basic product customization</li>
+          <li>Quantity discount support</li>
+          <li>Email support</li>
+        </ul>
+      </div>
+
+      <div class="custy-plan-footer">
+        <div class="custy-trial">21-day free trial</div>
+        <a href="https://apps.shopify.com/custy" class="custy-btn custy-btn-primary">Start Free Trial</a>
+      </div>
+    </div>
+
+    <div class="custy-plan custy-plan-popular">
+      <div class="custy-badge">MOST POPULAR</div>
+      <div class="custy-plan-inner">
+        <div class="custy-plan-name">Growth</div>
+        <div class="custy-price-row">
+          <div class="custy-price">$39.99</div>
+          <div class="custy-price-term">/ month</div>
+        </div>
+        <div class="custy-yearly">or $383.90/year and save 20%</div>
+        <div class="custy-plan-desc">
+          Built for growing POD brands that need more products, more orders, more flexibility,
+          and stronger support.
+        </div>
+
+        <h2 class="custy-feature-title">Features</h2>
+        <ul class="custy-feature-list">
+          <li>100 custom products</li>
+          <li>300 custom orders per month</li>
+          <li>25 GB storage</li>
+          <li>Up to 6 print sides</li>
+          <li>0% commission</li>
+          <li>Basic product customization</li>
+          <li>Quantity discount support</li>
+          <li>Advanced design tools</li>
+          <li>Inventory control</li>
+          <li>Dynamic pricing support</li>
+          <li>DTG and DTF print method support</li>
+          <li>Product options support</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+
+      <div class="custy-plan-footer">
+        <div class="custy-trial">21-day free trial</div>
+        <a href="https://apps.shopify.com/custy" class="custy-btn custy-btn-accent">Start Free Trial</a>
+      </div>
+    </div>
+
+    <div class="custy-plan">
+      <div class="custy-plan-inner">
+        <div class="custy-plan-name">Pro</div>
+        <div class="custy-price-row">
+          <div class="custy-price">$79.99</div>
+          <div class="custy-price-term">/ month</div>
+        </div>
+        <div class="custy-yearly">or $767.90/year and save 20%</div>
+        <div class="custy-plan-desc">
+          The complete solution for serious custom product businesses that want unlimited scale
+          and advanced capabilities.
+        </div>
+
+        <h2 class="custy-feature-title">Features</h2>
+        <ul class="custy-feature-list">
+          <li>Unlimited custom products</li>
+          <li>Unlimited custom orders</li>
+          <li>Unlimited storage</li>
+          <li>Unlimited print sides</li>
+          <li>0% commission</li>
+          <li>Basic product customization</li>
+          <li>Quantity discount support</li>
+          <li>Advanced design tools</li>
+          <li>Inventory control</li>
+          <li>Full dynamic pricing engine</li>
+          <li>Support for all print methods</li>
+          <li>Product options support</li>
+          <li>White label option</li>
+          <li>Advanced automation tools</li>
+          <li>Bulk order tools</li>
+          <li>API-ready expansion support</li>
+          <li>Premium support</li>
+        </ul>
+      </div>
+
+      <div class="custy-plan-footer">
+        <div class="custy-trial">21-day free trial</div>
+        <a href="https://apps.shopify.com/custy" class="custy-btn custy-btn-primary">Start Free Trial</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="custy-pricing-bottom">
+    All prices are billed in USD. Recurring charges are billed every 30 days unless you choose annual billing.
+    You can cancel your subscription anytime through Shopify. <strong>No hidden fees. No commission.</strong>
+  </div>
+
+  <div class="custy-faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="custy-faq-grid">
+      <div class="custy-faq-item">
+        <h3>Does every plan include a free trial?</h3>
+        <p>
+          Paid plans include a 21-day free trial so you can explore Custy and test it on your Shopify store before committing. The Free plan is available without a trial.
+        </p>
+      </div>
+
+      <div class="custy-faq-item">
+        <h3>Can I change my plan later?</h3>
+        <p>
+          Yes. You can upgrade or downgrade your plan at any time as your business grows or your needs change.
+        </p>
+      </div>
+
+      <div class="custy-faq-item">
+        <h3>Do you charge any commission on orders?</h3>
+        <p>
+          No. Custy does not charge commission on your sales. Your monthly subscription gives you access to the features included in your selected plan.
+        </p>
+      </div>
+
+      <div class="custy-faq-item">
+        <h3>How does billing work?</h3>
+        <p>
+          Billing is handled through Shopify’s billing system. Charges are added to your Shopify invoice based on the plan you choose.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

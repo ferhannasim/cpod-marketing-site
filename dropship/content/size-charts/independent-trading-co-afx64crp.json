@@ -1,0 +1,45 @@
+{
+  "handle": "independent-trading-co-afx64crp",
+  "brand": "Independent Trading Co.",
+  "model": "AFX64CRP",
+  "title": "Size Chart | Independent Trading Co. AFX64CRP",
+  "columns": [
+    "Specifications (inches)",
+    "XS",
+    "S",
+    "M",
+    "L",
+    "XL",
+    "2XL"
+  ],
+  "rows": [
+    [
+      "Body Length",
+      "17 1/4",
+      "18 1/4",
+      "19 1/4",
+      "20 1/4",
+      "21 1/4",
+      "22 1/4"
+    ],
+    [
+      "Chest Width (Laid Flat)",
+      "20 3/4",
+      "21 3/4",
+      "22 3/4",
+      "23 3/4",
+      "24 3/4",
+      "25 3/4"
+    ],
+    [
+      "Sleeve Length",
+      "31 1/4",
+      "32 1/4",
+      "33 1/4",
+      "34 1/4",
+      "35 1/4",
+      "36 1/4"
+    ]
+  ],
+  "notes": []
+}

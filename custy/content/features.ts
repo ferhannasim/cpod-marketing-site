@@ -1,0 +1,214 @@
+import type { CardItem, CtaLink, StepItem } from "@/components/lander";
+import { APP_URL } from "@/lib/site";
+
+export type FeaturesHero = {
+  eyebrow: string;
+  title: string;
+  lead: string[];
+  ctas: CtaLink[];
+  highlight: { title: string; items: string[] };
+};
+
+export type FeaturesSection = {
+  title: string;
+  lead: string;
+  cards?: CardItem[];
+  steps?: StepItem[];
+};
+
+export type FeaturesCta = {
+  title: string;
+  text: string;
+  cta: CtaLink;
+  secondaryCta: CtaLink;
+};
+
+export type FeaturesWorkflowStrip = {
+  title: string;
+  items: CardItem[];
+};
+
+// Transcribed verbatim from content/raw/features.html (custy-features-page). No
+// <img> tags on this page, so no images to localize. Card `icon` values are
+// semantic names resolved to SVG stroke icons by components/lander/icons.tsx
+// (the design pass replaced the source's decorative emoji tiles with them).
+// Inline <strong> emphasis inside hero/CTA-band paragraphs is not representable
+// by LanderHero/CtaBand's plain-string `lead`/`text` props, so it's flattened to
+// plain text; no words were added, removed, or reordered.
+export const features = {
+  hero: {
+    eyebrow: "Custy for Shopify • POD Ready",
+    title: "Powerful Product Customization for Modern Shopify Stores",
+    lead: [
+      "Custy is a powerful, easy-to-use product customizer app built for Shopify merchants selling personalized products — from print-on-demand stores to custom-made items — letting customers design directly on your store in real time through an intuitive design panel.",
+      "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — helping create a better shopping experience that boosts engagement, conversions, and average order value.",
+    ],
+    ctas: [
+      { label: "Start 21-Day Free Trial", href: APP_URL, variant: "primary" },
+      { label: "Install on Shopify", href: APP_URL, variant: "secondary" },
+    ],
+    highlight: {
+      title: "Why merchants choose Custy",
+      items: [
+        "Live product customization with instant visual feedback",
+        "Support for multiple print sides and product areas",
+        "Flexible dynamic pricing based on real customization choices",
+        "Print-ready file generation for smoother production workflows",
+        "Fast Shopify integration with clear order design data",
+      ],
+    },
+  } satisfies FeaturesHero,
+
+  sections: [
+    {
+      title: "Key Features Built for POD Growth",
+      lead: "Everything in Custy is designed to help Shopify merchants sell personalized products with less friction, better order accuracy, and a more engaging buyer experience.",
+      cards: [
+        {
+          icon: "palette",
+          title: "Real-Time Product Customizer",
+          text: "Let customers design products live on your storefront with an instant preview experience that feels smooth, visual, and easy to use.",
+        },
+        {
+          icon: "layers",
+          title: "Multi-Side Customization",
+          text: "Support multiple design areas including front, back, left sleeve, right sleeve, and other printable locations based on your product setup.",
+        },
+        {
+          icon: "circle-dollar-sign",
+          title: "Dynamic Pricing Engine",
+          text: "Automatically adjust pricing based on selected print areas, extra options, print methods, and design complexity to protect your margins.",
+        },
+        {
+          icon: "printer",
+          title: "DTG, DTF & Print-Ready Files",
+          text: "Generate high-quality, fulfillment-ready design outputs that make production easier for DTG, DTF, and other print workflows.",
+        },
+        {
+          icon: "puzzle",
+          title: "Flexible Product Options",
+          text: "Offer sizes, colors, variants, product-specific configurations, and custom rules so each product can match your exact business needs.",
+        },
+        {
+          icon: "blocks",
+          title: "Seamless Shopify Integration",
+          text: "Orders include full design details and selected options, making fulfillment, review, and production handoff much faster and more organized.",
+        },
+        {
+          icon: "zap",
+          title: "Fast & User-Friendly UI",
+          text: "Custy is built for performance and ease of use, helping your customers customize products without confusion or unnecessary steps.",
+        },
+        {
+          icon: "trending-up",
+          title: "Higher Conversion Potential",
+          text: "An interactive design experience keeps customers engaged longer, increases confidence before purchase, and can improve average order value.",
+        },
+        {
+          icon: "shopping-bag",
+          title: "Built for Scalable Custom Selling",
+          text: "Whether you are launching a new custom store or expanding a growing POD brand, Custy is designed to support long-term growth.",
+        },
+      ],
+    },
+    {
+      title: "How Custy Works",
+      lead: "Custy keeps the workflow simple for merchants while giving customers a premium product customization experience from storefront to fulfillment.",
+      steps: [
+        {
+          number: 1,
+          title: "Install Custy",
+          text: "Install Custy from the Shopify App Store and connect it to your store in just a few steps.",
+        },
+        {
+          number: 2,
+          title: "Enable Customization",
+          text: "Choose your products and define print areas, options, variants, and pricing rules for customization.",
+        },
+        {
+          number: 3,
+          title: "Customers Design Live",
+          text: "Your customers personalize products in real time by adding text, artwork, and images directly on the product.",
+        },
+        {
+          number: 4,
+          title: "Get Print-Ready Orders",
+          text: "Orders include production-friendly design data and print-ready files so fulfillment becomes faster and easier.",
+        },
+      ],
+    },
+    {
+      title: "Perfect For",
+      lead: "Custy is made for Shopify merchants who want to turn standard products into interactive, personalized buying experiences.",
+      cards: [
+        {
+          icon: "shirt",
+          title: "POD Businesses",
+          text: "Offer live customization for apparel and print-on-demand products with a workflow built for production.",
+        },
+        {
+          icon: "store",
+          title: "Custom Apparel Stores",
+          text: "Sell personalized t-shirts, hoodies, caps, and more with support for multiple design positions and options.",
+        },
+        {
+          icon: "gift",
+          title: "Gift Shops",
+          text: "Create a better customer experience for stores offering personalized gifts, occasion-based items, and unique products.",
+        },
+        {
+          icon: "chart-column",
+          title: "Growth-Focused Merchants",
+          text: "Increase engagement and sales with an interactive customization journey that helps shoppers buy with confidence.",
+        },
+      ],
+    },
+  ] satisfies FeaturesSection[],
+
+  // R4: "Works with your POD workflow" strip — 4 compact items, each a direct
+  // trim (deletion of a leading/trailing/middle clause, no added or reordered
+  // words) of one existing claim already published above or on
+  // content/how-it-works.ts. No new facts; see task-R4-report.md for the full
+  // old-source -> item-text table:
+  //   1. "Embedded in Your Store" <- hero.lead[0]'s trailing clause
+  //      ("...letting customers design directly on your store in real time
+  //      through an intuitive design panel.")
+  //   2. "DTG & DTF Print-Ready Files" <- sections[0].cards[3] ("DTG, DTF &
+  //      Print-Ready Files") text, with its middle clause trimmed
+  //   3. "Multi-Side Printing" <- how-it-works.ts whySection.cards[1]
+  //      ("Multi-Side Design") text, trailing clause trimmed
+  //   4. "Live Real-Time Preview" <- sections[0].cards[0] ("Real-Time Product
+  //      Customizer") text, trailing clause trimmed
+  workflowStrip: {
+    title: "Works with your POD workflow",
+    items: [
+      {
+        icon: "monitor",
+        title: "Embedded in Your Store",
+        text: "Customers design directly on your store in real time through an intuitive design panel.",
+      },
+      {
+        icon: "file-check",
+        title: "DTG & DTF Print-Ready Files",
+        text: "Generate high-quality, fulfillment-ready design outputs for DTG, DTF, and other print workflows.",
+      },
+      {
+        icon: "layers",
+        title: "Multi-Side Printing",
+        text: "Support front, back, sleeves, and more.",
+      },
+      {
+        icon: "eye",
+        title: "Live Real-Time Preview",
+        text: "Let customers design products live on your storefront with an instant preview experience.",
+      },
+    ],
+  } satisfies FeaturesWorkflowStrip,
+
+  cta: {
+    title: "Start with Custy Risk-Free",
+    text: "Enjoy a 21-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
+    cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
+    secondaryCta: { label: "View Pricing", href: "/pricing", variant: "outline" },
+  } satisfies FeaturesCta,
+};

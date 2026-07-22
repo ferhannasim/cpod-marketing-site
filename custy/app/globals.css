@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Surface scale (refined from the Horizon scheme palette) */
+  --color-scheme1-bg: #ffffff;
+  --color-scheme2-bg: #f7f9fc;
+  --color-scheme3-bg: #eef1ea;
+  --color-scheme4-bg: #e1edf5;
+  --color-scheme5-bg: #333333;
+
+  --color-ink: #101828;      /* headings */
+  --color-body: #475467;     /* body text */
+  --color-line: #e8ecf2;     /* borders */
+
+  /* Brand process-ink accents (cyan / magenta / amber) */
+  --color-accent-blue: #17b6f4;
+  --color-accent-pink: #ec008c;
+  --color-accent-yellow: #ffb800;
+  --color-lander-dark: #101828;
+  --color-lander-text: #475467;
+  --color-lander-light: #f7f9fc;
+  --color-lander-border: #e8ecf2;
+
+  --radius-lander: 16px;
+  --radius-pill: 999px;
+  --radius-secondary: 999px;
+  --radius-card: 16px;
+}
+
+/* Must live in the base layer: unlayered rules would beat utility classes
+   (e.g. `text-white` on dark-band headings) regardless of specificity. */
+@layer base {
+  body {
+    @apply bg-scheme1-bg text-body font-sans antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply text-ink font-bold tracking-tight;
+  }
+  h5, h6 {
+    @apply text-ink font-medium;
+  }
+}

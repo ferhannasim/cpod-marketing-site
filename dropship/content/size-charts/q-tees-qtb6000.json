@@ -1,0 +1,29 @@
+{
+  "handle": "q-tees-qtb6000",
+  "brand": "Q-Tees",
+  "model": "QTB6000",
+  "title": "Size Chart | Q-TEES QTB6000",
+  "columns": [
+    "Specifications (inches)",
+    "One Size"
+  ],
+  "rows": [
+    [
+      "Length Tolerance",
+      "+/- 1"
+    ],
+    [
+      "Measurements",
+      "15\" W x 16\" H"
+    ],
+    [
+      "Suggested Imprint Area",
+      "10 1/2\" W x 12\" H"
+    ],
+    [
+      "Width Tolerance",
+      "+/- 1"
+    ]
+  ],
+  "notes": []
+}
