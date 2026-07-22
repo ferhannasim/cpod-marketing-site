@@ -10,6 +10,12 @@ it("renders nav links and the install CTA", () => {
   expect(cta).toHaveAttribute("target", "_blank");
 });
 
+it("renders a Blog link", () => {
+  render(<Header />);
+  const blogLink = screen.getAllByRole("link", { name: "Blog" })[0];
+  expect(blogLink).toHaveAttribute("href", "/blog");
+});
+
 it("has a mobile menu toggle", () => {
   render(<Header />);
   expect(screen.getByRole("button", { name: /menu/i })).toBeInTheDocument();

@@ -3,11 +3,12 @@ import { headerNav, footerColumns, socialLinks } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav has the three live links plus the app CTA target", () => {
+  it("header nav has the four live links plus the app CTA target", () => {
     expect(headerNav.map((l) => l.href)).toEqual([
       "/how-it-works",
       "/pricing",
       "/features",
+      "/blog",
     ]);
   });
 
@@ -17,6 +18,26 @@ describe("nav data", () => {
       expect(href === APP_URL || href.startsWith("/")).toBe(true);
       expect(href).not.toMatch(/\/(pages|products|collections|cart|search)\b/);
     }
+  });
+
+  it("footer Explore column gains Blog after Features", () => {
+    const explore = footerColumns.find((c) => c.title === "Explore");
+    expect(explore?.links.map((l) => l.href)).toEqual([
+      "/how-it-works",
+      "/pricing",
+      "/features",
+      "/blog",
+      APP_URL,
+    ]);
+  });
+
+  it("footer Company column gains Support", () => {
+    const company = footerColumns.find((c) => c.title === "Company");
+    expect(company?.links.map((l) => l.href)).toEqual([
+      "/about-us",
+      "/contact",
+      "/support",
+    ]);
   });
 
   it("has the five social profiles", () => {

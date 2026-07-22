@@ -2,7 +2,6 @@ import { Container } from "@/components/container";
 import { RichSection } from "@/components/sections/rich-section";
 import { FeatureHighlights } from "@/components/sections/feature-highlights";
 import { StepsTeaser } from "@/components/sections/steps-teaser";
-import { MediaWithContent } from "@/components/sections/media-with-content";
 import { PricingTeaser } from "@/components/sections/pricing-teaser";
 import { Faq } from "@/components/sections/faq";
 import { BlogTeasers } from "@/components/sections/blog-teasers";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <RichSection block={home.intro} scheme="bg-scheme1-bg" imagePosition="left" headingLevel="h1" />
       <FeatureHighlights cards={(features.sections[0].cards ?? []).slice(0, 6)} />
       <StepsTeaser steps={howItWorks.stepsSection.steps.slice(0, 4)} />
-      <MediaWithContent media={home.media} />
       <PricingTeaser plans={pricing.plans} />
       <Faq items={pricing.faq.items} />
       <BlogTeasers heading="Custy Blog" posts={posts} />
@@ -29,6 +27,7 @@ export default function HomePage() {
           text={home.closing.text}
           cta={home.closing.cta}
           secondaryCta={home.closing.secondaryCta}
+          tone="light"
         />
       </Container>
     </main>

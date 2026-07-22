@@ -35,10 +35,22 @@ describe("homepage", () => {
 
     expect(home.closing.title).toBe("Start with Custy");
     expect(screen.getByRole("heading", { name: home.closing.title })).toBeInTheDocument();
+
+    expect(home.intro.ctas[0]?.label).toBe("Start Your 21-Day Free Trial of Custy");
+    const trialCtas = screen.getAllByRole("link", { name: "Start Your 21-Day Free Trial of Custy" });
+    expect(trialCtas.length).toBeGreaterThan(0);
+    for (const link of trialCtas) {
+      expect(link).toHaveAttribute("href", APP_URL);
+    }
   });
   it("drops the demo product grid", () => {
     render(<HomePage />);
     expect(screen.queryByText(/test our app on demo product/i)).not.toBeInTheDocument();
+  });
+  it("drops the media/image section", () => {
+    render(<HomePage />);
+    expect(screen.queryByText(/the custy app/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /the custy app/i })).not.toBeInTheDocument();
   });
   it("shows an FAQ accordion with real questions", () => {
     render(<HomePage />);

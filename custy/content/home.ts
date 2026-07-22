@@ -42,21 +42,8 @@ export const home = {
       height: 857,
       alt: "",
     },
-    ctas: [{ label: "Start Your 14-Day Free Trial of Custy", href: APP_URL, external: true }],
+    ctas: [{ label: "Start Your 21-Day Free Trial of Custy", href: APP_URL, external: true }],
   } as RichBlock,
-
-  // media_with_content_C9HQTJ. Live block is image + stylized "The/Custy/App" jumbo
-  // heading only — no separate body paragraph exists in the source, so text is empty.
-  media: {
-    heading: "The Custy App",
-    text: "",
-    image: {
-      src: "/images/content/custy.png",
-      width: 3000,
-      height: 2964,
-      alt: "",
-    },
-  },
 
   // section_VyHdx4. Previously rendered as a plain closing paragraph + large logo
   // image via RichSection; Task 2 recomposes it as the page-ending CtaBand
@@ -67,7 +54,7 @@ export const home = {
   closing: {
     title: "Start with Custy",
     text: "Custy is a real-time Shopify product customizer built for print-on-demand brands. Customers design t-shirts, hoodies, caps, and more across the front, back, and sleeves, with dynamic pricing for DTG, DTF, and other print methods. Print-ready files and full Shopify integration keep order processing smooth — so every order improves the customer experience and helps convert more sales.",
-    cta: { label: "Start Your 14-Day Free Trial of Custy", href: APP_URL, external: true },
+    cta: { label: "Start Your 21-Day Free Trial of Custy", href: APP_URL, external: true },
     secondaryCta: { label: "View Pricing", href: "/pricing" },
   } as ClosingCta,
 };
