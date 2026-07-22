@@ -23,7 +23,7 @@ export type Plan = {
 
 function PlanCta({ label, href, featured }: { label: string; href: string; featured?: boolean }) {
   const className = cn(
-    "block w-full rounded-xl px-5 py-3 text-center text-sm font-bold no-underline transition-all duration-200",
+    "block w-full rounded-xl px-5 py-2.5 text-center text-sm font-bold no-underline transition-all duration-200",
     featured
       ? "bg-[linear-gradient(90deg,#1fb6ff,#7855ff)] text-white hover:opacity-90"
       : "bg-[#111] text-white hover:bg-black",

@@ -2,6 +2,10 @@ import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HomePage from "./page";
 import { APP_URL } from "@/lib/site";
+import { home } from "@/content/home";
+import { features } from "@/content/features";
+import { howItWorks } from "@/content/how-it-works";
+import { pricing } from "@/content/pricing";
 
 describe("homepage", () => {
   it("renders the recomposed sections in order", () => {
@@ -13,6 +17,24 @@ describe("homepage", () => {
     expect(screen.getByText(/custy blog/i)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /how custy works/i })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /simple, transparent pricing/i })).toBeInTheDocument();
+
+    // Real content, not just structure: pin one field from each section's content module.
+    const firstCard = features.sections[0].cards?.[0];
+    expect(firstCard).toBeDefined();
+    expect(screen.getByText(firstCard!.title)).toBeInTheDocument();
+
+    const firstStep = howItWorks.stepsSection.steps[0];
+    expect(screen.getByText(firstStep.title)).toBeInTheDocument();
+
+    const firstPlan = pricing.plans[0];
+    expect(screen.getByText(firstPlan.name)).toBeInTheDocument();
+    expect(screen.getByText(firstPlan.price)).toBeInTheDocument();
+
+    const firstFaq = pricing.faq.items[0];
+    expect(screen.getByText(firstFaq.question)).toBeInTheDocument();
+
+    expect(home.closing.title).toBe("Start with Custy");
+    expect(screen.getByRole("heading", { name: home.closing.title })).toBeInTheDocument();
   });
   it("drops the demo product grid", () => {
     render(<HomePage />);

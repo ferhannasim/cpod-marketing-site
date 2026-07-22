@@ -1,3 +1,4 @@
+import { Container } from "@/components/container";
 import { RichSection } from "@/components/sections/rich-section";
 import { FeatureHighlights } from "@/components/sections/feature-highlights";
 import { StepsTeaser } from "@/components/sections/steps-teaser";
@@ -22,12 +23,14 @@ export default function HomePage() {
       <PricingTeaser plans={pricing.plans} />
       <Faq items={pricing.faq.items} />
       <BlogTeasers heading="Custy Blog" posts={posts} />
-      <CtaBand
-        title={home.closing.title}
-        text={home.closing.text}
-        cta={home.closing.cta}
-        secondaryCta={home.closing.secondaryCta}
-      />
+      <Container className="pb-14">
+        <CtaBand
+          title={home.closing.title}
+          text={home.closing.text}
+          cta={home.closing.cta}
+          secondaryCta={home.closing.secondaryCta}
+        />
+      </Container>
     </main>
   );
 }
