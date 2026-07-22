@@ -57,7 +57,7 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <main>
       <Container className="pt-12">
-        <h1 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
+        <h1 className="text-[clamp(1.875rem,4vw,2.375rem)] font-extrabold leading-[1.15] text-ink">
           {post.title}
         </h1>
         <p className="mt-2 text-sm text-body">

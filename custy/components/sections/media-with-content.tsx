@@ -9,7 +9,7 @@ export function MediaWithContent({ media }: { media: typeof home.media }) {
     <section className="bg-scheme4-bg">
       <Container className="grid gap-10 py-12 md:grid-cols-2 md:items-center md:py-16">
         <div className="text-right">
-          <h2 className="text-4xl leading-[0.8] font-bold tracking-tight text-ink uppercase sm:text-6xl">
+          <h2 className="text-3xl leading-[0.8] font-bold tracking-tight text-ink uppercase sm:text-4xl">
             {media.heading}
           </h2>
           {media.text && <p className="mt-4 text-body">{media.text}</p>}

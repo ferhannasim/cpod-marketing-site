@@ -9,7 +9,7 @@ export default function NotFound() {
   return (
     <div className="bg-scheme1-bg">
       <Container className="py-16 text-center">
-        <h1 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
+        <h1 className="text-[clamp(1.875rem,4vw,2.375rem)] font-extrabold leading-[1.15] text-ink">
           Page not found
         </h1>
         <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-body">
