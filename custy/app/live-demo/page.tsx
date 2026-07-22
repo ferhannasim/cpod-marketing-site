@@ -24,12 +24,12 @@ export default async function LiveDemoPage({
 
   return (
     <main>
-      <Container className="pt-16 md:pt-20">
+      <Container className="pt-6 md:pt-8">
         <div className="mx-auto mb-10 max-w-[760px] text-center">
           <h1 className="text-[clamp(2.125rem,4.5vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.02em] text-ink">
             Live Demo
           </h1>
-          <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
+          <p className="text-base leading-[1.7] text-body md:text-[16.5px]">
             Design a real product in the Custy customizer — pick a product and start
             creating.
           </p>
