@@ -5,7 +5,7 @@ import { pricing } from "@/content/pricing";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Choose the plan that fits your business today and scale with confidence tomorrow.",
+    "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy's Shopify product customizer, easy setup, and a 21-day free trial.",
 };
 
 export default function PricingPage() {
@@ -16,7 +16,7 @@ export default function PricingPage() {
             hero/section shape (no border, no panel, no gradient), so it's a
             minimal page-scoped block rather than a shared component. */}
         <div className="mx-auto mb-10 max-w-[850px] text-center">
-          <h1 className="mb-4 text-[clamp(1.875rem,4vw,2.375rem)] leading-tight font-extrabold text-lander-dark">
+          <h1 className="mb-4 text-[clamp(1.875rem,4vw,2.375rem)] leading-[1.15] font-extrabold text-lander-dark">
             {pricing.header.title}
           </h1>
           <p className="text-[15px] leading-relaxed text-lander-text">{pricing.header.lead}</p>
@@ -43,7 +43,7 @@ export default function PricingPage() {
                 key={item.question}
                 className="rounded-2xl border border-[#ececec] bg-white p-6 shadow-[0_6px_18px_rgba(0,0,0,0.04)]"
               >
-                <h3 className="mb-2.5 text-lg text-lander-dark">{item.question}</h3>
+                <h3 className="mb-2.5 text-[17px] text-lander-dark">{item.question}</h3>
                 <p className="text-[15px] leading-relaxed text-lander-text">{item.answer}</p>
               </div>
             ))}
