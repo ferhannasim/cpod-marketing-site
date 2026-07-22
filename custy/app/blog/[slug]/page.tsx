@@ -57,7 +57,9 @@ export default async function PostPage({ params }: PageProps) {
   return (
     <main>
       <Container className="pt-12">
-        <h1 className="text-2xl font-bold text-ink sm:text-3xl">{post.title}</h1>
+        <h1 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
+          {post.title}
+        </h1>
         <p className="mt-2 text-sm text-body">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         </p>

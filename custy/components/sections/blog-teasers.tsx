@@ -7,7 +7,7 @@ export function BlogTeasers({ heading, posts }: { heading: string; posts: BlogPo
   return (
     <section className="bg-scheme1-bg">
       <Container className="py-14 md:py-20">
-        <h2 className="text-2xl font-bold text-ink sm:text-3xl">{heading}</h2>
+        <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">{heading}</h2>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {posts.map((post) => (
             <BlogPostCard key={post.slug} post={post} />

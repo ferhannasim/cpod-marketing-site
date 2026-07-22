@@ -12,7 +12,7 @@ export default function BlogIndexPage() {
   return (
     <main>
       <Container className="py-14 md:py-20">
-        <h1 className="text-2xl font-bold text-ink sm:text-3xl">Custy Blog</h1>
+        <h1 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">Custy Blog</h1>
         <div className="mt-8 grid gap-6 sm:grid-cols-3">
           {posts.map((post) => (
             <BlogPostCard key={post.slug} post={post} />

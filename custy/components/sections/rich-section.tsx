@@ -24,8 +24,8 @@ export function RichSection({ block, scheme, imagePosition = "left", headingLeve
   const HeadingTag = headingLevel;
   const headingClasses =
     headingLevel === "h1"
-      ? "text-3xl font-bold text-ink sm:text-4xl md:text-5xl"
-      : "text-2xl font-bold text-ink sm:text-3xl";
+      ? "text-[clamp(1.875rem,4vw,2.375rem)] font-extrabold leading-[1.15] text-ink"
+      : "text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]";
 
   const image = block.image ? (
     <div className="overflow-hidden rounded-card" key="image">

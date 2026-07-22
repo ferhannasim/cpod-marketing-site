@@ -11,7 +11,9 @@ export function FeatureHighlights({ cards }: { cards: CardItem[] }) {
   return (
     <section className="bg-scheme2-bg">
       <Container className="py-14 md:py-20">
-        <h2 className="text-2xl font-bold text-ink sm:text-3xl">Everything a POD store needs</h2>
+        <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
+          Everything a POD store needs
+        </h2>
         <div className="mt-8">
           <CardGrid items={cards} columns={3} />
         </div>

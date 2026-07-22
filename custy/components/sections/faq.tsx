@@ -7,7 +7,9 @@ export function Faq({ items }: { items: { question: string; answer: string }[] }
   return (
     <section className="bg-scheme2-bg">
       <Container className="py-14 md:py-20">
-        <h2 className="text-2xl font-bold text-ink sm:text-3xl">Frequently Asked Questions</h2>
+        <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
+          Frequently Asked Questions
+        </h2>
         <div className="mt-8">
           {items.map((item) => (
             <details key={item.question} className="group border-b border-line py-4">
