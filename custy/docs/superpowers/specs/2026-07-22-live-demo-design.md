@@ -67,17 +67,25 @@ and renders header copy plus the client explorer.
 
 ### `components/live-demo/demo-explorer.tsx` (new, `"use client"`)
 
-Props: `initialSlug`. State: selected slug.
+Props: `initialSlug`. State: selected slug, picker-modal open flag.
 
-- **Main pane (left on desktop):** the editor in an iframe — `src` is the
+*(Amended 2026-07-22, same day: the original right-sidebar layout was replaced
+so the editor gets the full width — the iframe now spans a dedicated
+`max-w-[1440px]` wrapper outside the 1100px `Container`.)*
+
+- **Editor:** the iframe fills the explorer's full width — `src` is the
   selected product's `editorUrl`, `title` is the product name, ~`70vh` tall,
   rounded border consistent with existing panels, `allow="fullscreen"`.
   Keyed by slug so switching products remounts the frame cleanly.
-- **Sidebar (right on desktop, stacked above the iframe on mobile):** one
-  button per product — thumbnail + name, active product highlighted (ink
-  border). Clicking selects the product and syncs the URL via
-  `router.replace(\`/live-demo?product=<slug>\`, { scroll: false })` so links
-  stay shareable.
+- **Switcher (md+):** a centered strip above the iframe — one button per
+  product, thumbnail + name, active product highlighted (ink border,
+  `aria-pressed`). Clicking selects the product and syncs the URL via
+  `window.history.replaceState` (shallow update) so links stay shareable.
+- **Switcher (mobile):** the strip collapses to a bar showing the selected
+  product's name plus a "Choose a product" button that opens a full-screen
+  picker modal (same overlay pattern as the header's mobile menu) listing the
+  same product buttons; picking one selects it and closes the modal, and an X
+  button closes without changing anything.
 - Under the iframe: an "Open in a new tab" external link to the raw editor URL.
 
 ### Wiring

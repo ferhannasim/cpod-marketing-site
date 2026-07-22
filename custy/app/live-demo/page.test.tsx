@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import LiveDemoPage from "./page";
 import { demoProducts } from "@/content/demo-products";
 
@@ -39,6 +39,30 @@ describe("live demo page", () => {
     expect(screen.getByRole("button", { name: hoodie.name })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: apron.name })).toHaveAttribute("aria-pressed", "false");
     expect(window.location.search).toBe(`?product=${hoodie.slug}`);
+  });
+
+  it("opens a product picker modal from the mobile trigger and selects from it", async () => {
+    render(await LiveDemoPage({ searchParams: Promise.resolve({}) }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: /choose a product/i }));
+    const dialog = screen.getByRole("dialog", { name: /choose a product/i });
+    for (const product of demoProducts) {
+      expect(within(dialog).getByRole("button", { name: product.name })).toBeInTheDocument();
+    }
+
+    fireEvent.click(within(dialog).getByRole("button", { name: hoodie.name }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(editorFrame().src).toBe(hoodie.editorUrl);
+    expect(window.location.search).toBe(`?product=${hoodie.slug}`);
+  });
+
+  it("closes the product picker modal without changing the product", async () => {
+    render(await LiveDemoPage({ searchParams: Promise.resolve({}) }));
+    fireEvent.click(screen.getByRole("button", { name: /choose a product/i }));
+    fireEvent.click(screen.getByRole("button", { name: /close/i }));
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(editorFrame().src).toBe(apron.editorUrl);
   });
 
   it("offers an open-in-new-tab escape hatch for the selected product", async () => {

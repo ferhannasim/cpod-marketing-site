@@ -24,18 +24,22 @@ export default async function LiveDemoPage({
 
   return (
     <main>
-      <Container className="py-16 md:py-20">
+      <Container className="pt-16 md:pt-20">
         <div className="mx-auto mb-10 max-w-[760px] text-center">
           <h1 className="text-[clamp(2.125rem,4.5vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.02em] text-ink">
             Live Demo
           </h1>
           <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
-            Design a real product in the Custy customizer — pick one on the right and
-            start creating.
+            Design a real product in the Custy customizer — pick a product and start
+            creating.
           </p>
         </div>
-        <DemoExplorer key={selected.slug} initialSlug={selected.slug} />
       </Container>
+      {/* Wider than Container's 1100px clamp: the editor gets the full viewport
+          up to 1440px so the embedded customizer has room to work. */}
+      <div className="mx-auto w-full max-w-[1440px] px-4 pb-16 sm:px-6 md:pb-20">
+        <DemoExplorer key={selected.slug} initialSlug={selected.slug} />
+      </div>
     </main>
   );
 }
