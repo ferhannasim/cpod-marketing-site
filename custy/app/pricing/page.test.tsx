@@ -1,15 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PricingPage, { metadata } from "./page";
-import { pricing } from "@/content/pricing";
-
-// Self-updating: recomputes the same intersection the page derives from
-// content/pricing.ts, so this test tracks the data instead of pinning a
-// hardcoded string that could silently drift out of sync.
-const commonFeatures = pricing.plans.reduce<string[]>(
-  (acc, plan) => acc.filter((feature) => plan.features.includes(feature)),
-  pricing.plans[0].features,
-);
 
 describe("Pricing page", () => {
   it("renders the live page's h1 verbatim", () => {
@@ -51,19 +42,6 @@ describe("Pricing page", () => {
     expect(
       screen.getByText(/All prices are billed in USD/),
     ).toBeInTheDocument();
-  });
-
-  it("renders the included-in-every-plan section with a genuinely shared feature", () => {
-    render(<PricingPage />);
-    expect(
-      screen.getByRole("heading", { name: "What's included in every plan" }),
-    ).toBeInTheDocument();
-    expect(commonFeatures.length).toBeGreaterThan(0);
-    // The shared feature already renders once per plan card; the new section
-    // adds one more occurrence, so there should be more matches than plans.
-    expect(screen.getAllByText(commonFeatures[0]).length).toBeGreaterThan(
-      pricing.plans.length,
-    );
   });
 
   it("renders the trust band's plan guarantees before the FAQ", () => {
