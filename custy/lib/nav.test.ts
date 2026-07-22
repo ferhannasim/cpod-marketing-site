@@ -3,11 +3,12 @@ import { headerNav, footerColumns, socialLinks } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav has the four live links plus the app CTA target", () => {
+  it("header nav has the five live links plus the app CTA target", () => {
     expect(headerNav.map((l) => l.href)).toEqual([
       "/how-it-works",
       "/pricing",
       "/features",
+      "/live-demo",
       "/blog",
     ]);
   });
@@ -20,12 +21,13 @@ describe("nav data", () => {
     }
   });
 
-  it("footer Explore column gains Blog after Features", () => {
+  it("footer Explore column lists site pages then the app listing", () => {
     const explore = footerColumns.find((c) => c.title === "Explore");
     expect(explore?.links.map((l) => l.href)).toEqual([
       "/how-it-works",
       "/pricing",
       "/features",
+      "/live-demo",
       "/blog",
       APP_URL,
     ]);

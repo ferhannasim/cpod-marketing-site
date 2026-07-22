@@ -6,6 +6,7 @@ import { home } from "@/content/home";
 import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
+import { demoProducts } from "@/content/demo-products";
 
 describe("homepage", () => {
   it("renders the recomposed sections in order", () => {
@@ -74,9 +75,15 @@ describe("homepage", () => {
       expect(link).toHaveAttribute("href", APP_URL);
     }
   });
-  it("drops the demo product grid", () => {
+  it("renders the live demo products section with a card per product", () => {
     render(<HomePage />);
-    expect(screen.queryByText(/test our app on demo product/i)).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /try custy on real products/i })).toBeInTheDocument();
+    const cards = screen.getAllByTestId("demo-product-card");
+    expect(cards).toHaveLength(demoProducts.length);
+    for (const [i, product] of demoProducts.entries()) {
+      expect(cards[i]).toHaveAttribute("href", `/live-demo?product=${product.slug}`);
+      expect(screen.getByText(product.name)).toBeInTheDocument();
+    }
   });
   it("drops the media/image section", () => {
     render(<HomePage />);

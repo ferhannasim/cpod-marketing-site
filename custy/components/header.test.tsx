@@ -16,6 +16,12 @@ it("renders a Blog link", () => {
   expect(blogLink).toHaveAttribute("href", "/blog");
 });
 
+it("renders a Live Demo link", () => {
+  render(<Header />);
+  const demoLink = screen.getAllByRole("link", { name: "Live Demo" })[0];
+  expect(demoLink).toHaveAttribute("href", "/live-demo");
+});
+
 it("has a mobile menu toggle", () => {
   render(<Header />);
   expect(screen.getByRole("button", { name: /menu/i })).toBeInTheDocument();
