@@ -23,7 +23,7 @@ export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan
             <div
               key={plan.name}
               className={cn(
-                "flex flex-col rounded-card border border-line p-5",
+                "flex flex-col rounded-card border border-line p-5 transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_28px_rgba(0,0,0,0.06)]",
                 plan.featured && "border-2 border-[#1fb6ff] shadow-[0_12px_32px_rgba(31,182,255,0.16)]",
               )}
             >

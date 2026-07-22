@@ -23,6 +23,11 @@ export type FeaturesCta = {
   secondaryCta: CtaLink;
 };
 
+export type FeaturesWorkflowStrip = {
+  title: string;
+  items: CardItem[];
+};
+
 // Transcribed verbatim from content/raw/features.html (custy-features-page). No
 // <img> tags on this page, so no images to localize. Card `icon` glyphs are the
 // exact emoji from the source's `.custy-feature-icon`/`.custy-audience-icon`
@@ -160,6 +165,42 @@ export const features = {
       ],
     },
   ] satisfies FeaturesSection[],
+
+  // R4: "Works with your POD workflow" strip — 4 compact items, each a direct
+  // trim (deletion of a leading/trailing/middle clause, no added or reordered
+  // words) of one existing claim already published above or on
+  // content/how-it-works.ts. No new facts; see task-R4-report.md for the full
+  // old-source -> item-text table:
+  //   1. "Embedded in Your Store" <- hero.lead[0]'s trailing clause
+  //      ("...letting customers design directly on your store in real time
+  //      through an intuitive design panel.")
+  //   2. "DTG & DTF Print-Ready Files" <- sections[0].cards[3] ("DTG, DTF &
+  //      Print-Ready Files") text, with its middle clause trimmed
+  //   3. "Multi-Side Printing" <- how-it-works.ts whySection.cards[1]
+  //      ("Multi-Side Design") text, trailing clause trimmed
+  //   4. "Live Real-Time Preview" <- sections[0].cards[0] ("Real-Time Product
+  //      Customizer") text, trailing clause trimmed
+  workflowStrip: {
+    title: "Works with your POD workflow",
+    items: [
+      {
+        title: "Embedded in Your Store",
+        text: "Customers design directly on your store in real time through an intuitive design panel.",
+      },
+      {
+        title: "DTG & DTF Print-Ready Files",
+        text: "Generate high-quality, fulfillment-ready design outputs for DTG, DTF, and other print workflows.",
+      },
+      {
+        title: "Multi-Side Printing",
+        text: "Support front, back, sleeves, and more.",
+      },
+      {
+        title: "Live Real-Time Preview",
+        text: "Let customers design products live on your storefront with an instant preview experience.",
+      },
+    ],
+  } satisfies FeaturesWorkflowStrip,
 
   cta: {
     title: "Start with Custy Risk-Free",

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import FeaturesPage, { metadata } from "./page";
+import { features } from "@/content/features";
 
 describe("Features page", () => {
   it("renders the live page's h1 verbatim", () => {
@@ -31,6 +32,24 @@ describe("Features page", () => {
     expect(screen.getByRole("heading", { name: "Get Print-Ready Orders" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "POD Businesses" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Growth-Focused Merchants" })).toBeInTheDocument();
+  });
+
+  it("renders the works-with-your-POD-workflow strip", () => {
+    render(<FeaturesPage />);
+    expect(
+      screen.getByRole("heading", { name: features.workflowStrip.title }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: features.workflowStrip.items[0].title }),
+    ).toBeInTheDocument();
+  });
+
+  it("links to the how-it-works page from the features-page steps", () => {
+    render(<FeaturesPage />);
+    expect(screen.getByRole("link", { name: "See how it works" })).toHaveAttribute(
+      "href",
+      "/how-it-works",
+    );
   });
 
   it("links out to the Shopify app listing, not to a commerce page", () => {
