@@ -33,4 +33,16 @@ export const demoProducts: DemoProduct[] = [
     editorUrl: `${EDITOR_BASE}/11083917918244`,
     image: { src: "/images/demo/long-sleeve-tshirt.jpg", width: 430, height: 645 },
   },
+  {
+    slug: "mugs-11oz",
+    name: "Mugs 11oz.",
+    editorUrl: `${EDITOR_BASE}/11097607634980`,
+    image: { src: "/images/demo/mug.webp", width: 430, height: 430 },
+  },
+  {
+    slug: "business-cards-14pt",
+    name: "Business cards 14pt",
+    editorUrl: `${EDITOR_BASE}/11097622773796`,
+    image: { src: "/images/demo/business-cards.png", width: 800, height: 800 },
+  },
 ];

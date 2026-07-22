@@ -19,9 +19,14 @@ Three products, each with a name, a hosted-editor URL, and a product image
 | `apron-full-length-no-pockets` | Apron Full Lengh No Pockets | `https://product-editor-app-393012399860.us-central1.run.app/customize/11083839111204` |
 | `hoodies-70-30-cotton-polyester` | Hoodies 70/30 Cotton-Polyester 22.5 oz | `https://product-editor-app-393012399860.us-central1.run.app/customize/11083861360676` |
 | `long-sleeve-t-shirt-midweight-cotton` | Long Sleeve T-shirt Midweight Cotton 8.8 oz | `https://product-editor-app-393012399860.us-central1.run.app/customize/11083917918244` |
+| `mugs-11oz` | Mugs 11oz. | `https://product-editor-app-393012399860.us-central1.run.app/customize/11097607634980` |
+| `business-cards-14pt` | Business cards 14pt | `https://product-editor-app-393012399860.us-central1.run.app/customize/11097622773796` |
 
 Product names are kept verbatim from the source data (including "Lengh").
 Slug order above is display order; the apron is the default product.
+*(The mug and business-card rows were added 2026-07-22 after the initial three;
+their images came from a shopifypreview.com CDN, likewise pulled once into
+`public/images/demo/`.)*
 
 ## Architecture
 
