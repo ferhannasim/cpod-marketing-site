@@ -55,12 +55,12 @@ describe("About Us page", () => {
     expect(screen.getByText("Customize products in real time")).toBeInTheDocument();
   });
 
-  it("renders the Why Custy card grid with decorative icon glyphs", () => {
-    render(<AboutUsPage />);
+  it("renders the Why Custy card grid with decorative icon tiles", () => {
+    const { container } = render(<AboutUsPage />);
     expect(screen.getByRole("heading", { name: "Dynamic Pricing" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Growth-Oriented Design" })).toBeInTheDocument();
-    expect(screen.getByText("💰")).toBeInTheDocument();
-    expect(screen.getByText("📊")).toBeInTheDocument();
+    expect(container.querySelector('[data-icon="circle-dollar-sign"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-icon="chart-column"]')).toBeInTheDocument();
   });
 
   it("renders the Our Commitment lists", () => {

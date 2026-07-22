@@ -20,7 +20,13 @@ import { posts } from "@/content/posts";
 export default function HomePage() {
   return (
     <main>
-      <RichSection block={home.intro} scheme="bg-scheme1-bg" imagePosition="left" headingLevel="h1" />
+      <RichSection
+        block={home.intro}
+        scheme="bg-scheme1-bg"
+        imagePosition="left"
+        headingLevel="h1"
+        eyebrow="Shopify product customizer"
+      />
       <FeatureHighlights cards={(features.sections[0].cards ?? []).slice(0, 6)} scheme="bg-scheme2-bg" />
       <StepsTeaser steps={howItWorks.stepsSection.steps.slice(0, 4)} scheme="bg-scheme1-bg" />
       <WhyCusty scheme="bg-scheme2-bg" />
@@ -28,7 +34,7 @@ export default function HomePage() {
       <TrustBand scheme="bg-scheme2-bg" />
       <Faq items={pricing.faq.items} scheme="bg-scheme1-bg" />
       <BlogTeasers heading="Custy Blog" posts={posts} scheme="bg-scheme2-bg" />
-      <Container className="pb-14">
+      <Container className="py-16 md:py-20">
         <CtaBand
           title={home.closing.title}
           text={home.closing.text}

@@ -12,8 +12,14 @@ import { SITE_NAME } from "@/lib/site";
 export function Header() {
   const [open, setOpen] = useState(false);
 
+  // backdrop-filter creates a containing block for fixed descendants, which would
+  // clamp the open mobile menu overlay to the header strip — so drop it while open.
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-scheme1-bg">
+    <header
+      className={`sticky top-0 z-50 border-b border-line ${
+        open ? "bg-white" : "bg-white/90 backdrop-blur-md"
+      }`}
+    >
       <Container className="flex h-16 items-center justify-between">
         <Link href="/" className="shrink-0">
           <Image src="/images/logo.png" alt={SITE_NAME} width={139} height={40} priority />

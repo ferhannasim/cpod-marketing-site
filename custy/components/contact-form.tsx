@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
 
-const inputClasses = "w-full rounded-card border border-line px-3 py-2 text-sm focus:border-ink focus:outline-none";
+const inputClasses = "w-full rounded-lg border border-line px-3 py-2 text-sm focus:border-ink focus:outline-none";
 const labelClasses = "mb-1 block text-sm font-medium text-ink";
 
 export function ContactForm() {

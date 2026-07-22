@@ -21,9 +21,9 @@ describe("Features page", () => {
     expect(screen.getByRole("heading", { name: "Seamless Shopify Integration" })).toBeInTheDocument();
   });
 
-  it("renders the first feature card's decorative icon glyph", () => {
-    render(<FeaturesPage />);
-    expect(screen.getByText("🎨")).toBeInTheDocument();
+  it("renders the first feature card's decorative icon tile", () => {
+    const { container } = render(<FeaturesPage />);
+    expect(container.querySelector('[data-icon="palette"]')).toBeInTheDocument();
   });
 
   it("renders the how-it-works steps and the perfect-for audience cards", () => {

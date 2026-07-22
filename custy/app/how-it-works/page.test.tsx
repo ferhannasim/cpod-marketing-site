@@ -50,10 +50,10 @@ describe("How it Works page", () => {
     expect(screen.getByRole("heading", { name: "Better Customer Experience" })).toBeInTheDocument();
   });
 
-  it("renders the decorative why-card icon glyphs", () => {
-    render(<HowItWorksPage />);
-    expect(screen.getByText("🎨")).toBeInTheDocument();
-    expect(screen.getByText("✨")).toBeInTheDocument();
+  it("renders the decorative why-card icon tiles", () => {
+    const { container } = render(<HowItWorksPage />);
+    expect(container.querySelector('[data-icon="palette"]')).toBeInTheDocument();
+    expect(container.querySelector('[data-icon="sparkles"]')).toBeInTheDocument();
   });
 
   it("links the hero and closing CTAs to the correct destinations", () => {

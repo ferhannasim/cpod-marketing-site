@@ -29,10 +29,9 @@ export type FeaturesWorkflowStrip = {
 };
 
 // Transcribed verbatim from content/raw/features.html (custy-features-page). No
-// <img> tags on this page, so no images to localize. Card `icon` glyphs are the
-// exact emoji from the source's `.custy-feature-icon`/`.custy-audience-icon`
-// tiles (decorative design elements per controller adjudication — the
-// no-pictographic-emoji rule applies to site copy/prose, not `icon:` fields).
+// <img> tags on this page, so no images to localize. Card `icon` values are
+// semantic names resolved to SVG stroke icons by components/lander/icons.tsx
+// (the design pass replaced the source's decorative emoji tiles with them).
 // Inline <strong> emphasis inside hero/CTA-band paragraphs is not representable
 // by LanderHero/CtaBand's plain-string `lead`/`text` props, so it's flattened to
 // plain text; no words were added, removed, or reordered.
@@ -66,47 +65,47 @@ export const features = {
       lead: "Everything in Custy is designed to help Shopify merchants sell personalized products with less friction, better order accuracy, and a more engaging buyer experience.",
       cards: [
         {
-          icon: "🎨",
+          icon: "palette",
           title: "Real-Time Product Customizer",
           text: "Let customers design products live on your storefront with an instant preview experience that feels smooth, visual, and easy to use.",
         },
         {
-          icon: "🔄",
+          icon: "layers",
           title: "Multi-Side Customization",
           text: "Support multiple design areas including front, back, left sleeve, right sleeve, and other printable locations based on your product setup.",
         },
         {
-          icon: "💰",
+          icon: "circle-dollar-sign",
           title: "Dynamic Pricing Engine",
           text: "Automatically adjust pricing based on selected print areas, extra options, print methods, and design complexity to protect your margins.",
         },
         {
-          icon: "🖨️",
+          icon: "printer",
           title: "DTG, DTF & Print-Ready Files",
           text: "Generate high-quality, fulfillment-ready design outputs that make production easier for DTG, DTF, and other print workflows.",
         },
         {
-          icon: "🧩",
+          icon: "puzzle",
           title: "Flexible Product Options",
           text: "Offer sizes, colors, variants, product-specific configurations, and custom rules so each product can match your exact business needs.",
         },
         {
-          icon: "📦",
+          icon: "blocks",
           title: "Seamless Shopify Integration",
           text: "Orders include full design details and selected options, making fulfillment, review, and production handoff much faster and more organized.",
         },
         {
-          icon: "⚡",
+          icon: "zap",
           title: "Fast & User-Friendly UI",
           text: "Custy is built for performance and ease of use, helping your customers customize products without confusion or unnecessary steps.",
         },
         {
-          icon: "📈",
+          icon: "trending-up",
           title: "Higher Conversion Potential",
           text: "An interactive design experience keeps customers engaged longer, increases confidence before purchase, and can improve average order value.",
         },
         {
-          icon: "🛍️",
+          icon: "shopping-bag",
           title: "Built for Scalable Custom Selling",
           text: "Whether you are launching a new custom store or expanding a growing POD brand, Custy is designed to support long-term growth.",
         },
@@ -143,22 +142,22 @@ export const features = {
       lead: "Custy is made for Shopify merchants who want to turn standard products into interactive, personalized buying experiences.",
       cards: [
         {
-          icon: "👕",
+          icon: "shirt",
           title: "POD Businesses",
           text: "Offer live customization for apparel and print-on-demand products with a workflow built for production.",
         },
         {
-          icon: "🧢",
+          icon: "store",
           title: "Custom Apparel Stores",
           text: "Sell personalized t-shirts, hoodies, caps, and more with support for multiple design positions and options.",
         },
         {
-          icon: "🎁",
+          icon: "gift",
           title: "Gift Shops",
           text: "Create a better customer experience for stores offering personalized gifts, occasion-based items, and unique products.",
         },
         {
-          icon: "📊",
+          icon: "chart-column",
           title: "Growth-Focused Merchants",
           text: "Increase engagement and sales with an interactive customization journey that helps shoppers buy with confidence.",
         },
@@ -184,18 +183,22 @@ export const features = {
     title: "Works with your POD workflow",
     items: [
       {
+        icon: "monitor",
         title: "Embedded in Your Store",
         text: "Customers design directly on your store in real time through an intuitive design panel.",
       },
       {
+        icon: "file-check",
         title: "DTG & DTF Print-Ready Files",
         text: "Generate high-quality, fulfillment-ready design outputs for DTG, DTF, and other print workflows.",
       },
       {
+        icon: "layers",
         title: "Multi-Side Printing",
         text: "Support front, back, sleeves, and more.",
       },
       {
+        icon: "eye",
         title: "Live Real-Time Preview",
         text: "Let customers design products live on your storefront with an instant preview experience.",
       },

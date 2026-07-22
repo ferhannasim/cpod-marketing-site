@@ -40,18 +40,18 @@ routes or components; if a page needs a storefront action, link to the app listi
 - `content/pages/*.mdx` — support/contact page bodies (currently empty prose).
 - `content/policies/*.mdx` — privacy, terms.
 - `content/posts/*.mdx` + `content/posts/index.ts` — blog post bodies and registry.
-- `content/{home,features,pricing,how-it-works,about}.ts` — structured lander/page data,
-  including decorative `icon:` emoji fields (exempt from the no-emoji guard, see below).
+- `content/{home,features,pricing,how-it-works,about}.ts` — structured lander/page data.
+  `icon:` fields hold semantic names ("palette", "printer", …) resolved to SVG stroke
+  icons by `components/lander/icons.tsx` — never emoji.
 - `content/raw/` — untouched scrape record. Never edit or render it directly.
 
 ## No-emoji guard
 
-`lib/no-emoji.test.ts` fails the suite if pictographic emoji show up in rendered copy
-under `content/**/*.{mdx,ts}` (excluding `content/raw/`), `components/**/*.tsx`, or
-`app/**/*.tsx`. The `icon:` fields in the content data files above are exempt (decorative
-gradient icon tiles ported from the live site), as are `*.test.tsx` assertions that merely
-check one of those glyphs renders. All other copy — headings, body text, alt text — must
-stay emoji-free; `©`/`®`/`™` are allowlisted.
+`lib/no-emoji.test.ts` fails the suite if pictographic emoji show up anywhere under
+`content/**/*.{mdx,ts}` (excluding `content/raw/`), `components/**/*.tsx`, or
+`app/**/*.tsx`. There are no exemptions: card icons are semantic-name SVGs (see above),
+so all copy and code — headings, body text, alt text, `icon:` fields, tests — must stay
+emoji-free; `©`/`®`/`™` are allowlisted.
 
 ## Redirects
 

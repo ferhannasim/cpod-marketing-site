@@ -3,7 +3,6 @@ import { cn } from "@/lib/utils";
 
 /**
  * A single call-to-action link used across the lander family (hero + CTA band).
- * `variant` maps to the four `.custy-btn-*` styles found in the scoped CSS.
  */
 export type CtaLink = {
   label: string;
@@ -12,24 +11,23 @@ export type CtaLink = {
 };
 
 const ctaVariants: Record<NonNullable<CtaLink["variant"]>, string> = {
-  // .custy-btn-primary — blue→indigo gradient pill (features/how/about heroes)
-  primary:
-    "bg-[linear-gradient(90deg,#17b6f4,#4285ff)] text-white shadow-[0_12px_25px_rgba(23,182,244,0.22)] hover:-translate-y-px hover:opacity-95",
-  // .custy-btn-secondary — white with border
-  secondary: "border border-lander-border bg-white text-lander-dark hover:bg-lander-light",
-  // .custy-btn-light — solid white on dark CTA band
-  light: "bg-white text-[#111827] hover:bg-[#f5f5f5]",
-  // .custy-btn-outline — translucent outline on dark CTA band
-  outline: "border border-white/20 bg-white/[0.06] text-white hover:bg-white/10",
+  // Solid ink pill — the primary action on light surfaces
+  primary: "bg-ink text-white shadow-sm hover:bg-black",
+  // White pill with hairline border
+  secondary: "border border-line bg-white text-ink hover:border-[#98a2b3]",
+  // Solid white pill on the dark CTA band
+  light: "bg-white text-ink hover:bg-[#eef1f6]",
+  // Translucent outline on the dark CTA band
+  outline: "border border-white/25 bg-white/[0.06] text-white hover:bg-white/10",
 };
 
 /**
- * Renders a `.custy-btn` pill anchor. External links (http…) open in a new tab
- * with a safe rel; internal links use next/link. No commerce logic.
+ * Renders a pill CTA anchor. External links (http…) open in a new tab with a
+ * safe rel; internal links use next/link. No commerce logic.
  */
 export function LanderCta({ label, href, variant = "primary" }: CtaLink) {
   const className = cn(
-    "inline-flex items-center justify-center rounded-[14px] px-5 py-2.5 text-sm font-bold no-underline transition-all duration-200 max-md:w-full",
+    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold no-underline transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:outline-none max-md:w-full",
     ctaVariants[variant],
   );
   if (/^https?:\/\//.test(href)) {
@@ -47,9 +45,9 @@ export function LanderCta({ label, href, variant = "primary" }: CtaLink) {
 }
 
 /**
- * Page wrapper for a lander (`.custy-*-page`): centered 1450px column with the
- * scoped padding. Vertical rhythm between sections comes from each section /
- * CTA band carrying its own top margin (faithful to the source CSS).
+ * Centered content column shared by the lander pages: 1200px, gutter padding.
+ * Sections that need a full-bleed band render their own background and nest
+ * this column inside it.
  */
 export function Lander({
   className,
@@ -59,12 +57,7 @@ export function Lander({
   children: React.ReactNode;
 }) {
   return (
-    <div
-      className={cn(
-        "mx-auto box-border max-w-[1200px] px-5 pt-8 pb-14 font-sans text-lander-text max-md:px-4 max-md:pt-5 max-md:pb-10",
-        className,
-      )}
-    >
+    <div className={cn("mx-auto box-border max-w-[1200px] px-5 max-md:px-4", className)}>
       {children}
     </div>
   );

@@ -1,5 +1,6 @@
 import type { CardItem, CtaLink } from "@/components/lander";
 import { APP_URL } from "@/lib/site";
+import { features } from "./features";
 
 export type AboutHero = {
   eyebrow: string;
@@ -34,9 +35,9 @@ export type AboutCta = {
 
 // Transcribed verbatim from content/raw/about-us.html (custy-about-page). No <img>
 // tags on this page, so no images to localize. Each card's `icon:` value below (three
-// glyphs on "What We Do", six on "Why Custy") is the exact emoji from the source's
-// `.custy-feature-icon` tiles (decorative design elements per the ruling applied on
-// the features/how-it-works pages); prose itself is emoji-free. The em dashes and
+// on "What We Do", six on "Why Custy") is a semantic name resolved to an SVG stroke
+// icon by components/lander/icons.tsx (the design pass replaced the source's emoji
+// tiles); prose itself is emoji-free. The em dashes and
 // curly apostrophes/bullet ("it's", "didn't", the eyebrow's "•") are kept verbatim
 // as ordinary punctuation — confirmed with `grep -noP '[^\x00-\x7F]'` that no other
 // non-ASCII characters exist on this page.
@@ -104,17 +105,17 @@ export const about = {
     lead: "Custy is a Shopify app designed specifically for print-on-demand businesses, custom product stores, and merchants who want to increase engagement and sales.",
     cards: [
       {
-        icon: "👕",
+        icon: "shirt",
         title: "Built for POD",
         text: "Custy supports print-on-demand businesses that need a smooth path from product customization to production-ready fulfillment.",
       },
       {
-        icon: "🛍️",
+        icon: "shopping-bag",
         title: "Made for Custom Stores",
         text: "From apparel to personalized gifts, Custy gives merchants flexible tools to sell products customers can truly make their own.",
       },
       {
-        icon: "📈",
+        icon: "trending-up",
         title: "Focused on Growth",
         text: "By improving engagement and making customization easier, Custy helps merchants drive higher conversion and stronger average order value.",
       },
@@ -141,37 +142,46 @@ export const about = {
     ],
   } satisfies AboutFeatureSection,
 
+  // Sixth page section (design pass): the audience grid. Lead and cards are
+  // pulled straight from content/features.ts's "Perfect For" section so the
+  // two pages can never drift apart — only the title label is authored here.
+  audiences: {
+    title: "Who Custy Serves",
+    lead: features.sections[2].lead,
+    cards: features.sections[2].cards ?? [],
+  } satisfies AboutCardSection,
+
   whyCusty: {
     title: "Why Custy",
     lead: "We didn’t just build another product customizer — we built a tool focused on performance, scalability, and revenue growth.",
     cards: [
       {
-        icon: "💰",
+        icon: "circle-dollar-sign",
         title: "Dynamic Pricing",
         text: "Adjust prices based on real customization choices so you stay flexible while protecting your margins.",
       },
       {
-        icon: "🖨️",
+        icon: "printer",
         title: "Modern Print Support",
         text: "Support DTG, DTF, and other production workflows with design data prepared for real-world fulfillment.",
       },
       {
-        icon: "🧩",
+        icon: "blocks",
         title: "Seamless Shopify Integration",
         text: "Connect directly with your Shopify store so orders, product options, and design details flow more smoothly.",
       },
       {
-        icon: "⚡",
+        icon: "zap",
         title: "Fast User Experience",
         text: "Deliver an intuitive customization experience that feels easy to use and keeps shoppers engaged.",
       },
       {
-        icon: "🏗️",
+        icon: "server",
         title: "Reliable Infrastructure",
         text: "Built for growing stores that need dependable performance and a platform that can evolve with their business.",
       },
       {
-        icon: "📊",
+        icon: "chart-column",
         title: "Growth-Oriented Design",
         text: "Everything in Custy is created to help merchants improve conversion, efficiency, and long-term store performance.",
       },

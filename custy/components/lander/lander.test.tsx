@@ -28,9 +28,9 @@ describe("LanderHero", () => {
 describe("CardGrid", () => {
   it("renders a heading for each of its three items", () => {
     const items = [
-      { icon: "🎨", title: "Real-Time Product Customizer", text: "Design products live." },
-      { icon: "🔄", title: "Multi-Side Customization", text: "Front, back, and sleeves." },
-      { icon: "💰", title: "Dynamic Pricing Engine", text: "Adjust pricing automatically." },
+      { icon: "palette", title: "Real-Time Product Customizer", text: "Design products live." },
+      { icon: "layers", title: "Multi-Side Customization", text: "Front, back, and sleeves." },
+      { icon: "circle-dollar-sign", title: "Dynamic Pricing Engine", text: "Adjust pricing automatically." },
     ];
 
     render(<CardGrid items={items} columns={3} />);

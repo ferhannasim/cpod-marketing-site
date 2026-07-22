@@ -32,10 +32,10 @@ export type HowCta = {
 // (custy-how-page); the four longest step paragraphs (steps 2, 3, 4, and 6's
 // first paragraph) were later condensed for the professionalize pass — same
 // claims, tighter wording, still ≤ 2 sentences each. No <img> tags on this
-// page, so no images to localize. The `.custy-why-card` icons are the exact
-// emoji from the source (decorative design elements per the same ruling
-// applied on the features page), and the curly apostrophe in "Custy's design
-// panel" (step 4) is kept verbatim as ordinary punctuation — confirmed with
+// page, so no images to localize. The `.custy-why-card` icons are semantic
+// names resolved to SVG stroke icons by components/lander/icons.tsx (the
+// design pass replaced the source's emoji), and the curly apostrophe in
+// "Custy's design panel" (step 4) is kept verbatim as ordinary punctuation — confirmed with
 // `grep -noP '[^\x00-\x7F]'` that no other non-ASCII prose exists on this
 // page.
 //
@@ -135,27 +135,27 @@ export const howItWorks = {
     lead: "Merchants choose Custy because it combines ease of use with powerful customization features. It is built for modern Shopify stores that want to offer personalized products without creating a complex buying experience.",
     cards: [
       {
-        icon: "🎨",
+        icon: "palette",
         title: "Real-Time Customization",
         text: "Let customers personalize products live with instant visual feedback directly on your storefront.",
       },
       {
-        icon: "🔄",
+        icon: "layers",
         title: "Multi-Side Design",
         text: "Support front, back, sleeves, and more so customers can create truly personalized products.",
       },
       {
-        icon: "💰",
+        icon: "circle-dollar-sign",
         title: "Dynamic Pricing",
         text: "Adjust pricing based on selected design areas, extra options, and different print methods.",
       },
       {
-        icon: "🖨️",
+        icon: "printer",
         title: "Print-Ready Order Data",
         text: "Get organized design details and production-friendly files to make fulfillment easier.",
       },
       {
-        icon: "✨",
+        icon: "sparkles",
         title: "Better Customer Experience",
         text: "Create a smooth and interactive customization journey that builds confidence before purchase.",
       },

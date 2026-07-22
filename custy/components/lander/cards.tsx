@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
+import { IconTile } from "./icons";
 
 export type CardItem = {
-  /** Emoji or short glyph. Rendered in a gradient tile (left) or bare (center). */
+  /** Semantic icon name resolved by components/lander/icons.tsx. */
   icon?: string;
   title: string;
   /** One or more body paragraphs (about-us prose cards carry two). */
@@ -9,10 +10,8 @@ export type CardItem = {
 };
 
 /**
- * Responsive column classes matching the source grids: single column on mobile,
- * two columns in the mid range, and the requested count above 1200px — the
- * breakpoints used by `.custy-feature-grid`, `.custy-perfect-for`,
- * `.custy-why-grid`, and `.custy-two-col`.
+ * Responsive column classes: single column on mobile, two columns in the mid
+ * range, and the requested count above 1200px.
  */
 const columnClasses: Record<number, string> = {
   1: "",
@@ -32,38 +31,31 @@ export type CardGridProps = {
 };
 
 /**
- * A grid of highlight cards (`.custy-feature-card` / `.custy-audience-card` /
- * `.custy-why-card`): rounded, bordered cards with a hover lift. Left alignment
- * renders the icon in the gradient tile; centered alignment renders a bare
- * oversized glyph.
+ * A grid of highlight cards: white, hairline-bordered, with a brand-tinted
+ * icon tile that cycles through the three process-ink tints by position, and a
+ * quiet hover lift.
  */
 export function CardGrid({ items, columns = 3, align = "left", className }: CardGridProps) {
   const centered = align === "center";
 
   return (
-    <div className={cn("grid gap-4", columnClasses[columns] ?? columnClasses[3], className)}>
-      {items.map((item) => (
+    <div className={cn("grid gap-5", columnClasses[columns] ?? columnClasses[3], className)}>
+      {items.map((item, index) => (
         <div
           key={item.title}
           className={cn(
-            "rounded-lander border border-lander-border bg-[linear-gradient(180deg,#ffffff_0%,#fafcff_100%)] p-5 shadow-[0_10px_24px_rgba(0,0,0,0.03)] transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-[0_16px_28px_rgba(0,0,0,0.06)]",
+            "rounded-2xl border border-line bg-white p-6 transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]",
             centered && "text-center",
           )}
         >
           {item.icon ? (
-            centered ? (
-              <div className="mb-2.5 text-[24px]">{item.icon}</div>
-            ) : (
-              <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-secondary bg-[linear-gradient(135deg,rgba(23,182,244,0.12),rgba(236,0,140,0.1))] text-[22px]">
-                {item.icon}
-              </div>
-            )
+            <IconTile name={item.icon} tint={index} className={cn("mb-5", centered && "mx-auto")} />
           ) : null}
-          <h3 className="mb-2.5 text-[17px] leading-snug text-lander-dark">{item.title}</h3>
-          {(Array.isArray(item.text) ? item.text : [item.text]).map((paragraph, index) => (
+          <h3 className="text-base leading-snug font-semibold text-ink">{item.title}</h3>
+          {(Array.isArray(item.text) ? item.text : [item.text]).map((paragraph, paragraphIndex) => (
             <p
-              key={index}
-              className="mb-3 text-[15px] leading-relaxed text-lander-text last:mb-0"
+              key={paragraphIndex}
+              className="mt-2.5 text-[15px] leading-[1.65] text-body"
             >
               {paragraph}
             </p>

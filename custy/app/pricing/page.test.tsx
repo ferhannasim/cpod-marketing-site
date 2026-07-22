@@ -31,7 +31,8 @@ describe("Pricing page", () => {
 
   it("shows the Growth plan as the featured/most-popular plan", () => {
     render(<PricingPage />);
-    expect(screen.getByText("MOST POPULAR")).toBeInTheDocument();
+    // Sentence-case text, uppercased via CSS on the badge pill.
+    expect(screen.getByText("Most popular")).toBeInTheDocument();
   });
 
   it("renders the pricing note pill and bottom disclaimer", () => {

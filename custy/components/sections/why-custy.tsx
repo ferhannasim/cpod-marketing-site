@@ -1,5 +1,5 @@
 import { Container } from "@/components/container";
-import { CardGrid, type CardItem } from "@/components/lander";
+import { CardGrid, Eyebrow, type CardItem } from "@/components/lander";
 import { features } from "@/content/features";
 
 // Three benefit cards, each a single-source trim of one existing
@@ -39,13 +39,14 @@ const cards: CardItem[] = [
 export function WhyCusty({ scheme = "bg-scheme2-bg" }: { scheme?: string }) {
   return (
     <section className={scheme}>
-      <Container className="py-14 md:py-20">
-        <h2 className="text-[1.625rem] font-extrabold leading-[1.2] text-ink md:text-[1.75rem]">
-          {features.hero.highlight.title}
-        </h2>
-        <div className="mt-8">
-          <CardGrid items={cards} columns={3} />
+      <Container className="py-16 md:py-24">
+        <div className="mx-auto mb-12 max-w-[760px] text-center">
+          <Eyebrow className="mb-4">Why Custy</Eyebrow>
+          <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
+            {features.hero.highlight.title}
+          </h2>
         </div>
+        <CardGrid items={cards} columns={3} />
       </Container>
     </section>
   );

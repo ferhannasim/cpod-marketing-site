@@ -1,11 +1,12 @@
 import { Container } from "@/components/container";
+import { IconTile } from "@/components/lander";
 
-export type TrustItem = { title: string; text: string };
+export type TrustItem = { icon: string; title: string; text: string };
 
 // Three plan guarantees already promised on the pricing page — no new claims,
-// just restated compactly for the homepage. Titles are the exact labels used
-// in the R2 spec; one-liners are direct trims of a single content/pricing.ts
-// field each (cited per item):
+// just restated compactly. Titles are the exact labels used in the R2 spec;
+// one-liners are direct trims of a single content/pricing.ts field each
+// (cited per item):
 //   1. "21-day free trial on paid plans" — title is verbatim the tail clause
 //      of pricing.header.note ("No setup fee • Cancel anytime • 21-day free
 //      trial on paid plans"). Body trims pricing.faq.items[0].answer ("Paid
@@ -22,14 +23,17 @@ export type TrustItem = { title: string; text: string };
 //      verbatim ("no hidden fees, no commission").
 const items: TrustItem[] = [
   {
+    icon: "calendar-check",
     title: "21-day free trial on paid plans",
     text: "Paid plans include a 21-day free trial so you can test Custy before committing.",
   },
   {
+    icon: "undo",
     title: "Cancel anytime through Shopify",
     text: "You can cancel anytime through Shopify.",
   },
   {
+    icon: "badge-percent",
     title: "No hidden fees or commissions",
     text: "No hidden fees, no commission.",
   },
@@ -41,13 +45,16 @@ const items: TrustItem[] = [
 export function TrustBand({ scheme = "bg-scheme2-bg" }: { scheme?: string }) {
   return (
     <section className={scheme}>
-      <Container className="py-8 md:py-10">
+      <Container className="py-10 md:py-14">
         <h2 className="sr-only">Plan guarantees</h2>
-        <div className="grid gap-6 sm:grid-cols-3">
-          {items.map((item) => (
-            <div key={item.title}>
-              <h3 className="text-base font-semibold text-ink">{item.title}</h3>
-              <p className="mt-1 text-sm text-body">{item.text}</p>
+        <div className="grid gap-8 sm:grid-cols-3">
+          {items.map((item, index) => (
+            <div key={item.title} className="flex items-start gap-4">
+              <IconTile name={item.icon} tint={index} className="h-10 w-10 shrink-0 rounded-lg" />
+              <div>
+                <h3 className="text-[15px] font-semibold text-ink">{item.title}</h3>
+                <p className="mt-1 text-sm leading-6 text-body">{item.text}</p>
+              </div>
             </div>
           ))}
         </div>

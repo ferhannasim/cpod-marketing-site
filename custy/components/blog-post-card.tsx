@@ -27,20 +27,20 @@ export function BlogPostCard({ post }: { post: BlogPostCardPost }) {
     <Link
       href={`/blog/${post.slug}`}
       data-testid="blog-post-card"
-      className="group block overflow-hidden rounded-card border border-line"
+      className="group block overflow-hidden rounded-card border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
     >
       <div className="relative aspect-square overflow-hidden">
         <Image
           src={post.image}
           alt={post.title}
           fill
-          className="object-cover transition-transform group-hover:scale-105"
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
           sizes="(min-width: 640px) 33vw, 100vw"
         />
       </div>
-      <div className="p-4">
-        <p className="text-[15px] font-medium text-ink">{post.title}</p>
-        <p className="mt-1 text-xs text-body">
+      <div className="p-5">
+        <p className="text-[15px] leading-snug font-semibold text-ink">{post.title}</p>
+        <p className="mt-1.5 text-xs text-[#667085]">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         </p>
       </div>
