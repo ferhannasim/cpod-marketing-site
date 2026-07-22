@@ -29,7 +29,7 @@ const cards: CardItem[] = [
   {
     icon: scalable.icon,
     title: scalable.title,
-    text: "Whether you're launching a new custom store or expanding a growing POD brand, Custy supports long-term growth.",
+    text: "Whether you're launching a new custom store or expanding a growing POD brand, Custy is designed to support long-term growth.",
   },
 ];
 
