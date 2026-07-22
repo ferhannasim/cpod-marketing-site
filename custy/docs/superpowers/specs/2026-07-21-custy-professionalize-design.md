@@ -87,3 +87,25 @@ Inherit Prose/header/footer changes only.
 ## Error handling
 
 No new runtime surfaces. FAQ uses native `<details>` — no JS failure modes.
+
+## Round 2 (owner feedback, 2026-07-22 — approved)
+
+Owner ruling: the free trial is **21 days** — unify all trial copy (homepage/about said 14).
+
+1. Homepage: remove the "The Custy App" media/image section entirely.
+2. CTA band: light treatment on the homepage (light background w/ subtle accent tint, ink
+   title, primary pill CTA); landers keep the dark band. Implemented as a `tone` prop.
+3. Two new homepage 3-card sections, factual only: "Why merchants choose Custy" (benefit
+   cards distilled from existing copy) and a trust band (21-day free trial · cancel
+   anytime via Shopify · no hidden fees/commissions — claims already in pricing copy).
+   **Reviews section deferred**: the app listing has zero reviews (verified 2026-07-22);
+   testimonials are added only when the owner supplies real quotes. Never fabricate.
+4. Nav: header gains Blog; footer gains Blog + Support.
+5. Pricing teaser: top-3 features per plan + per-card CTA + "billed in USD · 21-day free
+   trial on paid plans" microcopy.
+6. Pricing page: plan grid 4-across from 1024px (`lg:grid-cols-4`); new sections above
+   the FAQ — "What's included in every plan" (features common to all plans, derived from
+   the real lists) and the trust band.
+7. Features page: "Works with your POD workflow" strip (existing claims) + compact
+   4-step teaser linking to /how-it-works.
+8. Overall: consistent alternating backgrounds, spacing rhythm, card hover states.

@@ -179,3 +179,31 @@ Per-route sweep — with `pnpm dev` running, view EVERY route (`/`, `/features`,
 - [ ] **Step 1:** Sweep + fix each route (report a route → changes table; "no change" is a valid entry).
 - [ ] **Step 2:** Full `pnpm test` + `pnpm build`; route curl sweep (all 200, redirects intact: `/pages/features` → 308 `/features`).
 - [ ] **Step 3:** Commit — `git commit -m "polish(custy): whole-site scale sweep — blog, prose pages, 404"`.
+
+---
+
+## Round 2 addendum (spec "Round 2" section; same Global Constraints; owner-approved 2026-07-22)
+
+### Task R1: Global — 21-day copy, nav links, light CTA band, remove media section
+
+**Files:** Modify `content/{home,about}.ts` (14→21-Day, 3 strings), `lib/nav.ts` (header + footer gain Blog `/blog`; footer Company gains Support `/support`), `components/lander/cta-band.tsx` (add `tone?: "dark" | "light"`, default dark unchanged; light = `bg-scheme2-bg` with soft yellow/pink radial tints, `text-ink` title, `text-body` copy, cta default variant `primary`), `app/page.tsx` (band `tone="light"`; remove MediaWithContent), delete `components/sections/media-with-content.tsx` + `home.media` slice + its image if unreferenced (grep first), tests lockstep (`components/header.test.tsx` Blog link; `app/page.test.tsx` media-section-gone + 21-Day pin; `lib/nav.test.ts` if it pins link sets).
+
+- [ ] Steps: failing test updates (Blog in header, no media heading on home, 21-Day string) → implement → `pnpm test` + `pnpm build` green → commit `feat(custy): 21-day copy, blog nav links, light homepage CTA band; drop media section`.
+
+### Task R2: Homepage — why-cards, trust band, richer pricing teaser
+
+**Files:** Create `components/sections/why-custy.tsx` (h2 "Why merchants choose Custy", 3 `CardItem`-style cards distilled VERBATIM-faithfully from existing copy in `content/about.ts`/`features.ts` — no new claims), `components/sections/trust-band.tsx` (3 items: "21-day free trial on paid plans" · "Cancel anytime through Shopify" · "No hidden fees or commissions" — sourced from `content/pricing.ts` copy). Modify `components/sections/pricing-teaser.tsx` (per plan: name, price+period, first 3 features, per-card `LanderCta`-style link to `/pricing`; microcopy line "All prices billed in USD · 21-day free trial on paid plans"), `app/page.tsx` (order: hero → features → steps → why-custy → pricing teaser → trust band → FAQ → blog → CTA), `app/page.test.tsx` (assert why-card h2, one trust item, a teaser feature string).
+
+- [ ] Steps: failing tests → implement → full green → commit `feat(custy): homepage why-cards, trust band, richer pricing teaser`.
+
+### Task R3: Pricing page — 4-across + new sections
+
+**Files:** Modify `components/lander/pricing-table.tsx` (`min-[1200px]:grid-cols-4` → `lg:grid-cols-4`; adjust the featured-scale threshold media query to match), `app/pricing/page.tsx` (+2 sections above FAQ: "What's included in every plan" — compute the intersection of the four plans' feature lists at build time in the page file from `content/pricing.ts` and render as a 2-col checklist; reuse `components/sections/trust-band.tsx`), `app/pricing/page.test.tsx` (assert included-in-every-plan h2 + one common feature; existing plan assertions untouched).
+
+- [ ] Steps: failing tests → implement → full green → commit `feat(custy): pricing 4-across grid, common-features and trust sections`.
+
+### Task R4: Features page additions + overall pass
+
+**Files:** Modify `app/features/page.tsx` (+ "Works with your POD workflow" strip — 3-4 items using ONLY existing claims: Shopify-native, DTG/DTF print-ready files, multi-side printing, live preview; + compact 4-step `Steps` teaser reusing `content/how-it-works.ts` first 4 steps with a "See how it works" CTA), `content/features.ts` (workflow strip data), `app/features/page.test.tsx` (assert strip h2 + teaser link). Overall pass: verify every route's section backgrounds alternate cleanly and cards have consistent hover states (`CardGrid` already has hover-lift — extend to why-custy/trust/pricing-teaser cards if missing); route sweep (curl 200s + redirects) + full test + build.
+
+- [ ] Steps: failing tests → implement → sweep table in report → full green → commit `feat(custy): features workflow strip and steps teaser; hover/background pass`.
