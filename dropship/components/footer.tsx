@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { footerColumns, socialLinks } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
+import { NavItemLink } from "@/components/nav-item-link";
 import { TAGLINE } from "@/lib/site";
 
 export function Footer() {
@@ -21,9 +22,7 @@ export function Footer() {
               <ul className="mt-3 space-y-2">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm text-zinc-600 hover:text-ink">
-                      {link.label}
-                    </Link>
+                    <NavItemLink link={link} className="text-sm text-zinc-600 hover:text-ink" />
                   </li>
                 ))}
               </ul>

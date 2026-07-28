@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Hero } from "@/components/sections/hero";
 import { PrintingMethods } from "@/components/sections/printing-methods";
 import { DropshipPitch } from "@/components/sections/dropship-pitch";
+import { CustyPitch } from "@/components/sections/custy-pitch";
 import { ShippingBand } from "@/components/sections/shipping-band";
 import { FinalCta } from "@/components/sections/final-cta";
 import { LogoWall } from "@/components/logo-wall";
@@ -40,6 +41,7 @@ export default function HomePage() {
         </Container>
       </Section>
       <DropshipPitch />
+      <CustyPitch />
       <ShippingBand />
       <FinalCta />
     </>

@@ -8,14 +8,16 @@ function allLinks() {
 }
 
 describe("nav data", () => {
-  it("every link has a label and an internal href", () => {
+  it("every link has a label; internal links are root-relative, external links are https", () => {
     for (const link of allLinks()) {
       expect(link.label.length).toBeGreaterThan(0);
-      expect(link.href).toMatch(/^\//);
+      if (link.external) expect(link.href).toMatch(/^https:\/\//);
+      else expect(link.href).toMatch(/^\//);
     }
   });
   it("contains no Shopify-era paths", () => {
     for (const link of allLinks()) {
+      if (link.external) continue;
       expect(link.href).not.toMatch(/\/(pages|products|collections|cart|account)(\/|$)/);
     }
   });
@@ -28,5 +30,10 @@ describe("nav data", () => {
   it("social links are the four known profiles", () => {
     expect(socialLinks.map((s) => s.label).sort()).toEqual(["Facebook", "Instagram", "TikTok", "YouTube"]);
     for (const s of socialLinks) expect(s.href).toMatch(/^https:\/\//);
+  });
+  it("links out to Custy from both the primary nav and the footer", () => {
+    const external = allLinks().filter((link) => link.external);
+    const custy = external.filter((link) => link.href.includes("custyapp.com"));
+    expect(custy.length).toBeGreaterThanOrEqual(2);
   });
 });

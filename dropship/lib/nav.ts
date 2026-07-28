@@ -1,4 +1,6 @@
-export type NavLink = { label: string; href: string };
+import { CUSTY_SITE_URL } from "./site";
+
+export type NavLink = { label: string; href: string; external?: boolean };
 export type NavGroup = { label: string; links: NavLink[] };
 export type NavEntry = NavLink | NavGroup;
 
@@ -33,6 +35,7 @@ export const primaryNav: NavEntry[] = [
       { label: "How to measure", href: "/measuring" },
     ],
   },
+  { label: "Custy", href: CUSTY_SITE_URL, external: true },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -46,6 +49,7 @@ export const footerColumns: NavGroup[] = [
       { label: "Start your ecommerce brand", href: "/start-your-ecommerce-brand" },
       { label: "Launch an automated brand", href: "/launch-automated-brand" },
       { label: "Contact", href: "/contact" },
+      { label: "Custy design app", href: CUSTY_SITE_URL, external: true },
     ],
   },
   {

@@ -39,9 +39,10 @@ describe("site audit", () => {
     }
   });
 
-  it("every nav and footer href is a known static route", () => {
+  it("every internal nav and footer href is a known static route", () => {
     const known = new Set(STATIC_ROUTES);
     for (const link of allNavLinks) {
+      if (link.external) continue;
       expect(known.has(link.href), `nav link to unknown route ${link.href}`).toBe(true);
     }
   });

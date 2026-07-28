@@ -19,6 +19,7 @@ describe("HomePage", () => {
       "Top Selling Brands",
       "What sellers say",
       "Built for dropshipping",
+      "Custy for your storefront",
       "Ready to launch your brand?",
     ];
     const actualSections = h2Texts.filter((text) =>
