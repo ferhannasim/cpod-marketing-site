@@ -45,10 +45,24 @@ describe("money()", () => {
   });
 });
 
-const PROSE_FILES = [
-  "content/pages/policies/shipping.mdx",
-  "content/pages/delivery.mdx",
-];
+function walk(dir: string, out: string[] = []): string[] {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) walk(full, out);
+    else if (/\.mdx$/.test(entry.name)) out.push(full);
+  }
+  return out;
+}
+
+// billing.mdx describes merchant charges whose currency is an unresolved
+// client question (tracked in the design spec's Deferred section) and is
+// deliberately untouched by this branch, so it's excluded from the guard.
+const EXCLUDED = new Set(["content/pages/billing.mdx"]);
+
+const PAGES_ROOT = path.join(process.cwd(), "content/pages");
+const PROSE_FILES = walk(PAGES_ROOT)
+  .map((full) => path.relative(process.cwd(), full))
+  .filter((rel) => !EXCLUDED.has(rel));
 
 describe("MDX prose currency labels", () => {
   const known = new Set(allShippingAmounts);

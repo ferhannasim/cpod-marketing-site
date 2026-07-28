@@ -31,9 +31,14 @@ describe("nav data", () => {
     expect(socialLinks.map((s) => s.label).sort()).toEqual(["Facebook", "Instagram", "TikTok", "YouTube"]);
     for (const s of socialLinks) expect(s.href).toMatch(/^https:\/\//);
   });
-  it("links out to Custy from both the primary nav and the footer", () => {
-    const external = allLinks().filter((link) => link.external);
-    const custy = external.filter((link) => link.href.includes("custyapp.com"));
-    expect(custy.length).toBeGreaterThanOrEqual(2);
+  it("primary nav links out to Custy", () => {
+    const fromPrimary = primaryNav.flatMap((e) => (isGroup(e) ? e.links : [e]));
+    const custy = fromPrimary.filter((link) => link.external && link.href.includes("custyapp.com"));
+    expect(custy.length).toBeGreaterThanOrEqual(1);
+  });
+  it("footer links out to Custy", () => {
+    const fromFooter = footerColumns.flatMap((c) => c.links);
+    const custy = fromFooter.filter((link) => link.external && link.href.includes("custyapp.com"));
+    expect(custy.length).toBeGreaterThanOrEqual(1);
   });
 });
