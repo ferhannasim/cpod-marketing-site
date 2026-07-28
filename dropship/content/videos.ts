@@ -12,3 +12,6 @@ export const moreVideos: Video[] = [
   { id: "fh0UNC947ms", title: "Launch a Fully Automated Ecommerce Brand (No Tech Needed)" },
   { id: "FuunYt_DNfI", title: "Stop Selling Merch Through DMs | Build a Real Brand Instead" },
 ];
+
+/** Featured video first, then the strip — the order the library page renders. */
+export const allVideos: Video[] = [featuredVideo, ...moreVideos];

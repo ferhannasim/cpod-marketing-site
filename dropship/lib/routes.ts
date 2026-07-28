@@ -16,6 +16,7 @@ export const STATIC_ROUTES = [
   "/artwork-approval",
   "/size-charts",
   "/measuring",
+  "/videos",
   "/policies/privacy",
   "/policies/terms",
   "/policies/refund",

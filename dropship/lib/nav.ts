@@ -26,6 +26,7 @@ export const primaryNav: NavEntry[] = [
       { label: "Print on your own item", href: "/faq/print-on-your-own-item" },
       { label: "Delivery speed", href: "/delivery" },
       { label: "Billing information", href: "/billing" },
+      { label: "Video library", href: "/videos" },
     ],
   },
   {
@@ -71,6 +72,7 @@ export const footerColumns: NavGroup[] = [
       { label: "Artwork & mockup approval", href: "/artwork-approval" },
       { label: "Size charts", href: "/size-charts" },
       { label: "How to measure", href: "/measuring" },
+      { label: "Video library", href: "/videos" },
     ],
   },
   {
