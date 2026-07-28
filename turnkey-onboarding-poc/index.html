@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CPOD Turnkey Store — Interactive Preview</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><circle cx="11" cy="11" r="8.5" fill="none" stroke="%2316233c" stroke-width="1.8"/><circle cx="11" cy="11" r="3.2" fill="none" stroke="%2316233c" stroke-width="1.6"/><line x1="11" y1="0" x2="11" y2="4.5" stroke="%2316233c" stroke-width="1.6"/><line x1="11" y1="17.5" x2="11" y2="22" stroke="%2316233c" stroke-width="1.6"/><line x1="0" y1="11" x2="4.5" y2="11" stroke="%2316233c" stroke-width="1.6"/><line x1="17.5" y1="11" x2="22" y2="11" stroke="%2316233c" stroke-width="1.6"/></svg>'>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16233c;
+    --ink-soft:#5d6879;
+    --paper:#f4f5f2;
+    --card:#ffffff;
+    --line:#e2e5df;
+    --line-soft:#eceee8;
+    --accent:#0a5ad4;
+    --accent-deep:#0847a8;
+    --accent-bg:#edf3fd;
+    --green:#0f7d40;
+    --green-deep:#0c6634;
+    --green-bg:#eaf6ef;
+    --green-line:#c2e2cf;
+    --amber:#8f6400;
+    --amber-deep:#d9a514;
+    --amber-bg:#fff5dc;
+    --amber-line:#eed9a0;
+    --red:#b3362b;
+    --red-bg:#fdecea;
+    --purple:#6d28c9;
+    --purple-bg:#f4edfd;
+    --cyan:#00b7eb; --magenta:#ec008c; --yellow:#ffd200;
+    --shadow-sm:0 1px 2px rgba(22,35,60,.06);
+    --shadow:0 1px 2px rgba(22,35,60,.04), 0 12px 32px -14px rgba(22,35,60,.16);
+    --shadow-lift:0 2px 4px rgba(22,35,60,.05), 0 22px 44px -18px rgba(10,90,212,.28);
+    --display:"Sora","Avenir Next","Futura","Segoe UI",sans-serif;
+    --body:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:var(--body);background:
+      radial-gradient(1100px 380px at 50% -120px, #ffffff 0%, var(--paper) 62%);
+    color:var(--ink);line-height:1.6;font-size:15px;min-height:100vh}
+  button{font:inherit;cursor:pointer}
+  input,select{font:inherit}
+  a{color:var(--accent)}
+  ::selection{background:#cfe0fb}
+  svg{vertical-align:middle;flex:none}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 26px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--display);letter-spacing:.2em;font-weight:700;font-size:16px}
+  .brand-sub{font-family:var(--mono);font-size:10px;letter-spacing:.14em;opacity:.55;font-weight:400;text-transform:uppercase;margin-left:2px}
+  .topbar-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+  .seg{display:flex;border:1px solid rgba(255,255,255,.28);border-radius:9px;overflow:hidden;background:rgba(255,255,255,.06)}
+  .seg button{background:transparent;color:rgba(255,255,255,.85);border:0;padding:8px 18px;font-size:12px;font-family:var(--display);letter-spacing:.08em;text-transform:uppercase;font-weight:600;transition:background .15s,color .15s}
+  .seg button.on{background:#fff;color:var(--ink)}
+  .btn-bar{display:inline-flex;align-items:center;gap:7px;background:transparent;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.28);border-radius:9px;padding:8px 13px;font-size:12.5px;transition:border-color .15s,color .15s}
+  .btn-bar:hover{border-color:#fff;color:#fff}
+  .btn-bar.on{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.7);color:#fff}
+  .cmyk-bar{height:3px;display:flex}
+  .cmyk-bar i{flex:1}
+  .cmyk-bar i:nth-child(1){background:var(--cyan)}
+  .cmyk-bar i:nth-child(2){background:var(--magenta)}
+  .cmyk-bar i:nth-child(3){background:var(--yellow)}
+  .cmyk-bar i:nth-child(4){background:#0d1626}
+
+  .poc-strip{background:rgba(255,255,255,.75);border-bottom:1px solid var(--line-soft);padding:8px 22px;font-size:12px;color:var(--ink-soft);text-align:center;letter-spacing:.01em}
+  .poc-strip b{color:var(--accent);font-weight:600}
+
+  main{max-width:1060px;margin:0 auto;padding:34px 22px 78px}
+  footer{max-width:1060px;margin:0 auto;padding:0 22px 44px;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-soft);opacity:.7}
+
+  /* ---------- shared ---------- */
+  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.22em;font-size:10.5px;color:var(--accent);margin-bottom:12px;font-weight:700}
+  h1{font-family:var(--display);font-size:clamp(26px,4.3vw,40px);line-height:1.14;font-weight:700;letter-spacing:-.015em}
+  h2{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.005em;line-height:1.3}
+  h3{font-family:var(--display);font-size:15.5px;font-weight:600}
+  .muted{color:var(--ink-soft)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:var(--shadow)}
+  @media (prefers-reduced-motion: no-preference){
+    .step-stage .card, .review-card{animation:rise .32s ease-out both}
+    @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
+  .btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:10px;padding:12px 22px;font-weight:600;font-size:14px;letter-spacing:.005em;transition:background .13s,transform .12s,box-shadow .13s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 14px -8px rgba(10,90,212,.55)}
+  .btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary:disabled{background:#a9bedd;box-shadow:none;cursor:not-allowed}
+  .btn-quiet{background:#fff;border:1px solid var(--line);color:var(--ink)}
+  .btn-quiet:hover{border-color:#b9c0ca}
+  .btn-green{background:var(--green);color:#fff;box-shadow:0 6px 14px -8px rgba(15,125,64,.5)}
+  .btn-green:hover{background:var(--green-deep)}
+  .btn-green:disabled{background:#a3c8b1;box-shadow:none;cursor:not-allowed}
+  .link-btn{background:none;border:0;color:var(--accent);font-size:13px;font-weight:500;padding:0;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+  .badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:20px;border:1px solid var(--line);white-space:nowrap;vertical-align:middle}
+  .badge.pa{background:var(--accent-bg);border-color:#c6d8f6;color:var(--accent)}
+  .badge.pb{background:var(--purple-bg);border-color:#ddc8f5;color:var(--purple)}
+  .badge.pc{background:var(--green-bg);border-color:var(--green-line);color:var(--green)}
+  .badge.live{background:var(--amber-bg);border-color:var(--amber-line);color:var(--amber)}
+  .stamp{display:inline-flex;align-items:center;gap:5px;font-family:var(--display);text-transform:uppercase;font-size:10px;font-weight:700;letter-spacing:.15em;color:var(--green);border:2px solid var(--green);border-radius:5px;padding:3px 9px;transform:rotate(-4deg)}
+  @media (prefers-reduced-motion: no-preference){
+    .stamp.fresh{animation:stampIn .38s cubic-bezier(.2,1.6,.4,1)}
+    @keyframes stampIn{from{transform:rotate(-4deg) scale(1.9);opacity:0}to{transform:rotate(-4deg) scale(1);opacity:1}}
+  }
+  .note-prod{border-left:3px dashed #c6d8f6;background:#fafcff;border-radius:0 10px 10px 0;padding:11px 15px;margin-top:20px;font-size:12.5px;color:var(--ink-soft);line-height:1.55}
+  .note-prod b{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--accent);display:block;margin-bottom:3px}
+  .flash{border:1px solid var(--amber-line);background:var(--amber-bg);border-radius:12px;padding:13px 17px;margin-top:14px;font-size:13.5px}
+
+  /* ---------- landing ---------- */
+  .hero{margin:26px 0 14px;text-align:center;position:relative}
+  .hero p{max-width:590px;margin:14px auto 0;color:var(--ink-soft);font-size:16px;line-height:1.65}
+  .trust{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:22px 0 34px;color:var(--ink-soft);font-size:12.5px;font-weight:500}
+  .trust span{display:inline-flex;align-items:center;gap:7px}
+  .trust svg{color:var(--green)}
+  .paths{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media(max-width:860px){.paths{grid-template-columns:1fr}}
+  .path-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 24px 26px;display:flex;flex-direction:column;gap:12px;text-align:center;align-items:center;transition:border-color .16s, transform .16s, box-shadow .16s;box-shadow:var(--shadow);position:relative}
+  .path-card:hover{border-color:#b9cef2;transform:translateY(-4px);box-shadow:var(--shadow-lift)}
+  .path-icon{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center}
+  .path-icon.ia{background:var(--accent-bg);color:var(--accent)}
+  .path-icon.ib{background:var(--purple-bg);color:var(--purple)}
+  .path-icon.ic{background:var(--green-bg);color:var(--green)}
+  .path-kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:.2em;font-size:10px;color:var(--ink-soft);font-weight:700}
+  .path-card h3{font-size:17px}
+  .path-card p{font-size:13px;color:var(--ink-soft);flex:1;line-height:1.6}
+  .price-chip{font-family:var(--mono);font-size:11.5px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:5px 13px}
+  .path-cta{color:var(--accent);font-weight:600;font-size:13.5px;display:inline-flex;align-items:center;gap:6px}
+  .costs{margin-top:30px}
+  .costs h2{text-align:center}
+  .costs table{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:16px}
+  .costs td{padding:10px 12px;border-top:1px solid var(--line-soft)}
+  .costs td:last-child{font-family:var(--mono);text-align:right;white-space:nowrap;font-size:12.5px;color:var(--ink)}
+
+  /* ---------- stepper ---------- */
+  .stepper-wrap{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 16px 14px;box-shadow:var(--shadow);margin-bottom:24px}
+  .stepper-store{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:0 12px 14px;flex-wrap:wrap}
+  .stepper-store .st-name{font-family:var(--display);font-weight:600;font-size:15.5px;letter-spacing:-.005em;display:inline-flex;align-items:center;gap:9px}
+  .stepper-store .st-progress{font-size:12px;color:var(--ink-soft);font-weight:500}
+  .stepper{display:flex;overflow-x:auto;padding:6px 4px 10px;-webkit-overflow-scrolling:touch}
+  .snode{flex:1;min-width:72px;display:flex;flex-direction:column;align-items:center;position:relative}
+  .snode::before{content:'';position:absolute;top:16px;right:50%;width:100%;height:2px;background:var(--line);z-index:0}
+  .snode:first-child::before{display:none}
+  .snode.reached::before{background:var(--green)}
+  .scircle{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:600;font-size:13px;background:#fff;border:2px solid #d3d8d0;color:#9aa3b0;z-index:1;position:relative;transition:box-shadow .2s,background .2s,border-color .2s}
+  .snode.done .scircle{background:var(--green);border-color:var(--green);color:#fff}
+  .snode.current .scircle{border-color:var(--accent);color:var(--accent);box-shadow:0 0 0 5px rgba(10,90,212,.13)}
+  .snode.review .scircle{background:var(--amber-bg);border-color:var(--amber-deep);color:var(--amber)}
+  .slabel{margin-top:8px;font-family:var(--display);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:#9aa3b0;white-space:nowrap;font-weight:600}
+  .snode.done .slabel{color:var(--green)}
+  .snode.current .slabel{color:var(--accent);font-weight:700}
+  .snode.review .slabel{color:var(--amber)}
+
+  /* ---------- step card ---------- */
+  .step-stage{max-width:680px;margin:0 auto}
+  .step-icon{width:48px;height:48px;border-radius:13px;background:var(--accent-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+  .step-kicker{font-family:var(--display);text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:var(--accent);font-weight:700;margin-bottom:7px}
+  .step-lede{color:var(--ink-soft);margin-top:9px;font-size:14px;line-height:1.65}
+  .step-form{display:flex;flex-direction:column;gap:16px;margin-top:22px}
+  .field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  .field input[type=text],.field input[type=email]{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:11px 14px;background:#fff;transition:border-color .12s,box-shadow .12s;font-size:14px}
+  .field input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(10,90,212,.11)}
+  .field .hint{font-size:12px;color:var(--ink-soft);margin-top:5px}
+  .check{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;background:#fafbf8;border:1px solid var(--line);border-radius:11px;padding:12px 15px;transition:border-color .13s,background .13s;line-height:1.5}
+  .check:has(input:checked){border-color:var(--green-line);background:var(--green-bg)}
+  .check input{margin-top:2px;accent-color:var(--green);width:16px;height:16px;flex:none}
+  .radio-row{display:flex;gap:10px;flex-wrap:wrap}
+  .radio-row label{display:flex;gap:8px;align-items:center;font-size:13.5px;font-weight:500;background:#fafbf8;border:1px solid var(--line);border-radius:10px;padding:10px 16px;transition:border-color .13s,background .13s}
+  .radio-row label:has(input:checked){border-color:#a9c6f0;background:var(--accent-bg)}
+  .radio-row input{accent-color:var(--accent)}
+  .form-actions{display:flex;align-items:center;gap:16px;margin-top:8px;flex-wrap:wrap}
+  .swatches{display:flex;gap:10px}
+  .swatches input[type=color]{width:52px;height:40px;border:1.5px solid var(--line);border-radius:9px;padding:3px;background:#fff}
+  .file-mock{border:1.5px dashed #c9cec4;border-radius:12px;padding:18px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#fafbf8;line-height:1.5}
+  .file-mock.done{border-style:solid;border-color:var(--green-line);background:var(--green-bg);color:var(--ink)}
+  .file-ok{display:inline-flex;align-items:center;gap:8px}
+  .file-ok svg{color:var(--green)}
+  .locknote{display:flex;gap:10px;font-size:12.5px;color:var(--ink-soft);align-items:flex-start;background:#fafbf8;border:1px solid var(--line-soft);border-radius:11px;padding:12px 15px;line-height:1.55}
+  .locknote svg{color:var(--ink-soft);margin-top:1px}
+
+  .waiting{display:flex;gap:16px;align-items:flex-start;border:1px solid var(--amber-line);background:var(--amber-bg);border-radius:14px;padding:18px 20px;margin-top:22px;font-size:13.5px;line-height:1.6}
+  .waiting .w-icon{width:40px;height:40px;border-radius:12px;background:#fff;color:var(--amber);display:flex;align-items:center;justify-content:center;border:1px solid var(--amber-line)}
+  .back-row{margin-bottom:16px}
+
+  /* payment */
+  .pay-box{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+  @media(max-width:700px){.pay-box{grid-template-columns:1fr}}
+  .pay-summary{border:1px solid var(--line);border-radius:14px;padding:20px;font-size:13.5px;background:#fafbf8}
+  .pay-summary .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line)}
+  .pay-summary .row:last-child{border-bottom:0;font-weight:700;font-family:var(--mono);font-size:14.5px;padding-top:14px}
+  .cardface{border:1px solid var(--line);border-radius:14px;padding:20px;background:linear-gradient(150deg,#ffffff,#eef2fa)}
+  .cardface input{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin-top:9px;font-family:var(--mono);font-size:12.5px;background:#fff;color:var(--ink-soft)}
+
+  /* two-key build gate */
+  .twokey{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+  @media(max-width:700px){.twokey{grid-template-columns:1fr}}
+  .key{border:1.5px solid var(--line);border-radius:14px;padding:17px 19px;background:#fafbf8}
+  .key .k-label{font-family:var(--display);text-transform:uppercase;letter-spacing:.15em;font-size:9.5px;color:var(--ink-soft);font-weight:700}
+  .key .k-state{margin-top:8px;font-size:14.5px;font-weight:600}
+  .key.ok{border-color:var(--green-line);background:var(--green-bg)}
+  .key.ok .k-state{color:var(--green)}
+  .key .k-time{font-family:var(--mono);font-size:10.5px;color:var(--ink-soft);margin-top:3px}
+  .clock{border:1.5px solid #c6d8f6;background:var(--accent-bg);border-radius:14px;padding:18px 22px;display:flex;gap:30px;flex-wrap:wrap;align-items:center}
+  .clock .c-item .c-label{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink-soft)}
+  .clock .c-item .c-val{font-family:var(--display);font-size:17px;font-weight:600;margin-top:4px;letter-spacing:-.01em}
+  .tasklist{list-style:none;margin-top:18px}
+  .tasklist li{display:flex;gap:12px;align-items:center;padding:10px 4px;border-top:1px solid var(--line-soft);font-size:13.5px}
+  .tasklist li .tdone{color:#fff;background:var(--green);border-radius:50%;width:20px;height:20px;flex:none;display:flex;align-items:center;justify-content:center}
+  .tasklist li .tpend{border:2px solid #d5dad2;border-radius:50%;width:20px;height:20px;flex:none}
+  .tasklist input{accent-color:var(--green);width:16px;height:16px;flex:none}
+
+  /* handover */
+  .handover{position:relative;overflow:hidden;text-align:center;padding:42px 28px 32px}
+  .h-check{width:72px;height:72px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 12px 28px -10px rgba(15,125,64,.55)}
+  .handover-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px;text-align:left}
+  @media(max-width:700px){.handover-grid{grid-template-columns:1fr}}
+  .h-item{border:1px solid var(--line);border-radius:13px;padding:17px 19px;font-size:13px;background:#fafbf8;line-height:1.6}
+  .h-item .h-head{display:flex;align-items:center;gap:9px;margin-bottom:6px;font-weight:600;font-size:13.5px;color:var(--ink)}
+  .h-item .h-head svg{color:var(--accent)}
+  .confetti{position:absolute;inset:0;pointer-events:none}
+  .confetti i{position:absolute;top:-12px;width:8px;height:13px;border-radius:2px;opacity:0}
+  @media (prefers-reduced-motion: no-preference){
+    .confetti i{animation:fall 2.6s ease-in forwards}
+    @keyframes fall{0%{opacity:1;transform:translateY(0) rotate(0)}100%{opacity:0;transform:translateY(560px) rotate(340deg)}}
+  }
+
+  /* admin */
+  .admin-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:22px 0}
+  @media(max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 19px;box-shadow:var(--shadow-sm)}
+  .kpi .k-num{font-family:var(--display);font-size:26px;font-weight:700;letter-spacing:-.02em}
+  .kpi .k-cap{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;color:var(--ink-soft);margin-top:2px}
+  .admin-table{width:100%;border-collapse:collapse;font-size:13.5px;background:var(--card)}
+  .admin-table th{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-align:left;color:var(--ink-soft);padding:12px 17px;border-bottom:1px solid var(--line);background:#fafbf9}
+  .admin-table td{padding:14px 17px;border-bottom:1px solid var(--line-soft);vertical-align:middle}
+  .admin-table tbody tr:hover td{background:#fafbfd}
+  .admin-table tr:last-child td{border-bottom:0}
+  .admin-table tr.live-row td{background:#fffdf2}
+  .table-wrap{overflow-x:auto;border-radius:14px;border:1px solid var(--line);box-shadow:var(--shadow)}
+  .review-card{border:1.5px solid var(--amber-line);background:linear-gradient(180deg,#fffdf4,#fff8e3)}
+  .gate-line{display:flex;gap:10px;align-items:flex-start;border:1px solid #f3c1ba;background:var(--red-bg);border-radius:11px;padding:13px 16px;font-size:13px;margin-top:16px;line-height:1.55}
+  .gate-line.ok{border-color:var(--green-line);background:var(--green-bg)}
+  .gate-line.ok svg{color:var(--green)}
+  section + section{margin-top:24px}
+
+  button:focus-visible,input:focus-visible,a:focus-visible{outline:2.5px solid var(--accent);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <svg width="23" height="23" viewBox="0 0 22 22" aria-hidden="true">
+      <circle cx="11" cy="11" r="8.5" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <circle cx="11" cy="11" r="3.2" fill="none" stroke="#fff" stroke-width="1.3"/>
+      <line x1="11" y1="0" x2="11" y2="4.5" stroke="#fff" stroke-width="1.3"/>
+      <line x1="11" y1="17.5" x2="11" y2="22" stroke="#fff" stroke-width="1.3"/>
+      <line x1="0" y1="11" x2="4.5" y2="11" stroke="#fff" stroke-width="1.3"/>
+      <line x1="17.5" y1="11" x2="22" y2="11" stroke="#fff" stroke-width="1.3"/>
+    </svg>
+    CPOD <span class="brand-sub">Turnkey store · preview</span>
+  </div>
+  <div class="topbar-actions">
+    <div class="seg" role="group" aria-label="Switch view">
+      <button type="button" data-action="set-view" data-view="client" id="segClient">Client</button>
+      <button type="button" data-action="set-view" data-view="admin" id="segAdmin">CPOD team</button>
+    </div>
+    <button type="button" class="btn-bar" data-action="toggle-notes" id="notesBtn" title="Show how each screen maps to the real system"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> Behind the scenes</button>
+    <button type="button" class="btn-bar" data-action="reset"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg> Reset</button>
+  </div>
+</header>
+<div class="cmyk-bar" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+
+<div class="poc-strip"><b>Interactive preview</b> — click through it exactly like a client would. Nothing here is real, saved, or sent anywhere. · Prepared by <b>Ferhan</b></div>
+
+<main id="app"></main>
+
+<footer>CheapestPrintOnDemand.ca — turnkey store onboarding · interactive preview · Prepared by Ferhan</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------------- icons ---------------- */
+
+  var PATHS = {
+    pencil:  '<path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>',
+    bag:     '<path d="M6 7h12l1.2 13H4.8L6 7z"/><path d="M9 10V6a3 3 0 0 1 6 0v4"/>',
+    clipboard:'<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 12h6M9 16h6"/>',
+    bank:    '<path d="M3 21h18"/><path d="M5 21V10M9.5 21V10M14.5 21V10M19 21V10"/><path d="M12 3 2.5 8.5h19L12 3z"/>',
+    creditcard:'<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/>',
+    layers:  '<path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/>',
+    box:     '<path d="M21 8 12 3 3 8v8l9 5 9-5V8z"/><path d="M3.3 8.3 12 13l8.7-4.7"/><path d="M12 13v9"/>',
+    receipt: '<path d="M5 2v20l2.3-1.5L9.7 22l2.3-1.5 2.3 1.5 2.4-1.5L19 22V2l-2.3 1.5L14.3 2 12 3.5 9.7 2 7.3 3.5 5 2z"/><path d="M9 8h6M9 12h6"/>',
+    key:     '<circle cx="7.5" cy="15.5" r="3.5"/><path d="M10.5 12.5 20 3"/><path d="M15 5l3 3"/>',
+    wrench:  '<path d="M14.7 6.3a4.5 4.5 0 0 0-5.9 5.9L3 18l3 3 5.8-5.8a4.5 4.5 0 0 0 5.9-5.9l-3.1 3.1-3-3 3.1-3.1z"/>',
+    sparkle: '<path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4L12 3z"/>',
+    mic:     '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v4"/>',
+    image:   '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15.5 16 10.5 5 21"/>',
+    plug:    '<path d="M9 2v6M15 2v6"/><path d="M6 8h12v3a6 6 0 0 1-12 0V8z"/><path d="M12 17v5"/>',
+    lock:    '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    bulb:    '<path d="M9 18h6M10 22h4"/><path d="M12 2a6.5 6.5 0 0 1 4.2 11.5c-.8.7-1.2 1.5-1.2 2.5H9c0-1-.4-1.8-1.2-2.5A6.5 6.5 0 0 1 12 2z"/>',
+    search:  '<circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/>',
+    check:   '<path d="M4.5 12.5l5 5 10-11"/>',
+    clock:   '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+    video:   '<rect x="2" y="6" width="13" height="12" rx="2"/><path d="M15 10.5 22 6.5v11l-7-4"/>',
+    mail:    '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2.5 7 12 13.5 21.5 7"/>',
+    phone:   '<path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/>',
+    arrow:   '<path d="M5 12h14"/><path d="M13 6l6 6-6 6"/>'
+  };
+
+  function icon(name, size, sw){
+    return '<svg width="'+(size||18)+'" height="'+(size||18)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||1.8)+'" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+PATHS[name]+'</svg>';
+  }
+
+  /* ---------------- state ---------------- */
+
+  var KEY = 'cpod-turnkey-poc-v3';
+
+  var ORDER = ['s1','s2','s3','s4','s5','s6','s7','pay','s8'];
+
+  var BUILD_TASKS = [
+    ['app',      'Install the DropShipPOD app and connect it to our print shop'],
+    ['custy',    'Install and configure Custy upload settings (Path B)'],
+    ['brand',    'Apply your logo, colours, and contact information'],
+    ['policies', 'Install your four store policies (English + French)'],
+    ['config',   'Configure checkout, shipping, and tax settings'],
+    ['test',     'Run a full test order from storefront to print queue'],
+    ['mobile',   'Check every page on a phone']
+  ];
+
+  function freshState(){
+    return {
+      view: 'client',
+      notes: false,
+      path: null,
+      biz: null,
+      steps: {},
+      buildStartAt: null,
+      tasks: {},
+      buildDoneAt: null,
+      c: { installed:false, billing:false, linked:false },
+      lastStamp: null
+    };
+  }
+
+  var state = load();
+
+  function load(){
+    try{ var raw = localStorage.getItem(KEY); if(raw) return JSON.parse(raw); }catch(e){}
+    return freshState();
+  }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+  /* ---------------- helpers ---------------- */
+
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  function fmt(ts){
+    if(!ts) return '—';
+    var d = new Date(ts);
+    return d.toLocaleDateString(undefined,{month:'short',day:'numeric'}) + ', ' +
+           d.toLocaleTimeString(undefined,{hour:'numeric',minute:'2-digit'});
+  }
+  function fmtDay(ts){
+    if(!ts) return '—';
+    return new Date(ts).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
+  }
+  function addBusinessDays(ts, n){
+    var d = new Date(ts), added = 0;
+    while(added < n){
+      d.setDate(d.getDate()+1);
+      var day = d.getDay();
+      if(day !== 0 && day !== 6) added++;
+    }
+    return d.getTime();
+  }
+  function businessDaysLeft(due){
+    var d = new Date(); d.setHours(0,0,0,0);
+    var end = new Date(due); end.setHours(0,0,0,0);
+    if(end <= d) return 0;
+    var n = 0;
+    while(d < end){
+      d.setDate(d.getDate()+1);
+      var day = d.getDay();
+      if(day !== 0 && day !== 6) n++;
+    }
+    return n;
+  }
+
+  function stepState(id){ return state.steps[id] || {status:'todo'}; }
+  function stepDone(id){ return stepState(id).status === 'done'; }
+  function stepUnlocked(id){
+    var i = ORDER.indexOf(id);
+    if(i === 0) return true;
+    return stepDone(ORDER[i-1]);
+  }
+  function currentStep(){
+    for(var i=0;i<ORDER.length;i++){ if(!stepDone(ORDER[i])) return ORDER[i]; }
+    return null;
+  }
+  function tasksForPath(){
+    return BUILD_TASKS.filter(function(t){ return t[0] !== 'custy' || state.path === 'B'; });
+  }
+  function allTasksDone(){
+    return tasksForPath().every(function(t){ return state.tasks[t[0]]; });
+  }
+  function maybeStartClock(){
+    if(stepDone('s7') && stepDone('s8') && !state.buildStartAt){ state.buildStartAt = Date.now(); }
+  }
+
+  function prodNote(text){
+    if(!state.notes) return '';
+    return '<div class="note-prod"><b>BEHIND THE SCENES</b>'+text+'</div>';
+  }
+
+  /* ---------------- step definitions ---------------- */
+
+  var STEP_META = {
+    s1:  {n:'1', label:'Name',     icon:'pencil',     title:'Pick your business name'},
+    s2:  {n:'2', label:'Shopify',  icon:'bag',        title:'Open Shopify + buy your domain'},
+    s3:  {n:'3', label:'Register', icon:'clipboard',  title:'Register your business'},
+    s4:  {n:'4', label:'Bank',     icon:'bank',       title:'Open a business bank account'},
+    s5:  {n:'5', label:'Payments', icon:'creditcard', title:'Turn on Shopify Payments'},
+    s6:  {n:'6', label:'Files',    icon:'layers',     title:'Get your designs + numbers ready'},
+    s7:  {n:'7', label:'Brand',    icon:'box',        title:'Send us your brand materials'},
+    pay: {n:'$', label:'Pay',      icon:'receipt',    title:'Pay the $1,000 setup fee'},
+    s8:  {n:'8', label:'Access',   icon:'key',        title:'Give us access'}
+  };
+
+  var AUTOFILL = {
+    s1:  {name:'North Pine Apparel', c1:1,c2:1,c3:1,c4:1},
+    s2:  {domain:'northpine.ca', myshop:'north-pine-apparel.myshopify.com', plan:1},
+    s3:  {done:1, regno:'NEQ 2277 431 882', gst:'yes'},
+    s4:  {done:1},
+    s5:  {active:1, taxnums:'yes'},
+    s6:  {a1:1,a2:1,a3:1},
+    s7:  {logo:'northpine-logo.svg', col1:'#1f3d2b', col2:'#e8e3d5', bizname:'North Pine Apparel', email:'hello@northpine.ca', addr:'88 Rue Principale, Montréal QC'}
+  };
+
+  /* ---------------- render: landing ---------------- */
+
+  function renderLanding(){
+    return '' +
+    '<div class="hero">' +
+      '<div class="eyebrow">CheapestPrintOnDemand.ca</div>' +
+      '<h1>Your store, built and ready to sell<br>in 3–5 business days.</h1>' +
+      '<p>We build the store, we print every order, we ship it straight to your customer — with your name on it, not ours. Start by picking the path that matches how you want to sell.</p>' +
+    '</div>' +
+    '<div class="trust">' +
+      '<span>'+icon('check',14,2.2)+' Blind shipping — your brand only</span>' +
+      '<span>'+icon('check',14,2.2)+' 3–5 business day builds</span>' +
+      '<span>'+icon('check',14,2.2)+' Every price in CAD</span>' +
+    '</div>' +
+    '<div class="paths">' +
+      '<button type="button" class="path-card" data-action="choose-path" data-path="A">' +
+        '<span class="path-icon ia">'+icon('mic',26)+'</span>' +
+        '<span class="path-kicker">Path A</span><h3>Sell your own merch</h3>' +
+        '<p>You have the designs — your logo, your art, your brand. Customers browse and buy. Perfect for creators, bands, teams, clubs, and small brands.</p>' +
+        '<span class="price-chip">$1,000 store, built for you</span>' +
+        '<span class="path-cta">Choose Path A '+icon('arrow',15,2)+'</span>' +
+      '</button>' +
+      '<button type="button" class="path-card" data-action="choose-path" data-path="B">' +
+        '<span class="path-icon ib">'+icon('image',26)+'</span>' +
+        '<span class="path-kicker">Path B</span><h3>Open a custom print shop</h3>' +
+        '<p>Your customers upload their own photos and artwork, see it on the product, and order. Perfect for personalized gifts and photo products.</p>' +
+        '<span class="price-chip">$1,000 store, built for you</span>' +
+        '<span class="path-cta">Choose Path B '+icon('arrow',15,2)+'</span>' +
+      '</button>' +
+      '<button type="button" class="path-card" data-action="choose-path" data-path="C">' +
+        '<span class="path-icon ic">'+icon('plug',26)+'</span>' +
+        '<span class="path-kicker">Path C</span><h3>Connect your existing store</h3>' +
+        '<p>Already selling on Shopify? Install our free app and we become your print shop. No store build needed, no $1,000 fee.</p>' +
+        '<span class="price-chip">Free app · pay per order</span>' +
+        '<span class="path-cta">Choose Path C '+icon('arrow',15,2)+'</span>' +
+      '</button>' +
+    '</div>' +
+    '<section class="card costs">' +
+      '<h2>What it costs — all of it, up front</h2>' +
+      '<table><tbody>' +
+        '<tr><td>Your turnkey website (Paths A + B, one time)</td><td>$1,000 CAD</td></tr>' +
+        '<tr><td>DropShipPOD app</td><td>Free</td></tr>' +
+        '<tr><td>Shopify subscription (paid to Shopify)</td><td>$49/mo · $37/mo yearly</td></tr>' +
+        '<tr><td>Your domain name</td><td>~$16–20 /yr</td></tr>' +
+        '<tr><td>Card processing (paid to Shopify)</td><td>~2.9% + 30¢ /sale</td></tr>' +
+      '</tbody></table>' +
+      prodNote('This page replaces the current PDF intro. All three buttons sit on the first screen — a Path C visitor never scrolls past store-build copy that doesn’t apply to them.') +
+    '</section>';
+  }
+
+  /* ---------------- render: stepper ---------------- */
+
+  function stepperNodes(){
+    var cur = currentStep();
+    var nodes = ORDER.map(function(id){
+      var m = STEP_META[id], st = stepState(id);
+      var cls = '', inner = m.n;
+      if(st.status === 'done'){ cls = 'done reached'; inner = icon('check',15,2.6); }
+      else if(st.status === 'review'){ cls = 'review reached'; inner = icon('clock',15,2.2); }
+      else if(id === cur){ cls = 'current reached'; }
+      return '<div class="snode '+cls+'"><div class="scircle">'+inner+'</div><div class="slabel">'+m.label+'</div></div>';
+    }).join('');
+
+    var buildCls = '', buildInner = icon('wrench',15,2);
+    if(state.buildDoneAt){ buildCls='done reached'; buildInner=icon('check',15,2.6); }
+    else if(state.buildStartAt){ buildCls='review reached'; }
+    nodes += '<div class="snode '+buildCls+'"><div class="scircle">'+buildInner+'</div><div class="slabel">We build</div></div>';
+
+    var readyCls = state.buildDoneAt ? 'done reached' : '';
+    nodes += '<div class="snode '+readyCls+'"><div class="scircle">'+(state.buildDoneAt?icon('check',15,2.6):icon('sparkle',15,2))+'</div><div class="slabel">Ready</div></div>';
+    return nodes;
+  }
+
+  function renderStepper(){
+    var doneCount = ORDER.filter(stepDone).length;
+    var total = ORDER.length;
+    var progress;
+    if(state.buildDoneAt) progress = 'Your store is ready';
+    else if(state.buildStartAt) progress = 'Your part is done — we’re building';
+    else progress = doneCount + ' of ' + total + ' steps complete';
+    return '<div class="stepper-wrap">' +
+      '<div class="stepper-store">' +
+        '<span class="st-name">'+esc(state.biz || 'Your new store')+' <span class="badge p'+state.path.toLowerCase()+'">PATH '+state.path+'</span></span>' +
+        '<span class="st-progress">'+progress+'</span>' +
+      '</div>' +
+      '<div class="stepper" role="list" aria-label="Setup progress">'+stepperNodes()+'</div>' +
+    '</div>';
+  }
+
+  /* ---------------- render: step bodies ---------------- */
+
+  function fieldChecks(items, data){
+    return items.map(function(it){
+      var k = it[0], label = it[1];
+      var chk = data && data[k] ? ' checked' : '';
+      return '<label class="check"><input type="checkbox" name="'+k+'" required'+chk+'> <span>'+label+'</span></label>';
+    }).join('');
+  }
+
+  function lockNote(iconName, html){
+    return '<div class="locknote">'+icon(iconName,16)+'<span>'+html+'</span></div>';
+  }
+
+  function renderStepBody(id){
+    var st = stepState(id);
+    var d = st.data || {};
+
+    if(st.status === 'review'){
+      return '<div class="waiting"><span class="w-icon">'+icon('search',19,2)+'</span><div><b>Thanks — we’re taking a quick look.</b><br>We check your name against our catalogue and existing clients, then unlock Step 2. Usually the same day.<br><button type="button" class="link-btn" data-action="set-view" data-view="admin" style="margin-top:7px">See what the CPOD team sees →</button></div></div>' +
+        prodNote('The approval lands in the team’s build queue. The client gets an email automatically when it’s approved (events service).');
+    }
+
+    switch(id){
+      case 's1': return '' +
+        '<p class="step-lede">The only step worth slowing down for — this name follows you for years. Run the four free checks, then send it over. We take one quick look and give you a thumbs up.</p>' +
+        (st.feedback ? '<div class="flash">The CPOD team asked for a change: <b>'+esc(st.feedback)+'</b></div>' : '') +
+        '<form class="step-form" data-step="s1">' +
+          '<div class="field"><label for="f-name">Your business name</label>' +
+          '<input id="f-name" type="text" name="name" required placeholder="e.g. North Pine Apparel" value="'+esc(d.name)+'">' +
+          '<div class="hint">Short, easy to spell after hearing it once, room to grow.</div></div>' +
+          fieldChecks([
+            ['c1','The web address looks free — I typed <b>myname.ca</b> and <b>.com</b> into a browser'],
+            ['c2','I googled it and searched Instagram / TikTok — no one similar is using it'],
+            ['c3','I checked my province’s business registry'],
+            ['c4','I searched the Canadian trademark database (CIPO)']
+          ], d) +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Send name for review</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s1">Fill with example</button></div>' +
+        '</form>' +
+        prodNote('The four checks become required checkboxes — no more free-text emails. Step 2 stays locked until the team approves: the doc’s “thumbs up”, made real.');
+
+      case 's2': return '' +
+        '<p class="step-lede">Fifteen minutes of clicking, no big decisions. Open the account, claim your name, buy your domain — then build nothing. Building it is what you’re paying us for.</p>' +
+        '<form class="step-form" data-step="s2">' +
+          '<div class="field"><label for="f-domain">The domain you bought</label><input id="f-domain" type="text" name="domain" required placeholder="northpine.ca" value="'+esc(d.domain)+'"></div>' +
+          '<div class="field"><label for="f-myshop">Your .myshopify.com address</label><input id="f-myshop" type="text" name="myshop" required placeholder="north-pine.myshopify.com" value="'+esc(d.myshop)+'"><div class="hint">It’s in your browser’s address bar when you’re logged in to Shopify.</div></div>' +
+          fieldChecks([['plan','I picked the <b>Basic</b> plan and didn’t touch themes, products, or apps']], d) +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Confirm Step 2</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s2">Fill with example</button></div>' +
+        '</form>';
+
+      case 's3': return '' +
+        '<p class="step-lede">Register with your province — usually under $100 and about twenty minutes online. Then one question that matters to us: sales tax.</p>' +
+        '<form class="step-form" data-step="s3">' +
+          fieldChecks([['done','My business is registered and I saved the certificate']], d) +
+          '<div class="field"><label for="f-regno">Registration number (NEQ in Quebec)</label><input id="f-regno" type="text" name="regno" required placeholder="NEQ 22XXXXXXXX" value="'+esc(d.regno)+'"><div class="hint">Just the number — we never need the documents themselves.</div></div>' +
+          '<div class="field"><label>Did you register for GST/QST?</label>' +
+          '<div class="radio-row">' +
+            '<label><input type="radio" name="gst" value="yes" required'+(d.gst==='yes'?' checked':'')+'> Yes</label>' +
+            '<label><input type="radio" name="gst" value="no"'+(d.gst==='no'?' checked':'')+'> Not yet (small supplier)</label>' +
+          '</div><div class="hint">This decides how we set up tax on your store. If you’re not sure, ask your accountant — one short conversation settles it.</div></div>' +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Confirm Step 3</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s3">Fill with example</button></div>' +
+        '</form>' +
+        prodNote('The GST/QST answer is stored and resurfaces as a hard gate in the build queue — a client who registered but never entered the numbers in Shopify undercharges tax for months.');
+
+      case 's4': return '' +
+        '<p class="step-lede">The slowest step — bank appointments run one to three weeks out, which is why we had you book early. All we need is one confirmation.</p>' +
+        '<form class="step-form" data-step="s4">' +
+          fieldChecks([['done','My business bank account is open, in my exact registered business name']], d) +
+          lockNote('lock','<b>We never ask for your account numbers.</b> This form couldn’t accept them if you tried. They go into Shopify, entered by you, in Step 5 — nowhere else.') +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Confirm Step 4</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s4">Fill with example</button></div>' +
+        '</form>';
+
+      case 's5': return '' +
+        '<p class="step-lede">The switch that lets you take money. Shopify walks you through it — about twenty minutes of typing in things you already have.</p>' +
+        '<form class="step-form" data-step="s5">' +
+          fieldChecks([['active','Shopify Payments is active on my store']], d) +
+          '<div class="field"><label>If you registered for GST/QST — did you enter the numbers in Shopify?</label>' +
+          '<div class="radio-row">' +
+            '<label><input type="radio" name="taxnums" value="yes" required'+(d.taxnums==='yes'?' checked':'')+'> Yes</label>' +
+            '<label><input type="radio" name="taxnums" value="no"'+(d.taxnums==='no'?' checked':'')+'> No</label>' +
+            '<label><input type="radio" name="taxnums" value="na"'+(d.taxnums==='na'?' checked':'')+'> I’m not registered</label>' +
+          '</div></div>' +
+          lockNote('lock','<b>We never ask for your password.</b> When it’s time to build, you’ll add our team as staff — that’s the only way we’ll ever ask for access.') +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Confirm Step 5</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s5">Fill with example</button></div>' +
+        '</form>';
+
+      case 's6': return '' +
+        '<p class="step-lede">Homework, not paperwork — nothing gets sent yet. Get your artwork ready and learn your numbers, because soon you’ll be setting your own prices.</p>' +
+        '<form class="step-form" data-step="s6">' +
+          fieldChecks([
+            ['a1','My design files meet the specs — 300 DPI, PNG with transparent background'],
+            ['a2','I understand the two shipping thresholds — CPOD ships free to me at $199+; what I charge my customers is up to me'],
+            ['a3','I read the chargeback policy — disputes on my store are my responsibility']
+          ], d) +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Confirm Step 6</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s6">Fill with example</button></div>' +
+        '</form>';
+
+      case 's7': return '' +
+        '<p class="step-lede">Everything we need to build your store. Files upload straight to us — no email attachments, no broken Drive links.</p>' +
+        '<form class="step-form" data-step="s7">' +
+          '<div class="field"><label>Your logo</label>' +
+            '<div class="file-mock'+(d.logo?' done':'')+'">'+(d.logo ? '<span class="file-ok">'+icon('check',16,2.4)+' '+esc(d.logo)+' — looks great, transparent background</span>' : '<span>Drop your logo here — the original file, ideally on a transparent background</span>')+
+            '<button type="button" class="btn btn-quiet" data-action="mock-upload">'+(d.logo?'Replace':'Choose file')+'</button></div></div>' +
+          '<div class="field"><label>Your brand colours (1–3)</label><div class="swatches">' +
+            '<input type="color" name="col1" value="'+(d.col1||'#1f3d2b')+'" aria-label="Colour 1">' +
+            '<input type="color" name="col2" value="'+(d.col2||'#e8e3d5')+'" aria-label="Colour 2">' +
+          '</div><div class="hint">Not sure? Tell us to pull them from your logo — we do it all the time.</div></div>' +
+          '<div class="field"><label for="f-bizname">Business name as customers will see it</label><input id="f-bizname" type="text" name="bizname" required value="'+esc(d.bizname)+'" placeholder="North Pine Apparel"></div>' +
+          '<div class="field"><label for="f-email">Support email your customers will see</label><input id="f-email" type="email" name="email" required value="'+esc(d.email)+'" placeholder="hello@northpine.ca"></div>' +
+          '<div class="field"><label for="f-addr">Business address</label><input id="f-addr" type="text" name="addr" required value="'+esc(d.addr)+'" placeholder="Street, city, province"></div>' +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">Send brand materials</button>' +
+          '<button type="button" class="link-btn" data-action="autofill" data-step="s7">Fill with example</button></div>' +
+        '</form>' +
+        prodNote('Files upload through the existing media microservice with validation at the door (vector or ≥1000px PNG, transparent). This is one of the two keys that start the build clock.');
+
+      case 'pay': return '' +
+        '<p class="step-lede">The one-time fee for your store build. Everything you’ve paid so far went to Shopify — this is the part that pays for your store.</p>' +
+        '<div class="pay-box">' +
+          '<div class="pay-summary">' +
+            '<div class="row"><span>Turnkey store build — Path '+state.path+'</span><span>$1,000.00</span></div>' +
+            '<div class="row"><span>DropShipPOD app</span><span>$0.00</span></div>' +
+            '<div class="row"><span>Total (CAD)</span><span>$1,000.00</span></div>' +
+          '</div>' +
+          '<form class="cardface" data-step="pay">' +
+            '<div style="font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--ink-soft)">DEMO CARD — PREFILLED</div>' +
+            '<input value="4242 4242 4242 4242" disabled aria-label="Card number">' +
+            '<input value="12/28 · 123 · North Pine Apparel" disabled aria-label="Expiry and name">' +
+            '<div class="form-actions" style="margin-top:14px"><button class="btn btn-green" type="submit">Pay $1,000.00 CAD</button></div>' +
+          '</form>' +
+        '</div>' +
+        prodNote('In production this is a Stripe Checkout session via the existing stripe microservice — receipt emailed, payment recorded against the build, refund terms per the Client Agreement.');
+
+      case 's8': return '' +
+        '<p class="step-lede">Two minutes for you, then 3–5 business days for us. Add our team as staff in your Shopify settings — never your password — and then leave the store alone while we work.</p>' +
+        '<form class="step-form" data-step="s8">' +
+          fieldChecks([['granted','I added <b>builds@cheapestprintondemand.ca</b> as a staff member on my store']], {}) +
+          lockNote('bulb','You can remove our access any time, in one click. Anyone in this industry who asks for your actual password is doing something wrong.') +
+          '<div class="form-actions"><button class="btn btn-primary" type="submit">I’ve granted access</button></div>' +
+        '</form>' +
+        prodNote('The system verifies staff access via the Shopify API rather than trusting the checkbox, then timestamps it. Access + brand materials are the two keys — the 3–5 day clock starts only when both are in, and the “we have everything, we start today” email goes out automatically.');
+    }
+    return '';
+  }
+
+  /* ---------------- render: build + handover ---------------- */
+
+  function renderBuildPanel(){
+    var m7 = stepState('s7'), m8 = stepState('s8');
+    var started = state.buildStartAt;
+    var due = started ? addBusinessDays(started, 5) : null;
+
+    var keys = '<div class="twokey">' +
+      '<div class="key'+(m8.status==='done'?' ok':'')+'"><div class="k-label">Key 1 — store access</div><div class="k-state">'+(m8.status==='done'?'Received ✓':'Waiting')+'</div><div class="k-time">'+fmt(m8.at)+'</div></div>' +
+      '<div class="key'+(m7.status==='done'?' ok':'')+'"><div class="k-label">Key 2 — brand materials</div><div class="k-state">'+(m7.status==='done'?'Received ✓':'Waiting')+'</div><div class="k-time">'+fmt(m7.at)+'</div></div>' +
+    '</div>';
+
+    var clock = '';
+    if(started){
+      clock = '<div class="clock">' +
+        '<div class="c-item"><div class="c-label">CLOCK STARTED</div><div class="c-val">'+fmt(started)+'</div></div>' +
+        '<div class="c-item"><div class="c-label">OUR PROMISE</div><div class="c-val">3–5 business days</div></div>' +
+        '<div class="c-item"><div class="c-label">DUE BY</div><div class="c-val">'+fmtDay(due)+'</div></div>' +
+      '</div>';
+    }
+
+    var tasks = '<ul class="tasklist">' + tasksForPath().map(function(t){
+      var done = state.tasks[t[0]];
+      return '<li>'+(done?'<span class="tdone">'+icon('check',11,3)+'</span>':'<span class="tpend"></span>')+'<span>'+t[1]+'</span></li>';
+    }).join('') + '</ul>';
+
+    return '<div class="step-stage"><section class="card">' +
+      '<div class="step-icon">'+icon('wrench',22)+'</div>' +
+      '<div class="step-kicker">We build · 3–5 business days</div>' +
+      '<h2>Your part is done. We’ve taken it from here.</h2>' +
+      keys + clock +
+      '<h3 style="margin-top:22px">What we’re doing right now</h3>' + tasks +
+      '<p class="muted" style="margin-top:14px;font-size:13px">One favour: please don’t change themes, products, settings, or apps while we build. This rule ends the moment we hand over.</p>' +
+      '<p style="margin-top:12px"><button type="button" class="link-btn" data-action="set-view" data-view="admin">See what the CPOD team sees →</button></p>' +
+    '</section></div>';
+  }
+
+  function confetti(){
+    var colors = ['var(--cyan)','var(--magenta)','var(--yellow)','var(--green)','var(--accent)'];
+    var bits = '';
+    for(var i=0;i<16;i++){
+      bits += '<i style="left:'+(4+i*6)+'%;background:'+colors[i%5]+';animation-delay:'+(i*0.09)+'s"></i>';
+    }
+    return '<div class="confetti" aria-hidden="true">'+bits+'</div>';
+  }
+
+  function handoverItem(iconName, title, body){
+    return '<div class="h-item"><div class="h-head">'+icon(iconName,17)+' '+title+'</div>'+body+'</div>';
+  }
+
+  function renderHandover(){
+    var d7 = stepState('s7').data || {};
+    return '<div class="step-stage"><section class="card handover">' +
+      confetti() +
+      '<div class="h-check">'+icon('check',34,2.6)+'</div>' +
+      '<h2>'+esc(state.biz || 'Your store')+' is built, tested, and yours.</h2>' +
+      '<p class="muted" style="margin-top:10px;max-width:520px;margin-left:auto;margin-right:auto">It stays password-protected until you decide to launch. Look through it this week — you have <b>7 days</b> to tell us about anything that doesn’t match what you sent, and we fix our mistakes free.</p>' +
+      '<div class="handover-grid">' +
+        handoverItem('video','Your video library','Short guides for everything — changing prices, orders, refunds, colours. Bookmark it on day one.') +
+        handoverItem('mail','Your support inbox', esc(d7.email || 'support@cheapestprintondemand.ca')+' — one address, real replies. Order problems always jump the queue.') +
+        handoverItem('phone','Your free onboarding call','We walk through your store together and answer whatever’s on your mind. Take it — it’s the fastest way to get comfortable.') +
+        handoverItem('arrow','What’s next','Create your products in the DropShipPOD app — pick products, upload designs, set your prices. Then remove the password and you’re in business.') +
+      '</div>' +
+      prodNote('The handover email carries the library link, support address, call booking, and next-step instructions — generated automatically from this record. A stall-recovery sequence (day 7 / 14 / 30 with no products published) hangs off the same state.') +
+    '</section></div>';
+  }
+
+  function renderClientAB(){
+    var cur = currentStep();
+    var content;
+
+    if(cur === null){
+      content = state.buildDoneAt ? renderHandover() : renderBuildPanel();
+    } else {
+      var m = STEP_META[cur];
+      content = '<div class="step-stage"><section class="card">' +
+        '<div class="step-icon">'+icon(m.icon,22)+'</div>' +
+        '<div class="step-kicker">'+(cur==='pay' ? 'Payment' : 'Step '+m.n+' of 8')+'</div>' +
+        '<h2>'+m.title+'</h2>' +
+        renderStepBody(cur) +
+      '</section></div>';
+    }
+
+    return renderStepper() + content;
+  }
+
+  /* ---------------- render: path C ---------------- */
+
+  function renderClientC(){
+    var c = state.c;
+    function cNode(num, label, on, done){
+      var cls = done ? 'done reached' : (on ? 'current reached' : '');
+      return '<div class="snode '+cls+'"><div class="scircle">'+(done?icon('check',15,2.6):num)+'</div><div class="slabel">'+label+'</div></div>';
+    }
+    var stepper = '<div class="stepper-wrap">' +
+      '<div class="stepper-store"><span class="st-name">Your existing store <span class="badge pc">PATH C</span></span>' +
+      '<span class="st-progress">'+(c.linked ? 'Connected' : 'Three short steps')+'</span></div>' +
+      '<div class="stepper" style="max-width:440px;margin:0 auto">' +
+        cNode('1','Install', !c.installed, c.installed) +
+        cNode('2','Billing', c.installed && !c.billing, c.billing) +
+        cNode('3','Link', c.billing && !c.linked, c.linked) +
+      '</div></div>';
+
+    function locked(text){
+      return '<span class="muted" style="display:inline-flex;align-items:center;gap:7px;font-size:13px">'+icon('lock',14)+' '+text+'</span>';
+    }
+
+    return '' +
+    '<div class="back-row"><button type="button" class="link-btn" data-action="back-landing">← Back to paths</button></div>' +
+    '<div class="hero" style="margin-top:0"><div class="eyebrow">Path C — connect your existing store</div>' +
+    '<h1>No build. No $1,000. Just connect.</h1>' +
+    '<p>Your store already works — we simply become your print shop. Three short steps and your orders start flowing to us automatically.</p></div>' +
+    stepper +
+    '<div class="step-stage">' +
+    '<section class="card">' +
+      '<h3>1 · Install the apps</h3>' +
+      '<p class="muted" style="margin:8px 0 14px;font-size:13.5px">DropShipPOD from the Shopify App Store — free. Add Custy too if you want customers uploading their own designs.</p>' +
+      (c.installed ? '<span class="stamp fresh">'+icon('check',11,3)+' Done</span>' : '<button type="button" class="btn btn-primary" data-action="c-install">Install DropShipPOD</button>') +
+    '</section>' +
+    '<section class="card">' +
+      '<h3>2 · Set up billing</h3>' +
+      '<p class="muted" style="margin:8px 0 14px;font-size:13.5px">Add a payment method for print costs. Charged in <b>Canadian dollars</b>, per order, only as you sell.</p>' +
+      (c.installed ? (c.billing ? '<span class="stamp fresh">'+icon('check',11,3)+' Done</span>' : '<button type="button" class="btn btn-primary" data-action="c-billing">Add payment method</button>') : locked('Install the app first')) +
+    '</section>' +
+    '<section class="card">' +
+      '<h3>3 · Link the products you already sell</h3>' +
+      '<p class="muted" style="margin:8px 0 14px;font-size:13.5px">Map a product you already sell to our catalogue — your titles, photos, prices, reviews, and web address stay exactly as they are. Only who prints it changes.</p>' +
+      (c.billing ?
+        (c.linked ?
+          '<div class="file-mock done"><span class="file-ok">'+icon('check',16,2.4)+' <b>Classic Logo Tee</b> → Gildan 5000 Heavy Cotton — 12 of 12 variants mapped, no mismatches</span><span class="stamp fresh">Linked</span></div>' :
+          '<div class="file-mock"><span><b>Classic Logo Tee</b> — 3 colours × 4 sizes · 214 reviews</span><button type="button" class="btn btn-primary" data-action="c-link">Link to catalogue</button></div>')
+        : locked('Set up billing first')) +
+      prodNote('Variant mapping shows a size-by-size table and flags any unmapped or suspicious mapping before saving — a mismapped size is the #1 way a switch goes wrong, so the check lives here, not at the printer.') +
+    '</section>' +
+    (c.linked ? '<section class="card" style="border-color:var(--green-line);background:var(--green-bg)"><h3 style="display:flex;align-items:center;gap:9px">'+icon('sparkle',18)+' You’re live</h3><p style="font-size:13.5px;margin-top:8px">The next order that comes in, we print it, pack it with your branding — never ours — and ship it to your customer. Tracking appears in your Shopify order automatically.</p></section>' : '') +
+    '</div>';
+  }
+
+  /* ---------------- render: admin ---------------- */
+
+  var SEED = [
+    {name:'Mimi’s Custom Gifts', path:'B', stage:'In build', wait:'CPOD — due in 2 business days'},
+    {name:'Atelier Verre', path:'C', stage:'Active — linked', wait:'—'},
+    {name:'Beaumont FC Supporters', path:'A', stage:'Client homework · Step 4', wait:'Client — day 9, check-in sent'}
+  ];
+
+  function demoStageLabel(){
+    if(!state.path) return null;
+    if(state.path === 'C') return state.c.linked ? 'Active — linked' : 'Installing / linking';
+    if(state.buildDoneAt) return 'Handover complete';
+    if(state.buildStartAt) return 'In build';
+    var cur = currentStep();
+    if(cur === 's1' && stepState('s1').status === 'review') return 'Name review — action needed';
+    if(cur) return 'Client homework · ' + (cur==='pay' ? 'payment' : 'Step '+STEP_META[cur].n);
+    return 'Waiting on keys';
+  }
+
+  function renderAdmin(){
+    var live = state.path ? {name: state.biz || (stepState('s1').data && stepState('s1').data.name) || 'New client', path: state.path} : null;
+    var s1 = stepState('s1');
+    var needsReview = s1.status === 'review';
+
+    var kpiReview = needsReview ? 1 : 0;
+    var kpiBuild = 1 + (state.buildStartAt && !state.buildDoneAt ? 1 : 0);
+    var kpiHomework = 1 + (live && !state.buildStartAt && !needsReview && state.path !== 'C' && currentStep() ? 1 : 0);
+
+    var rows = '';
+    if(live){
+      rows += '<tr class="live-row"><td><b>'+esc(live.name)+'</b> <span class="badge live">LIVE DEMO</span></td>' +
+        '<td><span class="badge p'+live.path.toLowerCase()+'">PATH '+live.path+'</span></td>' +
+        '<td>'+demoStageLabel()+'</td>' +
+        '<td>'+(state.buildStartAt && !state.buildDoneAt ? 'CPOD — due '+fmtDay(addBusinessDays(state.buildStartAt,5)) : (needsReview ? 'CPOD — approve name' : (currentStep()? 'Client' : '—')))+'</td></tr>';
+    }
+    rows += SEED.map(function(r){
+      return '<tr><td>'+r.name+'</td><td><span class="badge p'+r.path.toLowerCase()+'">PATH '+r.path+'</span></td><td>'+r.stage+'</td><td>'+r.wait+'</td></tr>';
+    }).join('');
+
+    var reviewCard = '';
+    if(needsReview){
+      var nm = (s1.data && s1.data.name) || '';
+      reviewCard = '<section class="card review-card">' +
+        '<div class="step-kicker" style="color:var(--amber)">Needs review</div>' +
+        '<h2>Business name: “'+esc(nm)+'”</h2>' +
+        '<p class="muted" style="margin:8px 0 16px;font-size:13.5px">Client confirmed all four checks: domain · Google/socials · provincial registry · CIPO trademark. Submitted '+fmt(s1.at)+'.</p>' +
+        '<div class="form-actions">' +
+          '<button type="button" class="btn btn-green" data-action="approve-s1">Approve — unlock Step 2</button>' +
+          '<button type="button" class="btn btn-quiet" data-action="revise-s1">Ask to revise</button>' +
+        '</div>' +
+      '</section>';
+    }
+
+    var buildCard = '';
+    if(state.buildStartAt && !state.buildDoneAt){
+      var d3 = stepState('s3').data || {}, d5 = stepState('s5').data || {};
+      var gstRegistered = d3.gst === 'yes';
+      var taxOk = !gstRegistered || d5.taxnums === 'yes';
+      var due = addBusinessDays(state.buildStartAt, 5);
+      var left = businessDaysLeft(due);
+
+      buildCard = '<section class="card">' +
+        '<div class="step-kicker">Build — '+esc(state.biz || 'demo client')+'</div>' +
+        '<div class="clock" style="margin:10px 0 6px">' +
+          '<div class="c-item"><div class="c-label">STARTED</div><div class="c-val">'+fmt(state.buildStartAt)+'</div></div>' +
+          '<div class="c-item"><div class="c-label">DUE</div><div class="c-val">'+fmtDay(due)+'</div></div>' +
+          '<div class="c-item"><div class="c-label">SLA</div><div class="c-val">'+(left>0 ? left+' business day'+(left===1?'':'s')+' left' : 'Due today')+'</div></div>' +
+        '</div>' +
+        '<div class="gate-line'+(taxOk?' ok':'')+'">'+(taxOk?icon('check',15,2.4):'⚠️')+'<span><b>Tax gate:</b> client '+(gstRegistered?'IS registered for GST/QST':'is NOT registered (small supplier)')+' — '+(taxOk ? 'settings verified, clear to launch.' : 'numbers not confirmed in Shopify. Hard stop: verify in Settings → Taxes before this store goes live.')+'</span></div>' +
+        '<ul class="tasklist">' + tasksForPath().map(function(t){
+          return '<li><input type="checkbox" id="task-'+t[0]+'" data-action="toggle-task" data-task="'+t[0]+'"'+(state.tasks[t[0]]?' checked':'')+'><label for="task-'+t[0]+'">'+t[1]+'</label></li>';
+        }).join('') + '</ul>' +
+        '<div class="form-actions" style="margin-top:16px">' +
+          '<button type="button" class="btn btn-green" data-action="complete-build"'+(allTasksDone()?'':' disabled')+'>Complete build + send handover</button>' +
+          '<button type="button" class="link-btn" data-action="check-all">Check all (demo)</button>' +
+        '</div>' +
+        prodNote('Provisioning does the heavy lifting: master theme pushed via the Shopify Admin API, policies installed from the template pack with the five per-store variables, pages and navigation created by the existing ShopifyService. Days of manual work becomes hours.') +
+      '</section>';
+    }
+
+    var doneCard = '';
+    if(state.buildDoneAt){
+      doneCard = '<section class="card" style="border-color:var(--green-line);background:var(--green-bg)">' +
+        '<h3>'+esc(state.biz||'Demo client')+' — handover sent '+fmt(state.buildDoneAt)+' <span class="stamp">Done</span></h3>' +
+        '<p style="font-size:13.5px;margin-top:8px">7-day review window open. Stall-recovery watches for “no products published” at day 7 / 14 / 30.</p>' +
+      '</section>';
+    }
+
+    return '' +
+    '<div class="admin-head"><div><div class="eyebrow" style="margin-bottom:6px">CPOD team</div><h1 style="font-size:27px">Build queue</h1></div>' +
+    '<span class="muted" style="font-size:12.5px">One row per client — one glance tells you whose move it is.</span></div>' +
+    '<div class="kpis">' +
+      '<div class="kpi"><div class="k-num">'+kpiReview+'</div><div class="k-cap">NEEDS REVIEW</div></div>' +
+      '<div class="kpi"><div class="k-num">'+kpiHomework+'</div><div class="k-cap">CLIENT HOMEWORK</div></div>' +
+      '<div class="kpi"><div class="k-num">'+kpiBuild+'</div><div class="k-cap">IN BUILD</div></div>' +
+      '<div class="kpi"><div class="k-num">2</div><div class="k-cap">LIVE STORES</div></div>' +
+    '</div>' +
+    reviewCard + buildCard + doneCard +
+    '<section><div class="table-wrap"><table class="admin-table">' +
+      '<thead><tr><th>STORE</th><th>PATH</th><th>STAGE</th><th>WAITING ON</th></tr></thead>' +
+      '<tbody>'+rows+'</tbody>' +
+    '</table></div>' +
+    prodNote('Day-7 / day-14 client check-ins (the doc’s stall risk) fire automatically from this state via the events service — nobody has to remember to chase.') +
+    '</section>';
+  }
+
+  /* ---------------- render root ---------------- */
+
+  function render(keepScroll){
+    document.getElementById('segClient').className = state.view==='client' ? 'on' : '';
+    document.getElementById('segAdmin').className = state.view==='admin' ? 'on' : '';
+    document.getElementById('notesBtn').className = 'btn-bar' + (state.notes ? ' on' : '');
+
+    var y = window.scrollY;
+    var html;
+    if(state.view === 'admin'){
+      html = renderAdmin();
+    } else if(!state.path){
+      html = renderLanding();
+    } else if(state.path === 'C'){
+      html = renderClientC();
+    } else {
+      html = renderClientAB();
+    }
+    document.getElementById('app').innerHTML = html;
+    state.lastStamp = null;
+    save();
+    window.scrollTo(0, keepScroll ? y : 0);
+  }
+
+  /* ---------------- actions ---------------- */
+
+  function setStep(id, status, data){
+    var st = state.steps[id] || {};
+    st.status = status; st.at = Date.now();
+    if(data) st.data = data;
+    delete st.feedback;
+    state.steps[id] = st;
+  }
+
+  document.body.addEventListener('click', function(e){
+    var el = e.target.closest('[data-action]');
+    if(!el) return;
+    var a = el.getAttribute('data-action');
+
+    if(a === 'set-view'){ state.view = el.getAttribute('data-view'); render(); }
+    else if(a === 'toggle-notes'){ state.notes = !state.notes; render(true); }
+    else if(a === 'reset'){ state = freshState(); localStorage.removeItem(KEY); render(); }
+    else if(a === 'choose-path'){ state.path = el.getAttribute('data-path'); render(); }
+    else if(a === 'back-landing'){ state.path = null; render(); }
+    else if(a === 'autofill'){
+      var id = el.getAttribute('data-step');
+      var st = state.steps[id] || {status:'todo'};
+      st.data = AUTOFILL[id] || {};
+      state.steps[id] = st;
+      render(true);
+    }
+    else if(a === 'mock-upload'){
+      var st7 = state.steps.s7 || {status:'todo'};
+      st7.data = st7.data || {};
+      st7.data.logo = 'northpine-logo.svg';
+      state.steps.s7 = st7;
+      render(true);
+    }
+    else if(a === 'approve-s1'){
+      var s1 = state.steps.s1;
+      if(s1){ s1.status='done'; s1.at=Date.now(); state.biz = (s1.data&&s1.data.name)||''; state.lastStamp='s1'; }
+      render();
+    }
+    else if(a === 'revise-s1'){
+      var s1b = state.steps.s1;
+      if(s1b){ s1b.status='todo'; s1b.feedback='Too close to an existing client’s name — try a variation.'; }
+      render();
+    }
+    else if(a === 'toggle-task'){
+      var t = el.getAttribute('data-task');
+      state.tasks[t] = el.checked;
+      render(true);
+    }
+    else if(a === 'check-all'){
+      tasksForPath().forEach(function(t){ state.tasks[t[0]] = true; });
+      render(true);
+    }
+    else if(a === 'complete-build'){
+      if(allTasksDone()){ state.buildDoneAt = Date.now(); render(); }
+    }
+    else if(a === 'c-install'){
+      window.open('https://apps.shopify.com/dropshippod', '_blank', 'noopener');
+      state.c.installed = true;
+      render(true);
+    }
+    else if(a === 'c-billing'){ state.c.billing = true; render(true); }
+    else if(a === 'c-link'){ state.c.linked = true; render(true); }
+  });
+
+  document.body.addEventListener('submit', function(e){
+    var form = e.target.closest('form[data-step]');
+    if(!form) return;
+    e.preventDefault();
+    var id = form.getAttribute('data-step');
+    var data = {};
+    new FormData(form).forEach(function(v,k){ data[k]=v; });
+
+    if(id === 's7'){
+      var prev = (state.steps.s7 && state.steps.s7.data) || {};
+      data.logo = prev.logo || 'logo-upload.svg';
+    }
+
+    if(id === 's1'){
+      setStep('s1','review',data);
+    } else {
+      setStep(id,'done',data);
+      state.lastStamp = id;
+      if(id === 's7' || id === 's8') maybeStartClock();
+    }
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
