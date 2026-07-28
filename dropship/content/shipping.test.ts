@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import {
   FREE_SHIPPING_THRESHOLD,
@@ -41,4 +43,31 @@ describe("money()", () => {
     expect(money(14.99)).toBe("$14.99 CAD");
     expect(money(5.99)).toBe("$5.99 CAD");
   });
+});
+
+const PROSE_FILES = [
+  "content/pages/policies/shipping.mdx",
+  "content/pages/delivery.mdx",
+];
+
+describe("MDX prose currency labels", () => {
+  const known = new Set(allShippingAmounts);
+
+  for (const rel of PROSE_FILES) {
+    it(`${rel}: every dollar figure is a known amount labelled CAD`, () => {
+      const text = fs.readFileSync(path.join(process.cwd(), rel), "utf8");
+      const offenders: string[] = [];
+
+      for (const match of text.matchAll(/\$(\d+(?:\.\d+)?)(\s+CAD)?/g)) {
+        const amount = Number(match[1]);
+        if (!known.has(amount)) {
+          offenders.push(`${match[0]} — not a value declared in content/shipping.ts`);
+        } else if (!match[2]) {
+          offenders.push(`${match[0]} — missing CAD label`);
+        }
+      }
+
+      expect(offenders, offenders.join("\n")).toHaveLength(0);
+    });
+  }
 });
