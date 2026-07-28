@@ -25,7 +25,7 @@ describe("HomePage", () => {
       expectedSections.includes(text)
     );
     expect(actualSections).toEqual(expectedSections);
-    expect(screen.getByText(/free shipping on all orders over \$199/i)).toBeInTheDocument();
+    expect(screen.getByText(/free shipping on all orders over \$199 CAD/i)).toBeInTheDocument();
   });
   it("renders the featured video facade plus the 5-video strip", () => {
     render(<HomePage />);

@@ -1,4 +1,5 @@
 import type { FaqItem } from "./types";
+import { FREE_SHIPPING_THRESHOLD, SECURE_SHIPPING_FEE, money, shippingRates } from "@/content/shipping";
 
 export const generalFaq: FaqItem[] = [
   {
@@ -575,21 +576,17 @@ export const generalFaq: FaqItem[] = [
     answer: (
       <>
         <p>
-          <strong>Orders over $199 = FREE SHIPPING</strong>
+          <strong>Orders over {money(FREE_SHIPPING_THRESHOLD)} = FREE SHIPPING</strong>
         </p>
         <p>
-          <strong>Orders under $199 = Delivered to:</strong>
+          <strong>Orders under {money(FREE_SHIPPING_THRESHOLD)} = Delivered to:</strong>
         </p>
         <ul>
-          <li>
-            <strong>ON, QC, NB, NS, NL, PE</strong> = $14.99
-          </li>
-          <li>
-            <strong>AB, SK, MB</strong> = $19.99
-          </li>
-          <li>
-            <strong>BC</strong> = $24.99
-          </li>
+          {shippingRates.map((rate) => (
+            <li key={rate.provinces.join(",")}>
+              <strong>{rate.provinces.join(", ")}</strong> = {money(rate.amount)}
+            </li>
+          ))}
         </ul>
       </>
     ),
@@ -610,7 +607,7 @@ export const generalFaq: FaqItem[] = [
     question: "Do you offer free shipping?",
     answer: (
       <>
-        <p>We offer free shipping on orders over $150.</p>
+        <p>We offer free shipping on orders over {money(FREE_SHIPPING_THRESHOLD)}.</p>
       </>
     ),
   },
@@ -908,8 +905,9 @@ export const generalFaq: FaqItem[] = [
       <>
         <p>
           If your order is lost during shipping, please contact us immediately. We will investigate the issue and
-          send a replacement if you had chosen &ldquo;secure shipping&rdquo;. Secure shipping costs an additional
-          $5.99 where the courier will need a signature upon delivery, thus lowering the risk of porch pirate theft.
+          send a replacement if you had chosen &ldquo;secure shipping&rdquo;. Secure shipping costs an additional{" "}
+          {money(SECURE_SHIPPING_FEE)} where the courier will need a signature upon delivery, thus lowering the risk
+          of porch pirate theft.
         </p>
       </>
     ),

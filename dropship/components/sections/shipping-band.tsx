@@ -2,6 +2,7 @@ import { Truck } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
+import { FREE_SHIPPING_THRESHOLD, money } from "@/content/shipping";
 
 export function ShippingBand() {
   return (
@@ -14,7 +15,7 @@ export function ShippingBand() {
             </span>
             <div>
               <p className="font-display text-2xl font-bold text-ink">
-                Free shipping on all orders over $199
+                Free shipping on all orders over {money(FREE_SHIPPING_THRESHOLD)}
               </p>
               <p className="mt-2 text-sm text-zinc-600">
                 Ground shipping in 1–5 business days across Canada · Express in 1–2 · Optional
