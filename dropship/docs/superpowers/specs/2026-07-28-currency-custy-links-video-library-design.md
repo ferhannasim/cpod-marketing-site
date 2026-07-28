@@ -105,9 +105,16 @@ than by a customer.
 
 ### Constraint discovered
 
-`lib/site-audit.test.ts:42` asserts *"every nav and footer href is a known static
-route"*, and dropship's `NavLink` type has no `external` flag — unlike Custy's own
-`lib/nav.ts`, which does. An outbound link in the nav fails this test today.
+Dropship's `NavLink` type has no `external` flag — unlike Custy's own `lib/nav.ts`, which
+does. **Two** existing tests assume every nav href is internal, and both fail on an
+outbound link:
+
+- `lib/nav.test.ts:11-16` — "every link has a label and an internal href", asserting
+  `href` matches `/^\//`.
+- `lib/site-audit.test.ts:42-47` — "every nav and footer href is a known static route".
+
+Both are updated to treat `external: true` entries as a distinct, valid case rather than
+relaxing the check for internal links.
 
 ### Changes
 
@@ -119,8 +126,8 @@ route"*, and dropship's `NavLink` type has no `external` flag — unlike Custy's
 - **`components/header.tsx`, `components/footer.tsx`** — render entries with
   `external: true` as `<a target="_blank" rel="noopener noreferrer">` instead of
   `next/link`.
-- **`lib/site-audit.test.ts`** — the known-route assertion skips external links. Route
-  count is untouched by this section; no new route is added.
+- **`lib/nav.test.ts`, `lib/site-audit.test.ts`** — both learn about external links per
+  the constraint above. Route count is untouched by this section; no new route is added.
 - **`components/sections/custy-pitch.tsx`** (new) — homepage section, placed in
   `app/page.tsx` between `DropshipPitch` and `ShippingBand`. It rides the existing
   "here's the wider platform" beat rather than interrupting the primary funnel.
