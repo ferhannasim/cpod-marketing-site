@@ -5,6 +5,7 @@ import { allVideos, featuredVideo, moreVideos } from "@/content/videos";
 
 describe("video library page", () => {
   it("lists the featured video plus every video in the strip", () => {
+    expect(allVideos).toHaveLength(6);
     expect(allVideos).toHaveLength(moreVideos.length + 1);
     expect(allVideos[0]).toEqual(featuredVideo);
   });
