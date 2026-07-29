@@ -101,7 +101,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             ) : null}
           </div>
 
-          {/* Not a heading: four identical "Features" labels would pollute the
+          {/* Not a heading: three identical "Features" labels would pollute the
               heading outline; plan names carry the card-level h3 instead. */}
           <div className="mt-6 border-t border-line pt-5 text-[13px] font-semibold tracking-[0.08em] text-[#667085] uppercase">
             {plan.featureTitle ?? "Features"}

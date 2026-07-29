@@ -28,11 +28,13 @@ export type PricingFaq = {
 // (Free / Starter $12.99 / Growth $39.99 / Pro $79.99) with a new 3-plan
 // scheme (Free / Starter $22.99 (featured) / Pro $72.99). The `plans` and
 // `comparison` data below reflect the new scheme verbatim from the
-// client-provided source of truth, plus three controller-approved
+// client-provided source of truth, plus four controller-approved
 // assumptions baked in (flagged to the client separately): Pro is a superset
 // of Starter (so Pro also carries Inventory Control); Starter keeps Email
 // support (its list omits a support line; the old Starter plan had Email);
-// both paid plans carry the 30-day trial. content/raw/pricing.html is left
+// both paid plans carry the 30-day trial; Basic customization is marked
+// Included for Starter/Pro because the advanced design toolset is a superset
+// of the basic customization surface. content/raw/pricing.html is left
 // untouched (never edit or render it directly) and now reflects the prior
 // scheme only.
 //
