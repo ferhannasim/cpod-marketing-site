@@ -10,6 +10,7 @@ export function isGroup(entry: NavEntry): entry is NavGroup {
 
 export const primaryNav: NavEntry[] = [
   { label: "How it works", href: "/how-it-works" },
+  { label: "Features", href: "/features" },
   {
     label: "Start a brand",
     links: [
@@ -47,6 +48,7 @@ export const footerColumns: NavGroup[] = [
     links: [
       { label: "About us", href: "/about" },
       { label: "How it works", href: "/how-it-works" },
+      { label: "Features", href: "/features" },
       { label: "Start your ecommerce brand", href: "/start-your-ecommerce-brand" },
       { label: "Launch an automated brand", href: "/launch-automated-brand" },
       { label: "Contact", href: "/contact" },
