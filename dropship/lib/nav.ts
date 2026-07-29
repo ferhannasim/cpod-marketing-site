@@ -39,7 +39,7 @@ export const primaryNav: NavEntry[] = [
       { label: "How to measure", href: "/measuring" },
     ],
   },
-  { label: "Custy", href: CUSTY_SITE_URL, external: true },
+  { label: "Custy", href: "/custy" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];

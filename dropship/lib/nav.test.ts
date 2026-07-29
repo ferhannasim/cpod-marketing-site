@@ -31,9 +31,9 @@ describe("nav data", () => {
     expect(socialLinks.map((s) => s.label).sort()).toEqual(["Facebook", "Instagram", "TikTok", "YouTube"]);
     for (const s of socialLinks) expect(s.href).toMatch(/^https:\/\//);
   });
-  it("primary nav links out to Custy", () => {
+  it("primary nav links to Custy", () => {
     const fromPrimary = primaryNav.flatMap((e) => (isGroup(e) ? e.links : [e]));
-    const custy = fromPrimary.filter((link) => link.external && link.href.includes("custyapp.com"));
+    const custy = fromPrimary.filter((link) => link.href === "/custy");
     expect(custy.length).toBeGreaterThanOrEqual(1);
   });
   it("footer links out to Custy", () => {
