@@ -12,6 +12,7 @@ export default function Page() {
     <PageShell
       eyebrow="Please read"
       title="Important Printing Notice"
+      lede="What to expect from a DTF or DTG print versus your screen, and what to do if something isn't right."
       alert="Please read this notice in full before placing an order — it affects how your prints will look."
     >
       <Body />

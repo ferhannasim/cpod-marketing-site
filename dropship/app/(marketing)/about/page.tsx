@@ -9,7 +9,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell eyebrow="Company" title="About Us">
+    <PageShell
+      eyebrow="Company"
+      title="About Us"
+      lede="Canadian DTF print production, plus the two Shopify apps built around it."
+    >
       <Body />
     </PageShell>
   );

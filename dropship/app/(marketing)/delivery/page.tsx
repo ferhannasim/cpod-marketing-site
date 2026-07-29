@@ -10,7 +10,11 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageShell eyebrow="Help & info" title="Delivery Speed">
+    <PageShell
+      eyebrow="Help & info"
+      title="Delivery Speed"
+      lede="How fast we produce and ship, what it costs by province, and how tracking works."
+    >
       <Body />
     </PageShell>
   );
