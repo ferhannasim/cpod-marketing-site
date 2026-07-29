@@ -40,6 +40,7 @@ export const primaryNav: NavEntry[] = [
     ],
   },
   { label: "Custy", href: "/custy" },
+  { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -73,6 +74,7 @@ export const footerColumns: NavGroup[] = [
   {
     label: "Resources",
     links: [
+      { label: "Blog", href: "/blog" },
       { label: "Catalog", href: "/catalog" },
       { label: "Printing notice", href: "/printing-notice" },
       { label: "Sublimation printing notice", href: "/sublimation-printing-notice" },

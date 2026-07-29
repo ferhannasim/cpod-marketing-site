@@ -21,8 +21,8 @@ const allNavLinks = [
 ];
 
 describe("site audit", () => {
-  it("matches the migration inventory: 27 static routes and 47 size charts", () => {
-    expect(STATIC_ROUTES).toHaveLength(27);
+  it("matches the migration inventory: 28 static routes and 47 size charts", () => {
+    expect(STATIC_ROUTES).toHaveLength(28);
     expect(getAllSizeCharts()).toHaveLength(47);
   });
 
