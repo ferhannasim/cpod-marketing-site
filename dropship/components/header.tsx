@@ -93,7 +93,7 @@ export function Header() {
                   aria-expanded={openGroup === entry.label}
                   aria-controls={`nav-group-${slugify(entry.label)}`}
                   onClick={() => setOpenGroup((g) => (g === entry.label ? null : entry.label))}
-                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:text-ink"
+                  className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:text-brand"
                 >
                   {entry.label}
                   <ChevronDown aria-hidden className="h-4 w-4" />
@@ -101,14 +101,14 @@ export function Header() {
                 {openGroup === entry.label ? (
                   <div
                     id={`nav-group-${slugify(entry.label)}`}
-                    className="absolute left-0 top-full w-64 rounded-xl border border-zinc-200 bg-white p-2 shadow-lg"
+                    className="absolute left-0 top-full w-64 rounded-2xl border border-zinc-200 bg-white p-2 shadow-[0_16px_40px_-12px_rgba(20,31,86,0.16)]"
                   >
                     {entry.links.map((link) => (
                       <NavItemLink
                         key={link.href}
                         link={link}
                         onClick={() => setOpenGroup(null)}
-                        className="block rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-surface hover:text-ink"
+                        className="block rounded-lg px-3 py-2 text-sm text-zinc-700 hover:bg-surface hover:text-brand"
                       />
                     ))}
                   </div>
@@ -118,7 +118,7 @@ export function Header() {
               <NavItemLink
                 key={entry.href}
                 link={entry}
-                className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:text-ink"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 hover:text-brand"
               />
             ),
           )}

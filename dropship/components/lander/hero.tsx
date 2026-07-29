@@ -24,7 +24,7 @@ export function HighlightCard({ title, items, className }: { title: string; item
   );
 }
 
-const heroWash =
+export const heroWash =
   "radial-gradient(circle at 10% 0%, rgba(203,24,54,0.07), transparent 42%)," +
   "radial-gradient(circle at 90% 8%, rgba(30,45,125,0.08), transparent 38%)," +
   "linear-gradient(180deg, #ffffff 0%, #fbfbfd 60%, #f7f7f8 100%)";

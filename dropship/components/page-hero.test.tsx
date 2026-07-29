@@ -13,4 +13,8 @@ describe("PageHero", () => {
     render(<PageHero title="Privacy Policy" variant="quiet" />);
     expect(screen.getByRole("heading", { level: 1 }).className).toContain("text-3xl");
   });
+  it("renders the brand hairline on the default variant", () => {
+    const { container } = render(<PageHero title="Delivery" />);
+    expect(container.querySelector('[aria-hidden="true"].rounded-full')).not.toBeNull();
+  });
 });

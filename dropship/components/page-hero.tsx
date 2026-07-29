@@ -1,5 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/container";
+import { DuoBar, Eyebrow } from "@/components/lander/icons";
+import { heroWash } from "@/components/lander/hero";
 
 export function PageHero({
   eyebrow,
@@ -12,16 +14,19 @@ export function PageHero({
   lede?: string;
   variant?: "default" | "quiet";
 }) {
+  const isQuiet = variant === "quiet";
   return (
-    <div className="border-b border-zinc-200 bg-gradient-to-b from-ink-tint to-white">
-      <Container className={variant === "quiet" ? "py-10" : "py-12 sm:py-16"}>
-        {eyebrow ? (
-          <p className="text-sm font-semibold uppercase tracking-wider text-brand">{eyebrow}</p>
-        ) : null}
+    <div
+      className={cn("border-b border-zinc-200", isQuiet && "bg-gradient-to-b from-ink-tint to-white")}
+      style={isQuiet ? undefined : { background: heroWash }}
+    >
+      <Container className={isQuiet ? "py-10" : "py-12 sm:py-16"}>
+        {!isQuiet ? <DuoBar className="mb-6" /> : null}
+        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
         <h1
           className={cn(
             "mt-2 font-display font-bold tracking-tight text-ink",
-            variant === "quiet" ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl",
+            isQuiet ? "text-3xl sm:text-4xl" : "text-4xl sm:text-5xl",
           )}
         >
           {title}
