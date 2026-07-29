@@ -8,10 +8,10 @@ describe("Blog index page", () => {
     expect(metadata.title).toBe("Custy Blog");
   });
 
-  it("renders exactly 3 BlogPostCards", () => {
+  it("renders exactly 6 BlogPostCards", () => {
     render(<BlogIndexPage />);
-    expect(posts).toHaveLength(3);
-    expect(screen.getAllByTestId("blog-post-card")).toHaveLength(3);
+    expect(posts).toHaveLength(6);
+    expect(screen.getAllByTestId("blog-post-card")).toHaveLength(6);
   });
 
   it("links each card to /blog/<slug>", () => {

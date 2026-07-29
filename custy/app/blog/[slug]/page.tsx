@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: post.description,
       type: "article",
       publishedTime: post.date,
-      images: [{ url: post.image }],
+      ...(post.image ? { images: [{ url: post.image }] } : {}),
     },
   };
 }
@@ -43,14 +43,13 @@ export default async function PostPage({ params }: PageProps) {
 
   const { Body } = post;
   const dims = heroImageDims[post.slug];
-  const imageUrl = `${SITE_URL}${post.image}`;
 
   const articleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     datePublished: post.date,
-    image: imageUrl,
+    ...(post.image ? { image: `${SITE_URL}${post.image}` } : {}),
     author: { "@type": "Organization", name: "Custy" },
   };
 
@@ -64,7 +63,7 @@ export default async function PostPage({ params }: PageProps) {
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         </p>
       </Container>
-      {dims && (
+      {dims && post.image && (
         <Container className="mt-8">
           <div className="overflow-hidden rounded-card">
             <Image
