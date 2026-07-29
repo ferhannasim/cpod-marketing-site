@@ -94,6 +94,18 @@ describe("homepage", () => {
     render(<HomePage />);
     expect(screen.getAllByRole("group").length).toBeGreaterThanOrEqual(4); // <details> = group role
   });
+  it("teases only the first 4 FAQ entries, not the pricing page's full 7", () => {
+    expect(pricing.faq.items.length).toBe(7);
+    render(<HomePage />);
+    const groups = screen.getAllByRole("group"); // <details> = group role
+    expect(groups).toHaveLength(4);
+    for (const item of pricing.faq.items.slice(0, 4)) {
+      expect(screen.getByText(item.question)).toBeInTheDocument();
+    }
+    for (const item of pricing.faq.items.slice(4)) {
+      expect(screen.queryByText(item.question)).not.toBeInTheDocument();
+    }
+  });
   it("has no commerce links", () => {
     render(<HomePage />);
     for (const link of screen.getAllByRole("link")) {

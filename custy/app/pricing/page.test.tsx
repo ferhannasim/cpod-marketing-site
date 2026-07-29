@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PricingPage, { metadata } from "./page";
+import { pricing } from "@/content/pricing";
 
 describe("Pricing page", () => {
   it("renders the live page's h1 verbatim", () => {
@@ -72,6 +73,14 @@ describe("Pricing page", () => {
     expect(
       screen.getByRole("heading", { name: "How does billing work?" }),
     ).toBeInTheDocument();
+  });
+
+  it("renders all 7 FAQ entries, unlike the homepage's 4-item teaser", () => {
+    expect(pricing.faq.items.length).toBe(7);
+    render(<PricingPage />);
+    for (const item of pricing.faq.items) {
+      expect(screen.getByRole("heading", { name: item.question })).toBeInTheDocument();
+    }
   });
 
   it("links every plan CTA out to the Shopify app listing, not a commerce page", () => {

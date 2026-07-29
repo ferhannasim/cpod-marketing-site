@@ -2,9 +2,11 @@ import { Plus } from "lucide-react";
 import { Container } from "@/components/container";
 import { Eyebrow } from "@/components/lander";
 
-// Native <details>/<summary> accordion — no client JS needed. Reuses the exact
-// 4 FAQ entries from content/pricing.ts's own FAQ section (pricing.faq.items);
-// heading text is the exact title already used there.
+// Native <details>/<summary> accordion — no client JS needed. Content is
+// caller-supplied: the homepage passes only the first four of
+// content/pricing.ts's pricing.faq.items as a teaser, while the pricing page
+// renders all seven of that same array in its own (non-accordion) layout.
+// Heading text is the exact title already used there.
 export function Faq({
   items,
   scheme = "bg-scheme2-bg",
