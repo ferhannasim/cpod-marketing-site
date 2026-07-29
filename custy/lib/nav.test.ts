@@ -29,6 +29,7 @@ describe("nav data", () => {
       "/pricing",
       "/features",
       "/design-lab",
+      "/use-cases",
       "/live-demo",
       "/blog",
       APP_URL,

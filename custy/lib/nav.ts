@@ -28,6 +28,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Pricing", href: "/pricing" },
       { label: "Features", href: "/features" },
       { label: "Design Lab", href: "/design-lab" },
+      { label: "Use Cases", href: "/use-cases" },
       { label: "Live Demo", href: "/live-demo" },
       { label: "Blog", href: "/blog" },
       { label: "Install Now on Shopify", href: APP_URL, external: true },
