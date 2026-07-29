@@ -2,21 +2,23 @@ A single flat print price is easy to set up and easy to get wrong. Charge enough
 
 ### Printing types set the rules
 
-Custy lets a merchant configure printing types — DTG, DTF, and embroidery are the three built in — and each one carries its own pricing rules rather than sharing one flat price. That matters because the three methods scale differently: DTG and DTF pricing tends to track how many colors a design uses, while embroidery work often scales with how much stitch-heavy detail covers the printed area. Configuring pricing per printing type means a merchant isn't forcing an embroidery job and a single-color DTF print through the same price logic — each method is priced on the terms that actually drive its cost. See how printing types fit into the wider toolset on [Features](/features).
+Custy lets a merchant configure printing types to match however a shop actually produces work. DTG, DTF, and embroidery are the methods most stores set up first, but a printing type in Custy is just a name a merchant defines — nothing stops a shop from adding another one for any other production method it runs. Every printing type a merchant creates gets the same two pricing tools: per-color-count rules and per-size-range rules. Embroidery doesn't need a different pricing engine from DTF — a merchant plugs different numbers into the same two rule types for each method a product supports, so a five-color DTG front print and a two-color embroidery patch are still priced on their own terms instead of one flat price. See how printing types fit into the wider toolset on [Features](/features).
 
 ### Price by color count
 
-For color-count-sensitive methods, Custy supports per-color pricing rules: a merchant sets a price increment for each additional color a design uses, so a one-color print and a six-color print are never priced the same. This is configured once, on the printing type, and applied automatically every time a shopper's design in the Design Lab crosses a color threshold. Shoppers get a price that reflects the design they actually built, and merchants stop absorbing the cost of complexity they never priced for in the first place.
+Every printing type supports per-color pricing rules: a merchant sets a price increment for each additional color a design uses, so a one-color print and a six-color print are never priced the same. This is configured once, on the printing type, and applied automatically every time a shopper's design in the Design Lab crosses a color threshold. Shoppers get a price that reflects the design they actually built, and merchants stop absorbing the cost of complexity they never priced for in the first place.
 
 ### Price by size range
 
 Garment size is its own cost driver — a larger size uses more fabric and, on some print methods, more printable area than a smaller one — so Custy also supports size-range pricing: a merchant defines ranges across a product's sizes and sets a price adjustment for each range. Combined with per-color pricing, this lets a single product carry pricing that reflects both what's printed on it and what it's printed onto, without a merchant maintaining a separate listing for every size and color combination a shopper might choose.
 
-### Restrictions keep the menu honest
+### Restrictions handle what pricing can't
 
-Not every combination should be for sale. A print method that can't physically be applied to a given product, or a color count a particular size range can't support, shouldn't appear as a checkout-ready option in the first place. Custy's restriction rules let a merchant take specific combinations off the table entirely, so shoppers only ever see options a real order can actually fulfill — no surprise cancellations, and no manual follow-up email explaining that a combination can't be printed after all.
+Per-color and per-size rules cover what a design costs to produce — but a couple of things aren't really pricing problems, and Custy's restriction rules handle those instead: a minimum and maximum order quantity for a printing type, and a default image treatment applied to a shopper's raster uploads.
 
-Restrictions and pricing work together, not against each other: a rule can price a combination correctly and still be restricted if, for this particular product, it simply shouldn't be offered at all.
+The quantity gate exists because some methods carry real setup cost that a per-unit price alone doesn't offset. Embroidery is the clearest case: a merchant can restrict it to orders above a minimum quantity so a single-unit run doesn't undercut the setup work behind it, or cap it below a maximum on a product that isn't set up for a bulk run. The default image treatment solves a different problem — it applies a set look, such as grayscale or sepia, to an uploaded photo before it prints, so a method that's meant to look a particular way doesn't end up printing whatever colors happen to be in someone's upload.
+
+Restrictions and pricing work together, not against each other: a printing type can be priced correctly by color count and size range and still be gated by a minimum quantity, or have its uploads pushed through a default treatment — two different problems, solved on the same printing type.
 
 ### A worked walkthrough
 
@@ -25,7 +27,7 @@ Setting this up on a real product looks like:
 1. Open the product's pricing setup and add a printing type — DTG, DTF, or embroidery — for each method the product actually supports.
 2. Under that printing type, add color rules: a base price plus an increment per additional color, so a two-color and a five-color design are never priced the same.
 3. Add size ranges with their own price adjustments, so garment sizing is priced with the same rigor as color count.
-4. Add restriction rules for any combination — a method, a color count, or a size — that this product genuinely can't produce, so shoppers never reach checkout with an order the shop can't fill.
+4. Set restrictions where a method actually needs them — a minimum or maximum order quantity for a setup-heavy method like embroidery, or a default image treatment for raster uploads — so each method behaves the way this product requires.
 
 Full detail on how these rules connect to the rest of product setup lives on [How It Works](/how-it-works). Once the rules are in place, every order prices itself: no spreadsheet, no manual quote, and no margin quietly lost to a design nobody accounted for when the price was first set.
 
