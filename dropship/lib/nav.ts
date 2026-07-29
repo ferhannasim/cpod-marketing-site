@@ -14,35 +14,24 @@ export const primaryNav: NavEntry[] = [
   { label: "Catalog", href: "/catalog" },
   { label: "Pricing", href: "/pricing" },
   {
-    label: "Start a brand",
+    label: "Resources",
     links: [
-      { label: "Start your ecommerce brand", href: "/start-your-ecommerce-brand" },
-      { label: "Launch an automated brand", href: "/launch-automated-brand" },
-    ],
-  },
-  {
-    label: "Help & FAQs",
-    links: [
-      { label: "General FAQ", href: "/faq" },
-      { label: "DTF FAQ", href: "/faq/dtf" },
-      { label: "Sublimation FAQ", href: "/faq/sublimation" },
-      { label: "Print on your own item", href: "/faq/print-on-your-own-item" },
-      { label: "Delivery speed", href: "/delivery" },
-      { label: "Billing information", href: "/billing" },
+      { label: "Blog", href: "/blog" },
       { label: "Video library", href: "/videos" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Delivery speed", href: "/delivery" },
+      { label: "Size charts", href: "/size-charts" },
     ],
   },
   {
-    label: "Sizing",
+    label: "Company",
     links: [
-      { label: "Size charts", href: "/size-charts" },
-      { label: "How to measure", href: "/measuring" },
+      { label: "About", href: "/about" },
+      { label: "For suppliers", href: "/suppliers" },
+      { label: "Custy", href: "/custy" },
+      { label: "Contact", href: "/contact" },
     ],
   },
-  { label: "Custy", href: "/custy" },
-  { label: "Blog", href: "/blog" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 export const footerColumns: NavGroup[] = [

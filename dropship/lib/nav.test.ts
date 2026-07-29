@@ -41,4 +41,9 @@ describe("nav data", () => {
     const custy = fromFooter.filter((link) => link.external && link.href.includes("custyapp.com"));
     expect(custy.length).toBeGreaterThanOrEqual(1);
   });
+  it("primary nav is trimmed to six top-level entries grouped as Resources and Company", () => {
+    expect(primaryNav).toHaveLength(6);
+    const groupLabels = primaryNav.filter(isGroup).map((g) => g.label);
+    expect(groupLabels).toEqual(["Resources", "Company"]);
+  });
 });

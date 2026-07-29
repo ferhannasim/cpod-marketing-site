@@ -9,8 +9,8 @@ describe("Header", () => {
   });
   it("opens a dropdown group on click", () => {
     render(<Header />);
-    fireEvent.click(screen.getByRole("button", { name: "Help & FAQs" }));
-    expect(screen.getByRole("link", { name: "DTF FAQ" })).toHaveAttribute("href", "/faq/dtf");
+    fireEvent.click(screen.getByRole("button", { name: "Resources" }));
+    expect(screen.getByRole("link", { name: "FAQ" })).toHaveAttribute("href", "/faq");
   });
   it("mobile menu toggle exposes all top-level entries", () => {
     render(<Header />);
@@ -20,29 +20,29 @@ describe("Header", () => {
 
   it("closes the dropdown on Escape and refocuses the trigger", () => {
     render(<Header />);
-    const trigger = screen.getByRole("button", { name: "Help & FAQs" });
+    const trigger = screen.getByRole("button", { name: "Resources" });
     fireEvent.click(trigger);
-    expect(screen.getByRole("link", { name: "DTF FAQ" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "FAQ" })).toBeInTheDocument();
 
     fireEvent.keyDown(trigger, { key: "Escape" });
 
-    expect(screen.queryByRole("link", { name: "DTF FAQ" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "FAQ" })).not.toBeInTheDocument();
     expect(document.activeElement).toBe(trigger);
   });
 
   it("closes the dropdown on outside pointerdown", () => {
     render(<Header />);
-    fireEvent.click(screen.getByRole("button", { name: "Help & FAQs" }));
-    expect(screen.getByRole("link", { name: "DTF FAQ" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Resources" }));
+    expect(screen.getByRole("link", { name: "FAQ" })).toBeInTheDocument();
 
     fireEvent.pointerDown(document.body);
 
-    expect(screen.queryByRole("link", { name: "DTF FAQ" })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "FAQ" })).not.toBeInTheDocument();
   });
 
   it("trigger exposes aria-controls matching the panel id", () => {
     render(<Header />);
-    const trigger = screen.getByRole("button", { name: "Help & FAQs" });
+    const trigger = screen.getByRole("button", { name: "Resources" });
     fireEvent.click(trigger);
 
     const panelId = trigger.getAttribute("aria-controls");
@@ -50,9 +50,9 @@ describe("Header", () => {
 
     const panel = document.getElementById(panelId as string);
     expect(panel).not.toBeNull();
-    expect(within(panel as HTMLElement).getByRole("link", { name: "DTF FAQ" })).toHaveAttribute(
+    expect(within(panel as HTMLElement).getByRole("link", { name: "FAQ" })).toHaveAttribute(
       "href",
-      "/faq/dtf",
+      "/faq",
     );
   });
 
