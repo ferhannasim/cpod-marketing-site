@@ -38,7 +38,7 @@ export const custyFeatures: CardItem[] = [
 ];
 
 export const custyHandoff = [
-  "Install Custy from your DropShipPOD admin in one click",
+  "Install Custy straight from your DropShipPOD admin",
   "The free plan activates automatically — no payment required",
   "Your dropshipped products can be flagged customizable",
   "Custom orders flow into the same production pipeline",

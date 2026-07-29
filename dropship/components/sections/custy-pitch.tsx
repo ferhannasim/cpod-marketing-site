@@ -12,7 +12,7 @@ const points = [
 
 export function CustyPitch() {
   return (
-    <Section id="custy" className="bg-surface">
+    <Section id="custy">
       <Container>
         <SectionHeading
           eyebrow="Also from our team"

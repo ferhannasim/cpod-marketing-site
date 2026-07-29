@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function CustyPage() {
   return (
     <>
-      <LanderHero {...custyHero} highlight={<HighlightCard title="The one-click handoff" items={custyHandoff} />} />
+      <LanderHero {...custyHero} highlight={<HighlightCard title="The guided handoff" items={custyHandoff} />} />
       <LanderSection eyebrow="What Custy adds" title="Personalization that stays print-ready">
         <CardGrid items={custyFeatures} columns={4} />
       </LanderSection>

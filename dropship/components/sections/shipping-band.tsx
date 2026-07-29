@@ -6,9 +6,9 @@ import { FREE_SHIPPING_THRESHOLD, money } from "@/content/shipping";
 
 export function ShippingBand() {
   return (
-    <Section id="shipping">
+    <Section id="shipping" className="bg-surface">
       <Container>
-        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-zinc-200 bg-surface p-8 md:flex-row md:items-center">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-2xl border border-zinc-200 bg-white p-8 md:flex-row md:items-center">
           <div className="flex items-start gap-4">
             <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-ink-tint text-ink">
               <Truck aria-hidden className="h-6 w-6" />
