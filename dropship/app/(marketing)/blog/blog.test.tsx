@@ -5,7 +5,7 @@ import BlogIndexPage from "./page";
 
 describe("blog", () => {
   it("registry is date-descending with unique slugs", () => {
-    expect(posts.length).toBeGreaterThanOrEqual(1);
+    expect(posts).toHaveLength(4);
     expect(new Set(posts.map((p) => p.slug)).size).toBe(posts.length);
     const dates = posts.map((p) => p.date);
     expect([...dates].sort().reverse()).toEqual(dates);
