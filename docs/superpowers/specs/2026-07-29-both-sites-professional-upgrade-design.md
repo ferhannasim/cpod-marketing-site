@@ -94,9 +94,8 @@ print pricing by color count and size; A merchant's guide to multi-side printing
 
 ## Content rules (guards)
 
-- **No emoji anywhere** — custy's `lib/no-emoji.test.ts` enforces this with no
-  exemptions; dropship follows the same standard (add an equivalent guard test to
-  dropship as part of Phase 1).
+- **No emoji anywhere** — both sites already carry a `lib/no-emoji.test.ts` guard with
+  no exemptions (custy's was adapted from dropship's); all new content must pass it.
 - **Icons** — semantic names in content, resolved by each site's icon registry; tests
   assert `[data-icon="…"]`, never glyph text.
 - **Currency (dropship)** — `content/shipping.test.ts` walks all `content/pages/*.mdx`:
