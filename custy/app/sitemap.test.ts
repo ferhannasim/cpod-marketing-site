@@ -19,6 +19,7 @@ describe("sitemap", () => {
     expect(urls).toContain(`${SITE_URL}/pricing`);
     expect(urls).toContain(`${SITE_URL}/how-it-works`);
     expect(urls).toContain(`${SITE_URL}/live-demo`);
+    expect(urls).toContain(`${SITE_URL}/design-lab`);
     expect(urls).toContain(`${SITE_URL}/about-us`);
     expect(urls).toContain(`${SITE_URL}/support`);
     expect(urls).toContain(`${SITE_URL}/contact`);
