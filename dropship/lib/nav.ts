@@ -12,6 +12,7 @@ export const primaryNav: NavEntry[] = [
   { label: "How it works", href: "/how-it-works" },
   { label: "Features", href: "/features" },
   { label: "Catalog", href: "/catalog" },
+  { label: "Pricing", href: "/pricing" },
   {
     label: "Start a brand",
     links: [
@@ -50,6 +51,7 @@ export const footerColumns: NavGroup[] = [
       { label: "About us", href: "/about" },
       { label: "How it works", href: "/how-it-works" },
       { label: "Features", href: "/features" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Start your ecommerce brand", href: "/start-your-ecommerce-brand" },
       { label: "Launch an automated brand", href: "/launch-automated-brand" },
       { label: "Contact", href: "/contact" },

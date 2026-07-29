@@ -3,6 +3,7 @@ export const STATIC_ROUTES = [
   "/how-it-works",
   "/features",
   "/catalog",
+  "/pricing",
   "/about",
   "/contact",
   "/faq",
