@@ -1,4 +1,5 @@
-import { APP_URL } from "@/lib/site";
+import type { CardItem } from "@/components/lander";
+import { APP_URL, DROPSHIP_SITE_URL } from "@/lib/site";
 
 export type ImageField = { src: string; width: number; height: number; alt?: string };
 
@@ -57,4 +58,41 @@ export const home = {
     cta: { label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, external: true },
     secondaryCta: { label: "View Pricing", href: "/pricing" },
   } as ClosingCta,
+
+  // Print methods band — DTG/DTF/embroidery are the printing types the app's
+  // pricing engine models (per-color-count and per-size-range rules).
+  printMethods: [
+    {
+      icon: "printer",
+      title: "DTG printing",
+      text: "Soft, detailed direct-to-garment prints with pricing rules that follow color count and size range.",
+    },
+    {
+      icon: "layers",
+      title: "DTF transfers",
+      text: "Vivid film transfers for cotton, blends and dark garments — the apparel workhorse.",
+    },
+    {
+      icon: "sparkles",
+      title: "Embroidery",
+      text: "Stitched personalization for caps, polos and premium pieces, priced by its own rules.",
+    },
+  ] as CardItem[],
+
+  designLabTeaser: {
+    eyebrow: "The shopper experience",
+    title: "Step inside the Design Lab",
+    text: "Text, cliparts, uploads and every printable side — with DPI checks, bounds warnings and approval before checkout. See exactly what your customers will see.",
+    cta: { label: "Explore the Design Lab", href: "/design-lab" },
+    secondaryCta: { label: "Try the live demo", href: "/live-demo" },
+  },
+
+  dropshipTiein: {
+    eyebrow: "Custy + DropShipPOD",
+    title: "Pair it with DropShipPOD",
+    text: "Fill your store from a print-on-demand catalog, let customers personalize the products, and hand print-ready files to the supplier — two sibling apps, one loop.",
+    cta: { label: "How the pairing works", href: "/dropshipping" },
+    // No `external` flag — lander CtaLink has no such field; LanderCta auto-detects http(s) hrefs.
+    secondaryCta: { label: "Visit dropshippod.ca", href: DROPSHIP_SITE_URL },
+  },
 };
