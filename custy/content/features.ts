@@ -163,6 +163,42 @@ export const features = {
         },
       ],
     },
+    {
+      title: "Run the business side without spreadsheets",
+      lead: "Beyond the Design Lab, Custy gives merchants the pricing and operations controls a personalization business actually needs.",
+      cards: [
+        {
+          icon: "printer",
+          title: "Pricing by print method",
+          text: "DTG, DTF and embroidery each carry their own rules — price by printing colors, per color count, or per size range.",
+        },
+        {
+          icon: "badge-percent",
+          title: "Quantity discounts",
+          text: "Percent or fixed discounts across quantity ranges you define — built for team and group orders.",
+        },
+        {
+          icon: "circle-dollar-sign",
+          title: "Tiered & location pricing",
+          text: "Tiered pricing on Growth and location pricing on Pro keep margins right as you scale and expand.",
+        },
+        {
+          icon: "chart-column",
+          title: "Inventory mode",
+          text: "Track stock per variant with SKUs and stop-sell rules, or run pure design-tool mode — per product, your call.",
+        },
+        {
+          icon: "server",
+          title: "White label & API",
+          text: "On Pro, remove Custy branding and integrate through the API to fit the app into your own stack.",
+        },
+        {
+          icon: "blocks",
+          title: "Bulk order tools",
+          text: "High-volume stores on Pro process custom orders in bulk — status updates and downloads without one-by-one clicking.",
+        },
+      ],
+    },
   ] satisfies FeaturesSection[],
 
   // R4: "Works with your POD workflow" strip — 4 compact items, each a direct

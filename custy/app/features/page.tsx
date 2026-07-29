@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 // Band tones alternate white / light down the page so no two adjacent
 // sections share a background; the hero carries its own tinted wash.
 export default function FeaturesPage() {
-  const [keyFeatures, howItWorks, perfectFor] = features.sections;
+  const [keyFeatures, howItWorks, perfectFor, operations] = features.sections;
 
   return (
     <main>
@@ -57,6 +57,10 @@ export default function FeaturesPage() {
 
       <LanderSection eyebrow="Who it's for" title={perfectFor.title} lead={perfectFor.lead} tone="light">
         <CardGrid items={perfectFor.cards ?? []} columns={4} align="center" />
+      </LanderSection>
+
+      <LanderSection eyebrow="Operations" title={operations.title} lead={operations.lead}>
+        <CardGrid items={operations.cards ?? []} columns={3} />
       </LanderSection>
 
       <div className="bg-white">

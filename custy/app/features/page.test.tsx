@@ -67,4 +67,14 @@ describe("Features page", () => {
     expect(metadata.title).toBe("Features");
     expect(metadata.description).toMatch(/custy/i);
   });
+
+  it("renders the merchant-controls cards", () => {
+    render(<FeaturesPage />);
+    for (const card of [
+      "Pricing by print method", "Quantity discounts", "Tiered & location pricing",
+      "Inventory mode", "White label & API", "Bulk order tools",
+    ]) {
+      expect(screen.getByRole("heading", { name: card })).toBeInTheDocument();
+    }
+  });
 });
