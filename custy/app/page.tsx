@@ -74,7 +74,7 @@ export default function HomePage() {
         </Container>
       </section>
       <Faq items={pricing.faq.items.slice(0, 4)} scheme="bg-scheme1-bg" />
-      <BlogTeasers heading="Custy Blog" posts={posts} scheme="bg-scheme2-bg" />
+      <BlogTeasers heading="Custy Blog" posts={posts.slice(0, 3)} scheme="bg-scheme2-bg" />
       <Container className="py-16 md:py-20">
         <CtaBand
           title={home.closing.title}

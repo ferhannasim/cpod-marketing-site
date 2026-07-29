@@ -7,6 +7,7 @@ import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
 import { demoProducts } from "@/content/demo-products";
+import { posts } from "@/content/posts";
 
 describe("homepage", () => {
   it("renders the recomposed sections in order", () => {
@@ -104,6 +105,18 @@ describe("homepage", () => {
     }
     for (const item of pricing.faq.items.slice(4)) {
       expect(screen.queryByText(item.question)).not.toBeInTheDocument();
+    }
+  });
+  it("teases only the latest 3 blog posts, not the full 6 shown on /blog", () => {
+    expect(posts.length).toBe(6);
+    render(<HomePage />);
+    const cards = screen.getAllByTestId("blog-post-card");
+    expect(cards).toHaveLength(3);
+    for (const post of posts.slice(0, 3)) {
+      expect(screen.getByText(post.title)).toBeInTheDocument();
+    }
+    for (const post of posts.slice(3)) {
+      expect(screen.queryByText(post.title)).not.toBeInTheDocument();
     }
   });
   it("has no commerce links", () => {
