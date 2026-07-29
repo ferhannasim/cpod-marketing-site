@@ -52,6 +52,7 @@ export const footerColumns: NavGroup[] = [
       { label: "How it works", href: "/how-it-works" },
       { label: "Features", href: "/features" },
       { label: "Pricing", href: "/pricing" },
+      { label: "For suppliers", href: "/suppliers" },
       { label: "Start your ecommerce brand", href: "/start-your-ecommerce-brand" },
       { label: "Launch an automated brand", href: "/launch-automated-brand" },
       { label: "Contact", href: "/contact" },

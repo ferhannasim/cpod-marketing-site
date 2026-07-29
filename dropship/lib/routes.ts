@@ -4,6 +4,7 @@ export const STATIC_ROUTES = [
   "/features",
   "/catalog",
   "/pricing",
+  "/suppliers",
   "/about",
   "/contact",
   "/faq",
