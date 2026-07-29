@@ -78,27 +78,29 @@ describe("Features page", () => {
     }
   });
 
-  it("ensures the last content section differs from the closing CTA wrapper (white)", () => {
+  it("alternates section tone with no two adjacent top-level bands sharing a background", () => {
     const { container } = render(<FeaturesPage />);
     const main = container.querySelector("main");
     expect(main).not.toBeNull();
 
-    const sections = Array.from(main!.querySelectorAll(":scope > section"));
-    expect(sections.length).toBeGreaterThan(0);
+    // Walk every top-level band under <main> — the LanderSection elements
+    // *and* the closing div that wraps the page-ending CtaBand — the same
+    // way custy/app/home-bands.test.tsx walks the home page's bands.
+    const bands = Array.from(main!.children) as HTMLElement[];
+    expect(bands.length).toBeGreaterThan(1);
 
-    // Skip the hero (first section) which has its own custom background wash
-    const contentSections = sections.slice(1);
-    expect(contentSections.length).toBeGreaterThan(0);
+    const tones = bands.map((band, index) => {
+      // The hero (always first) carries its own tinted wash, not a plain
+      // bg-white/bg-lander-light tone class.
+      if (index === 0) return "hero";
+      if (band.classList.contains("bg-white")) return "white";
+      if (band.classList.contains("bg-lander-light")) return "light";
+      return "unknown";
+    });
 
-    const lastSection = contentSections[contentSections.length - 1];
-    const lastTone = lastSection.classList.contains("bg-white")
-      ? "white"
-      : lastSection.classList.contains("bg-lander-light")
-        ? "light"
-        : "unknown";
-
-    // The page-ending CtaBand sits in a plain div with bg-white background —
-    // the last real content section must differ from that, i.e. be light-toned.
-    expect(lastTone).toBe("light");
+    expect(tones).not.toContain("unknown");
+    for (let i = 1; i < tones.length; i++) {
+      expect(tones[i]).not.toBe(tones[i - 1]);
+    }
   });
 });

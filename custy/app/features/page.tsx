@@ -59,11 +59,11 @@ export default function FeaturesPage() {
         <CardGrid items={perfectFor.cards ?? []} columns={4} align="center" />
       </LanderSection>
 
-      <LanderSection eyebrow="Operations" title={operations.title} lead={operations.lead} tone="light">
+      <LanderSection eyebrow="Operations" title={operations.title} lead={operations.lead}>
         <CardGrid items={operations.cards ?? []} columns={3} />
       </LanderSection>
 
-      <div className="bg-white">
+      <div className="bg-lander-light">
         <Lander className="py-16 md:py-20">
           <CtaBand
             title={features.cta.title}
