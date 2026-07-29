@@ -30,6 +30,7 @@ describe("nav data", () => {
       "/features",
       "/design-lab",
       "/use-cases",
+      "/dropshipping",
       "/live-demo",
       "/blog",
       APP_URL,
