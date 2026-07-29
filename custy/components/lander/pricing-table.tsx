@@ -7,7 +7,7 @@ export type Plan = {
   price: string;
   /** e.g. "/ month". */
   period?: string;
-  /** Secondary annual line, e.g. "or $383.90/year and save 20%". */
+  /** Secondary annual line, e.g. "or $220.70/year and save 20%". */
   yearly?: string;
   /** Short plan description. */
   description?: string;
@@ -49,13 +49,13 @@ export type PricingTableProps = {
 };
 
 /**
- * The pricing plan grid: four columns of cards, each with price, CTA, and
+ * The pricing plan grid: three columns of cards, each with price, CTA, and
  * feature list. The featured plan carries the tricolor hairline, an ink
  * border, and a "Most popular" pill.
  */
 export function PricingTable({ plans, className }: PricingTableProps) {
   return (
-    <div className={cn("mt-8 grid items-start gap-5 md:grid-cols-2 lg:grid-cols-4", className)}>
+    <div className={cn("mt-8 grid items-start gap-5 md:grid-cols-2 lg:grid-cols-3", className)}>
       {plans.map((plan) => (
         <div
           key={plan.name}

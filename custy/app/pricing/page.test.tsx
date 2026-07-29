@@ -14,23 +14,23 @@ describe("Pricing page", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders all four plan names as headings", () => {
+  it("renders all three plan names as headings", () => {
     render(<PricingPage />);
     expect(screen.getByRole("heading", { name: "Free" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Starter" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Growth" })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: "Pro" })).toBeInTheDocument();
   });
 
   it("renders per-plan features", () => {
     render(<PricingPage />);
     expect(screen.getByText("5 custom products")).toBeInTheDocument();
-    expect(screen.getByText("50 custom orders per month")).toBeInTheDocument();
-    expect(screen.getByText("DTG and DTF print method support")).toBeInTheDocument();
-    expect(screen.getByText("White label option")).toBeInTheDocument();
+    expect(screen.getByText("300 custom orders per month")).toBeInTheDocument();
+    expect(screen.getByText("Up to 6 print sides")).toBeInTheDocument();
+    expect(screen.getByText("Unlimited storage")).toBeInTheDocument();
+    expect(screen.getByText("Premium support")).toBeInTheDocument();
   });
 
-  it("shows the Growth plan as the featured/most-popular plan", () => {
+  it("shows the Starter plan as the featured/most-popular plan", () => {
     render(<PricingPage />);
     // Sentence-case text, uppercased via CSS on the badge pill.
     expect(screen.getByText("Most popular")).toBeInTheDocument();
@@ -88,7 +88,7 @@ describe("Pricing page", () => {
     const ctaLinks = screen.getAllByRole("link", {
       name: /get started free|start free trial/i,
     });
-    expect(ctaLinks).toHaveLength(4);
+    expect(ctaLinks).toHaveLength(3);
     for (const link of ctaLinks) {
       expect(link).toHaveAttribute("href", "https://apps.shopify.com/custy");
       expect(link).toHaveAttribute("target", "_blank");

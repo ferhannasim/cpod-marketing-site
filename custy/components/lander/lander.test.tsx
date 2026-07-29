@@ -53,10 +53,10 @@ describe("PricingTable", () => {
         cta: { label: "Get Started Free", href: "https://apps.shopify.com/custy" },
       },
       {
-        name: "Growth",
-        price: "$39.99",
+        name: "Advanced",
+        price: "$45.00",
         period: "/ month",
-        features: ["100 custom products", "Priority support"],
+        features: ["100 custom products", "Live chat support"],
         cta: { label: "Start Free Trial", href: "https://apps.shopify.com/custy" },
         featured: true,
       },
@@ -65,11 +65,11 @@ describe("PricingTable", () => {
     render(<PricingTable plans={plans} />);
 
     expect(screen.getByText("Free")).toBeInTheDocument();
-    expect(screen.getByText("Growth")).toBeInTheDocument();
+    expect(screen.getByText("Advanced")).toBeInTheDocument();
     expect(screen.getByText("5 custom products")).toBeInTheDocument();
     expect(screen.getByText("Email support")).toBeInTheDocument();
     expect(screen.getByText("100 custom products")).toBeInTheDocument();
-    expect(screen.getByText("Priority support")).toBeInTheDocument();
+    expect(screen.getByText("Live chat support")).toBeInTheDocument();
   });
 
   it("exposes plan names as headings and does not make 'Features' a heading", () => {
@@ -81,8 +81,8 @@ describe("PricingTable", () => {
         cta: { label: "Get Started Free", href: "https://apps.shopify.com/custy" },
       },
       {
-        name: "Growth",
-        price: "$39.99",
+        name: "Advanced",
+        price: "$45.00",
         features: ["100 custom products"],
         cta: { label: "Start Free Trial", href: "https://apps.shopify.com/custy" },
         featured: true,
@@ -92,7 +92,7 @@ describe("PricingTable", () => {
     render(<PricingTable plans={plans} />);
 
     expect(screen.getByRole("heading", { name: "Free" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Growth" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Advanced" })).toBeInTheDocument();
     expect(screen.queryAllByRole("heading", { name: /features/i })).toHaveLength(0);
   });
 });

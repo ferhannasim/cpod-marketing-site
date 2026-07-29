@@ -180,7 +180,7 @@ export const features = {
         {
           icon: "circle-dollar-sign",
           title: "Tiered & location pricing",
-          text: "Tiered pricing on Growth and location pricing on Pro keep margins right as you scale and expand.",
+          text: "Tiered and location-based pricing keep margins right as you scale and expand.",
         },
         {
           icon: "chart-column",
@@ -190,12 +190,12 @@ export const features = {
         {
           icon: "server",
           title: "White label & API",
-          text: "On Pro, remove Custy branding and integrate through the API to fit the app into your own stack.",
+          text: "Remove Custy branding and integrate through the API to fit the app into your own stack.",
         },
         {
           icon: "blocks",
           title: "Bulk order tools",
-          text: "High-volume stores on Pro process custom orders in bulk — status updates and downloads without one-by-one clicking.",
+          text: "High-volume stores process custom orders in bulk — status updates and downloads without one-by-one clicking.",
         },
       ],
     },

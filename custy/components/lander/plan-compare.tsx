@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export type CompareRow = { label: string; values: [string, string, string, string] };
+export type CompareRow = { label: string; values: [string, string, string] };
 
 /** Responsive plan-comparison table: scrolls horizontally inside its own container on small screens. */
 export function PlanCompare({

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { Plan } from "@/components/lander";
 import { pricing } from "@/content/pricing";
 
-// Homepage teaser for the four pricing plans: name, price, the plan's first 3
+// Homepage teaser for the three pricing plans: name, price, the plan's first 3
 // features (of the full list on the /pricing comparison page), and a per-card
 // link through to that page. The featured-plan treatment (tricolor hairline +
 // elevated shadow) mirrors PricingTable's own (components/lander/pricing-table.tsx).
@@ -27,7 +27,7 @@ export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan
             {pricing.header.lead}
           </p>
         </div>
-        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.name}
