@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Body from "@/content/pages/contact.mdx";
 import { Container } from "@/components/container";
 import { Eyebrow, RainbowBar } from "@/components/lander";
 import { ContactChannels } from "@/components/sections/contact-channels";
@@ -51,6 +52,9 @@ export default function ContactPage() {
               Questions about Custy, your plan, or selling personalized products on your Shopify
               store? Reach the team directly — we read every message.
             </p>
+            <div className="prose prose-neutral mx-auto mt-4 max-w-none text-left">
+              <Body />
+            </div>
           </div>
           <ContactChannels className="mx-auto mt-12 max-w-[880px]" />
         </Container>
