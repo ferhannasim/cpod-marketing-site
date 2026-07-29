@@ -40,7 +40,7 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
         <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg">
           <Image src={product.image.src} alt="" fill className="object-contain" sizes="48px" />
         </span>
-        {/*<span className="text-sm leading-snug font-semibold text-ink">{product.name}</span>*/}
+        <span className="text-sm leading-snug font-semibold text-ink">{product.name}</span>
       </button>
     );
   }
