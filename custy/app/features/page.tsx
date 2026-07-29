@@ -59,7 +59,7 @@ export default function FeaturesPage() {
         <CardGrid items={perfectFor.cards ?? []} columns={4} align="center" />
       </LanderSection>
 
-      <LanderSection eyebrow="Operations" title={operations.title} lead={operations.lead}>
+      <LanderSection eyebrow="Operations" title={operations.title} lead={operations.lead} tone="light">
         <CardGrid items={operations.cards ?? []} columns={3} />
       </LanderSection>
 

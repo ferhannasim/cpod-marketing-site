@@ -77,4 +77,28 @@ describe("Features page", () => {
       expect(screen.getByRole("heading", { name: card })).toBeInTheDocument();
     }
   });
+
+  it("ensures the last content section differs from the closing CTA wrapper (white)", () => {
+    const { container } = render(<FeaturesPage />);
+    const main = container.querySelector("main");
+    expect(main).not.toBeNull();
+
+    const sections = Array.from(main!.querySelectorAll(":scope > section"));
+    expect(sections.length).toBeGreaterThan(0);
+
+    // Skip the hero (first section) which has its own custom background wash
+    const contentSections = sections.slice(1);
+    expect(contentSections.length).toBeGreaterThan(0);
+
+    const lastSection = contentSections[contentSections.length - 1];
+    const lastTone = lastSection.classList.contains("bg-white")
+      ? "white"
+      : lastSection.classList.contains("bg-lander-light")
+        ? "light"
+        : "unknown";
+
+    // The page-ending CtaBand sits in a plain div with bg-white background —
+    // the last real content section must differ from that, i.e. be light-toned.
+    expect(lastTone).toBe("light");
+  });
 });
