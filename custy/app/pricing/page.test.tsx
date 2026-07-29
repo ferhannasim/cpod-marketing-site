@@ -53,6 +53,14 @@ describe("Pricing page", () => {
     expect(screen.getByText("30-day free trial on paid plans")).toBeInTheDocument();
   });
 
+  it("renders the plan comparison table between the plans grid and the FAQ", () => {
+    render(<PricingPage />);
+    expect(
+      screen.getByRole("heading", { name: "Compare plans in detail" }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole("columnheader", { name: "Pro" })).toBeInTheDocument();
+  });
+
   it("renders the FAQ section", () => {
     render(<PricingPage />);
     expect(

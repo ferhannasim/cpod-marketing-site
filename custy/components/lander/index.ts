@@ -4,5 +4,6 @@ export { LanderSection, type LanderSectionProps } from "./section";
 export { CardGrid, type CardGridProps, type CardItem } from "./cards";
 export { Steps, type StepsProps, type StepItem } from "./steps";
 export { PricingTable, type PricingTableProps, type Plan } from "./pricing-table";
+export { PlanCompare, type CompareRow } from "./plan-compare";
 export { CtaBand, type CtaBandProps } from "./cta-band";
 export { IconTile, Eyebrow, type IconTileProps } from "./icons";

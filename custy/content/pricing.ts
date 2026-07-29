@@ -1,4 +1,4 @@
-import type { Plan } from "@/components/lander";
+import type { CompareRow, Plan } from "@/components/lander";
 import { APP_URL } from "@/lib/site";
 
 export type PricingHeader = {
@@ -171,6 +171,50 @@ export const pricing = {
         answer:
           "Billing runs through Shopify’s billing system, with charges added to your invoice based on your plan.",
       },
+      {
+        question: "What happens if I hit a plan limit?",
+        answer:
+          "The app shows an over-quota notice and locked features prompt an upgrade — nothing breaks, and upgrading lifts the limit immediately.",
+      },
+      {
+        question: "How does annual billing work?",
+        answer:
+          "Every paid plan has an annual option that saves 20% versus paying monthly. Billing runs through Shopify either way.",
+      },
+      {
+        question: "Can I use the free trial more than once?",
+        answer:
+          "The 30-day trial applies once per store. After it ends you can continue on a paid plan or drop to the Free plan.",
+      },
     ],
   } satisfies PricingFaq,
+};
+
+// Detailed plan-comparison table for the pricing page, rendered below the
+// plan cards via components/lander's PlanCompare. Every quota/feature value
+// below is copied verbatim from the app's client-safe source of truth,
+// CustyApp/app/config/plans.ts (LIMITS_BY_TIER, FEATURES_BY_TIER): Free/
+// Starter/Growth limits are finite (customProducts, ordersPerMonth,
+// storageBytes, maxPrintSides); Pro is UNLIMITED across all four. Boolean
+// feature flags (qtyDiscount, advancedDesignTools, inventoryControl,
+// tieredPricing, locationPricing, whiteLabel, apiAccess, bulkOrderTools) map
+// to "Included" (true) or "—" (false); supportTier maps to Email/Priority/
+// Premium. Re-verify against plans.ts if either file changes.
+export const comparison: { plans: string[]; rows: CompareRow[] } = {
+  plans: ["Free", "Starter", "Growth", "Pro"],
+  rows: [
+    { label: "Custom products", values: ["5", "10", "100", "Unlimited"] },
+    { label: "Orders per 30 days", values: ["20", "50", "300", "Unlimited"] },
+    { label: "Storage", values: ["1 GB", "5 GB", "25 GB", "Unlimited"] },
+    { label: "Print sides per product", values: ["1", "2", "6", "Unlimited"] },
+    { label: "Quantity discounts", values: ["—", "Included", "Included", "Included"] },
+    { label: "Advanced design tools", values: ["—", "—", "Included", "Included"] },
+    { label: "Inventory control", values: ["—", "—", "Included", "Included"] },
+    { label: "Tiered pricing", values: ["—", "—", "Included", "Included"] },
+    { label: "Location pricing", values: ["—", "—", "—", "Included"] },
+    { label: "White label", values: ["—", "—", "—", "Included"] },
+    { label: "API access", values: ["—", "—", "—", "Included"] },
+    { label: "Bulk order tools", values: ["—", "—", "—", "Included"] },
+    { label: "Support", values: ["Email", "Email", "Priority", "Premium"] },
+  ],
 };

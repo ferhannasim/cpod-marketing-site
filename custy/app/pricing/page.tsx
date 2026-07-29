@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Lander, PricingTable, RainbowBar } from "@/components/lander";
+import { Lander, PlanCompare, PricingTable, RainbowBar } from "@/components/lander";
 import { TrustBand } from "@/components/sections/trust-band";
-import { pricing } from "@/content/pricing";
+import { comparison, pricing } from "@/content/pricing";
 
 export const metadata: Metadata = {
   title: "Pricing",
@@ -45,6 +45,15 @@ export default function PricingPage() {
           <p className="mx-auto max-w-[840px] text-center text-[15px] leading-[1.7] text-body">
             {pricing.bottomNote}
           </p>
+
+          {/* Detailed comparison table, between the plan cards above and the
+              FAQ below — same nested-section rhythm as the FAQ that follows. */}
+          <section className="mt-14 md:mt-16">
+            <h2 className="mb-8 text-center text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
+              Compare plans in detail
+            </h2>
+            <PlanCompare {...comparison} className="mx-auto max-w-[1000px]" />
+          </section>
 
           <section className="mt-14 md:mt-16">
             <h2 className="mb-8 text-center text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
