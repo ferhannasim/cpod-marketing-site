@@ -3,14 +3,12 @@ import Link from "next/link";
 import { footerColumns, socialLinks } from "@/lib/nav";
 import { Container } from "@/components/ui/container";
 import { NavItemLink } from "@/components/nav-item-link";
-import { DuoBar } from "@/components/lander/icons";
 import { TAGLINE } from "@/lib/site";
 
 export function Footer() {
   return (
     <footer className="bg-ink-deep text-white">
       <Container className="py-12">
-        <DuoBar className="mb-6" />
         <div className="mb-10 flex flex-col items-start justify-between gap-4 border-b border-white/10 pb-8 sm:flex-row sm:items-center">
           <Link href="/" className="flex items-center rounded-xl bg-white px-3 py-2">
             <Image src="/images/logo.png" alt="DropShipPOD" width={165} height={50} className="h-9 w-auto" />
