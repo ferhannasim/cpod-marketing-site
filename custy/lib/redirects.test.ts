@@ -12,7 +12,7 @@ describe("redirects", () => {
     expect(dest("/pages/about-us")).toBe("/about-us");
     expect(dest("/pages/support")).toBe("/support");
     expect(dest("/pages/contact")).toBe("/contact");
-    expect(dest("/pages/custydesignlab")).toBe("/");
+    expect(dest("/pages/custydesignlab")).toBe("/design-lab");
   });
 
   it("redirects policies and blog paths", () => {

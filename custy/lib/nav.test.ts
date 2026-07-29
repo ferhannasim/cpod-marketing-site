@@ -3,11 +3,12 @@ import { headerNav, footerColumns, socialLinks } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav has the five live links plus the app CTA target", () => {
+  it("header nav has six live links plus the app CTA target", () => {
     expect(headerNav.map((l) => l.href)).toEqual([
       "/how-it-works",
       "/pricing",
       "/features",
+      "/design-lab",
       "/live-demo",
       "/blog",
     ]);
@@ -27,6 +28,7 @@ describe("nav data", () => {
       "/how-it-works",
       "/pricing",
       "/features",
+      "/design-lab",
       "/live-demo",
       "/blog",
       APP_URL,

@@ -8,6 +8,7 @@ export const headerNav: NavLink[] = [
   { label: "How it Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Features", href: "/features" },
+  { label: "Design Lab", href: "/design-lab" },
   { label: "Live Demo", href: "/live-demo" },
   { label: "Blog", href: "/blog" },
 ];
@@ -26,6 +27,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "How it Works", href: "/how-it-works" },
       { label: "Pricing", href: "/pricing" },
       { label: "Features", href: "/features" },
+      { label: "Design Lab", href: "/design-lab" },
       { label: "Live Demo", href: "/live-demo" },
       { label: "Blog", href: "/blog" },
       { label: "Install Now on Shopify", href: APP_URL, external: true },

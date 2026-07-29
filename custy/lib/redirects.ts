@@ -14,8 +14,8 @@ export const redirectList: Redirect[] = [
   to("/pages/about-us", "/about-us"),
   to("/pages/support", "/support"),
   to("/pages/contact", "/contact"),
-  // dropped pages
-  to("/pages/custydesignlab", "/"),
+  // migrated pages
+  to("/pages/custydesignlab", "/design-lab"),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),
   to("/policies/terms-of-service", "/policies/terms"),

@@ -7,6 +7,7 @@ import {
   Eye,
   FileCheck,
   Gift,
+  ImagePlus,
   Layers,
   Mail,
   MonitorSmartphone,
@@ -21,6 +22,7 @@ import {
   Sparkles,
   Store,
   TrendingUp,
+  Type,
   Undo2,
   Zap,
 } from "lucide-react";
@@ -57,6 +59,8 @@ const icons: Record<string, LucideIcon> = {
   undo: Undo2,
   mail: Mail,
   phone: Phone,
+  type: Type,
+  image: ImagePlus,
 };
 
 /**
