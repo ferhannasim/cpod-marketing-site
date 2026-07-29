@@ -70,7 +70,7 @@ export const about = {
       "Whether it’s a t-shirt, hoodie, cap, or any print-on-demand product, Custy gives your customers the freedom to design exactly what they want and see it instantly.",
     ],
     ctas: [
-      { label: "Start 21-Day Free Trial", href: "/pricing", variant: "primary" },
+      { label: "Start 30-Day Free Trial", href: "/pricing", variant: "primary" },
       { label: "View Features", href: "/features", variant: "secondary" },
     ],
     highlight: {

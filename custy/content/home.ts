@@ -42,7 +42,7 @@ export const home = {
       height: 857,
       alt: "",
     },
-    ctas: [{ label: "Start Your 21-Day Free Trial of Custy", href: APP_URL, external: true }],
+    ctas: [{ label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, external: true }],
   } as RichBlock,
 
   // section_VyHdx4. Previously rendered as a plain closing paragraph + large logo
@@ -54,7 +54,7 @@ export const home = {
   closing: {
     title: "Start with Custy",
     text: "Custy is a real-time Shopify product customizer built for print-on-demand brands. Customers design t-shirts, hoodies, caps, and more across the front, back, and sleeves, with dynamic pricing for DTG, DTF, and other print methods. Print-ready files and full Shopify integration keep order processing smooth — so every order improves the customer experience and helps convert more sales.",
-    cta: { label: "Start Your 21-Day Free Trial of Custy", href: APP_URL, external: true },
+    cta: { label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, external: true },
     secondaryCta: { label: "View Pricing", href: "/pricing" },
   } as ClosingCta,
 };

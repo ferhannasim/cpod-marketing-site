@@ -33,7 +33,7 @@ const helpTopics = [
   },
   {
     title: "Plans, trials & billing",
-    text: "Billing runs through Shopify. Paid plans include a 21-day free trial, and you can change or cancel your plan anytime.",
+    text: "Billing runs through Shopify. Paid plans include a 30-day free trial, and you can change or cancel your plan anytime.",
     href: "/pricing",
     label: "Read the pricing FAQ",
   },

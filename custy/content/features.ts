@@ -44,7 +44,7 @@ export const features = {
       "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — helping create a better shopping experience that boosts engagement, conversions, and average order value.",
     ],
     ctas: [
-      { label: "Start 21-Day Free Trial", href: APP_URL, variant: "primary" },
+      { label: "Start 30-Day Free Trial", href: APP_URL, variant: "primary" },
       { label: "Install on Shopify", href: APP_URL, variant: "secondary" },
     ],
     highlight: {
@@ -207,7 +207,7 @@ export const features = {
 
   cta: {
     title: "Start with Custy Risk-Free",
-    text: "Enjoy a 21-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
+    text: "Enjoy a 30-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
     cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
     secondaryCta: { label: "View Pricing", href: "/pricing", variant: "outline" },
   } satisfies FeaturesCta,

@@ -14,7 +14,7 @@ export type Plan = {
   /** Heading above the feature list (default "Features"). */
   featureTitle?: string;
   features: string[];
-  /** Trial line under the CTA, e.g. "21-day free trial". */
+  /** Trial line under the CTA, e.g. "30-day free trial". */
   trialNote?: string;
   cta: { label: string; href: string };
   featured?: boolean;

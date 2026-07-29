@@ -9,7 +9,7 @@ describe("LanderHero", () => {
         eyebrow="Custy for Shopify • POD Ready"
         title="Powerful Product Customization for Modern Shopify Stores"
         lead="Custy lets your customers design products directly on your store in real time."
-        ctas={[{ label: "Start 21-Day Free Trial", href: "https://apps.shopify.com/custy" }]}
+        ctas={[{ label: "Start 30-Day Free Trial", href: "https://apps.shopify.com/custy" }]}
       />,
     );
 
@@ -18,7 +18,7 @@ describe("LanderHero", () => {
       screen.getByRole("heading", { level: 1, name: /powerful product customization/i }),
     ).toBeInTheDocument();
 
-    const cta = screen.getByRole("link", { name: /start 21-day free trial/i });
+    const cta = screen.getByRole("link", { name: /start 30-day free trial/i });
     expect(cta).toHaveAttribute("href", "https://apps.shopify.com/custy");
     expect(cta).toHaveAttribute("target", "_blank");
     expect(cta).toHaveAttribute("rel", "noopener noreferrer");

@@ -6,7 +6,7 @@ import { pricing } from "@/content/pricing";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy's Shopify product customizer, easy setup, and a 21-day free trial.",
+    "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy's Shopify product customizer, easy setup, and a 30-day free trial.",
 };
 
 const headerWash =

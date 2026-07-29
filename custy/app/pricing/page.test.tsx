@@ -38,7 +38,7 @@ describe("Pricing page", () => {
   it("renders the pricing note pill and bottom disclaimer", () => {
     render(<PricingPage />);
     expect(
-      screen.getByText("No setup fee • Cancel anytime • 21-day free trial on paid plans"),
+      screen.getByText("No setup fee • Cancel anytime • 30-day free trial on paid plans"),
     ).toBeInTheDocument();
     expect(
       screen.getByText(/All prices are billed in USD/),
@@ -50,7 +50,7 @@ describe("Pricing page", () => {
     expect(
       screen.getByRole("heading", { name: "Plan guarantees" }),
     ).toBeInTheDocument();
-    expect(screen.getByText("21-day free trial on paid plans")).toBeInTheDocument();
+    expect(screen.getByText("30-day free trial on paid plans")).toBeInTheDocument();
   });
 
   it("renders the FAQ section", () => {

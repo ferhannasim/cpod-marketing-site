@@ -12,7 +12,7 @@ import { pricing } from "@/content/pricing";
 // elevated shadow) mirrors PricingTable's own (components/lander/pricing-table.tsx).
 // The lead reuses content/pricing.ts's own header lead verbatim, and the
 // microcopy line under the grid restates its bottomNote ("All prices are
-// billed in USD...") and header.note ("21-day free trial on paid plans") — no
+// billed in USD...") and header.note ("30-day free trial on paid plans") — no
 // new claims.
 export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan[]; scheme?: string }) {
   return (
@@ -64,7 +64,7 @@ export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan
           ))}
         </div>
         <p className="mt-8 text-center text-sm text-[#667085]">
-          All prices billed in USD · 21-day free trial on paid plans
+          All prices billed in USD · 30-day free trial on paid plans
         </p>
         <div className="mt-6 text-center">
           <Button href="/pricing" variant="secondary">

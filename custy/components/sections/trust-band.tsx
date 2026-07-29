@@ -7,10 +7,10 @@ export type TrustItem = { icon: string; title: string; text: string };
 // just restated compactly. Titles are the exact labels used in the R2 spec;
 // one-liners are direct trims of a single content/pricing.ts field each
 // (cited per item):
-//   1. "21-day free trial on paid plans" — title is verbatim the tail clause
-//      of pricing.header.note ("No setup fee • Cancel anytime • 21-day free
+//   1. "30-day free trial on paid plans" — title is verbatim the tail clause
+//      of pricing.header.note ("No setup fee • Cancel anytime • 30-day free
 //      trial on paid plans"). Body trims pricing.faq.items[0].answer ("Paid
-//      plans include a 21-day free trial so you can test Custy on your
+//      plans include a 30-day free trial so you can test Custy on your
 //      Shopify store before committing. The Free plan doesn't require a
 //      trial.").
 //   2. "Cancel anytime through Shopify" — title trims pricing.bottomNote
@@ -24,8 +24,8 @@ export type TrustItem = { icon: string; title: string; text: string };
 const items: TrustItem[] = [
   {
     icon: "calendar-check",
-    title: "21-day free trial on paid plans",
-    text: "Paid plans include a 21-day free trial so you can test Custy before committing.",
+    title: "30-day free trial on paid plans",
+    text: "Paid plans include a 30-day free trial so you can test Custy before committing.",
   },
   {
     icon: "undo",

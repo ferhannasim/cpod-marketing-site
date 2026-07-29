@@ -58,7 +58,7 @@ export const howItWorks = {
       "Whether you sell custom t-shirts, hoodies, caps, mugs, or other personalized products, Custy helps you give customers creative freedom while keeping your production process organized behind the scenes.",
     ],
     ctas: [
-      { label: "Start 21-Day Free Trial", href: "/pricing", variant: "primary" },
+      { label: "Start 30-Day Free Trial", href: "/pricing", variant: "primary" },
       { label: "Install on Shopify", href: APP_URL, variant: "secondary" },
     ],
     highlight: {

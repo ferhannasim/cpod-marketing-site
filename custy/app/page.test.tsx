@@ -50,7 +50,7 @@ describe("homepage", () => {
     // the verbatim tail clause of pricing.header.note, so this stays in sync.
     const noteParts = pricing.header.note.split(" • ");
     const trialTitle = noteParts[noteParts.length - 1];
-    expect(trialTitle).toBe("21-day free trial on paid plans");
+    expect(trialTitle).toBe("30-day free trial on paid plans");
     expect(screen.getByText(trialTitle)).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: /plan guarantees/i })).toBeInTheDocument();
 
@@ -62,14 +62,14 @@ describe("homepage", () => {
 
     // R2: pricing teaser microcopy under the grid.
     expect(
-      screen.getByText("All prices billed in USD · 21-day free trial on paid plans"),
+      screen.getByText("All prices billed in USD · 30-day free trial on paid plans"),
     ).toBeInTheDocument();
 
     expect(home.closing.title).toBe("Start with Custy");
     expect(screen.getByRole("heading", { name: home.closing.title })).toBeInTheDocument();
 
-    expect(home.intro.ctas[0]?.label).toBe("Start Your 21-Day Free Trial of Custy");
-    const trialCtas = screen.getAllByRole("link", { name: "Start Your 21-Day Free Trial of Custy" });
+    expect(home.intro.ctas[0]?.label).toBe("Start Your 30-Day Free Trial of Custy");
+    const trialCtas = screen.getAllByRole("link", { name: "Start Your 30-Day Free Trial of Custy" });
     expect(trialCtas.length).toBeGreaterThan(0);
     for (const link of trialCtas) {
       expect(link).toHaveAttribute("href", APP_URL);

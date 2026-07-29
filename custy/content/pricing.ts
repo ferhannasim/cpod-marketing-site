@@ -33,7 +33,7 @@ export type PricingFaq = {
 // assembled as minimal page-scoped JSX in app/pricing/page.tsx instead of
 // being forced into an ill-fitting shared component.
 //
-// Inline <strong> emphasis inside the header lead ("21-day free trial") and
+// Inline <strong> emphasis inside the header lead ("30-day free trial") and
 // the bottom disclaimer ("No hidden fees. No commission.") is flattened to
 // plain text, per the established lead/text plain-string component contract.
 //
@@ -45,8 +45,8 @@ export type PricingFaq = {
 export const pricing = {
   header: {
     title: "Simple Pricing for Growing Custom Product Stores",
-    lead: "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy’s Shopify product customizer, easy setup, and a 21-day free trial.",
-    note: "No setup fee • Cancel anytime • 21-day free trial on paid plans",
+    lead: "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy’s Shopify product customizer, easy setup, and a 30-day free trial.",
+    note: "No setup fee • Cancel anytime • 30-day free trial on paid plans",
   } satisfies PricingHeader,
 
   plans: [
@@ -86,7 +86,7 @@ export const pricing = {
         "Quantity discount support",
         "Email support",
       ],
-      trialNote: "21-day free trial",
+      trialNote: "30-day free trial",
       cta: { label: "Start Free Trial", href: APP_URL },
     },
     {
@@ -111,7 +111,7 @@ export const pricing = {
         "Product options support",
         "Priority support",
       ],
-      trialNote: "21-day free trial",
+      trialNote: "30-day free trial",
       cta: { label: "Start Free Trial", href: APP_URL },
       featured: true,
     },
@@ -141,7 +141,7 @@ export const pricing = {
         "API-ready expansion support",
         "Premium support",
       ],
-      trialNote: "21-day free trial",
+      trialNote: "30-day free trial",
       cta: { label: "Start Free Trial", href: APP_URL },
     },
   ] satisfies Plan[],
@@ -155,7 +155,7 @@ export const pricing = {
       {
         question: "Does every plan include a free trial?",
         answer:
-          "Paid plans include a 21-day free trial so you can test Custy on your Shopify store before committing. The Free plan doesn’t require a trial.",
+          "Paid plans include a 30-day free trial so you can test Custy on your Shopify store before committing. The Free plan doesn’t require a trial.",
       },
       {
         question: "Can I change my plan later?",
