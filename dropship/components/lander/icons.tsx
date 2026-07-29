@@ -23,8 +23,10 @@ const icons: Record<string, LucideIcon> = {
 
 export const iconNames = Object.keys(icons);
 
-/** Crimson / navy tint cycle — DropShipPOD's two-ink analogue of custy's tricolor tiles. */
-const tileTints = ["bg-brand-tint text-brand-dark", "bg-ink-tint text-ink-soft"];
+/** Single professional tile tint used everywhere — the alternating crimson/navy cycle read as
+ * unprofessional in review, so every tile now renders the same calm ink tint. `tint` stays
+ * accepted as a no-op index so `CardGrid` call sites don't have to change. */
+const tileTints = ["bg-ink-tint text-ink-soft"];
 
 export type IconTileProps = { name?: string; tint?: number; className?: string };
 

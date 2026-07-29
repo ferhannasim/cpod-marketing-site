@@ -13,7 +13,7 @@ export default function PricingPage() {
     <>
       <LanderHero {...pricingHero} highlight={<HighlightCard title="What you never pay" items={neverPay} />} />
       <LanderSection eyebrow="The model" title="Three numbers, one of them yours">
-        <CardGrid items={model} columns={3} align="center" />
+        <CardGrid items={model} columns={4} align="center" />
       </LanderSection>
       <LanderSection tone="light" eyebrow="See the math" title="A sale, end to end">
         <div className="mx-auto max-w-[560px] overflow-hidden rounded-2xl border border-zinc-200 bg-white">

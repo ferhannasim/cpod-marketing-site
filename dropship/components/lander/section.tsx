@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/reveal";
 import { Eyebrow } from "./icons";
 
 type SectionTone = "white" | "light" | "dark";
@@ -27,7 +28,7 @@ export function LanderSection({ eyebrow, title, lead, tone = "white", id, classN
     <section id={id} className={cn(toneShell[tone], className)}>
       <div className="mx-auto max-w-[1200px] px-5 py-16 md:py-24 max-md:px-4">
         {hasHeader ? (
-          <div className="mx-auto mb-12 max-w-[760px] text-center">
+          <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
             {eyebrow ? <Eyebrow className="mb-4">{eyebrow}</Eyebrow> : null}
             {title ? (
               <h2 className={cn(
@@ -42,9 +43,9 @@ export function LanderSection({ eyebrow, title, lead, tone = "white", id, classN
                 {lead}
               </p>
             ) : null}
-          </div>
+          </Reveal>
         ) : null}
-        {children}
+        <Reveal>{children}</Reveal>
       </div>
     </section>
   );

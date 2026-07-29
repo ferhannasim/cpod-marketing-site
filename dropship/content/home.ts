@@ -74,6 +74,11 @@ export const economics: CardItem[] = [
     title: "Your profit",
     text: "Customer total minus base cost. Every dropship order shows the split, so you always know what you earned.",
   },
+  {
+    icon: "shield-check",
+    title: "No monthly fees",
+    text: "There is no subscription and no platform commission — the only charge is the base cost when a customer orders.",
+  },
 ];
 
 export const printMethods: CardItem[] = [

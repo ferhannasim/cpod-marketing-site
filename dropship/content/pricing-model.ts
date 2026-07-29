@@ -27,6 +27,11 @@ export const model: CardItem[] = [
     title: "Your profit",
     text: "Customer total minus base cost, shown on every order with its own status timeline. No spreadsheet required.",
   },
+  {
+    icon: "credit-card",
+    title: "One saved card",
+    text: "Add a card once, securely via Stripe. Every order charges its base cost to it — nothing else, and nothing monthly.",
+  },
 ];
 
 /** Illustrative only — not a live quote; base costs vary by product and are shown in-app. */

@@ -21,7 +21,7 @@ describe("LanderSection", () => {
 });
 
 describe("CardGrid", () => {
-  it("renders icon tiles by semantic name and cycles tints", () => {
+  it("renders icon tiles by semantic name", () => {
     const { container } = render(
       <CardGrid
         items={[

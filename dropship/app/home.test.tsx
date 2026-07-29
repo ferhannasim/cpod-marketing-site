@@ -24,6 +24,13 @@ describe("HomePage", () => {
     expect(screen.getAllByRole("link", { name: "Install the Shopify app" }).length).toBeGreaterThan(0);
   });
 
+  it("renders the fourth economics card alongside the original three", () => {
+    render(<HomePage />);
+    for (const card of ["Base cost", "Your markup", "Your profit", "No monthly fees"]) {
+      expect(screen.getByRole("heading", { name: card })).toBeInTheDocument();
+    }
+  });
+
   it("renders the hero headline as the only h1", () => {
     render(<HomePage />);
     const h1s = screen.getAllByRole("heading", { level: 1 });

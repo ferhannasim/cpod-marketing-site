@@ -32,7 +32,7 @@ export default function HomePage() {
       </LanderSection>
       <LanderSection tone="light" eyebrow="Simple economics" title="Simple economics, no subscription"
         lead="Three numbers decide your business — and you control the middle one.">
-        <CardGrid items={economics} columns={3} align="center" />
+        <CardGrid items={economics} columns={4} align="center" />
         <div className="mt-8 text-center">
           <Link href="/pricing" className="text-sm font-semibold text-brand hover:text-brand-dark">
             See how pricing works

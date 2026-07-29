@@ -20,6 +20,15 @@ describe("icon registry", () => {
     const unknown = render(<IconTile name="nope" />);
     expect(unknown.container.firstChild).toBeNull();
   });
+  it("renders every tile with the same unified tint, regardless of the tint prop", () => {
+    for (const tint of [0, 1, 2, 3, 5]) {
+      const { container } = render(<IconTile name="truck" tint={tint} />);
+      const tile = container.querySelector('[data-icon="truck"]');
+      expect(tile?.className).toContain("bg-ink-tint");
+      expect(tile?.className).toContain("text-ink-soft");
+      expect(tile?.className).not.toContain("bg-brand-tint");
+    }
+  });
 });
 
 describe("marks", () => {
