@@ -17,12 +17,10 @@ export type FaqGroup = {
 // separate from content/pricing.ts's `pricing.faq`, which stays scoped to the
 // seven billing questions the pricing page answers beside its plan table.
 //
-// Three deviations from the raw copy, so the page can't contradict claims the
-// rest of the site already publishes: the trial answer states the site's
-// 30-day figure (pricing.header.note, guarded by lib/trial-copy.test.ts)
-// instead of deferring to the pricing page; the sibling dropshipping app is
-// named DropShipPOD, as content/dropshipping.ts does; and the support address
-// comes from lib/site.ts's SUPPORT_EMAIL rather than being hardcoded.
+// One fill-in from the rest of the site: the trial answer uses the 30-day
+// length already published on the pricing page (pricing.header.note, guarded
+// by lib/trial-copy.test.ts). The support address comes from lib/site.ts's
+// SUPPORT_EMAIL rather than being hardcoded.
 export const faq = {
   hero: {
     title: "Frequently Asked Questions",
@@ -40,10 +38,10 @@ export const faq = {
             "Custy is the product customizer for your Shopify store. Shoppers design apparel and products in your store, then buy. You fulfill through Cheapest Print On Demand.",
         },
         {
-          question: "How is Custy different from the dropshipping app?",
+          question: "How is Custy different from the Dropshipping app?",
           answer:
-            "Custy is for customization: the Customize button, the design editor, and custom orders. DropShipPOD, the dropshipping app from Cheapest Print On Demand, is for importing CPOD products, setting markup, and forwarding orders. Many stores use both.",
-          link: { label: "Compare Custy and DropShipPOD", href: "/dropshipping" },
+            'Custy is for customization: the "Customize" button, design editor, and custom orders. The Dropshipping app is for importing CPOD products, markup, and forwarding orders. Many stores use both.',
+          link: { label: "Compare Custy and the Dropshipping app", href: "/dropshipping" },
         },
         {
           question: "Do my customers need to leave my store to design?",
@@ -53,7 +51,7 @@ export const faq = {
         {
           question: "What can customers customize?",
           answer:
-            "They can add text, images, clipart, and designs on the product sides you enable, then add the finished item to cart.",
+            "They can add text, images, clipart, and designs on product sides you enable, then add the finished item to cart.",
         },
         {
           question: "Does Custy work with print-on-demand?",
@@ -80,17 +78,12 @@ export const faq = {
         {
           question: "Is there a free trial?",
           answer:
-            "Paid plans include a 30-day free trial when you upgrade. The Free plan has no trial because it needs none.",
+            "Paid plans include a 30-day free trial when you upgrade. Free has no trial.",
         },
         {
           question: "How do I get billed?",
           answer:
             "App plans are charged through Shopify Billing on your Shopify invoice. That is separate from product or print costs.",
-        },
-        {
-          question: "Can I cancel anytime?",
-          answer:
-            "Yes. You can change or cancel your plan from the app or through Shopify billing. Your store stays yours.",
         },
       ],
     },
@@ -132,11 +125,16 @@ export const faq = {
         {
           question: "Who handles shipping and printing?",
           answer:
-            "Cheapest Print On Demand handles production and shipping for fulfilled custom orders, based on your DropShipPOD setup.",
+            "Cheapest Print On Demand handles production and shipping for fulfilled custom orders, based on your CPOD setup.",
+        },
+        {
+          question: "Can I cancel anytime?",
+          answer:
+            "Yes. You can change or cancel your plan from the app / Shopify billing. Your store stays yours.",
         },
         {
           question: "Where do I get help?",
-          answer: `Email ${SUPPORT_EMAIL} or send us a message from the support page. Including your store URL and plan helps us answer faster.`,
+          answer: `Email ${SUPPORT_EMAIL} or use the support contact on our marketing site.`,
           link: { label: "Go to support", href: "/support" },
         },
       ],

@@ -34,7 +34,7 @@ describe("FAQ page", () => {
 
   it("points the answers that reference other pages at those pages", () => {
     render(<FaqPage />);
-    expect(screen.getByRole("link", { name: "Compare Custy and DropShipPOD" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Compare Custy and the Dropshipping app" })).toHaveAttribute(
       "href",
       "/dropshipping",
     );
