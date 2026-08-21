@@ -6,6 +6,7 @@ export type SocialLink = { label: string; href: string };
 
 export const headerNav: NavLink[] = [
   { label: "How it Works", href: "/how-it-works" },
+  { label: "Resources", href: "/resources" },
   { label: "Pricing", href: "/pricing" },
   { label: "Features", href: "/features" },
   { label: "Design Lab", href: "/design-lab" },
@@ -26,6 +27,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Explore",
     links: [
       { label: "How it Works", href: "/how-it-works" },
+      { label: "Resources", href: "/resources" },
       { label: "Pricing", href: "/pricing" },
       { label: "Features", href: "/features" },
       { label: "Design Lab", href: "/design-lab" },

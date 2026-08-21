@@ -3,9 +3,10 @@ import { headerNav, footerColumns, socialLinks } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav has six live links plus the app CTA target", () => {
+  it("header nav includes the Resources guide plus the app CTA target", () => {
     expect(headerNav.map((l) => l.href)).toEqual([
       "/how-it-works",
+      "/resources",
       "/pricing",
       "/features",
       "/design-lab",
@@ -26,6 +27,7 @@ describe("nav data", () => {
     const explore = footerColumns.find((c) => c.title === "Explore");
     expect(explore?.links.map((l) => l.href)).toEqual([
       "/how-it-works",
+      "/resources",
       "/pricing",
       "/features",
       "/design-lab",

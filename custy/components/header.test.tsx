@@ -22,6 +22,12 @@ it("renders a Live Demo link", () => {
   expect(demoLink).toHaveAttribute("href", "/live-demo");
 });
 
+it("renders a Resources link", () => {
+  render(<Header />);
+  const resourcesLink = screen.getAllByRole("link", { name: "Resources" })[0];
+  expect(resourcesLink).toHaveAttribute("href", "/resources");
+});
+
 it("has a mobile menu toggle", () => {
   render(<Header />);
   expect(screen.getByRole("button", { name: /menu/i })).toBeInTheDocument();
