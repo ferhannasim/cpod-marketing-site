@@ -1,6 +1,6 @@
 import { APP_URL } from "./site";
 
-export type NavLink = { label: string; href: string; external?: boolean };
+export type NavLink = { label: string; href: string; external?: boolean; description?: string };
 export type FooterColumn = { title: string; links: NavLink[] };
 export type SocialLink = { label: string; href: string };
 
@@ -12,6 +12,19 @@ export const headerNav: NavLink[] = [
   { label: "Design Lab", href: "/design-lab" },
   { label: "Live Demo", href: "/live-demo" },
   { label: "Blog", href: "/blog" },
+];
+
+export const resourceMenuLinks: NavLink[] = [
+  {
+    label: "How to Use Custy",
+    href: "/resources",
+    description: "Install, configure, and test Custy step by step.",
+  },
+  {
+    label: "FAQs",
+    href: "/faq",
+    description: "Find answers to common Custy questions.",
+  },
 ];
 
 export const headerCta: NavLink = {
