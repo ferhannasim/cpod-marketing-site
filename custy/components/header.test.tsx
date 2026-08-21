@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Header } from "./header";
 
 it("renders nav links and the install CTA", () => {
@@ -22,10 +22,22 @@ it("renders a Live Demo link", () => {
   expect(demoLink).toHaveAttribute("href", "/live-demo");
 });
 
-it("renders a Resources link", () => {
+it("opens a Resources dropdown with the guide and FAQs", () => {
   render(<Header />);
-  const resourcesLink = screen.getAllByRole("link", { name: "Resources" })[0];
-  expect(resourcesLink).toHaveAttribute("href", "/resources");
+  const resourcesButton = screen.getByRole("button", { name: "Resources" });
+
+  expect(resourcesButton).toHaveAttribute("aria-expanded", "false");
+  fireEvent.click(resourcesButton);
+
+  expect(resourcesButton).toHaveAttribute("aria-expanded", "true");
+  expect(screen.getByRole("link", { name: /How to Use Custy/i })).toHaveAttribute(
+    "href",
+    "/resources",
+  );
+  expect(screen.getByRole("link", { name: /FAQs/i })).toHaveAttribute("href", "/faq");
+
+  fireEvent.keyDown(document, { key: "Escape" });
+  expect(resourcesButton).toHaveAttribute("aria-expanded", "false");
 });
 
 it("has a mobile menu toggle", () => {

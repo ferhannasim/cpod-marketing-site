@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { headerNav, footerColumns, socialLinks } from "./nav";
+import { headerNav, footerColumns, resourceMenuLinks, socialLinks } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
@@ -21,6 +21,13 @@ describe("nav data", () => {
       expect(href === APP_URL || href.startsWith("/")).toBe(true);
       expect(href).not.toMatch(/\/(pages|products|collections|cart|search)\b/);
     }
+  });
+
+  it("Resources dropdown links to the setup guide and FAQs", () => {
+    expect(resourceMenuLinks.map((link) => [link.label, link.href])).toEqual([
+      ["How to Use Custy", "/resources"],
+      ["FAQs", "/faq"],
+    ]);
   });
 
   it("footer Explore column lists site pages then the app listing", () => {
