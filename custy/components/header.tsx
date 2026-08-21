@@ -25,7 +25,7 @@ export function Header() {
           <Image src="/images/logo.png" alt={SITE_NAME} width={139} height={40} priority />
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-5 min-[1120px]:flex xl:gap-7">
           {headerNav.map((link) => (
             <Link
               key={link.href}
@@ -37,7 +37,7 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden min-[1120px]:block">
           <Button href={headerCta.href} external={headerCta.external}>
             {headerCta.label}
           </Button>
@@ -46,7 +46,7 @@ export function Header() {
         <button
           type="button"
           aria-label="Open menu"
-          className="md:hidden"
+          className="min-[1120px]:hidden"
           onClick={() => setOpen(true)}
         >
           <Menu className="h-6 w-6" aria-hidden="true" />
@@ -54,7 +54,7 @@ export function Header() {
       </Container>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex flex-col bg-scheme1-bg md:hidden">
+        <div className="fixed inset-0 z-50 flex flex-col bg-scheme1-bg min-[1120px]:hidden">
           <Container className="flex h-16 items-center justify-between border-b border-line">
             <Link href="/" className="shrink-0" onClick={() => setOpen(false)}>
               <Image src="/images/logo.png" alt={SITE_NAME} width={139} height={40} />
