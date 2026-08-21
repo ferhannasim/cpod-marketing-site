@@ -6,6 +6,7 @@ import { home } from "@/content/home";
 import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
+import { faqItems } from "@/content/faq";
 import { demoProducts } from "@/content/demo-products";
 import { posts } from "@/content/posts";
 
@@ -32,7 +33,7 @@ describe("homepage", () => {
     expect(screen.getByText(firstPlan.name)).toBeInTheDocument();
     expect(screen.getByText(firstPlan.price)).toBeInTheDocument();
 
-    const firstFaq = pricing.faq.items[0];
+    const firstFaq = faqItems[0];
     expect(screen.getByText(firstFaq.question)).toBeInTheDocument();
 
     // R2: why-cards section heading reuses the exact "Why merchants choose Custy"
@@ -95,17 +96,18 @@ describe("homepage", () => {
     render(<HomePage />);
     expect(screen.getAllByRole("group").length).toBeGreaterThanOrEqual(4); // <details> = group role
   });
-  it("teases only the first 4 FAQ entries, not the pricing page's full 7", () => {
-    expect(pricing.faq.items.length).toBe(7);
+  it("teases only the first 4 FAQ entries, not the /faq page's full 17", () => {
+    expect(faqItems.length).toBe(17);
     render(<HomePage />);
     const groups = screen.getAllByRole("group"); // <details> = group role
     expect(groups).toHaveLength(4);
-    for (const item of pricing.faq.items.slice(0, 4)) {
+    for (const item of faqItems.slice(0, 4)) {
       expect(screen.getByText(item.question)).toBeInTheDocument();
     }
-    for (const item of pricing.faq.items.slice(4)) {
+    for (const item of faqItems.slice(4)) {
       expect(screen.queryByText(item.question)).not.toBeInTheDocument();
     }
+    expect(screen.getByRole("link", { name: "See all FAQs" })).toHaveAttribute("href", "/faq");
   });
   it("teases only the latest 3 blog posts, not the full 6 shown on /blog", () => {
     expect(posts.length).toBe(6);
