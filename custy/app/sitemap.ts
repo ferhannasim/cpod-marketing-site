@@ -12,6 +12,7 @@ const STATIC_ROUTES = [
   "/use-cases",
   "/dropshipping",
   "/about-us",
+  "/faq",
   "/support",
   "/contact",
   "/policies/privacy",

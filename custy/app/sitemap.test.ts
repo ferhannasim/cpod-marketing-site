@@ -23,6 +23,7 @@ describe("sitemap", () => {
     expect(urls).toContain(`${SITE_URL}/use-cases`);
     expect(urls).toContain(`${SITE_URL}/dropshipping`);
     expect(urls).toContain(`${SITE_URL}/about-us`);
+    expect(urls).toContain(`${SITE_URL}/faq`);
     expect(urls).toContain(`${SITE_URL}/support`);
     expect(urls).toContain(`${SITE_URL}/contact`);
   });

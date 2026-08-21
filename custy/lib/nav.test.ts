@@ -37,10 +37,11 @@ describe("nav data", () => {
     ]);
   });
 
-  it("footer Company column gains Support", () => {
+  it("footer Company column gains FAQ and Support", () => {
     const company = footerColumns.find((c) => c.title === "Company");
     expect(company?.links.map((l) => l.href)).toEqual([
       "/about-us",
+      "/faq",
       "/contact",
       "/support",
     ]);

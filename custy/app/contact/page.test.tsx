@@ -13,8 +13,9 @@ describe("Contact page", () => {
 
   it("links the direct contact channels via mailto: and tel: (no form)", () => {
     render(<ContactPage />);
-    const emailLink = screen.getByRole("link", { name: new RegExp(SUPPORT_EMAIL) });
-    expect(emailLink).toHaveAttribute("href", `mailto:${SUPPORT_EMAIL}`);
+    expect(SUPPORT_EMAIL).toBe("info@CheapestPOD.ca");
+    const emailLink = screen.getByRole("link", { name: /info@CheapestPOD\.ca/ });
+    expect(emailLink).toHaveAttribute("href", "mailto:info@CheapestPOD.ca");
     const phoneLink = screen.getByRole("link", { name: new RegExp(SUPPORT_PHONE.replace(/[+]/g, "\\+")) });
     expect(phoneLink).toHaveAttribute("href", SUPPORT_PHONE_HREF);
     // The message form lives on /support only.

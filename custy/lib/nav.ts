@@ -19,7 +19,8 @@ export const headerCta: NavLink = {
   external: true,
 };
 
-// Live footer: Search + "Powered by Shopify" + dead "#" FAQ link dropped (no commerce).
+// Live footer: Search + "Powered by Shopify" dropped (no commerce). The legacy
+// dead "#" FAQ link now points at the real /faq page.
 export const footerColumns: FooterColumn[] = [
   {
     title: "Explore",
@@ -39,6 +40,7 @@ export const footerColumns: FooterColumn[] = [
     title: "Company",
     links: [
       { label: "About Us", href: "/about-us" },
+      { label: "FAQ", href: "/faq" },
       { label: "Contact Us", href: "/contact" },
       { label: "Support", href: "/support" },
     ],

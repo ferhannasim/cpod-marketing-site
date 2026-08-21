@@ -13,6 +13,7 @@ import { home } from "@/content/home";
 import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
+import { faqItems } from "@/content/faq";
 import { posts } from "@/content/posts";
 
 // Background scheme alternates scheme1 (white) / scheme2 (#f5f5f5) down the
@@ -73,7 +74,11 @@ export default function HomePage() {
           />
         </Container>
       </section>
-      <Faq items={pricing.faq.items.slice(0, 4)} scheme="bg-scheme1-bg" />
+      <Faq
+        items={faqItems.slice(0, 4)}
+        scheme="bg-scheme1-bg"
+        viewAll={{ label: "See all FAQs", href: "/faq" }}
+      />
       <BlogTeasers heading="Custy Blog" posts={posts.slice(0, 3)} scheme="bg-scheme2-bg" />
       <Container className="py-16 md:py-20">
         <CtaBand
