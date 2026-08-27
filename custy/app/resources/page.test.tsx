@@ -61,7 +61,7 @@ describe("Resources page", () => {
 
     expect(screen.getByRole("link", { name: "Get Support" })).toHaveAttribute(
       "href",
-      "/support",
+      "/#contact",
     );
   });
 

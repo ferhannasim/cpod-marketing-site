@@ -4,10 +4,12 @@ import Body from "@/content/pages/contact.mdx";
 import { Container } from "@/components/container";
 import { Eyebrow, RainbowBar } from "@/components/lander";
 import { ContactChannels } from "@/components/sections/contact-channels";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: "Contact the Custy team about the Shopify product customizer app.",
+  robots: noIndex,
 };
 
 const headerWash =
@@ -21,19 +23,19 @@ const helpTopics = [
   {
     title: "Getting started",
     text: "See the full workflow — from installing Custy to receiving print-ready orders.",
-    href: "/how-it-works",
+    href: "/#how-it-works",
     label: "How it works",
   },
   {
     title: "Features & setup",
     text: "Explore the real-time customizer, multi-side printing, and dynamic pricing.",
-    href: "/features",
+    href: "/#features",
     label: "View features",
   },
   {
     title: "Plans & billing",
     text: "Compare plans — billing runs through Shopify and you can cancel anytime.",
-    href: "/pricing",
+    href: "/#pricing",
     label: "See pricing",
   },
 ];
@@ -89,7 +91,7 @@ export default function ContactPage() {
           </div>
           <p className="mt-12 text-center text-[15px] text-body">
             Need help with the app itself? Visit{" "}
-            <Link href="/support" className="font-semibold text-ink underline underline-offset-4">
+            <Link href="/#contact" className="font-semibold text-ink underline underline-offset-4">
               Support
             </Link>{" "}
             to send the team a message.

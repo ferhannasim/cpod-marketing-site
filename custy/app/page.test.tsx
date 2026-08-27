@@ -6,25 +6,31 @@ import { home } from "@/content/home";
 import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
-import { faqItems } from "@/content/faq";
 import { demoProducts } from "@/content/demo-products";
-import { posts } from "@/content/posts";
 
 describe("homepage", () => {
-  it("renders the recomposed sections in order", () => {
-    render(<HomePage />);
-    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /all features/i })).toHaveAttribute("href", "/features");
-    expect(screen.getByRole("link", { name: /see how it works/i })).toHaveAttribute("href", "/how-it-works");
-    expect(screen.getByRole("link", { name: /compare plans/i })).toHaveAttribute("href", "/pricing");
-    expect(screen.getByText(/custy blog/i)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /how custy works/i })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /simple, transparent pricing/i })).toBeInTheDocument();
+  it("renders the five marketing sections with scroll targets", () => {
+    const { container } = render(<HomePage />);
 
-    // Real content, not just structure: pin one field from each section's content module.
+    expect(screen.getByRole("heading", { level: 1, name: home.intro.heading })).toBeInTheDocument();
+    expect(container.querySelector("#how-it-works")).not.toBeNull();
+    expect(container.querySelector("#features")).not.toBeNull();
+    expect(container.querySelector("#live-demo")).not.toBeNull();
+    expect(container.querySelector("#pricing")).not.toBeNull();
+    expect(container.querySelector("#contact")).not.toBeNull();
+
+    expect(screen.getByRole("heading", { name: home.howItWorks.title })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: pricing.header.title })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: home.contact.title })).toBeInTheDocument();
+  });
+
+  it("pins real content from each section", () => {
+    render(<HomePage />);
+
     const firstCard = features.sections[0].cards?.[0];
     expect(firstCard).toBeDefined();
     expect(screen.getByText(firstCard!.title)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: home.designLabCard.title })).toBeInTheDocument();
 
     const firstStep = howItWorks.stepsSection.steps[0];
     expect(screen.getByText(firstStep.title)).toBeInTheDocument();
@@ -32,95 +38,46 @@ describe("homepage", () => {
     const firstPlan = pricing.plans[0];
     expect(screen.getByText(firstPlan.name)).toBeInTheDocument();
     expect(screen.getByText(firstPlan.price)).toBeInTheDocument();
-
-    const firstFaq = faqItems[0];
-    expect(screen.getByText(firstFaq.question)).toBeInTheDocument();
-
-    // R2: why-cards section heading reuses the exact "Why merchants choose Custy"
-    // phrase already published as content/features.ts's hero highlight title
-    // (self-updating, not a fresh duplicate string).
-    expect(screen.getByRole("heading", { name: features.hero.highlight.title })).toBeInTheDocument();
-
-    // R2: a why-card title is pulled straight from its source key-feature card
-    // (content/features.ts sections[0].cards[6]), so this stays in sync and
-    // fails if the card is ever swapped for one that duplicates FeatureHighlights.
-    const whyCard = features.sections[0].cards?.[6];
-    expect(whyCard).toBeDefined();
-    expect(screen.getByRole("heading", { name: whyCard!.title })).toBeInTheDocument();
-
-    // R2: trust band shows one of its three plan-guarantee items — its title is
-    // the verbatim tail clause of pricing.header.note, so this stays in sync.
-    const noteParts = pricing.header.note.split(" • ");
-    const trialTitle = noteParts[noteParts.length - 1];
-    expect(trialTitle).toBe("30-day free trial on paid plans");
-    expect(screen.getByText(trialTitle)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: /plan guarantees/i })).toBeInTheDocument();
-
-    // R2: pricing teaser now renders each plan's first 3 features (not just the
-    // first) — pin the 3rd feature so a regression to "first 1" fails this.
-    const firstPlanThirdFeature = pricing.plans[0].features[2];
-    expect(firstPlanThirdFeature).toBeDefined();
-    expect(screen.getByText(firstPlanThirdFeature)).toBeInTheDocument();
-
-    // R2: pricing teaser microcopy under the grid.
-    expect(
-      screen.getByText("All prices billed in USD · 30-day free trial on paid plans"),
-    ).toBeInTheDocument();
-
-    expect(home.closing.title).toBe("Start with Custy");
-    expect(screen.getByRole("heading", { name: home.closing.title })).toBeInTheDocument();
-
-    expect(home.intro.ctas[0]?.label).toBe("Start Your 30-Day Free Trial of Custy");
-    const trialCtas = screen.getAllByRole("link", { name: "Start Your 30-Day Free Trial of Custy" });
-    expect(trialCtas.length).toBeGreaterThan(0);
-    for (const link of trialCtas) {
-      expect(link).toHaveAttribute("href", APP_URL);
-    }
+    expect(screen.getByText(firstPlan.features[2])).toBeInTheDocument();
+    expect(screen.getByText(pricing.bottomNote)).toBeInTheDocument();
   });
-  it("renders the live demo products section with a card per product", () => {
+
+  it("shows product cards that open the live demo", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { name: /try custy on real products/i })).toBeInTheDocument();
     const cards = screen.getAllByTestId("demo-product-card");
     expect(cards).toHaveLength(demoProducts.length);
     for (const [i, product] of demoProducts.entries()) {
       expect(cards[i]).toHaveAttribute("href", `/live-demo?product=${product.slug}`);
-      expect(screen.getByText(product.name)).toBeInTheDocument();
     }
   });
-  it("drops the media/image section", () => {
+
+  it("shows the trial and live-demo CTAs in the hero", () => {
     render(<HomePage />);
-    expect(screen.queryByText(/the custy app/i)).not.toBeInTheDocument();
-    expect(screen.queryByRole("heading", { name: /the custy app/i })).not.toBeInTheDocument();
+    const trial = screen.getAllByRole("link", { name: "Start Free Trial" })[0];
+    expect(trial).toHaveAttribute("href", APP_URL);
+    expect(trial).toHaveAttribute("target", "_blank");
+    expect(screen.getByRole("link", { name: "Live Demo" })).toHaveAttribute("href", "/live-demo");
   });
-  it("shows an FAQ accordion with real questions", () => {
+
+  it("includes the contact form and plan guarantees", () => {
     render(<HomePage />);
-    expect(screen.getAllByRole("group").length).toBeGreaterThanOrEqual(4); // <details> = group role
+    expect(screen.getByRole("heading", { name: /plan guarantees/i })).toBeInTheDocument();
+    expect(screen.getByText("30-day free trial on paid plans")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /send/i })).toBeInTheDocument();
   });
-  it("teases only the first 4 FAQ entries, not the /faq page's full 17", () => {
-    expect(faqItems.length).toBe(17);
+
+  it("does not tease a separate FAQ, blog, or extra marketing lander", () => {
     render(<HomePage />);
-    const groups = screen.getAllByRole("group"); // <details> = group role
-    expect(groups).toHaveLength(4);
-    for (const item of faqItems.slice(0, 4)) {
-      expect(screen.getByText(item.question)).toBeInTheDocument();
-    }
-    for (const item of faqItems.slice(4)) {
-      expect(screen.queryByText(item.question)).not.toBeInTheDocument();
-    }
-    expect(screen.getByRole("link", { name: "See all FAQs" })).toHaveAttribute("href", "/faq");
+    expect(screen.queryByText(/custy blog/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /all features/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /see how it works/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /compare plans/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /print methods that match your products/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /step inside the design lab/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: /pair it with dropshippod/i })).not.toBeInTheDocument();
   });
-  it("teases only the latest 3 blog posts, not the full 6 shown on /blog", () => {
-    expect(posts.length).toBe(6);
-    render(<HomePage />);
-    const cards = screen.getAllByTestId("blog-post-card");
-    expect(cards).toHaveLength(3);
-    for (const post of posts.slice(0, 3)) {
-      expect(screen.getByText(post.title)).toBeInTheDocument();
-    }
-    for (const post of posts.slice(3)) {
-      expect(screen.queryByText(post.title)).not.toBeInTheDocument();
-    }
-  });
+
   it("has no commerce links", () => {
     render(<HomePage />);
     for (const link of screen.getAllByRole("link")) {

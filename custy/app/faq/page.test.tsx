@@ -21,9 +21,9 @@ describe("FAQ page", () => {
     expect(indices).toEqual([...indices].sort((a, b) => a - b));
   });
 
-  it("renders all 17 questions as one accordion entry each", () => {
+  it("renders all questions as one accordion entry each", () => {
     render(<FaqPage />);
-    expect(faqItems).toHaveLength(17);
+    expect(faqItems).toHaveLength(16);
     const groups = screen.getAllByRole("group"); // <details> = group role
     expect(groups).toHaveLength(faqItems.length);
     for (const item of faqItems) {
@@ -34,17 +34,13 @@ describe("FAQ page", () => {
 
   it("points the answers that reference other pages at those pages", () => {
     render(<FaqPage />);
-    expect(screen.getByRole("link", { name: "Compare Custy and the Dropshipping app" })).toHaveAttribute(
-      "href",
-      "/dropshipping",
-    );
     expect(screen.getByRole("link", { name: "Compare plans" })).toHaveAttribute(
       "href",
-      "/pricing",
+      "/#pricing",
     );
     expect(screen.getByRole("link", { name: "Go to support" })).toHaveAttribute(
       "href",
-      "/support",
+      "/#contact",
     );
   });
 

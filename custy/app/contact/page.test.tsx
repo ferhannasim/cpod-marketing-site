@@ -24,9 +24,9 @@ describe("Contact page", () => {
 
   it("links each help topic to its documenting page", () => {
     render(<ContactPage />);
-    expect(screen.getByRole("link", { name: /how it works/i })).toHaveAttribute("href", "/how-it-works");
-    expect(screen.getByRole("link", { name: /view features/i })).toHaveAttribute("href", "/features");
-    expect(screen.getByRole("link", { name: /see pricing/i })).toHaveAttribute("href", "/pricing");
-    expect(screen.getByRole("link", { name: /^support$/i })).toHaveAttribute("href", "/support");
+    expect(screen.getByRole("link", { name: /how it works/i })).toHaveAttribute("href", "/#how-it-works");
+    expect(screen.getByRole("link", { name: /view features/i })).toHaveAttribute("href", "/#features");
+    expect(screen.getByRole("link", { name: /see pricing/i })).toHaveAttribute("href", "/#pricing");
+    expect(screen.getByRole("link", { name: /^support$/i })).toHaveAttribute("href", "/#contact");
   });
 });

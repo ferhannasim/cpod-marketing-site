@@ -10,11 +10,13 @@ import {
   Steps,
 } from "@/components/lander";
 import { features } from "@/content/features";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Features",
   description:
     "Custy is a powerful and easy-to-use product customizer app built for Shopify merchants who want to sell personalized products.",
+  robots: noIndex,
 };
 
 // Band tones alternate white / light down the page so no two adjacent
@@ -51,7 +53,7 @@ export default function FeaturesPage() {
             this page's own 4-step summary, so link through to the full
             walkthrough instead of rendering a second steps block. */}
         <div className="mt-10 text-center">
-          <LanderCta label="See how it works" href="/how-it-works" variant="secondary" />
+          <LanderCta label="See how it works" href="/#how-it-works" variant="secondary" />
         </div>
       </LanderSection>
 

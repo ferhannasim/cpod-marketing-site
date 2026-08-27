@@ -7,18 +7,28 @@ const to = (source: string, destination: string): Redirect => ({
 });
 
 export const redirectList: Redirect[] = [
-  // migrated pages
-  to("/pages/features", "/features"),
-  to("/pages/pricing", "/pricing"),
-  to("/pages/how-it-works", "/how-it-works"),
-  to("/pages/about-us", "/about-us"),
-  to("/pages/support", "/support"),
-  to("/pages/contact", "/contact"),
-  to("/pages/custydesignlab", "/design-lab"),
+  // Shopify-era page slugs → homepage sections (or kept routes)
+  to("/pages/features", "/#features"),
+  to("/pages/pricing", "/#pricing"),
+  to("/pages/how-it-works", "/#how-it-works"),
+  to("/pages/about-us", "/about"),
+  to("/about-us", "/about"),
+  to("/pages/support", "/#contact"),
+  to("/pages/contact", "/#contact"),
+  to("/pages/custydesignlab", "/#features"),
+  // folded marketing pages → homepage sections
+  to("/features", "/#features"),
+  to("/pricing", "/#pricing"),
+  to("/how-it-works", "/#how-it-works"),
+  to("/contact", "/#contact"),
+  to("/support", "/#contact"),
+  to("/design-lab", "/#features"),
+  to("/use-cases", "/#how-it-works"),
+  to("/dropshipping", "/"),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),
   to("/policies/terms-of-service", "/policies/terms"),
-  to("/policies/contact-information", "/contact"),
+  to("/policies/contact-information", "/#contact"),
   // blog
   to("/blogs/custy-blog", "/blog"),
   to("/blogs/custy-blog/:slug", "/blog/:slug"),

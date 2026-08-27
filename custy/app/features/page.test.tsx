@@ -48,7 +48,7 @@ describe("Features page", () => {
     render(<FeaturesPage />);
     expect(screen.getByRole("link", { name: "See how it works" })).toHaveAttribute(
       "href",
-      "/how-it-works",
+      "/#how-it-works",
     );
   });
 

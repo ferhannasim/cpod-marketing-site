@@ -29,7 +29,7 @@ export const resourcesHero = {
   ],
   ctas: [
     { label: "Install Custy on Shopify", href: APP_URL, variant: "primary" },
-    { label: "See How Custy Works", href: "/how-it-works", variant: "secondary" },
+    { label: "See How Custy Works", href: "/#how-it-works", variant: "secondary" },
   ] satisfies CtaLink[],
   highlight: {
     title: "What you will set up",
@@ -212,6 +212,6 @@ export const resourcesClosing = {
     title: "Ready to set up your first customizable product?",
     text: "Install Custy on your Shopify store and follow this guide from product sync to a tested storefront experience.",
     cta: { label: "Install Custy on Shopify", href: APP_URL, variant: "light" },
-    secondaryCta: { label: "Get Support", href: "/support", variant: "outline" },
+    secondaryCta: { label: "Get Support", href: "/#contact", variant: "outline" },
   },
 } satisfies { title: string; paragraphs: string[]; cta: CtaBandProps };

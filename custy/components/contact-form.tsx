@@ -6,8 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
 
-const inputClasses = "w-full rounded-lg border border-line px-3 py-2 text-sm focus:border-ink focus:outline-none";
-const labelClasses = "mb-1 block text-sm font-medium text-ink";
+const inputClasses =
+  "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-[#98a2b3] transition-colors focus:border-ink focus:outline-none";
+const labelClasses = "mb-1.5 block text-[13px] font-semibold text-ink";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
@@ -42,33 +43,37 @@ export function ContactForm() {
     ) : null;
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-4">
-      <div>
-        <label htmlFor="name" className={labelClasses}>
-          Name
-        </label>
-        <input
-          id="name"
-          {...register("name")}
-          aria-invalid={!!errors.name}
-          aria-describedby={errors.name ? "name-error" : undefined}
-          className={inputClasses}
-        />
-        {fieldError("name-error", errors.name?.message)}
-      </div>
-      <div>
-        <label htmlFor="email" className={labelClasses}>
-          Email
-        </label>
-        <input
-          id="email"
-          type="email"
-          {...register("email")}
-          aria-invalid={!!errors.email}
-          aria-describedby={errors.email ? "email-error" : undefined}
-          className={inputClasses}
-        />
-        {fieldError("email-error", errors.email?.message)}
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className={labelClasses}>
+            Name
+          </label>
+          <input
+            id="name"
+            placeholder="Your name"
+            {...register("name")}
+            aria-invalid={!!errors.name}
+            aria-describedby={errors.name ? "name-error" : undefined}
+            className={inputClasses}
+          />
+          {fieldError("name-error", errors.name?.message)}
+        </div>
+        <div>
+          <label htmlFor="email" className={labelClasses}>
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="you@store.com"
+            {...register("email")}
+            aria-invalid={!!errors.email}
+            aria-describedby={errors.email ? "email-error" : undefined}
+            className={inputClasses}
+          />
+          {fieldError("email-error", errors.email?.message)}
+        </div>
       </div>
       <div>
         <label htmlFor="subject" className={labelClasses}>
@@ -76,6 +81,7 @@ export function ContactForm() {
         </label>
         <input
           id="subject"
+          placeholder="How can we help?"
           {...register("subject")}
           aria-invalid={!!errors.subject}
           aria-describedby={errors.subject ? "subject-error" : undefined}
@@ -89,11 +95,12 @@ export function ContactForm() {
         </label>
         <textarea
           id="message"
-          rows={6}
+          rows={5}
+          placeholder="Tell us about your store and what you need."
           {...register("message")}
           aria-invalid={!!errors.message}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className={inputClasses}
+          className={cn(inputClasses, "resize-y")}
         />
         {fieldError("message-error", errors.message?.message)}
       </div>
@@ -101,7 +108,7 @@ export function ContactForm() {
         type="submit"
         disabled={isSubmitting}
         className={cn(
-          "rounded-pill bg-ink px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-black",
+          "inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-black",
           "disabled:cursor-not-allowed disabled:opacity-60",
         )}
       >

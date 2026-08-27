@@ -245,6 +245,6 @@ export const features = {
     title: "Start with Custy Risk-Free",
     text: "Enjoy a 30-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
     cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
-    secondaryCta: { label: "View Pricing", href: "/pricing", variant: "outline" },
+    secondaryCta: { label: "View Pricing", href: "/#pricing", variant: "outline" },
   } satisfies FeaturesCta,
 };

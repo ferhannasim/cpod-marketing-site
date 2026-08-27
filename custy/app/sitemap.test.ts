@@ -13,20 +13,24 @@ describe("sitemap", () => {
     }
   });
 
-  it("includes the homepage and all top-level pages", () => {
+  it("includes the homepage and kept top-level pages", () => {
     expect(urls).toContain(`${SITE_URL}/`);
-    expect(urls).toContain(`${SITE_URL}/features`);
-    expect(urls).toContain(`${SITE_URL}/pricing`);
-    expect(urls).toContain(`${SITE_URL}/how-it-works`);
     expect(urls).toContain(`${SITE_URL}/resources`);
     expect(urls).toContain(`${SITE_URL}/live-demo`);
-    expect(urls).toContain(`${SITE_URL}/design-lab`);
-    expect(urls).toContain(`${SITE_URL}/use-cases`);
-    expect(urls).toContain(`${SITE_URL}/dropshipping`);
-    expect(urls).toContain(`${SITE_URL}/about-us`);
+    expect(urls).toContain(`${SITE_URL}/about`);
     expect(urls).toContain(`${SITE_URL}/faq`);
-    expect(urls).toContain(`${SITE_URL}/support`);
-    expect(urls).toContain(`${SITE_URL}/contact`);
+  });
+
+  it("omits folded marketing routes", () => {
+    expect(urls).not.toContain(`${SITE_URL}/features`);
+    expect(urls).not.toContain(`${SITE_URL}/pricing`);
+    expect(urls).not.toContain(`${SITE_URL}/how-it-works`);
+    expect(urls).not.toContain(`${SITE_URL}/design-lab`);
+    expect(urls).not.toContain(`${SITE_URL}/use-cases`);
+    expect(urls).not.toContain(`${SITE_URL}/dropshipping`);
+    expect(urls).not.toContain(`${SITE_URL}/support`);
+    expect(urls).not.toContain(`${SITE_URL}/contact`);
+    expect(urls).not.toContain(`${SITE_URL}/about-us`);
   });
 
   it("includes both policy pages", () => {
