@@ -46,7 +46,7 @@ export default function HomePage() {
               {pricing.header.note}
             </div>
           </Reveal>
-          <Reveal>
+          <Reveal variant="zoom">
             <PricingTable plans={pricing.plans} />
             <p className="mx-auto mt-10 max-w-[840px] text-center text-[15px] leading-[1.6] text-body">
               {pricing.bottomNote}
@@ -54,7 +54,7 @@ export default function HomePage() {
           </Reveal>
         </Container>
       </section>
-      <section id="contact" className="scroll-mt-20 bg-scheme1-bg">
+      <section id="contact" className="bg-scheme1-bg overflow-x-clip scroll-mt-20">
         <Container className="py-16 md:py-24">
           <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
             <RainbowBar className="mx-auto mb-7" />
@@ -66,20 +66,26 @@ export default function HomePage() {
               {home.contact.lead}
             </p>
           </Reveal>
-          <Reveal className="grid items-start gap-6 lg:grid-cols-5 lg:gap-8">
-            <div className="lg:col-span-2">
+          {/* The two halves meet in the middle: contact details in from the
+              left, the form they feed in from the right. */}
+          <div className="grid items-start gap-6 lg:grid-cols-5 lg:gap-8">
+            <Reveal variant="left" className="lg:col-span-2">
               <p className="mb-4 text-[13px] font-semibold tracking-[0.08em] text-muted uppercase">
                 Reach us directly
               </p>
               <ContactChannels variant="stack" />
-            </div>
-            <div className="rounded-2xl border border-line bg-white p-6 shadow-[0_2px_8px_rgba(16,24,40,0.04)] md:p-8 lg:col-span-3">
+            </Reveal>
+            <Reveal
+              variant="right"
+              delay={0.12}
+              className="rounded-2xl border border-line bg-white p-6 shadow-[0_2px_8px_rgba(16,24,40,0.04)] md:p-8 lg:col-span-3"
+            >
               <p className="mb-5 text-[13px] font-semibold tracking-[0.08em] text-muted uppercase">
                 Send a message
               </p>
               <ContactForm />
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </Container>
       </section>
     </main>

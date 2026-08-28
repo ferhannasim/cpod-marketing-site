@@ -33,17 +33,24 @@ export function TrustBand({ scheme = "bg-wash" }: { scheme?: string }) {
     <section className={scheme}>
       <Container className="py-10 md:py-14">
         <h2 className="sr-only">Plan guarantees</h2>
-        <Reveal className="grid gap-8 sm:grid-cols-3">
+        {/* Three peers rather than a block, so they arrive in sequence. A plain
+            fade keeps this strip calm — it sits directly under the hero. */}
+        <div className="grid gap-8 sm:grid-cols-3">
           {items.map((item, index) => (
-            <div key={item.title} className="flex items-start gap-4">
+            <Reveal
+              key={item.title}
+              variant="fade"
+              delay={index * 0.1}
+              className="flex items-start gap-4"
+            >
               <IconTile name={item.icon} tint={index} className="h-10 w-10 shrink-0 rounded-lg" />
               <div>
                 <h3 className="text-base font-bold text-ink">{item.title}</h3>
                 <p className="mt-1 text-sm leading-[1.55] text-body">{item.text}</p>
               </div>
-            </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

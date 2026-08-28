@@ -23,11 +23,13 @@ export function BlogTeasers({
             {heading}
           </h2>
         </Reveal>
-        <Reveal className="grid gap-6 sm:grid-cols-3">
-          {posts.map((post) => (
-            <BlogPostCard key={post.slug} post={post} />
+        <div className="grid gap-6 sm:grid-cols-3">
+          {posts.map((post, index) => (
+            <Reveal key={post.slug} delay={index * 0.1} className="h-full">
+              <BlogPostCard post={post} />
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </Container>
     </section>
   );

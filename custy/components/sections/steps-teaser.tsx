@@ -37,32 +37,41 @@ export function StepsTeaser({
           </p>
         </Reveal>
 
-        {/* An ordered list, not a bare grid: the sequence is the meaning here. */}
-        <Reveal as="ol" className="m-0 grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-3">
+        {/* An ordered list, not a bare grid: the sequence is the meaning here.
+            The steps reveal one after another for the same reason — the
+            stagger replays the 1-2-3 order as you arrive at the band. Each
+            step reveals as the <li> itself and keeps its card styling on an
+            inner element, so the 200ms hover lift isn't overridden by the
+            700ms reveal transition on the same node. */}
+        <ol className="m-0 grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-3">
           {steps.map((step, index) => {
             const tint = tints[index % tints.length];
             return (
-              <li
-                key={step.number}
-                className="flex flex-col items-center rounded-2xl border border-line bg-white px-7 py-9 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
-              >
-                <div
-                  className={cn(
-                    "relative flex h-24 w-24 items-center justify-center rounded-full",
-                    tint.wash,
-                  )}
-                >
-                  <StepIllustration name={step.illustration} className={cn("h-18 w-18", tint.art)} />
-                  <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-ink text-[13px] font-bold text-white">
-                    {step.number}
-                  </span>
+              <Reveal as="li" key={step.number} variant="zoom" delay={index * 0.12}>
+                <div className="flex h-full flex-col items-center rounded-2xl border border-line bg-white px-7 py-9 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]">
+                  <div
+                    className={cn(
+                      "relative flex h-24 w-24 items-center justify-center rounded-full",
+                      tint.wash,
+                    )}
+                  >
+                    <StepIllustration
+                      name={step.illustration}
+                      className={cn("h-18 w-18", tint.art)}
+                    />
+                    <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-ink text-[13px] font-bold text-white">
+                      {step.number}
+                    </span>
+                  </div>
+                  <h3 className="mt-6 text-[19px] leading-snug font-bold text-ink">{step.title}</h3>
+                  <p className="mt-3 max-w-[38ch] text-[15px] leading-[1.6] text-body">
+                    {step.text}
+                  </p>
                 </div>
-                <h3 className="mt-6 text-[19px] leading-snug font-bold text-ink">{step.title}</h3>
-                <p className="mt-3 max-w-[38ch] text-[15px] leading-[1.6] text-body">{step.text}</p>
-              </li>
+              </Reveal>
             );
           })}
-        </Reveal>
+        </ol>
       </Container>
     </section>
   );

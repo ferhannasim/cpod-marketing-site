@@ -32,10 +32,17 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
   const imageOnRight = index % 2 === 0;
 
   return (
-    <Reveal className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20">
+    // Each half converges from the side it sits on, so the motion traces the
+    // row's own zig-zag. The halves animate separately rather than as one
+    // block, and the copy trails the illustration slightly so the eye lands on
+    // the picture first.
+    <div className="grid items-center gap-8 md:grid-cols-2 md:gap-14 lg:gap-20">
       {/* The illustrations are transparent PNG-style WebPs, so they sit
           straight on the section band with no panel behind them. */}
-      <div className={cn(imageOnRight ? "md:order-2" : "md:order-1")}>
+      <Reveal
+        variant={imageOnRight ? "right" : "left"}
+        className={cn(imageOnRight ? "md:order-2" : "md:order-1")}
+      >
         <Image
           src={row.image.src}
           width={row.image.width}
@@ -44,8 +51,12 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
           sizes="(min-width: 768px) 50vw, 100vw"
           className="h-auto w-full"
         />
-      </div>
-      <div className={cn(imageOnRight ? "md:order-1" : "md:order-2")}>
+      </Reveal>
+      <Reveal
+        variant={imageOnRight ? "left" : "right"}
+        delay={0.12}
+        className={cn(imageOnRight ? "md:order-1" : "md:order-2")}
+      >
         <h3 className="text-[clamp(1.375rem,2.2vw,1.75rem)] leading-[1.2] font-extrabold tracking-[-0.02em] text-ink">
           {row.title}
         </h3>
@@ -58,8 +69,8 @@ function Row({ row, index }: { row: FeatureRow; index: number }) {
             </li>
           ))}
         </ul>
-      </div>
-    </Reveal>
+      </Reveal>
+    </div>
   );
 }
 
@@ -71,7 +82,10 @@ export function FeatureHighlights({
   id?: string;
 }) {
   return (
-    <section id={id} className={cn(scheme, id && "scroll-mt-20")}>
+    // `overflow-x-clip` (not `hidden`, which would force a scroll container and
+    // break `scroll-mt`) contains the rows' sideways travel so it can never
+    // widen the page mid-animation.
+    <section id={id} className={cn(scheme, "overflow-x-clip", id && "scroll-mt-20")}>
       <Container className="py-16 md:py-24">
         <Reveal className="mx-auto mb-14 max-w-[760px] text-center">
           <RainbowBar className="mx-auto mb-7" />
@@ -96,27 +110,28 @@ export function FeatureHighlights({
               image slot. */}
           <div className="grid gap-6 md:grid-cols-2">
             {home.features.supporting.map((card, index) => (
-              <Reveal
-                key={card.title}
-                delay={(index % 2) * 0.1}
-                className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
-              >
-                {/* Inset rather than full-bleed: the row illustrations above
-                    sit in open space, so a card illustration running to the
-                    card edge reads as noticeably larger than they do. */}
-                <div className="px-6 pt-6 md:px-7 md:pt-7">
-                  <Image
-                    src={card.image.src}
-                    width={card.image.width}
-                    height={card.image.height}
-                    alt={card.image.alt ?? ""}
-                    sizes="(min-width: 768px) 50vw, 100vw"
-                    className="h-auto w-full"
-                  />
-                </div>
-                <div className="px-6 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
-                  <h3 className="text-[18px] leading-snug font-bold text-ink">{card.title}</h3>
-                  <p className="mt-2.5 text-[15px] leading-[1.6] text-body">{card.text}</p>
+              // The card settles in rather than sliding, and its hover lift
+              // lives on an inner element so the 200ms hover transition isn't
+              // competing with the 700ms reveal on the same node.
+              <Reveal key={card.title} variant="zoom" delay={(index % 2) * 0.1}>
+                <div className="h-full overflow-hidden rounded-2xl border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]">
+                  {/* Inset rather than full-bleed: the row illustrations above
+                      sit in open space, so a card illustration running to the
+                      card edge reads as noticeably larger than they do. */}
+                  <div className="px-6 pt-6 md:px-7 md:pt-7">
+                    <Image
+                      src={card.image.src}
+                      width={card.image.width}
+                      height={card.image.height}
+                      alt={card.image.alt ?? ""}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
+                  <div className="px-6 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
+                    <h3 className="text-[18px] leading-snug font-bold text-ink">{card.title}</h3>
+                    <p className="mt-2.5 text-[15px] leading-[1.6] text-body">{card.text}</p>
+                  </div>
                 </div>
               </Reveal>
             ))}
