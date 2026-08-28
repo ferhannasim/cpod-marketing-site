@@ -20,7 +20,7 @@ export const designLabHero = {
   eyebrow: "The shopper experience",
   title: "Inside the Design Lab",
   lead: [
-    "When a shopper clicks Customize It on a product page, Custy opens the Design Lab — a live design surface where they build exactly what they want to buy.",
+    "When a shopper clicks Customize on a product page, Custy opens the Design Lab — a canvas editor where they build exactly what they want to buy, on every side of the product.",
     "Everything they create becomes structured design data on the order, so what you print is precisely what they approved.",
   ],
   ctas: [
@@ -30,11 +30,11 @@ export const designLabHero = {
   highlight: {
     title: "What shoppers can do",
     items: [
-      "Add and style text with your font library",
-      "Drop in cliparts from curated categories",
-      "Upload their own images and artwork",
-      "Design front, back, sleeves and neck tag",
-      "See the finished product before they buy",
+      "Style text with outlines, shadows and your font library",
+      "Browse clipart by category, with any surcharge shown inline",
+      "Upload their own images and crop, mask or filter them",
+      "Design every side you enabled and preview them together",
+      "Save the design and reopen it from a shareable link",
     ],
   },
 } satisfies DesignLabHero;
@@ -43,22 +43,22 @@ export const designTools: CardItem[] = [
   {
     icon: "type",
     title: "Text, exactly as they want it",
-    text: "Shoppers add names, numbers and messages, styled with the fonts you allow — from your font library with categories you control.",
+    text: "Font family, size, weight, letter spacing and line height, plus two outline layers and a drop shadow with its own distance and angle — all in fonts you upload and organize.",
   },
   {
     icon: "sparkles",
     title: "A clipart and font library",
-    text: "Curate cliparts into categories so every niche gets relevant art, and keep brand-safe fonts one click away.",
+    text: "Curate clipart into nested categories with search and a popular filter, and charge a per-clipart surcharge that the shopper sees inline as they add it.",
   },
   {
     icon: "image",
     title: "Their own artwork",
-    text: "Photo and artwork uploads land on the product with live preview, sized and positioned by the shopper.",
+    text: "Uploads up to 20 MB from a file or URL, with crop, background removal, brightness and contrast, mask shapes, and nine filters before the image is ever placed.",
   },
   {
     icon: "layers",
     title: "Every printable side",
-    text: "Front, back, left sleeve, right sleeve, neck tag — each side has its own print area and mockup you configure per product.",
+    text: "Switch between front, back, sleeves and any side you define, each with its own print area and mockup — and recolor the garment art live from your color swatches.",
   },
 ];
 
@@ -66,30 +66,46 @@ export const safeguards: CardItem[] = [
   {
     icon: "eye",
     title: "Low-resolution warnings",
-    text: "Set a required DPI for raster uploads and the Design Lab warns shoppers before a blurry file ever reaches production.",
+    text: "Set the DPI your production needs and the Design Lab warns shoppers before a blurry upload ever reaches the press.",
   },
   {
     icon: "shield-check",
     title: "Keep designs inside the lines",
-    text: "Out-of-bounds warnings flag artwork that crosses the printable area, so surprises don't show up on the press.",
+    text: "Artwork crossing the printable boundary is flagged, and a max-colors limit per print location holds shoppers to what your method can actually print.",
   },
   {
     icon: "file-check",
     title: "Approval before checkout",
-    text: "An optional approval and disclaimer step makes shoppers confirm their design — fewer disputes, cleaner orders.",
+    text: "An optional approval step — your title, your body copy, your confirm button — makes shoppers sign off on the artwork and mockup first.",
   },
   {
     icon: "mail",
-    title: "Quote requests by email",
-    text: "For quote-first workflows, the Design Lab can send the design as a quote email instead of straight to cart.",
+    title: "Saved designs and quotes",
+    text: "Shoppers save a design with a name and email and get a link they can reopen or send on, and you can route quote-first orders to an email instead.",
   },
 ];
 
 export const designLabFlow: StepItem[] = [
-  { number: 1, title: "Shopper designs", text: "Text, cliparts and uploads across the sides you enabled, with live preview." },
-  { number: 2, title: "Design becomes an order", text: "The finished design is saved as a product and carries complete design data through checkout." },
-  { number: 3, title: "You review and download", text: "Orders arrive with per-item design downloads — vector SVG/PDF or raster at your required DPI, background included or transparent." },
-  { number: 4, title: "Production runs", text: "Print-ready files go to your press or print partner with nothing to rebuild by hand." },
+  {
+    number: 1,
+    title: "Shopper designs",
+    text: "Text, clipart and uploads across the sides you enabled, with live preview, 50 steps of undo, and zoom up to 3x.",
+  },
+  {
+    number: 2,
+    title: "Design becomes an order",
+    text: "Previews are rendered, inventory is checked per size and color, and a hidden product carries the design through checkout.",
+  },
+  {
+    number: 3,
+    title: "You review and download",
+    text: "Orders arrive with per-item design downloads — vector SVG or PDF, raster PNG or JPG, at up to 300 DPI, transparent or on a background.",
+  },
+  {
+    number: 4,
+    title: "Production runs",
+    text: "Print-ready files go to your press or print partner with nothing to rebuild by hand.",
+  },
 ];
 
 export const designLabCta = {

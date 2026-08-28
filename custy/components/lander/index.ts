@@ -7,3 +7,4 @@ export { PricingTable, type PricingTableProps, type Plan } from "./pricing-table
 export { PlanCompare, type CompareRow } from "./plan-compare";
 export { CtaBand, type CtaBandProps } from "./cta-band";
 export { IconTile, Eyebrow, type IconTileProps } from "./icons";
+export { StepIllustration, type StepIllustrationName } from "./step-illustrations";

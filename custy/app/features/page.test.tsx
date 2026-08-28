@@ -72,7 +72,7 @@ describe("Features page", () => {
     render(<FeaturesPage />);
     for (const card of [
       "Pricing by print method", "Quantity discounts", "Tiered & location pricing",
-      "Inventory mode", "White label & API", "Bulk order tools",
+      "Inventory control", "White label & API", "Bulk order tools",
     ]) {
       expect(screen.getByRole("heading", { name: card })).toBeInTheDocument();
     }
@@ -90,11 +90,11 @@ describe("Features page", () => {
     expect(bands.length).toBeGreaterThan(1);
 
     const tones = bands.map((band, index) => {
-      // The hero (always first) carries its own tinted wash, not a plain
-      // bg-white/bg-lander-light tone class.
+      // The hero (always first) carries the stronger opener wash, not one of
+      // the alternating bg-white / bg-wash band tones.
       if (index === 0) return "hero";
       if (band.classList.contains("bg-white")) return "white";
-      if (band.classList.contains("bg-lander-light")) return "light";
+      if (band.classList.contains("bg-wash")) return "light";
       return "unknown";
     });
 

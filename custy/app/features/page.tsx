@@ -65,7 +65,7 @@ export default function FeaturesPage() {
         <CardGrid items={operations.cards ?? []} columns={3} />
       </LanderSection>
 
-      <div className="bg-lander-light">
+      <div className="bg-wash">
         <Lander className="py-16 md:py-20">
           <CtaBand
             title={features.cta.title}

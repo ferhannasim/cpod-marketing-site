@@ -63,11 +63,11 @@ export function ContactChannels({
             className={variant === "stack" ? "h-11 w-11 shrink-0" : "mb-5"}
           />
           <div>
-            <h3 className="text-base leading-snug font-semibold text-ink">{channel.title}</h3>
-            <p className="mt-1 text-[15px] font-semibold text-[#0b7fad] group-hover:underline">
+            <h3 className="text-[17px] leading-snug font-bold text-ink">{channel.title}</h3>
+            <p className="mt-1 text-[15.5px] font-semibold text-[#0b6f97] group-hover:underline">
               {channel.value}
             </p>
-            <p className="mt-1.5 text-sm leading-[1.6] text-body">{channel.note}</p>
+            <p className="mt-1.5 text-sm leading-[1.55] text-body">{channel.note}</p>
           </div>
         </a>
       ))}

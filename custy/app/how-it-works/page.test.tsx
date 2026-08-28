@@ -13,17 +13,18 @@ describe("How it Works page", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders all seven step titles in document order", () => {
+  it("renders all six step titles in document order", () => {
     render(<HowItWorksPage />);
     const headings = screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent);
+    // The first four mirror the getting-started flow in the marketing brief and
+    // are re-used by the homepage teaser, so their order is load-bearing.
     const stepTitles = [
-      "Install Custy on Your Shopify Store",
-      "Set Up Your Products",
-      "Configure Pricing Rules",
-      "Let Customers Design in Real Time",
+      "Install and Pick a Plan",
+      "Sync Your Products",
+      "Set Up a Customizable Product",
+      "Add the Button to Your Theme",
       "Receive Orders with Full Design Details",
-      "Generate Print-Ready Files",
-      "Fulfill and Grow",
+      "Download Print-Ready Artwork",
     ];
     const indices = stepTitles.map((title) => headings.indexOf(title));
     expect(indices.every((index) => index !== -1)).toBe(true);

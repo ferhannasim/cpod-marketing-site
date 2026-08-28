@@ -1,49 +1,68 @@
 import { Container } from "@/components/container";
-import { Eyebrow, type StepItem } from "@/components/lander";
-import { home } from "@/content/home";
+import { Eyebrow, RainbowBar, StepIllustration } from "@/components/lander";
+import { Reveal } from "@/components/reveal";
+import { home, type HomeStep } from "@/content/home";
 import { cn } from "@/lib/utils";
 
-function firstLine(text: StepItem["text"]): string {
-  return Array.isArray(text) ? text[0] : text;
-}
+/**
+ * The three brand process-ink tints, matching the cycle IconTile uses, so this
+ * band belongs to the same printed system as the card grids further down.
+ */
+const tints = [
+  { art: "text-[#0b7fad]", wash: "bg-[#e6f6fe]" },
+  { art: "text-[#c2006f]", wash: "bg-[#fdeaf5]" },
+  { art: "text-[#8a6100]", wash: "bg-[#fff3d6]" },
+];
 
 export function StepsTeaser({
-  steps,
+  steps = home.howItWorks.steps,
   scheme = "bg-scheme1-bg",
   id,
 }: {
-  steps: StepItem[];
+  steps?: HomeStep[];
   scheme?: string;
   id?: string;
 }) {
   return (
     <section id={id} className={cn(scheme, id && "scroll-mt-20")}>
       <Container className="py-16 md:py-24">
-        <div className="mx-auto mb-12 max-w-[760px] text-center">
+        <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
+          <RainbowBar className="mx-auto mb-7" />
           <Eyebrow className="mb-4">How it works</Eyebrow>
           <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
             {home.howItWorks.title}
           </h2>
-          <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
+          <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
             {home.howItWorks.lead}
           </p>
-        </div>
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
-          {steps.map((step, index) => (
-            <div key={step.number}>
-              <div className="flex items-center gap-4">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-ink text-sm font-bold text-white">
-                  {step.number}
+        </Reveal>
+
+        {/* An ordered list, not a bare grid: the sequence is the meaning here. */}
+        <Reveal as="ol" className="m-0 grid list-none grid-cols-1 gap-6 p-0 md:grid-cols-3">
+          {steps.map((step, index) => {
+            const tint = tints[index % tints.length];
+            return (
+              <li
+                key={step.number}
+                className="flex flex-col items-center rounded-2xl border border-line bg-white px-7 py-9 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
+              >
+                <div
+                  className={cn(
+                    "relative flex h-24 w-24 items-center justify-center rounded-full",
+                    tint.wash,
+                  )}
+                >
+                  <StepIllustration name={step.illustration} className={cn("h-18 w-18", tint.art)} />
+                  <span className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-ink text-[13px] font-bold text-white">
+                    {step.number}
+                  </span>
                 </div>
-                {index < steps.length - 1 ? (
-                  <div aria-hidden className="h-px flex-1 bg-line max-lg:hidden" />
-                ) : null}
-              </div>
-              <h3 className="mt-5 text-base font-semibold text-ink">{step.title}</h3>
-              <p className="mt-2 line-clamp-3 text-sm leading-6 text-body">{firstLine(step.text)}</p>
-            </div>
-          ))}
-        </div>
+                <h3 className="mt-6 text-[19px] leading-snug font-bold text-ink">{step.title}</h3>
+                <p className="mt-3 max-w-[38ch] text-[15px] leading-[1.6] text-body">{step.text}</p>
+              </li>
+            );
+          })}
+        </Reveal>
       </Container>
     </section>
   );

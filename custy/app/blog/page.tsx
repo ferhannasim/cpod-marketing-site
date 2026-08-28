@@ -16,7 +16,7 @@ export default function BlogIndexPage() {
           <h1 className="text-[clamp(2.125rem,4.5vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.02em] text-ink">
             Custy Blog
           </h1>
-          <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
+          <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
             Guides and news on Shopify product customization and print-on-demand from Custy.
           </p>
         </div>

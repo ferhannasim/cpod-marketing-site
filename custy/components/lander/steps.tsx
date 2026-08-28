@@ -51,9 +51,9 @@ export function Steps({ items, layout = "grid", columns = 4, className }: StepsP
             {step.image ? (
               <img src={step.image} alt="" className="mb-3.5 max-w-full rounded-2xl" />
             ) : null}
-            <h3 className="pt-2 text-[17px] leading-snug font-semibold text-ink">{step.title}</h3>
+            <h3 className="pt-2 text-[18px] leading-snug font-bold text-ink">{step.title}</h3>
             {bodyParagraphs(step.text).map((paragraph, index) => (
-              <p key={index} className="mt-2.5 text-[15px] leading-[1.7] text-body">
+              <p key={index} className="mt-2.5 text-[15px] leading-[1.6] text-body">
                 {paragraph}
               </p>
             ))}
@@ -76,9 +76,9 @@ export function Steps({ items, layout = "grid", columns = 4, className }: StepsP
           {step.image ? (
             <img src={step.image} alt="" className="mb-3.5 max-w-full rounded-2xl" />
           ) : null}
-          <h3 className="text-base leading-snug font-semibold text-ink">{step.title}</h3>
+          <h3 className="text-[17px] leading-snug font-bold text-ink">{step.title}</h3>
           {bodyParagraphs(step.text).map((paragraph, index) => (
-            <p key={index} className="mt-2.5 text-[15px] leading-[1.65] text-body">
+            <p key={index} className="mt-2.5 text-[15px] leading-[1.6] text-body">
               {paragraph}
             </p>
           ))}

@@ -10,9 +10,9 @@ function GuideLinks({ steps, compact = false }: { steps: ResourceStep[]; compact
           <a
             href={`#${step.id}`}
             aria-label={step.title}
-            className="group flex items-start gap-3 text-sm leading-5 text-body transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="group flex items-start gap-3 text-[15px] leading-5 text-body transition-colors hover:text-ink focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:outline-none"
           >
-            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-line bg-white text-xs font-semibold text-ink group-hover:border-[#b8c1ce]">
+            <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-line bg-white text-[12px] font-bold text-ink group-hover:border-[#b8c1ce]">
               {step.number}
             </span>
             <span className="pt-0.5">{step.title}</span>
@@ -52,17 +52,17 @@ export function ResourceGuide({ steps }: { steps: ResourceStep[] }) {
                   {step.number}
                 </div>
                 <div>
-                  <p className="text-xs font-semibold tracking-[0.12em] text-[#667085] uppercase">
+                  <p className="text-[13px] font-semibold tracking-widest text-muted uppercase">
                     Step {step.number}
                   </p>
                   <h2 className="mt-1 text-[clamp(1.5rem,3vw,2rem)] leading-tight font-extrabold text-ink">
                     {step.title}
                   </h2>
-                  <p className="mt-3 text-[16px] leading-7 font-medium text-body">{step.summary}</p>
+                  <p className="mt-3 text-[16px] leading-[1.6] font-medium text-body">{step.summary}</p>
                 </div>
               </div>
 
-              <div className="mt-6 space-y-4 text-[15.5px] leading-7 text-body">
+              <div className="mt-6 space-y-4 text-[15.5px] leading-[1.65] text-body">
                 {step.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}

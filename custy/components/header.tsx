@@ -31,7 +31,7 @@ function activeHrefForPath(pathname: string): string | null | undefined {
 function navItemClass(active: boolean, mobile = false) {
   return cn(
     "transition-colors",
-    mobile ? "text-lg font-medium" : "text-sm font-medium",
+    mobile ? "text-lg font-semibold" : "text-[15px] font-semibold",
     active ? "text-ink" : mobile ? "text-body" : "text-body hover:text-ink",
     active && !mobile && "relative after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full after:bg-accent-blue",
   );
@@ -190,7 +190,7 @@ export function Header() {
                           <span className="block text-sm font-semibold text-ink">
                             {resource.label}
                           </span>
-                          <span className="mt-1 block text-xs leading-5 text-body">
+                          <span className="mt-1 block text-[13px] leading-5 text-body">
                             {resource.description}
                           </span>
                         </Link>

@@ -9,7 +9,7 @@ describe("DesignLabPage", () => {
     for (const card of [
       "Text, exactly as they want it", "A clipart and font library", "Their own artwork",
       "Every printable side", "Low-resolution warnings", "Keep designs inside the lines",
-      "Approval before checkout", "Quote requests by email",
+      "Approval before checkout", "Saved designs and quotes",
     ]) {
       expect(screen.getByRole("heading", { name: card })).toBeInTheDocument();
     }

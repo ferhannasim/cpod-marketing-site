@@ -2,13 +2,16 @@ import Image from "next/image";
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { RainbowBar } from "@/components/lander";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 import type { RichBlock } from "@/content/home";
 
-const heroWash =
-  "radial-gradient(circle at 10% 0%, rgba(23,182,244,0.10), transparent 42%)," +
-  "radial-gradient(circle at 90% 8%, rgba(236,0,140,0.07), transparent 38%)," +
-  "linear-gradient(180deg, #ffffff 0%, #fafcfe 60%, #f7f9fc 100%)";
+/** Reveal's non-animating twin, so the hero can share one call shape with the
+ * scroll-revealed bands. Declared at module scope — defining it inline would
+ * remount the subtree on every render. */
+function Plain({ className, children }: { className?: string; children: React.ReactNode }) {
+  return <div className={className}>{children}</div>;
+}
 
 type RichSectionProps = {
   block: RichBlock;
@@ -36,11 +39,23 @@ export function RichSection({
   const HeadingTag = headingLevel;
   const isHero = headingLevel === "h1";
   const headingClasses = isHero
-    ? "text-[clamp(2.125rem,4.5vw,3rem)] font-extrabold leading-[1.08] tracking-[-0.02em] text-ink"
+    ? "text-[clamp(2.25rem,4.8vw,3.25rem)] font-extrabold leading-[1.06] tracking-[-0.025em] text-ink"
     : "text-[clamp(1.75rem,3vw,2.25rem)] font-extrabold leading-[1.15] tracking-[-0.02em] text-ink";
 
+  // Splitting on the highlight keeps the h1's accessible name intact — the
+  // accent lives on an inline span, not a separate heading.
+  const headingParts =
+    isHero && block.heading && block.highlight && block.heading.includes(block.highlight)
+      ? block.heading.split(block.highlight)
+      : null;
+
+  // The hero is above the fold and holds the LCP image, so it renders solid
+  // rather than fading in — matching LanderHero, which doesn't animate either.
+  // Every other RichSection band scroll-reveals like the rest of the site.
+  const Block = isHero ? Plain : Reveal;
+
   const image = block.image ? (
-    <div
+    <Block
       className="overflow-hidden rounded-card border border-line shadow-[0_24px_60px_-24px_rgba(16,24,40,0.2)]"
       key="image"
     >
@@ -52,22 +67,39 @@ export function RichSection({
         className="h-auto w-full"
         priority={isHero}
       />
-    </div>
+    </Block>
   ) : null;
 
   const text = (
-    <div key="text">
+    <Block key="text">
       {isHero ? <RainbowBar className="mb-7" /> : null}
       {isHero && eyebrow ? (
-        <div className="mb-4 text-xs font-semibold tracking-[0.12em] text-[#5b6473] uppercase">
+        <div className="mb-4 text-[13px] font-semibold tracking-widest text-muted uppercase">
           {eyebrow}
         </div>
       ) : null}
-      {block.heading && <HeadingTag className={headingClasses}>{block.heading}</HeadingTag>}
+      {block.heading && (
+        <HeadingTag className={headingClasses}>
+          {headingParts ? (
+            <>
+              {headingParts[0]}
+              <span className="text-accent-pink">{block.highlight}</span>
+              {headingParts.slice(1).join(block.highlight)}
+            </>
+          ) : (
+            block.heading
+          )}
+        </HeadingTag>
+      )}
+      {isHero && block.tagline ? (
+        <p className="mt-3 max-w-[38ch] text-[clamp(1.0625rem,2vw,1.375rem)] font-display font-bold tracking-[-0.01em] text-ink/75">
+          {block.tagline}
+        </p>
+      ) : null}
       <div
         className={cn(
-          "prose prose-neutral max-w-none text-body prose-p:leading-[1.75]",
-          block.heading && "mt-5",
+          "prose prose-neutral max-w-none text-[16px] text-body prose-p:leading-[1.65] prose-strong:text-ink",
+          block.heading && (isHero ? "mt-5 max-w-140" : "mt-5"),
         )}
         dangerouslySetInnerHTML={{ __html: block.html }}
       />
@@ -80,18 +112,16 @@ export function RichSection({
           ))}
         </div>
       )}
-    </div>
+    </Block>
   );
 
   return (
-    <section
-      className={cn(scheme, isHero && "border-b border-line")}
-      style={isHero ? { background: heroWash } : undefined}
-    >
+    <section className={cn(isHero ? "bg-wash-hero border-b border-line" : scheme)}>
       <Container
         className={cn(
-          "py-16 md:py-24",
-          image && "grid gap-12 md:grid-cols-2 md:items-center",
+          isHero ? "py-20 md:py-28" : "py-16 md:py-24",
+          image && "grid gap-12 md:items-center",
+          image && (isHero ? "md:grid-cols-[1.05fr_0.95fr] md:gap-16" : "md:grid-cols-2"),
         )}
       >
         {image ? (imagePosition === "left" ? [image, text] : [text, image]) : text}

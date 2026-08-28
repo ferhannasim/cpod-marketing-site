@@ -6,7 +6,7 @@ type SectionTone = "white" | "light" | "dark";
 
 const toneShell: Record<SectionTone, string> = {
   white: "bg-white",
-  light: "bg-lander-light",
+  light: "bg-wash",
   dark: "bg-[#0c1524] text-white",
 };
 
@@ -56,8 +56,8 @@ export function LanderSection({
             {lead ? (
               <p
                 className={cn(
-                  "mt-4 text-base leading-[1.7] md:text-[16.5px]",
-                  isDark ? "text-white/[0.78]" : "text-body",
+                  "mt-4 text-[16px] leading-[1.6] md:text-[16.5px]",
+                  isDark ? "text-white/85" : "text-body",
                 )}
               >
                 {lead}

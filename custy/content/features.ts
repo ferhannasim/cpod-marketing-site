@@ -28,20 +28,22 @@ export type FeaturesWorkflowStrip = {
   items: CardItem[];
 };
 
-// Transcribed verbatim from content/raw/features.html (custy-features-page). No
-// <img> tags on this page, so no images to localize. Card `icon` values are
-// semantic names resolved to SVG stroke icons by components/lander/icons.tsx
-// (the design pass replaced the source's decorative emoji tiles with them).
-// Inline <strong> emphasis inside hero/CTA-band paragraphs is not representable
-// by LanderHero/CtaBand's plain-string `lead`/`text` props, so it's flattened to
-// plain text; no words were added, removed, or reordered.
+// Copy on this page is written from docs/CUSTY_APP_MARKETING_SITE_BRIEF.md, which
+// is itself derived from the shipped code. Every capability named here exists in
+// the product today. Card `icon` values are semantic names resolved to SVG stroke
+// icons by components/lander/icons.tsx.
+//
+// Deliberately not advertised, per section 8 of the brief: the Buy Blank button,
+// standalone color-swatch and size-display settings, add-to-cart styling
+// settings (all disabled in Settings), QR codes, name-and-number, and design
+// ideas (staged but not shipped). No accessibility conformance is claimed.
 export const features = {
   hero: {
     eyebrow: "Custy for Shopify • POD Ready",
     title: "Powerful Product Customization for Modern Shopify Stores",
     lead: [
-      "Custy is a powerful, easy-to-use product customizer app built for Shopify merchants selling personalized products — from print-on-demand stores to custom-made items — letting customers design directly on your store in real time through an intuitive design panel.",
-      "Shoppers personalize t-shirts, hoodies, caps, and more with text, images, and artwork across multiple print areas like the front, back, and sleeves — helping create a better shopping experience that boosts engagement, conversions, and average order value.",
+      "Custy turns any Shopify product into a customizable one. Shoppers open a full design studio on your product page — layers, fonts, clipart, uploads and effects — and preview every side of the product before they add it to the cart.",
+      "You get print-ready artwork at up to 300 DPI, pricing that matches how printing is actually quoted, and order management that never leaves Shopify admin.",
     ],
     ctas: [
       { label: "Start 30-Day Free Trial", href: APP_URL, variant: "primary" },
@@ -50,11 +52,11 @@ export const features = {
     highlight: {
       title: "Why merchants choose Custy",
       items: [
-        "Live product customization with instant visual feedback",
-        "Support for multiple print sides and product areas",
-        "Flexible dynamic pricing based on real customization choices",
-        "Print-ready file generation for smoother production workflows",
-        "Fast Shopify integration with clear order design data",
+        "A real design studio, not a text box",
+        "Multi-side products with live preview on every side",
+        "Pricing by setup fee, color, side, character or square inch",
+        "Print-ready files as SVG, PDF, PNG or JPG up to 300 DPI",
+        "Embedded in Shopify admin and billed through Shopify",
       ],
     },
   } satisfies FeaturesHero,
@@ -62,104 +64,104 @@ export const features = {
   sections: [
     {
       title: "Key Features Built for POD Growth",
-      lead: "Everything in Custy is designed to help Shopify merchants sell personalized products with less friction, better order accuracy, and a more engaging buyer experience.",
+      lead: "Everything below ships in Custy today — the shopper design studio, the pricing engine behind it, and the order tools your production team works from.",
       cards: [
         {
           icon: "palette",
           title: "Real-Time Product Customizer",
-          text: "Let customers design products live on your storefront with an instant preview experience that feels smooth, visual, and easy to use.",
+          text: "A canvas editor that opens straight from your product page. Shoppers add text and artwork, work in layers, undo up to 50 steps, and zoom to 3x to check the detail before they buy.",
         },
         {
           icon: "layers",
           title: "Multi-Side Customization",
-          text: "Support multiple design areas including front, back, left sleeve, right sleeve, and other printable locations based on your product setup.",
+          text: "Front, back, sleeves and any side you define, each with its own print area, mockup and named parts — plus product color swatches that recolor the garment art live.",
         },
         {
           icon: "circle-dollar-sign",
           title: "Dynamic Pricing Engine",
-          text: "Automatically adjust pricing based on selected print areas, extra options, print methods, and design complexity to protect your margins.",
+          text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts — priced the way printing is actually quoted.",
         },
         {
           icon: "printer",
           title: "DTG, DTF & Print-Ready Files",
-          text: "Generate high-quality, fulfillment-ready design outputs that make production easier for DTG, DTF, and other print workflows.",
+          text: "Download artwork from the order as SVG, PDF, PNG or JPG at up to 300 DPI, with a transparent or colored background, flagged when it falls below your required DPI.",
         },
         {
           icon: "puzzle",
           title: "Flexible Product Options",
-          text: "Offer sizes, colors, variants, product-specific configurations, and custom rules so each product can match your exact business needs.",
+          text: "Reusable color sets and size sets, per-variant inventory with SKUs, and restrictions controlling which tools and libraries each product allows.",
+        },
+        {
+          icon: "shield-check",
+          title: "Guardrails Before It Prints",
+          text: "Low-resolution DPI warnings, out-of-print-area warnings, max-colors-per-location limits, and an optional approval step in your own words.",
         },
         {
           icon: "blocks",
           title: "Seamless Shopify Integration",
-          text: "Orders include full design details and selected options, making fulfillment, review, and production handoff much faster and more organized.",
+          text: "Embedded in Shopify admin and built on Polaris, so it looks and feels like Shopify. The Customize button is a theme block, and billing runs through Shopify.",
         },
         {
           icon: "zap",
-          title: "Fast & User-Friendly UI",
-          text: "Custy is built for performance and ease of use, helping your customers customize products without confusion or unnecessary steps.",
+          title: "Designed for Mobile Too",
+          text: "A dedicated layout below 750px with its own tab bar for color, text, uploads and layers, plus full touch support for dragging and reordering.",
         },
         {
           icon: "trending-up",
-          title: "Higher Conversion Potential",
-          text: "An interactive design experience keeps customers engaged longer, increases confidence before purchase, and can improve average order value.",
-        },
-        {
-          icon: "shopping-bag",
-          title: "Built for Scalable Custom Selling",
-          text: "Whether you are launching a new custom store or expanding a growing POD brand, Custy is designed to support long-term growth.",
+          title: "Save, Share and Re-Edit",
+          text: "Shoppers save a design with a name and email and get a shareable link they can reopen, send on, or edit again straight from the cart.",
         },
       ],
     },
     {
       title: "How Custy Works",
-      lead: "Custy keeps the workflow simple for merchants while giving customers a premium product customization experience from storefront to fulfillment.",
+      lead: "Four steps from installing the app to receiving your first order with print-ready artwork attached.",
       steps: [
         {
           number: 1,
           title: "Install Custy",
-          text: "Install Custy from the Shopify App Store and connect it to your store in just a few steps.",
+          text: "Install from the Shopify App Store and start a 30-day free trial. Custy creates your Design Lab page automatically.",
         },
         {
           number: 2,
-          title: "Enable Customization",
-          text: "Choose your products and define print areas, options, variants, and pricing rules for customization.",
+          title: "Sync and Set Up a Product",
+          text: "One click pulls in your Shopify catalog. Choose colors and sizes, add product sides and print areas, then pick your printing methods and pricing.",
         },
         {
           number: 3,
-          title: "Customers Design Live",
-          text: "Your customers personalize products in real time by adding text, artwork, and images directly on the product.",
+          title: "Add the Button to Your Theme",
+          text: "Drop the Custy Customize block into your product template and enable the cart embed. Your customers can start designing.",
         },
         {
           number: 4,
           title: "Get Print-Ready Orders",
-          text: "Orders include production-friendly design data and print-ready files so fulfillment becomes faster and easier.",
+          text: "Each order arrives with the design, the side and color breakdown, and artwork you can download in vector or raster at up to 300 DPI.",
         },
       ],
     },
     {
       title: "Perfect For",
-      lead: "Custy is made for Shopify merchants who want to turn standard products into interactive, personalized buying experiences.",
+      lead: "Custy is built for Shopify merchants who sell products their customers help design — and who need what comes out the other end to be production-ready.",
       cards: [
         {
           icon: "shirt",
           title: "POD Businesses",
-          text: "Offer live customization for apparel and print-on-demand products with a workflow built for production.",
+          text: "Apparel and merch brands selling t-shirts, hoodies, hats and bags, with live customization and a clean handoff to production.",
         },
         {
-          icon: "store",
-          title: "Custom Apparel Stores",
-          text: "Sell personalized t-shirts, hoodies, caps, and more with support for multiple design positions and options.",
+          icon: "printer",
+          title: "Print Shops",
+          text: "Screen print, DTG, embroidery, vinyl and sublimation — each with its own pricing rules, color limits and quantity minimums.",
         },
         {
           icon: "gift",
-          title: "Gift Shops",
-          text: "Create a better customer experience for stores offering personalized gifts, occasion-based items, and unique products.",
+          title: "Promotional & Corporate Merch",
+          text: "Mugs, totes and giveaways carrying a client's logo, with quantity discounts and an approval step before anything reaches the press.",
         },
         {
           icon: "chart-column",
           title: "Growth-Focused Merchants",
-          text: "Increase engagement and sales with an interactive customization journey that helps shoppers buy with confidence.",
+          text: "Any Shopify store adding personalization to an existing catalog, without creating a new SKU for every variation.",
         },
       ],
     },
@@ -170,80 +172,66 @@ export const features = {
         {
           icon: "printer",
           title: "Pricing by print method",
-          text: "DTG, DTF and embroidery each carry their own rules — price by printing colors, per color count, or per size range.",
+          text: "Each method carries its own rules — setup fees per side and per color, waived above a quantity threshold, plus separate rates for uploads, clipart and text.",
         },
         {
           icon: "badge-percent",
           title: "Quantity discounts",
-          text: "Percent or fixed discounts across quantity ranges you define — built for team and group orders.",
+          text: "Percentage or fixed discounts matched against total order quantity, shown to the shopper as a Buy more, Save more ladder.",
         },
         {
           icon: "circle-dollar-sign",
           title: "Tiered & location pricing",
-          text: "Tiered and location-based pricing keep margins right as you scale and expand.",
+          text: "Tiered pricing keeps margins right as volume grows, and location pricing lets you charge by print position.",
         },
         {
           icon: "chart-column",
-          title: "Inventory mode",
-          text: "Track stock per variant with SKUs and stop-sell rules, or run pure design-tool mode — per product, your call.",
+          title: "Inventory control",
+          text: "Per-variant restrictions keyed by size, color and style with SKUs, honoring stock tracking and a stop-sell buffer at checkout.",
         },
         {
           icon: "server",
           title: "White label & API",
-          text: "Remove Custy branding and integrate through the API to fit the app into your own stack.",
+          text: "Put your own logo in the editor header, remove Custy branding, and integrate through the API to fit your own stack.",
         },
         {
           icon: "blocks",
           title: "Bulk order tools",
-          text: "High-volume stores process custom orders in bulk — status updates and downloads without one-by-one clicking.",
+          text: "Multi-select orders and move them through New, Downloaded, Need Fixing and Completed in bulk, instead of one at a time.",
         },
       ],
     },
   ] satisfies FeaturesSection[],
 
-  // R4: "Works with your POD workflow" strip — 4 compact items, each a direct
-  // trim (deletion of a leading/trailing/middle clause, no added or reordered
-  // words) of one existing claim already published above or on
-  // content/how-it-works.ts. No new facts; see task-R4-report.md for the full
-  // old-source -> item-text table:
-  //   1. "Embedded in Your Store" <- hero.lead[0]'s trailing clause
-  //      ("...letting customers design directly on your store in real time
-  //      through an intuitive design panel.")
-  //   2. "DTG & DTF Print-Ready Files" <- sections[0].cards[3] ("DTG, DTF &
-  //      Print-Ready Files") text, with its middle clause trimmed
-  //   3. "Multi-Side Printing" <- how-it-works.ts whySection.cards[1]
-  //      ("Multi-Side Design") text, trailing clause trimmed
-  //   4. "Live Real-Time Preview" <- sections[0].cards[0] ("Real-Time Product
-  //      Customizer") text, trailing clause trimmed
   workflowStrip: {
     title: "Works with your POD workflow",
     items: [
       {
         icon: "monitor",
         title: "Embedded in Your Store",
-        text: "Customers design directly on your store in real time through an intuitive design panel.",
+        text: "Works on both vintage and Online Store 2.0 themes, with no separate payment setup.",
       },
       {
         icon: "file-check",
-        title: "DTG & DTF Print-Ready Files",
-        text: "Generate high-quality, fulfillment-ready design outputs for DTG, DTF, and other print workflows.",
+        title: "Print-Ready in Every Order",
+        text: "Vector SVG and PDF or raster PNG and JPG, at 72, 96, 150 or 300 DPI.",
       },
       {
         icon: "layers",
         title: "Multi-Side Printing",
-        text: "Support front, back, sleeves, and more.",
+        text: "Front, back, sleeves, and any side you define per product.",
       },
       {
         icon: "eye",
-        title: "Live Real-Time Preview",
-        text: "Let customers design products live on your storefront with an instant preview experience.",
+        title: "English and French",
+        text: "Both languages out of the box, including the approval step copy.",
       },
     ],
   } satisfies FeaturesWorkflowStrip,
 
   cta: {
     title: "Start with Custy Risk-Free",
-    text: "Enjoy a 30-day free trial with full access to Custy’s core features — test it on your Shopify store, explore the customization workflow, and see how easy it is to sell personalized products. No risk, and you can cancel anytime.",
+    text: "Every paid plan includes a 30-day free trial, once per store. Billing runs through Shopify, and cancelling prorates and keeps your access until the end of the paid period.",
     cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
     secondaryCta: { label: "View Pricing", href: "/#pricing", variant: "outline" },
   } satisfies FeaturesCta,

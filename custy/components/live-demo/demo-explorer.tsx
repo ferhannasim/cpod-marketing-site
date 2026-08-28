@@ -64,12 +64,19 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
         </button>
       </div>
 
+      {/* Height is matched to the embedded editor rather than to our viewport:
+          above its own 750px breakpoint the editor pins its shell to a hard
+          698px and paints #e6e7e8 behind it, so a taller iframe shows a grey
+          band under the toolbar. 700px = that 698px viewport plus our 1px
+          top/bottom borders, which border-box counts inside the height. Under
+          that breakpoint the editor stretches to fill whatever it is given, so
+          the fluid mobile height leaves no gap. */}
       <iframe
         key={selected.slug}
         src={selected.editorUrl}
         title={`${selected.name} — Custy product editor`}
         allow="fullscreen"
-        className="h-[70vh] min-h-[520px] w-full rounded-card border border-line bg-white"
+        className="h-[70vh] min-h-[520px] w-full rounded-card border border-line bg-white md:h-[700px] md:min-h-0"
       />
       <p className="mt-3 text-center text-sm text-body">
         Editor not loading?{" "}

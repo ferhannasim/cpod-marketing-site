@@ -27,7 +27,7 @@ const ctaVariants: Record<NonNullable<CtaLink["variant"]>, string> = {
  */
 export function LanderCta({ label, href, variant = "primary" }: CtaLink) {
   const className = cn(
-    "inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold no-underline transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:outline-none max-md:w-full",
+    "inline-flex items-center justify-center rounded-full px-6 py-3 text-[15px] font-semibold no-underline transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:outline-none max-md:w-full",
     ctaVariants[variant],
   );
   if (/^https?:\/\//.test(href)) {

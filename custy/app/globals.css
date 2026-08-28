@@ -2,7 +2,10 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
+  /* Inter for body/UI (best small-size legibility), Plus Jakarta Sans for
+     headings (wider counters and stronger bold weights read better large). */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Surface scale (refined from the Horizon scheme palette) */
   --color-scheme1-bg: #ffffff;
@@ -11,18 +14,19 @@
   --color-scheme4-bg: #e1edf5;
   --color-scheme5-bg: #333333;
 
-  --color-ink: #101828;      /* headings */
-  --color-body: #475467;     /* body text */
-  --color-line: #e8ecf2;     /* borders */
+  --color-ink: #0b1220;      /* headings */
+  --color-body: #3d4a5c;     /* body text */
+  --color-muted: #5b6a7d;    /* captions, labels, meta */
+  --color-line: #e3e8ef;     /* borders */
 
   /* Brand process-ink accents (cyan / magenta / amber) */
   --color-accent-blue: #17b6f4;
   --color-accent-pink: #ec008c;
   --color-accent-yellow: #ffb800;
-  --color-lander-dark: #101828;
-  --color-lander-text: #475467;
+  --color-lander-dark: #0b1220;
+  --color-lander-text: #3d4a5c;
   --color-lander-light: #f7f9fc;
-  --color-lander-border: #e8ecf2;
+  --color-lander-border: #e3e8ef;
 
   --radius-lander: 16px;
   --radius-pill: 999px;
@@ -30,16 +34,82 @@
   --radius-card: 16px;
 }
 
+/* The brand wash: a near-white base lifted by a cyan glow in one corner and a
+   magenta glow in the other, using the same process inks as the logo and
+   RainbowBar. Defined here once so the hero and every tinted band stay in
+   step — they used to be six copy-pasted inline gradient strings.
+   `@utility` (rather than a plain rule) keeps these in Tailwind's utilities
+   layer, so `bg-white` and friends still override them predictably. */
+
+/* Page openers. Starts pure white under the header and settles into mist. */
+@utility bg-wash-hero {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(23, 182, 244, 0.1), transparent 42%),
+    radial-gradient(circle at 90% 8%, rgba(236, 0, 140, 0.07), transparent 38%),
+    linear-gradient(180deg, #ffffff 0%, #fafcfe 60%, #f7f9fc 100%);
+}
+
+/* Mid-page bands, replacing the flat #f7f9fc grey. The base deliberately stays
+   tinted at the top and bottom edges rather than fading to white, so bands
+   still alternate visibly against the white sections they sit between. */
+@utility bg-wash {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(23, 182, 244, 0.13), transparent 45%),
+    radial-gradient(circle at 88% 100%, rgba(236, 0, 140, 0.09), transparent 42%),
+    linear-gradient(180deg, #f5f8fd 0%, #fbfcfe 52%, #f5f8fc 100%);
+}
+
 /* Must live in the base layer: unlayered rules would beat utility classes
    (e.g. `text-white` on dark-band headings) regardless of specificity. */
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   body {
     @apply bg-scheme1-bg text-body font-sans antialiased;
+    /* cv11 gives Inter a single-storey `l`/`a` pairing that stays distinct at
+       small sizes; ss01 tightens the punctuation. */
+    font-feature-settings: "cv11", "ss01";
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
   }
-  h1, h2, h3, h4 {
-    @apply text-ink font-bold tracking-tight;
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-ink font-display;
+    /* Headings are short: balancing avoids a one-word last line. */
+    text-wrap: balance;
   }
+
+  h1, h2 {
+    @apply font-extrabold;
+  }
+
+  h3, h4 {
+    @apply font-bold;
+  }
+
+  /* Tracking tightens as type grows, so large headings don't read airy and
+     small ones don't collide. */
+  h1 { letter-spacing: -0.025em; }
+  h2 { letter-spacing: -0.02em; }
+  h3 { letter-spacing: -0.015em; }
+  h4, h5, h6 { letter-spacing: -0.01em; }
+
   h5, h6 {
-    @apply text-ink font-medium;
+    @apply font-semibold;
+  }
+
+  p, li {
+    text-wrap: pretty;
+  }
+
+  strong, b {
+    @apply font-semibold text-ink;
+  }
+
+  ::selection {
+    background-color: #cdefff;
+    color: #0b1220;
   }
 }

@@ -55,8 +55,8 @@ export function CtaBand({ title, text, cta, secondaryCta, className, tone = "dar
       </h2>
       <p
         className={cn(
-          "mx-auto mt-4 max-w-[680px] text-[15.5px] leading-[1.7]",
-          isLight ? "text-body" : "text-white/[0.78]",
+          "mx-auto mt-4 max-w-[680px] text-[15.5px] leading-[1.6]",
+          isLight ? "text-body" : "text-white/85",
         )}
       >
         {text}
