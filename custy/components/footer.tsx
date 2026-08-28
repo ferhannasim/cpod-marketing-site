@@ -41,7 +41,10 @@ export function Footer() {
                   const className =
                     "flex items-center gap-2 text-[15px] leading-6 text-body transition-colors hover:text-ink";
                   const marker = (
-                    <span className="h-1.5 w-1.5 shrink-0 bg-accent-blue" aria-hidden="true" />
+                    <span
+                      className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue"
+                      aria-hidden="true"
+                    />
                   );
                   return (
                     <li key={link.href} className="m-0">

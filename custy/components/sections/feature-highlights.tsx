@@ -101,15 +101,20 @@ export function FeatureHighlights({
                 delay={(index % 2) * 0.1}
                 className="overflow-hidden rounded-2xl border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
               >
-                <Image
-                  src={card.image.src}
-                  width={card.image.width}
-                  height={card.image.height}
-                  alt={card.image.alt ?? ""}
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="h-auto w-full"
-                />
-                <div className="p-6 md:p-7">
+                {/* Inset rather than full-bleed: the row illustrations above
+                    sit in open space, so a card illustration running to the
+                    card edge reads as noticeably larger than they do. */}
+                <div className="px-6 pt-6 md:px-7 md:pt-7">
+                  <Image
+                    src={card.image.src}
+                    width={card.image.width}
+                    height={card.image.height}
+                    alt={card.image.alt ?? ""}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <div className="px-6 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
                   <h3 className="text-[18px] leading-snug font-bold text-ink">{card.title}</h3>
                   <p className="mt-2.5 text-[15px] leading-[1.6] text-body">{card.text}</p>
                 </div>

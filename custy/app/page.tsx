@@ -14,14 +14,20 @@ import { pricing } from "@/content/pricing";
 export default function HomePage() {
   return (
     <main>
-      <RichSection
-        block={home.intro}
-        scheme="bg-scheme1-bg"
-        imagePosition="right"
-        headingLevel="h1"
-        eyebrow="Shopify product customizer"
-      />
-      <TrustBand scheme="bg-wash" />
+      {/* The hero and the guarantees strip share one wash. Painted separately
+          they read as two mismatched bands with a rule between them, because
+          the hero's gradient has already settled to its pale end tone by the
+          time the strip starts its own from the top. */}
+      <div className="bg-wash-hero border-b border-line">
+        <RichSection
+          block={home.intro}
+          scheme="bg-transparent"
+          imagePosition="right"
+          headingLevel="h1"
+          eyebrow="Shopify product customizer"
+        />
+        <TrustBand scheme="bg-transparent" />
+      </div>
       <StepsTeaser id="how-it-works" scheme="bg-scheme1-bg" />
       <FeatureHighlights id="features" scheme="bg-wash" />
       <DemoProducts id="live-demo" scheme="bg-scheme1-bg" />

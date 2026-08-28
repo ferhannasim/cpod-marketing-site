@@ -15,7 +15,10 @@ function Plain({ className, children }: { className?: string; children: React.Re
 
 type RichSectionProps = {
   block: RichBlock;
-  /** Tailwind background class for the section band. */
+  /**
+   * Tailwind background class for the section band. Heroes pass
+   * `bg-transparent` when a parent paints the band for them.
+   */
   scheme: string;
   /** Which side the image sits on when both an image and text are present. */
   imagePosition?: "left" | "right";
@@ -116,7 +119,7 @@ export function RichSection({
   );
 
   return (
-    <section className={cn(isHero ? "bg-wash-hero border-b border-line" : scheme)}>
+    <section className={scheme}>
       <Container
         className={cn(
           isHero ? "py-20 md:py-28" : "py-16 md:py-24",

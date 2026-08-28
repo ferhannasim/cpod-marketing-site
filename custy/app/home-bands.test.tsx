@@ -35,14 +35,15 @@ describe("HomePage section bands", () => {
     const main = container.querySelector("main");
     expect(main).not.toBeNull();
 
-    const sections = Array.from(main!.querySelectorAll(":scope > section"));
-    expect(sections.length).toBeGreaterThan(0);
+    // Every top-level child, not just <section>: the opener is a div wrapping
+    // the hero and the guarantees strip so they share one wash.
+    const bands = Array.from(main!.children);
+    expect(bands.length).toBeGreaterThan(0);
 
-    const schemes = sections.map((section) => {
-      // The hero carries the stronger opener wash instead of a scheme class.
-      if (section.classList.contains("bg-wash-hero")) return "hero";
-      if (section.classList.contains("bg-scheme1-bg")) return "scheme1";
-      if (section.classList.contains("bg-wash")) return "scheme2";
+    const schemes = bands.map((band) => {
+      if (band.classList.contains("bg-wash-hero")) return "hero";
+      if (band.classList.contains("bg-scheme1-bg")) return "scheme1";
+      if (band.classList.contains("bg-wash")) return "scheme2";
       return "unknown";
     });
     expect(schemes).not.toContain("unknown");
