@@ -1,24 +1,31 @@
 import { describe, expect, it } from "vitest";
-import { headerNav, footerColumns, resourceMenuLinks, socialLinks } from "./nav";
+import { headerNav, footerColumns, resourceMenuLinks, socialLinks, headerCta } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav includes the Resources guide plus the app CTA target", () => {
-    expect(headerNav.map((l) => l.href)).toEqual([
-      "/how-it-works",
-      "/resources",
-      "/pricing",
-      "/features",
-      "/design-lab",
-      "/live-demo",
-      "/blog",
+  it("header nav scrolls marketing sections and keeps Resources as the help doorway", () => {
+    expect(headerNav.map((l) => [l.label, l.href])).toEqual([
+      ["How it Works", "/#how-it-works"],
+      ["Features", "/#features"],
+      ["Live Demo", "/#live-demo"],
+      ["Pricing", "/#pricing"],
+      ["Contact", "/#contact"],
+      ["Resources", "/resources"],
     ]);
   });
 
-  it("footer links only point at migrated routes or the app listing", () => {
+  it("header CTA is the Shopify free-trial listing", () => {
+    expect(headerCta).toEqual({
+      label: "Start Free Trial",
+      href: APP_URL,
+      external: true,
+    });
+  });
+
+  it("footer links only point at kept routes", () => {
     const hrefs = footerColumns.flatMap((c) => c.links.map((l) => l.href));
     for (const href of hrefs) {
-      expect(href === APP_URL || href.startsWith("/")).toBe(true);
+      expect(href.startsWith("/")).toBe(true);
       expect(href).not.toMatch(/\/(pages|products|collections|cart|search)\b/);
     }
   });
@@ -30,30 +37,22 @@ describe("nav data", () => {
     ]);
   });
 
-  it("footer Explore column lists site pages then the app listing", () => {
-    const explore = footerColumns.find((c) => c.title === "Explore");
-    expect(explore?.links.map((l) => l.href)).toEqual([
-      "/how-it-works",
+  it("footer Learn more column lists help and company pages", () => {
+    const learnMore = footerColumns.find((c) => c.title === "Learn more");
+    expect(learnMore?.links.map((l) => l.href)).toEqual([
       "/resources",
-      "/pricing",
-      "/features",
-      "/design-lab",
-      "/use-cases",
-      "/dropshipping",
-      "/live-demo",
-      "/blog",
-      APP_URL,
+      "/faq",
+      "/#live-demo",
+      "/about",
+      "/policies/privacy",
+      "/policies/terms",
     ]);
   });
 
-  it("footer Company column gains FAQ and Support", () => {
-    const company = footerColumns.find((c) => c.title === "Company");
-    expect(company?.links.map((l) => l.href)).toEqual([
-      "/about-us",
-      "/faq",
-      "/contact",
-      "/support",
-    ]);
+  it("footer Product column is a one-line blurb with no links", () => {
+    const product = footerColumns.find((c) => c.title === "Custy");
+    expect(product?.blurb).toMatch(/shopify product customizer/i);
+    expect(product?.links).toEqual([]);
   });
 
   it("has the five social profiles", () => {

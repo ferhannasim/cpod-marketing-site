@@ -38,12 +38,6 @@ export const faq = {
             "Custy is the product customizer for your Shopify store. Shoppers design apparel and products in your store, then buy. You fulfill through Cheapest Print On Demand.",
         },
         {
-          question: "How is Custy different from the Dropshipping app?",
-          answer:
-            'Custy is for customization: the "Customize" button, design editor, and custom orders. The Dropshipping app is for importing CPOD products, markup, and forwarding orders. Many stores use both.',
-          link: { label: "Compare Custy and the Dropshipping app", href: "/dropshipping" },
-        },
-        {
           question: "Do my customers need to leave my store to design?",
           answer:
             "No. They design on your storefront. The design experience opens from your product page and stays in your shopping flow.",
@@ -68,7 +62,7 @@ export const faq = {
           question: "Is there a free plan?",
           answer:
             "Yes. Free includes a limited number of custom products, monthly orders, and storage, with basic customization. Paid plans unlock higher limits and more tools.",
-          link: { label: "Compare plans", href: "/pricing" },
+          link: { label: "Compare plans", href: "/#pricing" },
         },
         {
           question: "What are the paid plans?",
@@ -135,7 +129,7 @@ export const faq = {
         {
           question: "Where do I get help?",
           answer: `Email ${SUPPORT_EMAIL} or use the support contact on our marketing site.`,
-          link: { label: "Go to support", href: "/support" },
+          link: { label: "Go to support", href: "/#contact" },
         },
       ],
     },

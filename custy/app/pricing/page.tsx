@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Lander, PlanCompare, PricingTable, RainbowBar } from "@/components/lander";
 import { TrustBand } from "@/components/sections/trust-band";
 import { comparison, pricing } from "@/content/pricing";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Choose the plan that fits your business today and scales with you tomorrow. Every paid plan includes Custy's Shopify product customizer, easy setup, and a 30-day free trial.",
+  robots: noIndex,
 };
 
 const headerWash =

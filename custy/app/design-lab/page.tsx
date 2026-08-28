@@ -5,11 +5,13 @@ import {
 import {
   designLabCta, designLabFlow, designLabHero, designTools, safeguards,
 } from "@/content/design-lab";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Design Lab",
   description:
     "Tour Custy's Design Lab: shoppers add text, cliparts and uploads across every printable side — with DPI checks, bounds warnings and approval before checkout.",
+  robots: noIndex,
 };
 
 export default function DesignLabPage() {

@@ -9,11 +9,13 @@ import {
   Steps,
 } from "@/components/lander";
 import { howItWorks } from "@/content/how-it-works";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "How it Works",
   description:
     "Custy makes it easy for Shopify merchants to sell personalized products with a smooth, real-time customization experience.",
+  robots: noIndex,
 };
 
 export default function HowItWorksPage() {

@@ -96,5 +96,5 @@ export const designLabCta = {
   title: "Give shoppers the pen",
   text: "Stores sell more when customers design what they buy. Turn the Design Lab on for your first product today.",
   cta: { label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, variant: "primary" },
-  secondaryCta: { label: "See how it works", href: "/how-it-works", variant: "secondary" },
+  secondaryCta: { label: "See how it works", href: "/#how-it-works", variant: "secondary" },
 } satisfies DesignLabCta;

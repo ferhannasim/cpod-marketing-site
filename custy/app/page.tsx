@@ -3,29 +3,18 @@ import { RichSection } from "@/components/sections/rich-section";
 import { DemoProducts } from "@/components/sections/demo-products";
 import { FeatureHighlights } from "@/components/sections/feature-highlights";
 import { StepsTeaser } from "@/components/sections/steps-teaser";
-import { WhyCusty } from "@/components/sections/why-custy";
-import { PricingTeaser } from "@/components/sections/pricing-teaser";
 import { TrustBand } from "@/components/sections/trust-band";
-import { Faq } from "@/components/sections/faq";
-import { BlogTeasers } from "@/components/sections/blog-teasers";
-import { CardGrid, CtaBand, Eyebrow } from "@/components/lander";
+import { ContactChannels } from "@/components/sections/contact-channels";
+import { ContactForm } from "@/components/contact-form";
+import { Eyebrow, PricingTable, RainbowBar } from "@/components/lander";
 import { home } from "@/content/home";
 import { features } from "@/content/features";
 import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
-import { faqItems } from "@/content/faq";
-import { posts } from "@/content/posts";
 
-// Background scheme alternates scheme1 (white) / scheme2 (#f5f5f5) down the
-// page so no two adjacent sections share a background — see task-R2-report.md
-// for the original alternation map; the 2026-07-22 live-demo work inserted
-// DemoProducts after StepsTeaser and flipped every later band. Task 5
-// (2026-07-29) inserted the print-methods, Design Lab teaser and DropShipPOD
-// tie-in bands and re-flipped WhyCusty, Faq and BlogTeasers so the alternation
-// still holds; the page-ending CtaBand sits in a plain (unschemed) Container,
-// which inherits the body's scheme1 (white) background, so BlogTeasers — the
-// last real section — is pinned to scheme2 to stay adjacent-distinct from it.
 export default function HomePage() {
+  const featureCards = [...(features.sections[0].cards ?? []).slice(0, 5), home.designLabCard];
+
   return (
     <main>
       <RichSection
@@ -35,60 +24,61 @@ export default function HomePage() {
         headingLevel="h1"
         eyebrow="Shopify product customizer"
       />
-      <FeatureHighlights cards={(features.sections[0].cards ?? []).slice(0, 6)} scheme="bg-scheme2-bg" />
-      <StepsTeaser steps={howItWorks.stepsSection.steps.slice(0, 4)} scheme="bg-scheme1-bg" />
-      <DemoProducts scheme="bg-scheme2-bg" />
-      <section className="bg-scheme1-bg">
+      <TrustBand scheme="bg-scheme2-bg" />
+      <StepsTeaser
+        id="how-it-works"
+        steps={howItWorks.stepsSection.steps.slice(0, 4)}
+        scheme="bg-scheme1-bg"
+      />
+      <FeatureHighlights id="features" cards={featureCards} scheme="bg-scheme2-bg" />
+      <DemoProducts id="live-demo" scheme="bg-scheme1-bg" />
+      <section id="pricing" className="scroll-mt-20 bg-scheme2-bg">
+        <Container className="py-16 md:py-24">
+          <div className="mx-auto mb-4 max-w-[760px] text-center">
+            <RainbowBar className="mx-auto mb-7" />
+            <Eyebrow className="mb-4">Pricing</Eyebrow>
+            <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
+              {pricing.header.title}
+            </h2>
+            <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
+              {pricing.header.lead}
+            </p>
+            <div className="mt-6 inline-block rounded-full bg-[#fdeaf5] px-4 py-2 text-[13px] font-semibold text-[#c2006f]">
+              {pricing.header.note}
+            </div>
+          </div>
+          <PricingTable plans={pricing.plans} />
+          <p className="mx-auto mt-10 max-w-[840px] text-center text-[15px] leading-[1.7] text-body">
+            {pricing.bottomNote}
+          </p>
+        </Container>
+      </section>
+      <section id="contact" className="scroll-mt-20 bg-scheme1-bg">
         <Container className="py-16 md:py-24">
           <div className="mx-auto mb-12 max-w-[760px] text-center">
-            <Eyebrow className="mb-4">Print methods</Eyebrow>
+            <RainbowBar className="mx-auto mb-7" />
+            <Eyebrow className="mb-4">Contact</Eyebrow>
             <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
-              Print methods that match your products
+              {home.contact.title}
             </h2>
+            <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">{home.contact.lead}</p>
           </div>
-          <CardGrid items={home.printMethods} columns={3} align="center" />
+          <div className="grid items-start gap-6 lg:grid-cols-5 lg:gap-8">
+            <div className="lg:col-span-2">
+              <p className="mb-4 text-[13px] font-semibold tracking-[0.08em] text-[#667085] uppercase">
+                Reach us directly
+              </p>
+              <ContactChannels variant="stack" />
+            </div>
+            <div className="rounded-2xl border border-line bg-white p-6 shadow-[0_2px_8px_rgba(16,24,40,0.04)] md:p-8 lg:col-span-3">
+              <p className="mb-5 text-[13px] font-semibold tracking-[0.08em] text-[#667085] uppercase">
+                Send a message
+              </p>
+              <ContactForm />
+            </div>
+          </div>
         </Container>
       </section>
-      <WhyCusty scheme="bg-scheme2-bg" />
-      <section className="bg-scheme1-bg">
-        <Container className="py-16 md:py-20">
-          <CtaBand
-            title={home.designLabTeaser.title}
-            text={home.designLabTeaser.text}
-            cta={home.designLabTeaser.cta}
-            secondaryCta={home.designLabTeaser.secondaryCta}
-            tone="light"
-          />
-        </Container>
-      </section>
-      <PricingTeaser plans={pricing.plans} scheme="bg-scheme2-bg" />
-      <TrustBand scheme="bg-scheme1-bg" />
-      <section className="bg-scheme2-bg">
-        <Container className="py-16 md:py-20">
-          <CtaBand
-            title={home.dropshipTiein.title}
-            text={home.dropshipTiein.text}
-            cta={home.dropshipTiein.cta}
-            secondaryCta={home.dropshipTiein.secondaryCta}
-            tone="light"
-          />
-        </Container>
-      </section>
-      <Faq
-        items={faqItems.slice(0, 4)}
-        scheme="bg-scheme1-bg"
-        viewAll={{ label: "See all FAQs", href: "/faq" }}
-      />
-      <BlogTeasers heading="Custy Blog" posts={posts.slice(0, 3)} scheme="bg-scheme2-bg" />
-      <Container className="py-16 md:py-20">
-        <CtaBand
-          title={home.closing.title}
-          text={home.closing.text}
-          cta={home.closing.cta}
-          secondaryCta={home.closing.secondaryCta}
-          tone="light"
-        />
-      </Container>
     </main>
   );
 }

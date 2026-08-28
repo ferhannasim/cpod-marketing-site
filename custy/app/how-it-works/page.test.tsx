@@ -61,7 +61,7 @@ describe("How it Works page", () => {
     const trialLinks = screen.getAllByRole("link", { name: /start.*free trial/i });
     expect(trialLinks.length).toBeGreaterThan(0);
     for (const link of trialLinks) {
-      expect(link).toHaveAttribute("href", "/pricing");
+      expect(link).toHaveAttribute("href", "/#pricing");
     }
 
     const installLink = screen.getByRole("link", { name: "Install on Shopify" });
@@ -70,7 +70,7 @@ describe("How it Works page", () => {
     expect(installLink).toHaveAttribute("rel", "noopener noreferrer");
 
     const featuresLink = screen.getByRole("link", { name: "View Features" });
-    expect(featuresLink).toHaveAttribute("href", "/features");
+    expect(featuresLink).toHaveAttribute("href", "/#features");
   });
 
   it("renders the closing CTA band", () => {

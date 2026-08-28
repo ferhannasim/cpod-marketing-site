@@ -1,18 +1,48 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { Button } from "./button";
 import { Container } from "./container";
 import { headerNav, headerCta, resourceMenuLinks } from "@/lib/nav";
 import { SITE_NAME } from "@/lib/site";
+import { cn } from "@/lib/utils";
+
+const sectionLinks = headerNav.filter((link) => link.href.startsWith("/#"));
+
+function activeHrefForPath(pathname: string): string | null | undefined {
+  if (pathname === "/") return undefined;
+  if (pathname === "/live-demo" || pathname.startsWith("/live-demo/")) return "/#live-demo";
+  if (
+    pathname === "/resources" ||
+    pathname.startsWith("/resources/") ||
+    pathname === "/faq" ||
+    pathname === "/blog" ||
+    pathname.startsWith("/blog/")
+  ) {
+    return "/resources";
+  }
+  return null;
+}
+
+function navItemClass(active: boolean, mobile = false) {
+  return cn(
+    "transition-colors",
+    mobile ? "text-lg font-medium" : "text-sm font-medium",
+    active ? "text-ink" : mobile ? "text-body" : "text-body hover:text-ink",
+    active && !mobile && "relative after:absolute after:inset-x-0 after:-bottom-1 after:h-0.5 after:rounded-full after:bg-accent-blue",
+  );
+}
 
 export function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
   const [mobileResourcesOpen, setMobileResourcesOpen] = useState(false);
+  const [activeHref, setActiveHref] = useState<string | null>(null);
   const resourcesMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,9 +69,63 @@ export function Header() {
     };
   }, [resourcesOpen]);
 
+  useEffect(() => {
+    const fromPath = activeHrefForPath(pathname);
+    if (fromPath !== undefined) {
+      setActiveHref(fromPath);
+      return;
+    }
+
+    const sections = sectionLinks
+      .map((link) => {
+        const el = document.getElementById(link.href.slice(2));
+        return el ? { href: link.href, el } : null;
+      })
+      .filter((section): section is { href: string; el: HTMLElement } => section !== null);
+
+    if (sections.length === 0) {
+      setActiveHref(null);
+      return;
+    }
+
+    function updateActive() {
+      const marker = 96;
+      let current = sections[0].href;
+      for (const section of sections) {
+        if (section.el.getBoundingClientRect().top <= marker) {
+          current = section.href;
+        }
+      }
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      setActiveHref(atBottom ? sections[sections.length - 1].href : current);
+    }
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
+  }, [pathname]);
+
   function closeMobileMenu() {
     setOpen(false);
     setMobileResourcesOpen(false);
+  }
+
+  function onHashNav(href: string, event: MouseEvent<HTMLAnchorElement>) {
+    if (!href.startsWith("/#")) return;
+    setActiveHref(href);
+    if (typeof window === "undefined") return;
+    if (window.location.pathname !== "/" && window.location.pathname !== "") return;
+
+    event.preventDefault();
+    const id = href.slice(2);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    window.history.replaceState(null, "", href);
+    closeMobileMenu();
   }
 
   // backdrop-filter creates a containing block for fixed descendants, which would
@@ -76,7 +160,11 @@ export function Header() {
                   type="button"
                   aria-expanded={resourcesOpen}
                   aria-controls="desktop-resources-menu"
-                  className="flex items-center gap-1.5 text-sm font-medium text-body hover:text-ink focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-4 focus-visible:outline-none"
+                  className={cn(
+                    "flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-4 focus-visible:outline-none",
+                    navItemClass(activeHref === "/resources"),
+                  )}
+                  aria-current={activeHref === "/resources" ? "page" : undefined}
                   onClick={() => setResourcesOpen((current) => !current)}
                 >
                   {link.label}
@@ -115,7 +203,9 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-body hover:text-ink"
+                className={navItemClass(activeHref === link.href)}
+                aria-current={activeHref === link.href ? "page" : undefined}
+                onClick={(event) => onHashNav(link.href, event)}
               >
                 {link.label}
               </Link>
@@ -161,7 +251,11 @@ export function Header() {
                     type="button"
                     aria-expanded={mobileResourcesOpen}
                     aria-controls="mobile-resources-menu"
-                    className="flex w-full items-center justify-between text-lg font-medium text-ink"
+                    className={cn(
+                      "flex w-full items-center justify-between",
+                      navItemClass(activeHref === "/resources", true),
+                    )}
+                    aria-current={activeHref === "/resources" ? "page" : undefined}
                     onClick={() => setMobileResourcesOpen((current) => !current)}
                   >
                     {link.label}
@@ -197,8 +291,12 @@ export function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-lg font-medium text-ink"
-                  onClick={closeMobileMenu}
+                  className={navItemClass(activeHref === link.href, true)}
+                  aria-current={activeHref === link.href ? "page" : undefined}
+                  onClick={(event) => {
+                    onHashNav(link.href, event);
+                    closeMobileMenu();
+                  }}
                 >
                   {link.label}
                 </Link>

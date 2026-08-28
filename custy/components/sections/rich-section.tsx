@@ -74,7 +74,7 @@ export function RichSection({
       {block.ctas && block.ctas.length > 0 && (
         <div className="mt-7 flex flex-wrap gap-3">
           {block.ctas.map((cta) => (
-            <Button key={cta.label} href={cta.href} external={cta.external}>
+            <Button key={cta.label} href={cta.href} external={cta.external} variant={cta.variant}>
               {cta.label}
             </Button>
           ))}

@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { CardGrid, CtaBand, LanderHero, LanderSection } from "@/components/lander";
 import { audiences, niches, useCasesCta, useCasesHero } from "@/content/use-cases";
+import { noIndex } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Use Cases",
   description:
     "POD stores, apparel brands, team merch and promo products — where Custy's product personalization lifts engagement and order value.",
+  robots: noIndex,
 };
 
 export default function UseCasesPage() {

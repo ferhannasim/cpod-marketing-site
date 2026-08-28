@@ -33,14 +33,14 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
         onClick={() => selectProduct(product)}
         aria-pressed={active}
         className={cn(
-          "flex items-center gap-3 cursor-pointer rounded-card border bg-white p-3 text-left transition-colors",
+          "flex w-full min-w-0 cursor-pointer items-start gap-2.5 rounded-card border bg-white p-3 text-left transition-colors",
           active ? "border-ink shadow-sm" : "border-line hover:border-[#98a2b3]",
         )}
       >
-        <span className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg">
-          <Image src={product.image.src} alt="" fill className="object-contain" sizes="48px" />
+        <span className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+          <Image src={product.image.src} alt="" fill className="object-contain" sizes="40px" />
         </span>
-        <span className="text-sm leading-snug font-semibold text-ink">{product.name}</span>
+        <span className="min-w-0 text-[13px] leading-snug font-semibold text-ink">{product.name}</span>
       </button>
     );
   }
@@ -48,7 +48,7 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
   return (
     <div>
       {/* md+: switcher strip above the editor */}
-      <div className="mb-6 hidden flex-wrap justify-center gap-3 md:flex">
+      <div className="mb-6 hidden grid-cols-5 gap-3 md:grid">
         {demoProducts.map(productButton)}
       </div>
 

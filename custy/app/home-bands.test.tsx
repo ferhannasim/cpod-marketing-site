@@ -2,14 +2,14 @@ import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HomePage from "./page";
 
-describe("HomePage new bands", () => {
-  it("renders print methods, Design Lab teaser, and DropShipPOD tie-in", () => {
-    render(<HomePage />);
-    expect(screen.getByRole("heading", { name: "Print methods that match your products" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Step inside the Design Lab" })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: "Pair it with DropShipPOD" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Explore the Design Lab" })).toHaveAttribute("href", "/design-lab");
-    expect(screen.getByRole("link", { name: "How the pairing works" })).toHaveAttribute("href", "/dropshipping");
+describe("HomePage section bands", () => {
+  it("exposes hash targets for every marketing nav item", () => {
+    const { container } = render(<HomePage />);
+    expect(container.querySelector("#how-it-works")).toHaveClass("scroll-mt-20");
+    expect(container.querySelector("#features")).toHaveClass("scroll-mt-20");
+    expect(container.querySelector("#live-demo")).toHaveClass("scroll-mt-20");
+    expect(container.querySelector("#pricing")).toHaveClass("scroll-mt-20");
+    expect(container.querySelector("#contact")).toHaveClass("scroll-mt-20");
   });
 
   it("alternates section background scheme with no two adjacent sections matching", () => {
@@ -30,9 +30,7 @@ describe("HomePage new bands", () => {
       expect(schemes[i]).not.toBe(schemes[i - 1]);
     }
 
-    // The page-ending CtaBand sits in a plain (unschemed) Container, which
-    // inherits the body's scheme1 (white) background — the last real section
-    // must differ from that implicit white backdrop, i.e. be scheme2.
-    expect(schemes[schemes.length - 1]).toBe("scheme2");
+    expect(screen.getByRole("heading", { name: /get in touch/i })).toBeInTheDocument();
+    expect(schemes[schemes.length - 1]).toBe("scheme1");
   });
 });

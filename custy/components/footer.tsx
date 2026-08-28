@@ -23,30 +23,33 @@ export function Footer() {
   return (
     <footer className="bg-scheme2-bg">
       <Container className="py-9">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
           {footerColumns.map((column) => (
             <div key={column.title}>
               <h3 className="text-sm font-semibold text-ink">{column.title}</h3>
-              <ul className="mt-3 space-y-1.5">
-                {column.links.map((link) => (
-                  <li key={link.href}>
-                    {link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-sm text-body hover:text-ink"
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link href={link.href} className="text-sm text-body hover:text-ink">
-                        {link.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              {column.blurb ? <p className="mt-3 max-w-sm text-sm leading-6 text-body">{column.blurb}</p> : null}
+              {column.links.length > 0 ? (
+                <ul className="mt-3 space-y-1.5">
+                  {column.links.map((link) => (
+                    <li key={link.href}>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-body hover:text-ink"
+                        >
+                          {link.label}
+                        </a>
+                      ) : (
+                        <Link href={link.href} className="text-sm text-body hover:text-ink">
+                          {link.label}
+                        </Link>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
             </div>
           ))}
         </div>

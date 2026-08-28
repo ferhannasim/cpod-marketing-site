@@ -1,17 +1,16 @@
 import { APP_URL } from "./site";
 
 export type NavLink = { label: string; href: string; external?: boolean; description?: string };
-export type FooterColumn = { title: string; links: NavLink[] };
+export type FooterColumn = { title: string; blurb?: string; links: NavLink[] };
 export type SocialLink = { label: string; href: string };
 
 export const headerNav: NavLink[] = [
-  { label: "How it Works", href: "/how-it-works" },
+  { label: "How it Works", href: "/#how-it-works" },
+  { label: "Features", href: "/#features" },
+  { label: "Live Demo", href: "/#live-demo" },
+  { label: "Pricing", href: "/#pricing" },
+  { label: "Contact", href: "/#contact" },
   { label: "Resources", href: "/resources" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Features", href: "/features" },
-  { label: "Design Lab", href: "/design-lab" },
-  { label: "Live Demo", href: "/live-demo" },
-  { label: "Blog", href: "/blog" },
 ];
 
 export const resourceMenuLinks: NavLink[] = [
@@ -28,41 +27,24 @@ export const resourceMenuLinks: NavLink[] = [
 ];
 
 export const headerCta: NavLink = {
-  label: "Install Now on Shopify",
+  label: "Start Free Trial",
   href: APP_URL,
   external: true,
 };
 
-// Live footer: Search + "Powered by Shopify" dropped (no commerce). The legacy
-// dead "#" FAQ link now points at the real /faq page.
 export const footerColumns: FooterColumn[] = [
   {
-    title: "Explore",
+    title: "Custy",
+    blurb: "The Shopify product customizer for print-on-demand stores.",
+    links: [],
+  },
+  {
+    title: "Learn more",
     links: [
-      { label: "How it Works", href: "/how-it-works" },
       { label: "Resources", href: "/resources" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Features", href: "/features" },
-      { label: "Design Lab", href: "/design-lab" },
-      { label: "Use Cases", href: "/use-cases" },
-      { label: "Dropshipping", href: "/dropshipping" },
-      { label: "Live Demo", href: "/live-demo" },
-      { label: "Blog", href: "/blog" },
-      { label: "Install Now on Shopify", href: APP_URL, external: true },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Us", href: "/about-us" },
       { label: "FAQ", href: "/faq" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "Support", href: "/support" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
+      { label: "Live Demo", href: "/#live-demo" },
+      { label: "About Us", href: "/about" },
       { label: "Privacy Policy", href: "/policies/privacy" },
       { label: "Terms of Service", href: "/policies/terms" },
     ],

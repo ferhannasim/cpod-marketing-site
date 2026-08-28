@@ -9,7 +9,7 @@ export const useCasesHero = {
   ],
   ctas: [
     { label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, variant: "primary" as const },
-    { label: "See the Design Lab", href: "/design-lab", variant: "secondary" as const },
+    { label: "See the Design Lab", href: "/#features", variant: "secondary" as const },
   ],
 };
 
@@ -51,5 +51,5 @@ export const useCasesCta = {
   title: "Your store, their designs",
   text: "Whatever you sell, personalization raises engagement and order value. Flag your first product as customizable today.",
   cta: { label: "Start Your 30-Day Free Trial of Custy", href: APP_URL, variant: "primary" as const },
-  secondaryCta: { label: "View pricing", href: "/pricing", variant: "secondary" as const },
+  secondaryCta: { label: "View pricing", href: "/#pricing", variant: "secondary" as const },
 };
