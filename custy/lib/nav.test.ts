@@ -42,7 +42,6 @@ describe("nav data", () => {
     expect(learnMore?.links.map((l) => l.href)).toEqual([
       "/resources",
       "/faq",
-      "/blog",
       "/#live-demo",
       "/about",
       "/policies/privacy",

@@ -43,7 +43,6 @@ export const footerColumns: FooterColumn[] = [
     links: [
       { label: "Resources", href: "/resources" },
       { label: "FAQ", href: "/faq" },
-      { label: "Blog", href: "/blog" },
       { label: "Live Demo", href: "/#live-demo" },
       { label: "About Us", href: "/about" },
       { label: "Privacy Policy", href: "/policies/privacy" },
