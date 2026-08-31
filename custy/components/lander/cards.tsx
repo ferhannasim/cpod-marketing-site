@@ -11,14 +11,20 @@ export type CardItem = {
 
 /**
  * Responsive column classes: single column on mobile, two columns in the mid
- * range, and the requested count above 1200px.
+ * range, and the requested count on wide screens.
+ *
+ * The wide step must use the named `xl:` breakpoint rather than an arbitrary
+ * `min-[1200px]:` one. Tailwind v4 emits arbitrary min-width variants *before*
+ * the named breakpoints, so above 1200px both queries matched and the later
+ * `md:grid-cols-2` rule won the cascade — every grid here silently stayed at
+ * two columns.
  */
 const columnClasses: Record<number, string> = {
   1: "",
-  2: "min-[1200px]:grid-cols-2",
-  3: "md:grid-cols-2 min-[1200px]:grid-cols-3",
-  4: "md:grid-cols-2 min-[1200px]:grid-cols-4",
-  5: "md:grid-cols-2 min-[1200px]:grid-cols-5",
+  2: "xl:grid-cols-2",
+  3: "md:grid-cols-2 xl:grid-cols-3",
+  4: "md:grid-cols-2 xl:grid-cols-4",
+  5: "md:grid-cols-2 xl:grid-cols-5",
 };
 
 export type CardGridProps = {
@@ -51,11 +57,11 @@ export function CardGrid({ items, columns = 3, align = "left", className }: Card
           {item.icon ? (
             <IconTile name={item.icon} tint={index} className={cn("mb-5", centered && "mx-auto")} />
           ) : null}
-          <h3 className="text-base leading-snug font-semibold text-ink">{item.title}</h3>
+          <h3 className="text-[17px] leading-snug font-bold text-ink">{item.title}</h3>
           {(Array.isArray(item.text) ? item.text : [item.text]).map((paragraph, paragraphIndex) => (
             <p
               key={paragraphIndex}
-              className="mt-2.5 text-[15px] leading-[1.65] text-body"
+              className="mt-2.5 text-[15px] leading-[1.6] text-body"
             >
               {paragraph}
             </p>

@@ -1,5 +1,6 @@
 import { Container } from "@/components/container";
 import { CardGrid, Eyebrow, type CardItem } from "@/components/lander";
+import { Reveal } from "@/components/reveal";
 import { features } from "@/content/features";
 
 // Three benefit cards, each a single-source trim of one existing
@@ -36,17 +37,19 @@ const cards: CardItem[] = [
 // Heading reuses the exact "Why merchants choose Custy" phrase already
 // published as content/features.ts's hero highlight title, rather than
 // authoring a new one.
-export function WhyCusty({ scheme = "bg-scheme2-bg" }: { scheme?: string }) {
+export function WhyCusty({ scheme = "bg-wash" }: { scheme?: string }) {
   return (
     <section className={scheme}>
       <Container className="py-16 md:py-24">
-        <div className="mx-auto mb-12 max-w-[760px] text-center">
+        <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
           <Eyebrow className="mb-4">Why Custy</Eyebrow>
           <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
             {features.hero.highlight.title}
           </h2>
-        </div>
-        <CardGrid items={cards} columns={3} />
+        </Reveal>
+        <Reveal>
+          <CardGrid items={cards} columns={3} />
+        </Reveal>
       </Container>
     </section>
   );

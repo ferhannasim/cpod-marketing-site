@@ -3,6 +3,7 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { Eyebrow } from "@/components/lander";
+import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
 import type { FaqItem } from "@/content/faq";
 
@@ -17,16 +18,16 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
           key={item.question}
           className="group rounded-2xl border border-line bg-white px-6 transition-colors open:border-[#d3dce8]"
         >
-          <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-[15px] font-semibold text-ink [&::-webkit-details-marker]:hidden">
+          <summary className="flex cursor-pointer items-center justify-between gap-4 py-5 text-[16.5px] font-bold text-ink [&::-webkit-details-marker]:hidden">
             {item.question}
             <Plus
               aria-hidden
-              className="h-4 w-4 shrink-0 text-[#667085] transition-transform group-open:rotate-45"
+              className="h-4 w-4 shrink-0 text-muted transition-transform group-open:rotate-45"
             />
           </summary>
           <p
             className={cn(
-              "text-[15px] leading-[1.7] text-body",
+              "text-[15px] leading-[1.6] text-body",
               item.link ? "pb-3" : "pb-5",
             )}
           >
@@ -36,7 +37,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
             <p className="pb-5">
               <Link
                 href={item.link.href}
-                className="text-sm font-semibold text-[#0b7fad] hover:underline"
+                className="text-[15px] font-semibold text-[#0b6f97] hover:underline"
               >
                 {item.link.label}
               </Link>
@@ -53,7 +54,7 @@ export function FaqAccordion({ items }: { items: FaqItem[] }) {
 // `viewAll` link through to the full /faq page.
 export function Faq({
   items,
-  scheme = "bg-scheme2-bg",
+  scheme = "bg-wash",
   viewAll,
 }: {
   items: FaqItem[];
@@ -63,13 +64,15 @@ export function Faq({
   return (
     <section className={scheme}>
       <Container className="py-16 md:py-24">
-        <div className="mx-auto mb-12 max-w-[760px] text-center">
+        <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
           <Eyebrow className="mb-4">FAQ</Eyebrow>
           <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
             Frequently Asked Questions
           </h2>
-        </div>
-        <FaqAccordion items={items} />
+        </Reveal>
+        <Reveal>
+          <FaqAccordion items={items} />
+        </Reveal>
         {viewAll ? (
           <div className="mt-8 text-center">
             <Button href={viewAll.href} variant="secondary">

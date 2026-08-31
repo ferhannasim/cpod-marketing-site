@@ -38,7 +38,7 @@ export function HighlightCard({
         className,
       )}
     >
-      <h3 className="text-[15px] font-semibold text-ink">{title}</h3>
+      <h3 className="text-base font-bold text-ink">{title}</h3>
       <ul className="m-0 mt-2 list-none p-0">
         {items.map((item) => (
           <li
@@ -51,18 +51,13 @@ export function HighlightCard({
             >
               <Check className="h-3 w-3 text-[#0b7fad]" strokeWidth={3} />
             </span>
-            <span className="text-sm leading-6 text-body">{item}</span>
+            <span className="text-[15px] leading-[1.5] text-body">{item}</span>
           </li>
         ))}
       </ul>
     </div>
   );
 }
-
-const heroWash =
-  "radial-gradient(circle at 10% 0%, rgba(23,182,244,0.10), transparent 42%)," +
-  "radial-gradient(circle at 90% 8%, rgba(236,0,140,0.07), transparent 38%)," +
-  "linear-gradient(180deg, #ffffff 0%, #fafcfe 60%, #f7f9fc 100%)";
 
 export type LanderHeroProps = {
   eyebrow?: string;
@@ -92,15 +87,14 @@ export function LanderHero({
 
   return (
     <section
-      className={cn("relative overflow-hidden border-b border-line", className)}
-      style={{ background: heroWash }}
+      className={cn("bg-wash-hero relative overflow-hidden border-b border-line", className)}
     >
       <div className="mx-auto max-w-[1200px] px-5 py-16 md:py-24 max-md:px-4">
         <div className="grid items-center gap-12 min-[1200px]:grid-cols-[1.1fr_0.9fr]">
           <div>
             <RainbowBar className="mb-7" />
             {eyebrow ? (
-              <div className="mb-4 text-xs font-semibold tracking-[0.12em] text-[#5b6473] uppercase">
+              <div className="mb-4 text-[13px] font-semibold tracking-widest text-muted uppercase">
                 {eyebrow}
               </div>
             ) : null}
@@ -110,7 +104,7 @@ export function LanderHero({
             {leads.map((paragraph, index) => (
               <p
                 key={index}
-                className="mt-5 max-w-[640px] text-[16.5px] leading-[1.75] text-body"
+                className="mt-5 max-w-[640px] text-[16.5px] leading-[1.6] text-body"
               >
                 {paragraph}
               </p>

@@ -33,41 +33,22 @@ export type AboutCta = {
   secondaryCta: CtaLink;
 };
 
-// Transcribed verbatim from content/raw/about-us.html (custy-about-page). No <img>
-// tags on this page, so no images to localize. Each card's `icon:` value below (three
-// on "What We Do", six on "Why Custy") is a semantic name resolved to an SVG stroke
-// icon by components/lander/icons.tsx (the design pass replaced the source's emoji
-// tiles); prose itself is emoji-free. The em dashes and
-// curly apostrophes/bullet ("it's", "didn't", the eyebrow's "•") are kept verbatim
-// as ordinary punctuation — confirmed with `grep -noP '[^\x00-\x7F]'` that no other
-// non-ASCII characters exist on this page.
+// Copy is written from docs/CUSTY_APP_MARKETING_SITE_BRIEF.md, which is derived
+// from the shipped code — the capability claims on this page are all things the
+// product does today. Card `icon:` values are semantic names resolved to SVG
+// stroke icons by components/lander/icons.tsx.
 //
-// The `<strong>Custy</strong>` emphasis in the hero's first lead paragraph isn't
-// representable by `LanderHero`'s plain-string `lead` prop, so it's flattened to
-// plain text per the established ruling — no words added, removed, or reordered.
-//
-// Every CTA on this page is `href="#"` in the raw source (unlike features.html and
-// how-it-works.html, which already carry real hrefs) — this is the one page of the
-// four where the destination is a judgment call, not a transcription. Labels that
-// name a concrete internal page map there directly ("View Features" → /features);
-// "Install on Shopify" maps to the real Shopify App Store listing (`APP_URL`), matching
-// every other page's identically-labeled button. The two "Start ... Free Trial"
-// buttons (hero + closing band) route to `/pricing`, mirroring how-it-works.ts's
-// choice for the same ambiguous case and avoiding a same-box duplicate destination
-// with the closing band's "Install on Shopify" (→ `APP_URL`).
-//
-// The four `.custy-card` (two-col prose) bodies and both `.custy-list-grid` groups
-// each carry exactly one paragraph / list in the current source (verified via
-// `grep -c '<p>'`) — despite `CardItem.text`'s "about-us prose cards carry two"
-// forward note (Task 9), this page's live copy only has one per card, so plain
-// strings are used rather than arrays; no paragraph was invented to fill the shape.
+// CTA destinations: labels naming a concrete section map there directly; "Install
+// on Shopify" maps to the real App Store listing (`APP_URL`), and the two
+// "Start ... Free Trial" buttons route to the pricing section, avoiding a
+// same-box duplicate destination with the closing band's App Store link.
 export const about = {
   hero: {
     eyebrow: "About Custy • Built for Shopify",
     title: "Helping Shopify Merchants Create, Customize, and Sell Without Limits",
     lead: [
-      "At Custy, our mission is simple — to empower Shopify merchants to create, customize, and sell products without limits by solving one of eCommerce’s biggest challenges: seamless, real-time product customization that stays fast, intuitive, and conversion-focused.",
-      "Whether it’s a t-shirt, hoodie, cap, or any print-on-demand product, Custy gives your customers the freedom to design exactly what they want and see it instantly.",
+      "Custy exists to make one thing effortless for Shopify merchants: letting customers design the product they are about to buy, right on the product page, without slowing the store down or creating work for the people who have to print it.",
+      "Whether it's a t-shirt, hoodie, cap, mug or any print-on-demand product, shoppers get real creative freedom and you get artwork your production team can actually use.",
     ],
     ctas: [
       { label: "Start 30-Day Free Trial", href: "/#pricing", variant: "primary" },
@@ -77,10 +58,10 @@ export const about = {
       title: "What defines Custy",
       items: [
         "Built specifically for Shopify merchants and POD workflows",
-        "Focused on real-time customization and better conversion",
-        "Designed to simplify fulfillment with print-ready files",
-        "Made for stores that want scalable growth, not complexity",
-        "Committed to support, transparency, and merchant success",
+        "Embedded in Shopify admin and built on Shopify Polaris",
+        "A real design studio, backed by a pricing engine built for printing",
+        "Print-ready artwork on every order, at up to 300 DPI",
+        "English and French out of the box, with GDPR webhooks in place",
       ],
     },
   } satisfies AboutHero,
@@ -91,33 +72,33 @@ export const about = {
     cards: [
       {
         title: "Personalization Is the Future",
-        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a powerful customization experience that stays simple for the customer and practical for the business.",
+        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a customization experience that stays simple for the customer and practical for the business.",
       },
       {
         title: "Turning Products into Experiences",
-        text: "Custy helps merchants tap into growing demand for custom products by turning ordinary items into personalized buying experiences. Instead of offering just another product, stores can offer creativity, ownership, and a stronger connection between customer and purchase.",
+        text: "A product a customer helped design is a product they are more invested in. Instead of offering just another item on a shelf, stores can offer creativity, ownership, and a stronger connection between the customer and what they buy.",
       },
     ] satisfies CardItem[],
   } satisfies AboutCardSection,
 
   whatWeDo: {
     title: "What We Do",
-    lead: "Custy is a Shopify app designed specifically for print-on-demand businesses, custom product stores, and merchants who want to increase engagement and sales.",
+    lead: "Custy is a Shopify app for print-on-demand businesses, print shops, and any merchant who wants customers to personalize what they buy.",
     cards: [
       {
         icon: "shirt",
         title: "Built for POD",
-        text: "Custy supports print-on-demand businesses that need a smooth path from product customization to production-ready fulfillment.",
+        text: "A full design studio on the product page and print-ready artwork on the order — the two ends of a print-on-demand workflow, connected.",
       },
       {
         icon: "shopping-bag",
         title: "Made for Custom Stores",
-        text: "From apparel to personalized gifts, Custy gives merchants flexible tools to sell products customers can truly make their own.",
+        text: "From apparel to personalized gifts, reusable color sets, size sets and printing types mean you configure the rules once and apply them everywhere.",
       },
       {
         icon: "trending-up",
         title: "Focused on Growth",
-        text: "By improving engagement and making customization easier, Custy helps merchants drive higher conversion and stronger average order value.",
+        text: "Shoppers who design their own product buy with more confidence, and pricing that reflects real production cost protects the margin on every order.",
       },
     ] satisfies CardItem[],
     lists: [
@@ -126,17 +107,17 @@ export const about = {
         items: [
           "Customize products in real time",
           "Design across multiple print areas like front, back, and sleeves",
-          "Choose sizes, colors, and styles",
-          "Preview designs instantly before purchase",
+          "Choose sizes, colors and styles, with live stock status",
+          "Preview every side, then save the design and share a link",
         ],
       },
       {
         title: "What merchants get behind the scenes",
         items: [
-          "Automatic print-ready file generation",
-          "Cleaner fulfillment workflows",
-          "Faster and more accurate order processing",
-          "Better structure for scaling custom product operations",
+          "Print-ready artwork as SVG, PDF, PNG or JPG at up to 300 DPI",
+          "Order detail showing every side, color, size and price",
+          "Bulk status updates and downloads for high-volume days",
+          "Reusable color sets, size sets, printing types and discount sets",
         ],
       },
     ],
@@ -153,37 +134,37 @@ export const about = {
 
   whyCusty: {
     title: "Why Custy",
-    lead: "We didn’t just build another product customizer — we built a tool focused on performance, scalability, and revenue growth.",
+    lead: "We didn't just build another product customizer — we built one that understands how printing is quoted, produced, and shipped.",
     cards: [
       {
         icon: "circle-dollar-sign",
         title: "Dynamic Pricing",
-        text: "Adjust prices based on real customization choices so you stay flexible while protecting your margins.",
+        text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts — priced the way a print shop actually quotes.",
       },
       {
         icon: "printer",
         title: "Modern Print Support",
-        text: "Support DTG, DTF, and other production workflows with design data prepared for real-world fulfillment.",
+        text: "Screen print, DTG, DTF, embroidery, vinyl and sublimation, each with its own color limits, minimums and pricing rules.",
       },
       {
         icon: "blocks",
         title: "Seamless Shopify Integration",
-        text: "Connect directly with your Shopify store so orders, product options, and design details flow more smoothly.",
+        text: "Embedded in Shopify admin, built on Polaris, billed through Shopify, and working on both vintage and Online Store 2.0 themes.",
       },
       {
         icon: "zap",
         title: "Fast User Experience",
-        text: "Deliver an intuitive customization experience that feels easy to use and keeps shoppers engaged.",
+        text: "A canvas editor with 50 steps of undo, zoom to 3x, and a dedicated mobile layout with full touch support below 750px.",
       },
       {
-        icon: "server",
-        title: "Reliable Infrastructure",
-        text: "Built for growing stores that need dependable performance and a platform that can evolve with their business.",
+        icon: "shield-check",
+        title: "Guardrails That Protect Production",
+        text: "DPI warnings, print-area warnings, max-colors-per-location limits and an optional approval step keep unprintable artwork off the press.",
       },
       {
         icon: "chart-column",
         title: "Growth-Oriented Design",
-        text: "Everything in Custy is created to help merchants improve conversion, efficiency, and long-term store performance.",
+        text: "Saved designs with shareable links, re-editing from the cart, and quantity discount ladders that encourage bigger orders.",
       },
     ] satisfies CardItem[],
   } satisfies AboutCardSection,
@@ -194,11 +175,11 @@ export const about = {
     cards: [
       {
         title: "For Merchants at Every Stage",
-        text: "Whether you are just starting a custom product business or already running an established Shopify store, Custy is built to support your next step. The platform is designed to remove friction from customization while helping merchants operate more efficiently.",
+        text: "Start free on five products, move to Starter as your catalog grows, and go unlimited on Pro when volume demands it. The same tools are there at every step — you are only choosing how much of them you need.",
       },
       {
         title: "Continuously Improving",
-        text: "We continuously improve our platform based on real merchant needs and changing industry trends. Our goal is to keep Custy practical, scalable, and valuable for modern eCommerce businesses that want to stay ahead.",
+        text: "We continuously improve the app based on real merchant needs and changing industry trends. Our goal is to keep Custy practical, scalable, and valuable for modern eCommerce businesses that want to stay ahead.",
       },
     ] satisfies CardItem[],
   } satisfies AboutCardSection,
@@ -211,8 +192,8 @@ export const about = {
         title: "What we stand for",
         items: [
           "Reliable and scalable solutions for growing Shopify stores",
-          "Excellent support that helps merchants move faster",
-          "Tools designed to support real business growth",
+          "Email support on every plan, priority on Starter, premium on Pro",
+          "Pricing handled by Shopify, with no commission on your sales",
           "Transparency in how we operate and improve the product",
         ],
       },
@@ -221,7 +202,7 @@ export const about = {
         items: [
           "A product experience built with real store needs in mind",
           "Ongoing improvements guided by merchant feedback",
-          "Respect for privacy and responsible data handling",
+          "GDPR compliance webhooks and responsible data handling",
           "A long-term partner for custom product success",
         ],
       },

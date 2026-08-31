@@ -42,7 +42,7 @@ export function BlogPostCard({ post }: { post: BlogPostCardPost }) {
       ) : null}
       <div className="p-5">
         <p className="text-[15px] leading-snug font-semibold text-ink">{post.title}</p>
-        <p className="mt-1.5 text-xs text-[#667085]">
+        <p className="mt-1.5 text-[13px] text-muted">
           <time dateTime={post.date}>{formatPostDate(post.date)}</time>
         </p>
       </div>

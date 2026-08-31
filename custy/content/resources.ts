@@ -143,7 +143,7 @@ export const resourceSteps: ResourceStep[] = [
       "Select Add Side and name the side clearly.",
       "Add the product image or mockup customers should see for that side.",
       "Open Advanced Settings and select the Print Area tab.",
-      "Choose inches or centimetres, then set width, height, left, and top values.",
+      "Choose inches or centimeters, then set width, height, left, and top values.",
       "Select Update and repeat the setup for every supported side.",
     ],
     note: "Customers can only place designs inside the print area you define, so match it to your real production boundary.",

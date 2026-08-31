@@ -49,10 +49,10 @@ describe("nav data", () => {
     ]);
   });
 
-  it("footer Product column is a one-line blurb with no links", () => {
-    const product = footerColumns.find((c) => c.title === "Custy");
-    expect(product?.blurb).toMatch(/shopify product customizer/i);
-    expect(product?.links).toEqual([]);
+  it("footer About column is a short product blurb with no links", () => {
+    const about = footerColumns.find((c) => c.title === "About Custy");
+    expect(about?.blurb).toMatch(/print-ready files/i);
+    expect(about?.links).toEqual([]);
   });
 
   it("has the five social profiles", () => {

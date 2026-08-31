@@ -29,7 +29,7 @@ export default async function LiveDemoPage({
           <h1 className="text-[clamp(2.125rem,4.5vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.02em] text-ink">
             Live Demo
           </h1>
-          <p className="text-base leading-[1.7] text-body md:text-[16.5px]">
+          <p className="text-[16px] leading-[1.6] text-body md:text-[16.5px]">
             Design a real product in the Custy customizer — pick a product and start
             creating.
           </p>

@@ -17,7 +17,7 @@ export function PlanCompare({
       <table className="w-full min-w-[640px] border-collapse text-left">
         <thead>
           <tr className="border-b border-line">
-            <th scope="col" className="px-5 py-4 text-[13px] font-semibold tracking-[0.08em] text-[#5b6473] uppercase">
+            <th scope="col" className="px-5 py-4 text-[13px] font-bold tracking-widest text-muted uppercase">
               Plan limits
             </th>
             {plans.map((plan) => (

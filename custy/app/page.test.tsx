@@ -3,8 +3,6 @@ import { render, screen } from "@testing-library/react";
 import HomePage from "./page";
 import { APP_URL } from "@/lib/site";
 import { home } from "@/content/home";
-import { features } from "@/content/features";
-import { howItWorks } from "@/content/how-it-works";
 import { pricing } from "@/content/pricing";
 import { demoProducts } from "@/content/demo-products";
 
@@ -27,12 +25,15 @@ describe("homepage", () => {
   it("pins real content from each section", () => {
     render(<HomePage />);
 
-    const firstCard = features.sections[0].cards?.[0];
-    expect(firstCard).toBeDefined();
-    expect(screen.getByText(firstCard!.title)).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: home.designLabCard.title })).toBeInTheDocument();
+    for (const row of home.features.rows) {
+      expect(screen.getByRole("heading", { name: row.title })).toBeInTheDocument();
+      expect(screen.getByText(row.points[0])).toBeInTheDocument();
+    }
+    for (const card of home.features.supporting) {
+      expect(screen.getByRole("heading", { name: card.title })).toBeInTheDocument();
+    }
 
-    const firstStep = howItWorks.stepsSection.steps[0];
+    const firstStep = home.howItWorks.steps[0];
     expect(screen.getByText(firstStep.title)).toBeInTheDocument();
 
     const firstPlan = pricing.plans[0];
@@ -50,6 +51,13 @@ describe("homepage", () => {
     for (const [i, product] of demoProducts.entries()) {
       expect(cards[i]).toHaveAttribute("href", `/live-demo?product=${product.slug}`);
     }
+  });
+
+  it("renders the hero punchline without disturbing the h1 name", () => {
+    render(<HomePage />);
+    expect(screen.getByText(home.intro.tagline!)).toBeInTheDocument();
+    // The gradient highlight is an inline span, so the h1 still reads whole.
+    expect(screen.getByRole("heading", { level: 1, name: home.intro.heading })).toBeInTheDocument();
   });
 
   it("shows the trial and live-demo CTAs in the hero", () => {

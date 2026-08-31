@@ -7,8 +7,8 @@ import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
 
 const inputClasses =
-  "w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-[#98a2b3] transition-colors focus:border-ink focus:outline-none";
-const labelClasses = "mb-1.5 block text-[13px] font-semibold text-ink";
+  "w-full rounded-xl border border-line bg-white px-3.5 py-3 text-[15px] text-ink placeholder:text-[#98a2b3] transition-colors focus:border-ink focus:outline-none";
+const labelClasses = "mb-1.5 block text-[14px] font-semibold text-ink";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sent" | "error">("idle");
@@ -108,7 +108,7 @@ export function ContactForm() {
         type="submit"
         disabled={isSubmitting}
         className={cn(
-          "inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-black",
+          "inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-3 text-[15px] font-semibold text-white shadow-sm transition-colors hover:bg-black",
           "disabled:cursor-not-allowed disabled:opacity-60",
         )}
       >

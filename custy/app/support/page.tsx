@@ -3,6 +3,7 @@ import Link from "next/link";
 import Body from "@/content/pages/support.mdx";
 import { Container } from "@/components/container";
 import { Eyebrow, RainbowBar } from "@/components/lander";
+import { Reveal } from "@/components/reveal";
 import { ContactChannels } from "@/components/sections/contact-channels";
 import { ContactForm } from "@/components/contact-form";
 import { noIndex } from "@/lib/seo";
@@ -12,11 +13,6 @@ export const metadata: Metadata = {
   description: "Get help with the Custy Shopify product customizer app.",
   robots: noIndex,
 };
-
-const headerWash =
-  "radial-gradient(circle at 10% 0%, rgba(23,182,244,0.10), transparent 42%)," +
-  "radial-gradient(circle at 90% 8%, rgba(236,0,140,0.07), transparent 38%)," +
-  "linear-gradient(180deg, #ffffff 0%, #fafcfe 60%, #f7f9fc 100%)";
 
 // Common support topics, each pointing at the page that already documents the
 // answer — copy is grounded in claims those pages publish.
@@ -44,14 +40,14 @@ const helpTopics = [
 export default function SupportPage() {
   return (
     <main>
-      <section className="border-b border-line" style={{ background: headerWash }}>
+      <section className="bg-wash-hero border-b border-line">
         <Container className="py-16 md:py-20">
           <div className="mx-auto max-w-[760px] text-center">
             <RainbowBar className="mx-auto mb-7" />
             <h1 className="text-[clamp(2.125rem,4.5vw,3rem)] leading-[1.08] font-extrabold tracking-[-0.02em] text-ink">
               Support
             </h1>
-            <p className="mt-5 text-[16.5px] leading-[1.75] text-body">
+            <p className="mt-5 text-[16.5px] leading-[1.6] text-body">
               Get help with the Custy product customizer — setup, the design panel, orders, plans,
               and everything in between.
             </p>
@@ -65,13 +61,13 @@ export default function SupportPage() {
 
       <section className="bg-white">
         <Container className="py-16 md:py-24">
-          <div className="mx-auto mb-12 max-w-[760px] text-center">
+          <Reveal className="mx-auto mb-12 max-w-[760px] text-center">
             <Eyebrow className="mb-4">Help topics</Eyebrow>
             <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
               Find answers by topic
             </h2>
-          </div>
-          <div className="grid gap-5 md:grid-cols-3">
+          </Reveal>
+          <Reveal className="grid gap-5 md:grid-cols-3">
             {helpTopics.map((topic) => (
               <Link
                 key={topic.href}
@@ -85,25 +81,25 @@ export default function SupportPage() {
                 </span>
               </Link>
             ))}
-          </div>
+          </Reveal>
         </Container>
       </section>
 
-      <section className="bg-lander-light">
+      <section className="bg-wash">
         <Container className="py-16 md:py-24">
-          <div className="mx-auto mb-10 max-w-[760px] text-center">
+          <Reveal className="mx-auto mb-10 max-w-[760px] text-center">
             <Eyebrow className="mb-4">Message us</Eyebrow>
             <h2 className="text-[clamp(1.75rem,3vw,2.25rem)] leading-[1.15] font-extrabold tracking-[-0.02em] text-ink">
               Send us a message
             </h2>
-            <p className="mt-4 text-base leading-[1.7] text-body md:text-[16.5px]">
+            <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
               Tell us what you're running into — including your store URL and plan helps us answer
               faster.
             </p>
-          </div>
-          <div className="mx-auto max-w-[720px] rounded-2xl border border-line bg-white p-6 shadow-[0_2px_8px_rgba(16,24,40,0.04)] md:p-8">
+          </Reveal>
+          <Reveal className="mx-auto max-w-[720px] rounded-2xl border border-line bg-white p-6 shadow-[0_2px_8px_rgba(16,24,40,0.04)] md:p-8">
             <ContactForm />
-          </div>
+          </Reveal>
         </Container>
       </section>
     </main>

@@ -34,8 +34,9 @@ export const headerCta: NavLink = {
 
 export const footerColumns: FooterColumn[] = [
   {
-    title: "Custy",
-    blurb: "The Shopify product customizer for print-on-demand stores.",
+    title: "About Custy",
+    blurb:
+      "Custy is a Shopify app that lets merchants sell personalized print-on-demand products from their own store. Customers open the designer on your product page, create the item they want, and check out without leaving the store. Each order arrives with print-ready files, so fulfillment can start without rebuilding the design.",
     links: [],
   },
   {

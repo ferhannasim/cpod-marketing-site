@@ -115,7 +115,7 @@ export function Eyebrow({ children, className }: { children: React.ReactNode; cl
         <span className="h-1.5 w-1.5 rounded-full bg-accent-pink" />
         <span className="h-1.5 w-1.5 rounded-full bg-accent-yellow" />
       </span>
-      <span className="text-xs font-semibold tracking-[0.12em] text-[#5b6473] uppercase">
+      <span className="text-[13px] font-semibold tracking-widest text-muted uppercase">
         {children}
       </span>
     </div>

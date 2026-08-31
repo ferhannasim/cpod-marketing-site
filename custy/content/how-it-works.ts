@@ -28,34 +28,23 @@ export type HowCta = {
   secondaryCta: CtaLink;
 };
 
-// Originally transcribed verbatim from content/raw/how-it-works.html
-// (custy-how-page); the four longest step paragraphs (steps 2, 3, 4, and 6's
-// first paragraph) were later condensed for the professionalize pass — same
-// claims, tighter wording, still ≤ 2 sentences each. No <img> tags on this
-// page, so no images to localize. The `.custy-why-card` icons are semantic
-// names resolved to SVG stroke icons by components/lander/icons.tsx (the
-// design pass replaced the source's emoji), and the curly apostrophe in
-// "Custy's design panel" (step 4) is kept verbatim as ordinary punctuation — confirmed with
-// `grep -noP '[^\x00-\x7F]'` that no other non-ASCII prose exists on this
-// page.
+// Copy is written from docs/CUSTY_APP_MARKETING_SITE_BRIEF.md (derived from the
+// shipped code), so every step describes what the app actually does.
 //
-// Old Shopify-relative hrefs are rewritten to the equivalent Next.js routes
-// per the established ruling: `/pages/pricing` → `/pricing`, `/pages/features`
-// → `/features`; the Shopify App Store link stays as `APP_URL` from
-// `@/lib/site`, never hardcoded.
+// This page is the detailed setup guide, so the steps stay granular. The
+// homepage tells the same story in three generic beats from `home.howItWorks`
+// instead of slicing these, so the two can be worded for their own audience.
 //
-// The seven `.custy-step` rows map onto the Task 9 `StepItem` type and are
-// rendered with `<Steps layout="rows">` (the how-it-works stacked treatment,
-// distinct from the features page's numbered-circle grid). The five
-// `.custy-why-card` tiles map onto `CardItem` and render with `<CardGrid
-// columns={5} align="center">`, matching the source's centered text layout.
+// The rows render with `<Steps layout="rows">`; the `.custy-why-card` tiles map
+// onto `CardItem` and render with `<CardGrid columns={5} align="center">`. Card
+// `icon:` values are semantic names resolved by components/lander/icons.tsx.
 export const howItWorks = {
   hero: {
     eyebrow: "How It Works • Custy for Shopify",
     title: "From Product Setup to Print-Ready Orders, Custy Keeps It Simple",
     lead: [
-      "Custy makes it easy for Shopify merchants to sell personalized products with a smooth, real-time customization experience. From setup to order fulfillment, the workflow is designed to be simple, fast, and scalable.",
-      "Whether you sell custom t-shirts, hoodies, caps, mugs, or other personalized products, Custy helps you give customers creative freedom while keeping your production process organized behind the scenes.",
+      "Custy turns a product you already sell into one your customers can design. You set the sides, print areas, printing methods and pricing once, and the app handles the rest from the product page through to the artwork you print.",
+      "Whether you sell custom t-shirts, hoodies, caps, mugs, or other personalized products, your customers get creative freedom while your production team gets files it can actually use.",
     ],
     ctas: [
       { label: "Start 30-Day Free Trial", href: "/#pricing", variant: "primary" },
@@ -65,9 +54,9 @@ export const howItWorks = {
       title: "What happens with Custy",
       items: [
         "Install the app and connect it to your Shopify store",
-        "Set up products, print areas, and customization rules",
-        "Let customers design products in real time",
-        "Receive clean order data with design details attached",
+        "Sync your catalog and pick the products to make customizable",
+        "Set sides, print areas, printing methods and pricing rules",
+        "Add the Customize block to your product template",
         "Generate print-ready files for smoother fulfillment",
       ],
     },
@@ -75,89 +64,84 @@ export const howItWorks = {
 
   stepsSection: {
     title: "How Custy Works Step by Step",
-    lead: "Every stage of the Custy workflow is built to help merchants launch faster, sell with confidence, and process personalized orders with less manual effort.",
+    lead: "The first four steps get a customizable product live on your store. The last two cover what happens once the orders start arriving.",
     steps: [
       {
         number: 1,
-        title: "Install Custy on Your Shopify Store",
-        text: "Start by installing Custy from the Shopify App Store. Once installed, you can connect the app to your store and begin setting up customizable products in just a few steps.",
+        title: "Install and Pick a Plan",
+        text: "Install Custy from the Shopify App Store and start your 30-day free trial. Custy sets up your Design Lab page automatically, so there is nothing to build by hand.",
       },
       {
         number: 2,
-        title: "Set Up Your Products",
+        title: "Sync Your Products",
         text: [
-          "Choose which products to make customizable — t-shirts, hoodies, caps, mugs, and more — then define the available print areas: front, back, left sleeve, right sleeve, and other supported sides.",
-          "Custy also lets you configure product options such as size, color, print type, and design rules based on your business needs.",
+          "Open Products in Custy and sync — one click pulls your Shopify catalog in, with progress shown as it runs.",
+          "Filter by All, Custom or Dropshipped, search for the item you want, and mark it customizable.",
         ],
       },
       {
         number: 3,
-        title: "Configure Pricing Rules",
+        title: "Set Up a Customizable Product",
         text: [
-          "Apply dynamic pricing based on the customization options your customer selects — for example, charging different prices for extra print sides, premium print methods, larger design areas, or special product options.",
-          "This helps you keep pricing flexible while protecting your profit margin.",
+          "Choose the colors and sizes the product offers, add each side you print on — front, back, sleeves, or any side you define — and drag out the print area in inches or centimeters.",
+          "Then pick the printing methods and set your pricing: setup fees, per color, per side, per character, per square inch, size ranges, and quantity discounts.",
         ],
       },
       {
         number: 4,
-        title: "Let Customers Design in Real Time",
+        title: "Add the Button to Your Theme",
         text: [
-          "Once your products are set up, customers can customize them directly on your Shopify store using Custy’s design panel — adding text, uploading images, placing artwork, and personalizing different sides while seeing changes instantly.",
-          "This interactive experience makes shopping more engaging and helps customers feel confident before placing an order.",
+          "Drop the Custy Customize block into your product template from the theme editor and enable the cart embed. Both work on vintage and Online Store 2.0 themes.",
+          "You can style the button, and optionally hide your theme's Add to Cart, Buy Now, Shop Pay and PayPal buttons so there is one clear path into the designer.",
         ],
       },
       {
         number: 5,
         title: "Receive Orders with Full Design Details",
         text: [
-          "When a customer places an order, Custy captures the selected customization data and attaches it to the order. This includes product options, design placements, selected sides, and uploaded assets.",
-          "Everything is organized clearly so you can review each order without confusion.",
+          "Each order arrives as one card per customized line item, showing the product image, the side and area names, the color swatch and name, size, quantity and pricing.",
+          "Move orders through your own internal statuses — New, Downloaded, Need Fixing, Completed — and search, sort or update them in bulk.",
         ],
       },
       {
         number: 6,
-        title: "Generate Print-Ready Files",
+        title: "Download Print-Ready Artwork",
         text: [
-          "Custy helps streamline production by preparing design data in a fulfillment-friendly format, making it easier for your team or print partner to accurately process customized orders for DTG, DTF, and other supported print workflows.",
-          "By reducing manual steps, Custy helps save time and minimize production errors.",
+          "Download each design as vector SVG or PDF, or raster PNG or JPG, at 72, 96, 150 or 300 DPI, with a transparent or colored background.",
+          "Custy flags any artwork that falls below the DPI you require, so a low-resolution upload never quietly reaches the press.",
         ],
-      },
-      {
-        number: 7,
-        title: "Fulfill and Grow",
-        text: "With a smoother workflow from customization to fulfillment, you can focus on growing your business. Custy helps improve customer experience, increase conversion rates, and make custom product selling easier at scale.",
       },
     ],
   } satisfies HowStepsSection,
 
   whySection: {
     title: "Why Merchants Choose Custy",
-    lead: "Merchants choose Custy because it combines ease of use with powerful customization features. It is built for modern Shopify stores that want to offer personalized products without creating a complex buying experience.",
+    lead: "Custy is a real design studio backed by a pricing engine that understands printing — not a text box bolted onto a product page.",
     cards: [
       {
         icon: "palette",
         title: "Real-Time Customization",
-        text: "Let customers personalize products live with instant visual feedback directly on your storefront.",
+        text: "Layers, fonts, clipart, uploads and effects, with live preview and 50 steps of undo.",
       },
       {
         icon: "layers",
         title: "Multi-Side Design",
-        text: "Support front, back, sleeves, and more so customers can create truly personalized products.",
+        text: "Front, back, sleeves and any side you define, each with its own print area and mockup.",
       },
       {
         icon: "circle-dollar-sign",
         title: "Dynamic Pricing",
-        text: "Adjust pricing based on selected design areas, extra options, and different print methods.",
+        text: "Setup fees, per color, per side, per character, per square inch, and quantity discounts.",
       },
       {
         icon: "printer",
         title: "Print-Ready Order Data",
-        text: "Get organized design details and production-friendly files to make fulfillment easier.",
+        text: "SVG, PDF, PNG or JPG at up to 300 DPI, transparent or on a background you choose.",
       },
       {
         icon: "sparkles",
         title: "Better Customer Experience",
-        text: "Create a smooth and interactive customization journey that builds confidence before purchase.",
+        text: "Shoppers save a design, get a shareable link, and can re-edit it from the cart.",
       },
     ] satisfies CardItem[],
   } satisfies HowWhySection,

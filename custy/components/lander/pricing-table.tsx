@@ -72,7 +72,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </div>
           ) : null}
 
-          <h3 className="text-sm font-semibold tracking-[0.08em] text-[#667085] uppercase">
+          <h3 className="text-[13px] font-bold tracking-widest text-muted uppercase">
             {plan.name}
           </h3>
           <div className="mt-3 flex flex-wrap items-baseline gap-1.5">
@@ -80,7 +80,7 @@ export function PricingTable({ plans, className }: PricingTableProps) {
               {plan.price}
             </div>
             {plan.period ? (
-              <div className="text-sm font-medium text-[#667085]">{plan.period}</div>
+              <div className="text-[15px] font-medium text-muted">{plan.period}</div>
             ) : null}
           </div>
           {plan.yearly ? (
@@ -89,13 +89,13 @@ export function PricingTable({ plans, className }: PricingTableProps) {
             </div>
           ) : null}
           {plan.description ? (
-            <div className="mt-3 text-sm leading-[1.6] text-body">{plan.description}</div>
+            <div className="mt-3 text-[15px] leading-[1.5] text-body">{plan.description}</div>
           ) : null}
 
           <div className="mt-5">
             <PlanCta label={plan.cta.label} href={plan.cta.href} featured={plan.featured} />
             {plan.trialNote ? (
-              <div className="mt-2.5 text-center text-[13px] font-medium text-[#667085]">
+              <div className="mt-2.5 text-center text-[13px] font-medium text-muted">
                 {plan.trialNote}
               </div>
             ) : null}
@@ -103,12 +103,12 @@ export function PricingTable({ plans, className }: PricingTableProps) {
 
           {/* Not a heading: three identical "Features" labels would pollute the
               heading outline; plan names carry the card-level h3 instead. */}
-          <div className="mt-6 border-t border-line pt-5 text-[13px] font-semibold tracking-[0.08em] text-[#667085] uppercase">
+          <div className="mt-6 border-t border-line pt-5 text-[13px] font-bold tracking-widest text-muted uppercase">
             {plan.featureTitle ?? "Features"}
           </div>
           <ul className="m-0 mt-3 list-none p-0">
             {plan.features.map((feature) => (
-              <li key={feature} className="mb-2.5 flex items-start gap-2.5 text-sm leading-6 text-body">
+              <li key={feature} className="mb-2.5 flex items-start gap-2.5 text-[15px] leading-[1.55] text-body">
                 <Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-[#0b7fad]" strokeWidth={2.5} />
                 {feature}
               </li>
