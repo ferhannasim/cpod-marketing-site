@@ -25,7 +25,7 @@ const helpTopics = [
   },
   {
     title: "Using the customizer",
-    text: "Learn what the design panel supports — multi-side printing, product options, and print-ready DTG/DTF files.",
+    text: "Learn what the design panel supports: multi-side printing, product options, and print-ready DTG/DTF files.",
     href: "/#features",
     label: "Explore features",
   },
@@ -48,7 +48,7 @@ export default function SupportPage() {
               Support
             </h1>
             <p className="mt-5 text-[16.5px] leading-[1.6] text-body">
-              Get help with the Custy product customizer — setup, the design panel, orders, plans,
+              Get help with the Custy product customizer: setup, the design panel, orders, plans,
               and everything in between.
             </p>
             <div className="prose prose-neutral mx-auto mt-4 max-w-none text-left">
@@ -93,7 +93,7 @@ export default function SupportPage() {
               Send us a message
             </h2>
             <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
-              Tell us what you're running into — including your store URL and plan helps us answer
+              Tell us what you're running into. Including your store URL and plan helps us answer
               faster.
             </p>
           </Reveal>

@@ -116,7 +116,7 @@ export function ContactForm() {
       </button>
       {status === "sent" ? (
         <p role="status" className="text-sm font-medium text-green-700">
-          Thanks — we&apos;ll get back to you soon.
+          Thanks, we&apos;ll get back to you soon.
         </p>
       ) : null}
       {status === "error" ? (

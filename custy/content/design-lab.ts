@@ -20,7 +20,7 @@ export const designLabHero = {
   eyebrow: "The shopper experience",
   title: "Inside the Design Lab",
   lead: [
-    "When a shopper clicks Customize on a product page, Custy opens the Design Lab — a canvas editor where they build exactly what they want to buy, on every side of the product.",
+    "When a shopper clicks Customize on a product page, Custy opens the Design Lab, a canvas editor where they build exactly what they want to buy, on every side of the product.",
     "Everything they create becomes structured design data on the order, so what you print is precisely what they approved.",
   ],
   ctas: [
@@ -43,7 +43,7 @@ export const designTools: CardItem[] = [
   {
     icon: "type",
     title: "Text, exactly as they want it",
-    text: "Font family, size, weight, letter spacing and line height, plus two outline layers and a drop shadow with its own distance and angle — all in fonts you upload and organize.",
+    text: "Font family, size, weight, letter spacing and line height, plus two outline layers and a drop shadow with its own distance and angle, all in fonts you upload and organize.",
   },
   {
     icon: "sparkles",
@@ -58,7 +58,7 @@ export const designTools: CardItem[] = [
   {
     icon: "layers",
     title: "Every printable side",
-    text: "Switch between front, back, sleeves and any side you define, each with its own print area and mockup — and recolor the garment art live from your color swatches.",
+    text: "Switch between front, back, sleeves and any side you define, each with its own print area and mockup, and recolor the garment art live from your color swatches.",
   },
 ];
 
@@ -76,7 +76,7 @@ export const safeguards: CardItem[] = [
   {
     icon: "file-check",
     title: "Approval before checkout",
-    text: "An optional approval step — your title, your body copy, your confirm button — makes shoppers sign off on the artwork and mockup first.",
+    text: "An optional approval step (your title, your body copy, your confirm button) makes shoppers sign off on the artwork and mockup first.",
   },
   {
     icon: "mail",
@@ -99,7 +99,7 @@ export const designLabFlow: StepItem[] = [
   {
     number: 3,
     title: "You review and download",
-    text: "Orders arrive with per-item design downloads — vector SVG or PDF, raster PNG or JPG, at up to 300 DPI, transparent or on a background.",
+    text: "Orders arrive with per-item design downloads: vector SVG or PDF, raster PNG or JPG, at up to 300 DPI, transparent or on a background.",
   },
   {
     number: 4,

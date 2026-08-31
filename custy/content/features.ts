@@ -42,7 +42,7 @@ export const features = {
     eyebrow: "Custy for Shopify • POD Ready",
     title: "Powerful Product Customization for Modern Shopify Stores",
     lead: [
-      "Custy turns any Shopify product into a customizable one. Shoppers open a full design studio on your product page — layers, fonts, clipart, uploads and effects — and preview every side of the product before they add it to the cart.",
+      "Custy turns any Shopify product into a customizable one. Shoppers open a full design studio on your product page (layers, fonts, clipart, uploads and effects) and preview every side of the product before they add it to the cart.",
       "You get print-ready artwork at up to 300 DPI, pricing that matches how printing is actually quoted, and order management that never leaves Shopify admin.",
     ],
     ctas: [
@@ -64,7 +64,7 @@ export const features = {
   sections: [
     {
       title: "Key Features Built for POD Growth",
-      lead: "Everything below ships in Custy today — the shopper design studio, the pricing engine behind it, and the order tools your production team works from.",
+      lead: "Everything below ships in Custy today: the shopper design studio, the pricing engine behind it, and the order tools your production team works from.",
       cards: [
         {
           icon: "palette",
@@ -74,12 +74,12 @@ export const features = {
         {
           icon: "layers",
           title: "Multi-Side Customization",
-          text: "Front, back, sleeves and any side you define, each with its own print area, mockup and named parts — plus product color swatches that recolor the garment art live.",
+          text: "Front, back, sleeves and any side you define, each with its own print area, mockup and named parts, plus product color swatches that recolor the garment art live.",
         },
         {
           icon: "circle-dollar-sign",
           title: "Dynamic Pricing Engine",
-          text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts — priced the way printing is actually quoted.",
+          text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts, priced the way printing is actually quoted.",
         },
         {
           icon: "printer",
@@ -141,7 +141,7 @@ export const features = {
     },
     {
       title: "Perfect For",
-      lead: "Custy is built for Shopify merchants who sell products their customers help design — and who need what comes out the other end to be production-ready.",
+      lead: "Custy is built for Shopify merchants who sell products their customers help design, and who need what comes out the other end to be production-ready.",
       cards: [
         {
           icon: "shirt",
@@ -151,7 +151,7 @@ export const features = {
         {
           icon: "printer",
           title: "Print Shops",
-          text: "Screen print, DTG, embroidery, vinyl and sublimation — each with its own pricing rules, color limits and quantity minimums.",
+          text: "Screen print, DTG, embroidery, vinyl and sublimation, each with its own pricing rules, color limits and quantity minimums.",
         },
         {
           icon: "gift",
@@ -172,7 +172,7 @@ export const features = {
         {
           icon: "printer",
           title: "Pricing by print method",
-          text: "Each method carries its own rules — setup fees per side and per color, waived above a quantity threshold, plus separate rates for uploads, clipart and text.",
+          text: "Each method carries its own rules: setup fees per side and per color, waived above a quantity threshold, plus separate rates for uploads, clipart and text.",
         },
         {
           icon: "badge-percent",

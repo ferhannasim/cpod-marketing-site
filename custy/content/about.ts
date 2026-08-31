@@ -68,11 +68,11 @@ export const about = {
 
   vision: {
     title: "Our Vision",
-    lead: "We believe the future of eCommerce is personalization. Customers no longer want generic products — they want something unique, something personal.",
+    lead: "We believe the future of eCommerce is personalization. Customers no longer want generic products. They want something unique, something personal.",
     cards: [
       {
         title: "Personalization Is the Future",
-        text: "Modern shoppers expect more than a standard product page — they want products that feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a customization experience that stays simple for the customer and practical for the business.",
+        text: "Modern shoppers expect more than a standard product page. They want products that feel personal, expressive, and meaningful. Custy helps merchants meet that demand with a customization experience that stays simple for the customer and practical for the business.",
       },
       {
         title: "Turning Products into Experiences",
@@ -88,7 +88,7 @@ export const about = {
       {
         icon: "shirt",
         title: "Built for POD",
-        text: "A full design studio on the product page and print-ready artwork on the order — the two ends of a print-on-demand workflow, connected.",
+        text: "A full design studio on the product page and print-ready artwork on the order: the two ends of a print-on-demand workflow, connected.",
       },
       {
         icon: "shopping-bag",
@@ -134,12 +134,12 @@ export const about = {
 
   whyCusty: {
     title: "Why Custy",
-    lead: "We didn't just build another product customizer — we built one that understands how printing is quoted, produced, and shipped.",
+    lead: "We didn't just build another product customizer. We built one that understands how printing is quoted, produced, and shipped.",
     cards: [
       {
         icon: "circle-dollar-sign",
         title: "Dynamic Pricing",
-        text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts — priced the way a print shop actually quotes.",
+        text: "Setup fees, per color, per side, per character, per square inch, size-range grids and quantity discounts, priced the way a print shop actually quotes.",
       },
       {
         icon: "printer",
@@ -175,7 +175,7 @@ export const about = {
     cards: [
       {
         title: "For Merchants at Every Stage",
-        text: "Start free on five products, move to Starter as your catalog grows, and go unlimited on Pro when volume demands it. The same tools are there at every step — you are only choosing how much of them you need.",
+        text: "Start free on five products, move to Starter as your catalog grows, and go unlimited on Pro when volume demands it. The same tools are there at every step. You are only choosing how much of them you need.",
       },
       {
         title: "Continuously Improving",

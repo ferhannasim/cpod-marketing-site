@@ -22,34 +22,39 @@ export function DemoProducts({
             Try Custy on real products
           </h2>
           <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
-            Pick a product and design it in the live customizer — front, back, and
-            sleeves — no install needed.
+            Pick a product and design it in the live customizer, on the front, back and
+            sleeves, with no install needed.
           </p>
         </Reveal>
-        {/* This rail already reads left-to-right, so the products deal in one
-            after another in that same direction. */}
-        <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 lg:mx-0 lg:grid lg:grid-cols-5 lg:gap-3 lg:overflow-visible lg:px-0 lg:pb-0">
+        {/* A grid rather than a scroll rail: six products across one row left
+            the cards too narrow to read, and the products come in a range of
+            silhouettes, so they need matching boxes to sit still against each
+            other. */}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-5">
           {demoProducts.map((product, index) => (
-            // The rail's sizing lives on the Reveal so it stays the flex/grid
-            // child; the card fills it and keeps its own hover transition.
+            // h-full on the Reveal so the card it wraps can stretch to the
+            // tallest in the row; the card keeps its own hover transition.
             <Reveal
               key={product.slug}
               variant="zoom"
               delay={index * 0.08}
-              className="w-[min(220px,72vw)] shrink-0 lg:w-auto"
+              className="h-full"
             >
               <Link
                 href={`/live-demo?product=${product.slug}`}
                 data-testid="demo-product-card"
                 className="group flex h-full w-full flex-col overflow-hidden rounded-card border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]"
               >
-                <div className="relative aspect-[4/5] overflow-hidden">
+                {/* Square and object-contain: the thumbnails run from a tall
+                    apron to a wide business card, and a fixed box with the art
+                    fitted inside keeps every product the same size on screen. */}
+                <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={product.image.src}
                     alt={product.name}
                     fill
                     className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width: 1024px) 20vw, 220px"
+                    sizes="(min-width: 768px) 33vw, 50vw"
                   />
                 </div>
                 <div className="mt-auto flex flex-col gap-3 border-t border-line p-3.5">

@@ -6,7 +6,7 @@ import { demoProducts } from "@/content/demo-products";
 export const metadata: Metadata = {
   title: "Live Demo",
   description:
-    "Try the Custy product customizer on real products — aprons, hoodies, and long sleeve t-shirts — right in your browser, no install needed.",
+    "Try the Custy product customizer on real products (aprons, hoodies, and long sleeve t-shirts) right in your browser, no install needed.",
 };
 
 // ?product=<slug> picks the initially open product; anything unknown (or no
@@ -30,7 +30,7 @@ export default async function LiveDemoPage({
             Live Demo
           </h1>
           <p className="text-[16px] leading-[1.6] text-body md:text-[16.5px]">
-            Design a real product in the Custy customizer — pick a product and start
+            Design a real product in the Custy customizer. Pick a product and start
             creating.
           </p>
         </div>

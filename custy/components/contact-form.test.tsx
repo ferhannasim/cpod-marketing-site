@@ -53,7 +53,7 @@ describe("ContactForm", () => {
     fill();
     fireEvent.click(screen.getByRole("button", { name: /send/i }));
     await waitFor(() =>
-      expect(screen.getByText(/thanks — we'll get back to you soon\./i)).toBeInTheDocument(),
+      expect(screen.getByText(/thanks, we'll get back to you soon\./i)).toBeInTheDocument(),
     );
   });
 

@@ -121,7 +121,7 @@ export const pricing = {
   ] satisfies Plan[],
 
   bottomNote:
-    "All prices are billed in USD, charged every 30 days unless you choose annual billing. You can cancel anytime through Shopify — no hidden fees, no commission.",
+    "All prices are billed in USD, charged every 30 days unless you choose annual billing. You can cancel anytime through Shopify, with no hidden fees and no commission.",
 
   faq: {
     title: "Frequently Asked Questions",
@@ -133,12 +133,12 @@ export const pricing = {
       },
       {
         question: "Can I change my plan later?",
-        answer: "Yes — you can upgrade or downgrade at any time as your business grows or your needs change.",
+        answer: "Yes. You can upgrade or downgrade at any time as your business grows or your needs change.",
       },
       {
         question: "Do you charge any commission on orders?",
         answer:
-          "No. Custy doesn’t charge commission on your sales — your monthly subscription covers the features included in your plan.",
+          "No. Custy doesn’t charge commission on your sales. Your monthly subscription covers the features included in your plan.",
       },
       {
         question: "How does billing work?",
@@ -148,7 +148,7 @@ export const pricing = {
       {
         question: "What happens if I hit a plan limit?",
         answer:
-          "The app shows an over-quota notice and locked features prompt an upgrade — nothing breaks, and upgrading lifts the limit immediately.",
+          "The app shows an over-quota notice and locked features prompt an upgrade. Nothing breaks, and upgrading lifts the limit immediately.",
       },
       {
         question: "How does annual billing work?",
