@@ -5,7 +5,7 @@ export const useCasesHero = {
   eyebrow: "Use cases",
   title: "Who sells with Custy",
   lead: [
-    "Personalization isn't one niche — it's a capability that lifts stores across categories. If your customers would love a product with their name, their team, or their artwork on it, Custy fits.",
+    "Personalization isn't one niche. It's a capability that lifts stores across categories. If your customers would love a product with their name, their team, or their artwork on it, Custy fits.",
     "Apparel brands, print shops, promotional merch sellers, and any Shopify merchant selling personalized products all run on the same setup.",
   ],
   ctas: [
@@ -23,7 +23,7 @@ export const audiences: CardItem[] = [
   {
     icon: "shirt",
     title: "Apparel & merch brands",
-    text: "Add personalization to your existing line without creating a new SKU for every variation — each design becomes structured order data.",
+    text: "Add personalization to your existing line without creating a new SKU for every variation. Each design becomes structured order data.",
   },
   {
     icon: "printer",
@@ -39,13 +39,13 @@ export const audiences: CardItem[] = [
 
 export const niches: CardItem[] = [
   { icon: "sparkles", title: "Athletic, College & Greek", text: "Spirit wear and chapter apparel shoppers proudly co-design." },
-  { icon: "gift", title: "Weddings & Events", text: "Bachelorette crews, birthdays and reunions — one design, many names." },
+  { icon: "gift", title: "Weddings & Events", text: "Bachelorette crews, birthdays and reunions: one design, many names." },
   { icon: "shield-check", title: "Military", text: "Unit pride and homecoming pieces with details that matter." },
   { icon: "trending-up", title: "Sports & Teams", text: "Team apparel and jerseys, priced per size range." },
   { icon: "calendar-check", title: "Religious & Community", text: "Youth groups and church events with easy group orders." },
   { icon: "circle-dollar-sign", title: "Fundraising & Charity", text: "Awareness merch where quantity discounts do the heavy lifting." },
   { icon: "zap", title: "First Responders", text: "Station wear and appreciation runs, customized per crew." },
-  { icon: "calendar-check", title: "Holidays", text: "Seasonal personalization spikes — be ready before the rush." },
+  { icon: "calendar-check", title: "Holidays", text: "Seasonal personalization spikes, so be ready before the rush." },
 ];
 
 export const useCasesCta = {

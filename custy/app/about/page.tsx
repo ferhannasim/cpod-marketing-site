@@ -12,7 +12,7 @@ import { about, type AboutListGroup } from "@/content/about";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "At Custy, our mission is simple — to empower Shopify merchants to create, customize, and sell products without limits.",
+    "At Custy, our mission is simple: to empower Shopify merchants to create, customize, and sell products without limits.",
 };
 
 /**

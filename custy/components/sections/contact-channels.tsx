@@ -16,7 +16,7 @@ const channels: Channel[] = [
     title: "Email us",
     value: SUPPORT_EMAIL,
     href: `mailto:${SUPPORT_EMAIL}`,
-    note: "Best for detailed questions — include your store URL so we can help faster.",
+    note: "Best for detailed questions. Include your store URL so we can help faster.",
   },
   {
     icon: "phone",

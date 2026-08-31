@@ -24,7 +24,7 @@ export type FaqGroup = {
 export const faq = {
   hero: {
     title: "Frequently Asked Questions",
-    lead: "Everything merchants ask before installing Custy — what it does, what shoppers can design, how plans and billing work, and who handles the printing.",
+    lead: "Everything merchants ask before installing Custy: what it does, what shoppers can design, how plans and billing work, and who handles the printing.",
   },
 
   groups: [

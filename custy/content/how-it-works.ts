@@ -75,7 +75,7 @@ export const howItWorks = {
         number: 2,
         title: "Sync Your Products",
         text: [
-          "Open Products in Custy and sync — one click pulls your Shopify catalog in, with progress shown as it runs.",
+          "Open Products in Custy and sync. One click pulls your Shopify catalog in, with progress shown as it runs.",
           "Filter by All, Custom or Dropshipped, search for the item you want, and mark it customizable.",
         ],
       },
@@ -83,7 +83,7 @@ export const howItWorks = {
         number: 3,
         title: "Set Up a Customizable Product",
         text: [
-          "Choose the colors and sizes the product offers, add each side you print on — front, back, sleeves, or any side you define — and drag out the print area in inches or centimeters.",
+          "Choose the colors and sizes the product offers, add each side you print on (front, back, sleeves, or any side you define), and drag out the print area in inches or centimeters.",
           "Then pick the printing methods and set your pricing: setup fees, per color, per side, per character, per square inch, size ranges, and quantity discounts.",
         ],
       },
@@ -100,7 +100,7 @@ export const howItWorks = {
         title: "Receive Orders with Full Design Details",
         text: [
           "Each order arrives as one card per customized line item, showing the product image, the side and area names, the color swatch and name, size, quantity and pricing.",
-          "Move orders through your own internal statuses — New, Downloaded, Need Fixing, Completed — and search, sort or update them in bulk.",
+          "Move orders through your own internal statuses (New, Downloaded, Need Fixing, Completed), and search, sort or update them in bulk.",
         ],
       },
       {
@@ -116,7 +116,7 @@ export const howItWorks = {
 
   whySection: {
     title: "Why Merchants Choose Custy",
-    lead: "Custy is a real design studio backed by a pricing engine that understands printing — not a text box bolted onto a product page.",
+    lead: "Custy is a real design studio backed by a pricing engine that understands printing, not a text box bolted onto a product page.",
     cards: [
       {
         icon: "palette",

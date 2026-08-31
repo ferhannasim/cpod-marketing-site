@@ -21,7 +21,7 @@ const items: TrustItem[] = [
   {
     icon: "badge-percent",
     title: "No hidden fees or commissions",
-    text: "No setup fee and no commission on your sales — billing runs through Shopify.",
+    text: "No setup fee and no commission on your sales, and billing runs through Shopify.",
   },
 ];
 

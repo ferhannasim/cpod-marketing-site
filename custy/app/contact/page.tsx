@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 const helpTopics = [
   {
     title: "Getting started",
-    text: "See the full workflow — from installing Custy to receiving print-ready orders.",
+    text: "See the full workflow, from installing Custy to receiving print-ready orders.",
     href: "/#how-it-works",
     label: "How it works",
   },
@@ -30,7 +30,7 @@ const helpTopics = [
   },
   {
     title: "Plans & billing",
-    text: "Compare plans — billing runs through Shopify and you can cancel anytime.",
+    text: "Compare plans. Billing runs through Shopify and you can cancel anytime.",
     href: "/#pricing",
     label: "See pricing",
   },
@@ -48,7 +48,7 @@ export default function ContactPage() {
             </h1>
             <p className="mt-5 text-[16.5px] leading-[1.6] text-body">
               Questions about Custy, your plan, or selling personalized products on your Shopify
-              store? Reach the team directly — we read every message.
+              store? Reach the team directly. We read every message.
             </p>
             <div className="prose prose-neutral mx-auto mt-4 max-w-none text-left">
               <Body />
@@ -66,7 +66,7 @@ export default function ContactPage() {
               Answers to the most common questions
             </h2>
             <p className="mt-4 text-[16px] leading-[1.6] text-body md:text-[16.5px]">
-              A lot of questions are already covered on these pages — you might find your answer
+              A lot of questions are already covered on these pages, so you might find your answer
               right away.
             </p>
           </Reveal>

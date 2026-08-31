@@ -6,7 +6,7 @@ import { noIndex } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Use Cases",
   description:
-    "POD stores, apparel brands, team merch and promo products — where Custy's product personalization lifts engagement and order value.",
+    "POD stores, apparel brands, team merch and promo products, where Custy's product personalization lifts engagement and order value.",
   robots: noIndex,
 };
 
@@ -18,7 +18,7 @@ export default function UseCasesPage() {
         <CardGrid items={audiences} columns={4} />
       </LanderSection>
       <LanderSection tone="light" eyebrow="Where personalization wins" title="Niches your customers already shop"
-        lead="These are the audiences personalized merch is built around — and the Design Lab serves all of them.">
+        lead="These are the audiences personalized merch is built around, and the Design Lab serves all of them.">
         <CardGrid items={niches} columns={4} align="center" />
       </LanderSection>
       <LanderSection>

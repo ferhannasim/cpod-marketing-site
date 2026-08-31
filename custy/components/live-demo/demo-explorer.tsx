@@ -48,7 +48,7 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
   return (
     <div>
       {/* md+: switcher strip above the editor */}
-      <div className="mb-6 hidden grid-cols-5 gap-3 md:grid">
+      <div className="mb-6 hidden grid-cols-3 gap-3 md:grid lg:grid-cols-6">
         {demoProducts.map(productButton)}
       </div>
 
@@ -74,7 +74,7 @@ export function DemoExplorer({ initialSlug }: { initialSlug: string }) {
       <iframe
         key={selected.slug}
         src={selected.editorUrl}
-        title={`${selected.name} — Custy product editor`}
+        title={`${selected.name} in the Custy product editor`}
         allow="fullscreen"
         className="h-[70vh] min-h-[520px] w-full rounded-card border border-line bg-white md:h-[700px] md:min-h-0"
       />

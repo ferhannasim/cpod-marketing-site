@@ -45,7 +45,7 @@ export const home = {
     heading: "The Shopify product customizer for POD stores",
     highlight: "POD",
     tagline: "Shoppers design it. You get print-ready artwork.",
-    html: `<p>Custy turns any Shopify product into a customizable one. Shoppers open a full design studio on your product page, add text and artwork, preview every side, and add the finished design straight to their cart — while you get print-ready files, real production pricing, and order management without leaving Shopify admin.</p>`,
+    html: `<p>Custy turns any Shopify product into a customizable one. Shoppers open a full design studio on your product page, add text and artwork, preview every side, and add the finished design straight to their cart, while you get print-ready files, real production pricing, and order management without leaving Shopify admin.</p>`,
     image: {
       src: "/images/content/custy_left_photo.jpg",
       width: 795,
@@ -63,7 +63,7 @@ export const home = {
   // A visitor here wants to know what Custy does, not how to configure it.
   howItWorks: {
     title: "How Custy works",
-    lead: "Let your customers design their own products right on your store — then print exactly what they approved.",
+    lead: "Let your customers design their own products right on your store, then print exactly what they approved.",
     steps: [
       {
         number: 1,
@@ -94,8 +94,8 @@ export const home = {
     lead: "Custy gives your customers a real design studio, prices every order the way printing is actually quoted, and leaves your production team files it can send straight to the press.",
     rows: [
       {
-        title: "A design studio your customers won't fight with",
-        text: "Clicking Customize opens the Design Lab — a full canvas editor right on your product page. Shoppers add text, browse your clipart library, upload their own artwork, and work in layers with fifty steps of undo, previewing every side before they buy.",
+        title: "Design studio",
+        text: "Clicking Customize opens the Design Lab, a full canvas editor right on your product page. Shoppers add text, browse your clipart library, upload their own artwork, and work in layers with fifty steps of undo, previewing every side before they buy.",
         points: [
           "Text styling with outlines, drop shadows and fonts you upload yourself",
           "Image uploads up to 20 MB with crop, masking, background removal and filters",
@@ -109,7 +109,7 @@ export const home = {
         },
       },
       {
-        title: "Pricing that finally understands printing",
+        title: "Pricing engine",
         text: "Custy prices an order the way a print shop quotes one. Charge by color, by side, by character or by square inch, layer on setup fees and size-range grids, and let every rule combine automatically as the shopper designs.",
         points: [
           "Setup fees per side and per color, waived above a quantity threshold",
@@ -124,8 +124,8 @@ export const home = {
         },
       },
       {
-        title: "Print-ready files, waiting in your order",
-        text: "Every order arrives with the design, the side and color breakdown, and artwork your team can use immediately — with guardrails that stop unprintable work long before it reaches the press.",
+        title: "Print-ready files",
+        text: "Every order arrives with the design, the side and color breakdown, and artwork your team can use immediately, with guardrails that stop unprintable work long before it reaches the press.",
         points: [
           "SVG, PDF, PNG or JPG at up to 300 DPI, transparent or on a background",
           "DPI, print-area and max-colors warnings, plus an optional approval step",
@@ -146,7 +146,7 @@ export const home = {
     supporting: [
       {
         title: "Every side you print on",
-        text: "Front, back, sleeves — add any side you sell, each with its own print area, mockup and named parts. Your color swatches recolor the garment art live as shoppers browse.",
+        text: "Front, back, sleeves: add any side you sell, each with its own print area, mockup and named parts. Your color swatches recolor the garment art live as shoppers browse.",
         image: {
           src: "/images/features/multi-side.webp",
           width: 900,
@@ -156,7 +156,7 @@ export const home = {
       },
       {
         title: "Set it up once, reuse it everywhere",
-        text: "Color sets, size sets, printing types and discount sets are defined once and applied across your catalog — with per-variant inventory and SKUs behind them.",
+        text: "Color sets, size sets, printing types and discount sets are defined once and applied across your catalog, with per-variant inventory and SKUs behind them.",
         image: {
           src: "/images/features/reusable-sets.webp",
           width: 900,
@@ -189,6 +189,6 @@ export const home = {
 
   contact: {
     title: "Get in touch",
-    lead: "Ask about setup, printing methods, pricing rules, or whether Custy fits the way your store produces orders — we will help you get started.",
+    lead: "Ask about setup, printing methods, pricing rules, or whether Custy fits the way your store produces orders. We will help you get started.",
   },
 };

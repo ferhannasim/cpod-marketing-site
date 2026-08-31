@@ -9,7 +9,7 @@ import { APP_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to the questions merchants ask about Custy — what shoppers can customize, how plans and billing work, setup, and who handles printing and shipping.",
+    "Answers to the questions merchants ask about Custy: what shoppers can customize, how plans and billing work, setup, and who handles printing and shipping.",
 };
 
 export default function FaqPage() {
