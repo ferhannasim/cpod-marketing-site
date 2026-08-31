@@ -110,28 +110,26 @@ export function FeatureHighlights({
               image slot. */}
           <div className="grid gap-6 md:grid-cols-2">
             {home.features.supporting.map((card, index) => (
-              // The card settles in rather than sliding, and its hover lift
-              // lives on an inner element so the 200ms hover transition isn't
-              // competing with the 700ms reveal on the same node.
+              // No panel chrome: the illustrations are transparent and sit
+              // straight on the section wash, so these read as four
+              // illustrated blocks rather than cards.
               <Reveal key={card.title} variant="zoom" delay={(index % 2) * 0.1}>
-                <div className="h-full overflow-hidden rounded-2xl border border-line bg-white transition-all duration-200 hover:-translate-y-1 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.14)]">
-                  {/* Inset rather than full-bleed: the row illustrations above
-                      sit in open space, so a card illustration running to the
-                      card edge reads as noticeably larger than they do. */}
-                  <div className="px-6 pt-6 md:px-7 md:pt-7">
-                    <Image
-                      src={card.image.src}
-                      width={card.image.width}
-                      height={card.image.height}
-                      alt={card.image.alt ?? ""}
-                      sizes="(min-width: 768px) 50vw, 100vw"
-                      className="h-auto w-full"
-                    />
-                  </div>
-                  <div className="px-6 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
-                    <h3 className="text-[18px] leading-snug font-bold text-ink">{card.title}</h3>
-                    <p className="mt-2.5 text-[15px] leading-[1.6] text-body">{card.text}</p>
-                  </div>
+                {/* Inset rather than edge-to-edge: the row illustrations above
+                    sit in open space, so a block illustration running the full
+                    column width reads as noticeably larger than they do. */}
+                <div className="px-6 pt-6 md:px-7 md:pt-7">
+                  <Image
+                    src={card.image.src}
+                    width={card.image.width}
+                    height={card.image.height}
+                    alt={card.image.alt ?? ""}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="h-auto w-full"
+                  />
+                </div>
+                <div className="px-6 pt-5 pb-6 md:px-7 md:pt-6 md:pb-7">
+                  <h3 className="text-[18px] leading-snug font-bold text-ink">{card.title}</h3>
+                  <p className="mt-2.5 text-[15px] leading-[1.6] text-body">{card.text}</p>
                 </div>
               </Reveal>
             ))}
