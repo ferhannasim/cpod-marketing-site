@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { contactSchema } from "@/lib/contact-schema";
+import { trackContactFormSubmitted } from "@/lib/klaviyo";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -10,7 +11,13 @@ export async function POST(request: Request) {
       { status: 400 },
     );
   }
-  // TODO: wire a real provider here (Resend or Formspree) — this stub only logs.
-  console.log("[contact] submission", parsed.data);
+
+  try {
+    await trackContactFormSubmitted(parsed.data);
+  } catch (err) {
+    console.error("[contact] Klaviyo error", err);
+    return NextResponse.json({ ok: false }, { status: 500 });
+  }
+
   return NextResponse.json({ ok: true });
 }

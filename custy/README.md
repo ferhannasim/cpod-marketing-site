@@ -32,9 +32,21 @@ Plain React state-driven overlay (mobile nav drawer) · react-hook-form + zod ·
 
 ## Contact form
 
-UI + validation are live; `app/api/contact/route.ts` is a stub that logs and returns success.
-Wire Resend/Formspree there when ready (schema already shared between client and server via
-`lib/contact-schema.ts`).
+UI + validation post to `POST /api/contact` (`lib/contact-schema.ts`). The route creates a
+Klaviyo event metric **`Contact Form Submitted`** (profile = submitter email; properties
+`Name`, `Email`, `Subject`, `Message`). A Klaviyo flow should email support at
+`info@CheapestPOD.ca` using those event properties.
+
+Required env (see `.env.example`):
+
+```
+KLAVIYO_PRIVATE_API_KEY=pk_...
+```
+
+**Setup order:** (1) create a Private API key with `events:write`, (2) set the env var locally
+and on Vercel, (3) submit one real form test (not `@example.com` / `@test.com` — Klaviyo
+drops those), (4) Create Flow → Your metrics → API → **Contact Form Submitted**, (5) add an
+Email action that sends to `info@CheapestPOD.ca` (not the profile), then set the flow Live.
 
 ## Deploy
 

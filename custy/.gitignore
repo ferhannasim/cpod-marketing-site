@@ -3,6 +3,7 @@ node_modules/
 out/
 *.tsbuildinfo
 .env*
+!.env.example
 .DS_Store
 
 # Live Shopify theme pull — working-copy reference only, never committed (post-launch: delete)
