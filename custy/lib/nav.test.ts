@@ -30,9 +30,9 @@ describe("nav data", () => {
     }
   });
 
-  it("Resources dropdown links to the setup guide and FAQs", () => {
+  it("Resources dropdown links to Help Center and FAQs", () => {
     expect(resourceMenuLinks.map((link) => [link.label, link.href])).toEqual([
-      ["How to Use Custy", "/resources"],
+      ["Help Center", "/resources"],
       ["FAQs", "/faq"],
     ]);
   });

@@ -15,7 +15,7 @@ export const headerNav: NavLink[] = [
 
 export const resourceMenuLinks: NavLink[] = [
   {
-    label: "How to Use Custy",
+    label: "Help Center",
     href: "/resources",
     description: "Install, configure, and test Custy step by step.",
   },
