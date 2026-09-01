@@ -26,7 +26,7 @@ it("does not put Blog in the top-level header", () => {
   expect(screen.queryByRole("link", { name: "Blog" })).not.toBeInTheDocument();
 });
 
-it("opens a Resources dropdown with the guide and FAQs", () => {
+it("opens a Resources dropdown with Help Center and FAQs", () => {
   render(<Header />);
   const resourcesButton = screen.getByRole("button", { name: "Resources" });
 
@@ -34,7 +34,7 @@ it("opens a Resources dropdown with the guide and FAQs", () => {
   fireEvent.click(resourcesButton);
 
   expect(resourcesButton).toHaveAttribute("aria-expanded", "true");
-  expect(screen.getByRole("link", { name: /How to Use Custy/i })).toHaveAttribute(
+  expect(screen.getByRole("link", { name: /Help Center/i })).toHaveAttribute(
     "href",
     "/resources",
   );
