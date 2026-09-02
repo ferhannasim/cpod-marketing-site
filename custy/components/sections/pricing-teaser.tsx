@@ -57,7 +57,7 @@ export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan
                 ))}
               </ul>
               <div className="mt-auto pt-5">
-                <Button href="/#pricing" variant="secondary" className="w-full">
+                <Button href="/pricing" variant="secondary" className="w-full">
                   View {plan.name} plan
                 </Button>
               </div>
@@ -68,7 +68,7 @@ export function PricingTeaser({ plans, scheme = "bg-scheme1-bg" }: { plans: Plan
           All prices billed in USD · 30-day free trial on paid plans
         </p>
         <div className="mt-6 text-center">
-          <Button href="/#pricing" variant="secondary">
+          <Button href="/pricing" variant="secondary">
             Compare plans
           </Button>
         </div>

@@ -73,12 +73,12 @@ describe("About Us page", () => {
     render(<AboutUsPage />);
 
     const featuresLink = screen.getByRole("link", { name: "View Features" });
-    expect(featuresLink).toHaveAttribute("href", "/#features");
+    expect(featuresLink).toHaveAttribute("href", "/features");
 
     const trialLinks = screen.getAllByRole("link", { name: /free trial/i });
     expect(trialLinks.length).toBeGreaterThan(0);
     for (const link of trialLinks) {
-      expect(link).toHaveAttribute("href", "/#pricing");
+      expect(link).toHaveAttribute("href", "/pricing");
     }
 
     const installLink = screen.getByRole("link", { name: "Install on Shopify" });

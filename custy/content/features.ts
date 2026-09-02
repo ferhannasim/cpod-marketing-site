@@ -233,6 +233,6 @@ export const features = {
     title: "Start with Custy Risk-Free",
     text: "Every paid plan includes a 30-day free trial, once per store. Billing runs through Shopify, and cancelling prorates and keeps your access until the end of the paid period.",
     cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
-    secondaryCta: { label: "View Pricing", href: "/#pricing", variant: "outline" },
+    secondaryCta: { label: "View Pricing", href: "/pricing", variant: "outline" },
   } satisfies FeaturesCta,
 };

@@ -47,7 +47,7 @@ export const howItWorks = {
       "Whether you sell custom t-shirts, hoodies, caps, mugs, or other personalized products, your customers get creative freedom while your production team gets files it can actually use.",
     ],
     ctas: [
-      { label: "Start 30-Day Free Trial", href: "/#pricing", variant: "primary" },
+      { label: "Start 30-Day Free Trial", href: "/pricing", variant: "primary" },
       { label: "Install on Shopify", href: APP_URL, variant: "secondary" },
     ],
     highlight: {
@@ -149,7 +149,7 @@ export const howItWorks = {
   cta: {
     title: "Start with Custy",
     text: "Install Custy and give your customers the freedom to create products they love while you simplify your custom order workflow behind the scenes.",
-    cta: { label: "Start Free Trial", href: "/#pricing", variant: "light" },
-    secondaryCta: { label: "View Features", href: "/#features", variant: "outline" },
+    cta: { label: "Start Free Trial", href: "/pricing", variant: "light" },
+    secondaryCta: { label: "View Features", href: "/features", variant: "outline" },
   } satisfies HowCta,
 };

@@ -25,6 +25,8 @@ export const redirectList: Redirect[] = [
   to("/design-lab", "/#features"),
   to("/use-cases", "/#how-it-works"),
   to("/dropshipping", "/"),
+  // Help Centre rename
+  to("/resources", "/help-centre"),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),
   to("/policies/terms-of-service", "/policies/terms"),

@@ -15,7 +15,7 @@ describe("sitemap", () => {
 
   it("includes the homepage and kept top-level pages", () => {
     expect(urls).toContain(`${SITE_URL}/`);
-    expect(urls).toContain(`${SITE_URL}/resources`);
+    expect(urls).toContain(`${SITE_URL}/help-centre`);
     expect(urls).toContain(`${SITE_URL}/live-demo`);
     expect(urls).toContain(`${SITE_URL}/about`);
     expect(urls).toContain(`${SITE_URL}/faq`);

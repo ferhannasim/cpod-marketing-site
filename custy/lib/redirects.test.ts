@@ -25,6 +25,7 @@ describe("redirects", () => {
     expect(dest("/design-lab")).toBe("/#features");
     expect(dest("/use-cases")).toBe("/#how-it-works");
     expect(dest("/dropshipping")).toBe("/");
+    expect(dest("/resources")).toBe("/help-centre");
   });
 
   it("redirects policies and blog paths", () => {
