@@ -7,10 +7,10 @@ export type SocialLink = { label: string; href: string };
 export const headerNav: NavLink[] = [
   { label: "How it Works", href: "/#how-it-works" },
   { label: "Features", href: "/#features" },
-  { label: "Live Demo", href: "/#live-demo" },
+  { label: "Live Demo", href: "/live-demo" },
   { label: "Pricing", href: "/#pricing" },
   { label: "Contact", href: "/#contact" },
-  { label: "Resources", href: "/resources" },
+  { label: "Help", href: "/resources" },
 ];
 
 export const resourceMenuLinks: NavLink[] = [
@@ -42,9 +42,9 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Learn more",
     links: [
-      { label: "Resources", href: "/resources" },
+      { label: "Help", href: "/resources" },
       { label: "FAQ", href: "/faq" },
-      { label: "Live Demo", href: "/#live-demo" },
+      { label: "Live Demo", href: "/live-demo" },
       { label: "About Us", href: "/about" },
       { label: "Privacy Policy", href: "/policies/privacy" },
       { label: "Terms of Service", href: "/policies/terms" },

@@ -3,14 +3,14 @@ import { headerNav, footerColumns, resourceMenuLinks, socialLinks, headerCta } f
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav scrolls marketing sections and keeps Resources as the help doorway", () => {
+  it("header nav scrolls marketing sections and keeps Help as the help doorway", () => {
     expect(headerNav.map((l) => [l.label, l.href])).toEqual([
       ["How it Works", "/#how-it-works"],
       ["Features", "/#features"],
-      ["Live Demo", "/#live-demo"],
+      ["Live Demo", "/live-demo"],
       ["Pricing", "/#pricing"],
       ["Contact", "/#contact"],
-      ["Resources", "/resources"],
+      ["Help", "/resources"],
     ]);
   });
 
@@ -30,7 +30,7 @@ describe("nav data", () => {
     }
   });
 
-  it("Resources dropdown links to Help Center and FAQs", () => {
+  it("Help dropdown links to Help Center and FAQs", () => {
     expect(resourceMenuLinks.map((link) => [link.label, link.href])).toEqual([
       ["Help Center", "/resources"],
       ["FAQs", "/faq"],
@@ -42,7 +42,7 @@ describe("nav data", () => {
     expect(learnMore?.links.map((l) => l.href)).toEqual([
       "/resources",
       "/faq",
-      "/#live-demo",
+      "/live-demo",
       "/about",
       "/policies/privacy",
       "/policies/terms",
