@@ -15,7 +15,7 @@ const sectionLinks = headerNav.filter((link) => link.href.startsWith("/#"));
 
 function activeHrefForPath(pathname: string): string | null | undefined {
   if (pathname === "/") return undefined;
-  if (pathname === "/live-demo" || pathname.startsWith("/live-demo/")) return "/#live-demo";
+  if (pathname === "/live-demo" || pathname.startsWith("/live-demo/")) return "/live-demo";
   if (
     pathname === "/resources" ||
     pathname.startsWith("/resources/") ||

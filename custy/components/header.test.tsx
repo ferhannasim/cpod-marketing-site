@@ -13,7 +13,7 @@ it("renders scroll nav links and the free-trial CTA", () => {
     "/#how-it-works",
   );
   expect(screen.getAllByRole("link", { name: "Features" })[0]).toHaveAttribute("href", "/#features");
-  expect(screen.getAllByRole("link", { name: "Live Demo" })[0]).toHaveAttribute("href", "/#live-demo");
+  expect(screen.getAllByRole("link", { name: "Live Demo" })[0]).toHaveAttribute("href", "/live-demo");
   expect(screen.getAllByRole("link", { name: "Pricing" })[0]).toHaveAttribute("href", "/#pricing");
   expect(screen.getAllByRole("link", { name: "Contact" })[0]).toHaveAttribute("href", "/#contact");
   const cta = screen.getAllByRole("link", { name: "Start Free Trial" })[0];
@@ -26,14 +26,14 @@ it("does not put Blog in the top-level header", () => {
   expect(screen.queryByRole("link", { name: "Blog" })).not.toBeInTheDocument();
 });
 
-it("opens a Resources dropdown with Help Center and FAQs", () => {
+it("opens a Help dropdown with Help Center and FAQs", () => {
   render(<Header />);
-  const resourcesButton = screen.getByRole("button", { name: "Resources" });
+  const helpButton = screen.getByRole("button", { name: "Help" });
 
-  expect(resourcesButton).toHaveAttribute("aria-expanded", "false");
-  fireEvent.click(resourcesButton);
+  expect(helpButton).toHaveAttribute("aria-expanded", "false");
+  fireEvent.click(helpButton);
 
-  expect(resourcesButton).toHaveAttribute("aria-expanded", "true");
+  expect(helpButton).toHaveAttribute("aria-expanded", "true");
   expect(screen.getByRole("link", { name: /Help Center/i })).toHaveAttribute(
     "href",
     "/resources",
@@ -42,7 +42,7 @@ it("opens a Resources dropdown with Help Center and FAQs", () => {
   expect(screen.queryByRole("link", { name: /Blog/i })).not.toBeInTheDocument();
 
   fireEvent.keyDown(document, { key: "Escape" });
-  expect(resourcesButton).toHaveAttribute("aria-expanded", "false");
+  expect(helpButton).toHaveAttribute("aria-expanded", "false");
 });
 
 it("highlights the nav link for the section just clicked", () => {
