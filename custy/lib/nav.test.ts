@@ -1,16 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { headerNav, footerColumns, resourceMenuLinks, socialLinks, headerCta } from "./nav";
+import { headerNav, footerColumns, socialLinks, headerCta } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav scrolls marketing sections and keeps Help as the help doorway", () => {
+  it("header nav scrolls marketing sections and links Help Centre as a plain route", () => {
     expect(headerNav.map((l) => [l.label, l.href])).toEqual([
       ["How it Works", "/#how-it-works"],
       ["Features", "/#features"],
-      ["Live Demo", "/live-demo"],
+      ["Live Demo", "/#live-demo"],
       ["Pricing", "/#pricing"],
       ["Contact", "/#contact"],
-      ["Help", "/resources"],
+      ["Help Centre", "/help-centre"],
     ]);
   });
 
@@ -30,22 +30,15 @@ describe("nav data", () => {
     }
   });
 
-  it("Help dropdown links to Help Center and FAQs", () => {
-    expect(resourceMenuLinks.map((link) => [link.label, link.href])).toEqual([
-      ["Help Center", "/resources"],
-      ["FAQs", "/faq"],
-    ]);
-  });
-
   it("footer Learn more column lists help and company pages", () => {
     const learnMore = footerColumns.find((c) => c.title === "Learn more");
-    expect(learnMore?.links.map((l) => l.href)).toEqual([
-      "/resources",
-      "/faq",
-      "/live-demo",
-      "/about",
-      "/policies/privacy",
-      "/policies/terms",
+    expect(learnMore?.links.map((l) => [l.label, l.href])).toEqual([
+      ["Help Centre", "/help-centre"],
+      ["FAQ", "/faq"],
+      ["Live Demo", "/#live-demo"],
+      ["About Us", "/about"],
+      ["Privacy Policy", "/policies/privacy"],
+      ["Terms of Service", "/policies/terms"],
     ]);
   });
 

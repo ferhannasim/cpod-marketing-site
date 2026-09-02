@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import type { MouseEvent } from "react";
 import { Container } from "./container";
 import {
   FacebookIcon,
@@ -7,6 +10,7 @@ import {
   XIcon,
   YoutubeIcon,
 } from "./social-icons";
+import { handleHomeHashNav } from "@/lib/hash-nav";
 import { footerColumns, socialLinks } from "@/lib/nav";
 import { SITE_NAME, SUPPORT_EMAIL, SUPPORT_PHONE, SUPPORT_PHONE_HREF } from "@/lib/site";
 
@@ -21,6 +25,10 @@ const socialIcons: Record<string, (props: { className?: string }) => React.JSX.E
 export function Footer() {
   const about = footerColumns.find((column) => column.blurb);
   const learnMore = footerColumns.find((column) => column.links.length > 0);
+
+  function onHashLink(href: string, event: MouseEvent<HTMLAnchorElement>) {
+    handleHomeHashNav(href, event);
+  }
 
   return (
     <footer className="border-t border-line bg-white">
@@ -54,7 +62,11 @@ export function Footer() {
                           {link.label}
                         </a>
                       ) : (
-                        <Link href={link.href} className={className}>
+                        <Link
+                          href={link.href}
+                          className={className}
+                          onClick={(event) => onHashLink(link.href, event)}
+                        >
                           {marker}
                           {link.label}
                         </Link>

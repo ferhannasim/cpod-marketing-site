@@ -51,8 +51,8 @@ export const about = {
       "Whether it's a t-shirt, hoodie, cap, mug or any print-on-demand product, shoppers get real creative freedom and you get artwork your production team can actually use.",
     ],
     ctas: [
-      { label: "Start 30-Day Free Trial", href: "/#pricing", variant: "primary" },
-      { label: "View Features", href: "/#features", variant: "secondary" },
+      { label: "Start 30-Day Free Trial", href: "/pricing", variant: "primary" },
+      { label: "View Features", href: "/features", variant: "secondary" },
     ],
     highlight: {
       title: "What defines Custy",
@@ -212,7 +212,7 @@ export const about = {
   cta: {
     title: "Build Better Custom Product Experiences with Custy",
     text: "Give your customers the freedom to create products they love while you simplify the workflow behind the scenes. Start with Custy and bring real-time product customization to your Shopify store.",
-    cta: { label: "Start Free Trial", href: "/#pricing", variant: "light" },
+    cta: { label: "Start Free Trial", href: "/pricing", variant: "light" },
     secondaryCta: { label: "Install on Shopify", href: APP_URL, variant: "outline" },
   } satisfies AboutCta,
 };

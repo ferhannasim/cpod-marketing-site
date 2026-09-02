@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { resourceSteps } from "@/content/resources";
-import ResourcesPage, { metadata } from "./page";
+import HelpCentrePage, { metadata } from "./page";
 
-describe("Resources page", () => {
+describe("Help Centre page", () => {
   it("renders the guide heading and all seven steps in order", () => {
-    render(<ResourcesPage />);
+    render(<HelpCentrePage />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: "How to Install and Use Custy on Shopify" }),
@@ -21,7 +21,7 @@ describe("Resources page", () => {
   });
 
   it("links every table of contents entry to its guide section", () => {
-    render(<ResourcesPage />);
+    render(<HelpCentrePage />);
 
     for (const step of resourceSteps) {
       const links = screen.getAllByRole("link", { name: step.title });
@@ -34,12 +34,14 @@ describe("Resources page", () => {
   });
 
   it("renders all supplied screenshots with useful alternative text and captions", () => {
-    render(<ResourcesPage />);
+    render(<HelpCentrePage />);
 
     for (const step of resourceSteps) {
       const image = screen.getByRole("img", { name: step.screenshot.alt });
       expect(image).toBeInTheDocument();
-      expect(screen.getByText(new RegExp(step.screenshot.caption.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")))).toBeInTheDocument();
+      expect(
+        screen.getByText(new RegExp(step.screenshot.caption.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))),
+      ).toBeInTheDocument();
       expect(
         screen.getByRole("link", {
           name: `Open full-size screenshot for step ${step.number}: ${step.title}`,
@@ -49,7 +51,7 @@ describe("Resources page", () => {
   });
 
   it("uses safe external install links and an internal support link", () => {
-    render(<ResourcesPage />);
+    render(<HelpCentrePage />);
 
     const installLinks = screen.getAllByRole("link", { name: "Install Custy on Shopify" });
     expect(installLinks.length).toBeGreaterThan(1);
@@ -61,12 +63,12 @@ describe("Resources page", () => {
 
     expect(screen.getByRole("link", { name: "Get Support" })).toHaveAttribute(
       "href",
-      "/#contact",
+      "/contact",
     );
   });
 
   it("has guide-specific metadata", () => {
-    expect(metadata.title).toBe("Resources: How to Install and Use Custy");
+    expect(metadata.title).toBe("Help Centre: How to Install and Use Custy");
     expect(metadata.description).toMatch(/configure print areas/i);
   });
 });

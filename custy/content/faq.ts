@@ -62,7 +62,7 @@ export const faq = {
           question: "Is there a free plan?",
           answer:
             "Yes. Free includes a limited number of custom products, monthly orders, and storage, with basic customization. Paid plans unlock higher limits and more tools.",
-          link: { label: "Compare plans", href: "/#pricing" },
+          link: { label: "Compare plans", href: "/pricing" },
         },
         {
           question: "What are the paid plans?",
@@ -129,7 +129,7 @@ export const faq = {
         {
           question: "Where do I get help?",
           answer: `Email ${SUPPORT_EMAIL} or use the support contact on our marketing site.`,
-          link: { label: "Go to support", href: "/#contact" },
+          link: { label: "Go to support", href: "/contact" },
         },
       ],
     },

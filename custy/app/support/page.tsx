@@ -20,19 +20,19 @@ const helpTopics = [
   {
     title: "Setup & installation",
     text: "Install Custy from the Shopify App Store, connect your store, and set up products, print areas, and pricing rules.",
-    href: "/#how-it-works",
+    href: "/how-it-works",
     label: "Follow the walkthrough",
   },
   {
     title: "Using the customizer",
     text: "Learn what the design panel supports: multi-side printing, product options, and print-ready DTG/DTF files.",
-    href: "/#features",
+    href: "/features",
     label: "Explore features",
   },
   {
     title: "Plans, trials & billing",
     text: "Billing runs through Shopify. Paid plans include a 30-day free trial, and you can change or cancel your plan anytime.",
-    href: "/#pricing",
+    href: "/pricing",
     label: "Read the pricing FAQ",
   },
 ];

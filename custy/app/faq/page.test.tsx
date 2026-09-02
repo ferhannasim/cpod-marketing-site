@@ -36,11 +36,11 @@ describe("FAQ page", () => {
     render(<FaqPage />);
     expect(screen.getByRole("link", { name: "Compare plans" })).toHaveAttribute(
       "href",
-      "/#pricing",
+      "/pricing",
     );
     expect(screen.getByRole("link", { name: "Go to support" })).toHaveAttribute(
       "href",
-      "/#contact",
+      "/contact",
     );
   });
 

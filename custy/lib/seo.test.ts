@@ -14,7 +14,7 @@ describe("noindex", () => {
       "/use-cases",
       "/dropshipping",
     ]);
-    for (const kept of ["/", "/resources", "/faq", "/blog", "/live-demo", "/about"]) {
+    for (const kept of ["/", "/help-centre", "/faq", "/blog", "/live-demo", "/about"]) {
       expect(noIndexPaths).not.toContain(kept);
     }
   });
