@@ -57,7 +57,6 @@ export default function HowItWorksPage() {
             title={howItWorks.cta.title}
             text={howItWorks.cta.text}
             cta={howItWorks.cta.cta}
-            secondaryCta={howItWorks.cta.secondaryCta}
           />
         </Lander>
       </div>
