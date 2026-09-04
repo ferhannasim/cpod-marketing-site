@@ -21,13 +21,18 @@ describe("HomePage section bands", () => {
     }
   });
 
-  it("exposes hash targets for every marketing nav item", () => {
+  it("exposes hash targets for every marketing nav item in page order", () => {
     const { container } = render(<HomePage />);
-    expect(container.querySelector("#how-it-works")).toHaveClass("scroll-mt-20");
-    expect(container.querySelector("#features")).toHaveClass("scroll-mt-20");
+    const features = container.querySelector("#features");
+    const howItWorks = container.querySelector("#how-it-works");
+    expect(features).toHaveClass("scroll-mt-20");
+    expect(howItWorks).toHaveClass("scroll-mt-20");
     expect(container.querySelector("#live-demo")).toHaveClass("scroll-mt-20");
     expect(container.querySelector("#pricing")).toHaveClass("scroll-mt-20");
-    expect(container.querySelector("#contact")).toHaveClass("scroll-mt-20");
+    expect(container.querySelector("#contact")).toBeNull();
+    expect(
+      features!.compareDocumentPosition(howItWorks!) & Node.DOCUMENT_POSITION_FOLLOWING,
+    ).toBeTruthy();
   });
 
   it("alternates section background scheme with no two adjacent sections matching", () => {
@@ -51,7 +56,6 @@ describe("HomePage section bands", () => {
       expect(schemes[i]).not.toBe(schemes[i - 1]);
     }
 
-    expect(screen.getByRole("heading", { name: /get in touch/i })).toBeInTheDocument();
-    expect(schemes[schemes.length - 1]).toBe("scheme1");
+    expect(schemes[schemes.length - 1]).toBe("scheme2");
   });
 });

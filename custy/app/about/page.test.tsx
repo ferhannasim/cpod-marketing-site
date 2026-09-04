@@ -24,6 +24,7 @@ describe("About Us page", () => {
       "Built for Modern eCommerce",
       "Our Commitment",
       "Build Better Custom Product Experiences with Custy",
+      "Get in touch",
     ];
     const indices = sectionTitles.map((title) => headings.indexOf(title));
     expect(indices.every((index) => index !== -1)).toBe(true);
@@ -72,13 +73,14 @@ describe("About Us page", () => {
   it("links the CTAs to the correct destinations, including the Shopify app listing", () => {
     render(<AboutUsPage />);
 
-    const featuresLink = screen.getByRole("link", { name: "View Features" });
-    expect(featuresLink).toHaveAttribute("href", "/features");
+    expect(screen.queryByRole("link", { name: "View Features" })).not.toBeInTheDocument();
 
     const trialLinks = screen.getAllByRole("link", { name: /free trial/i });
     expect(trialLinks.length).toBeGreaterThan(0);
     for (const link of trialLinks) {
-      expect(link).toHaveAttribute("href", "/pricing");
+      expect(link).toHaveAttribute("href", APP_URL);
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
     }
 
     const installLink = screen.getByRole("link", { name: "Install on Shopify" });
@@ -90,5 +92,12 @@ describe("About Us page", () => {
   it("has About Us metadata", () => {
     expect(metadata.title).toBe("About Us");
     expect(metadata.description).toMatch(/empower shopify merchants/i);
+  });
+
+  it("includes the contact form on About / Contact", () => {
+    const { container } = render(<AboutUsPage />);
+    expect(container.querySelector("#contact")).not.toBeNull();
+    expect(screen.getByRole("heading", { name: /get in touch/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /send/i })).toBeInTheDocument();
   });
 });

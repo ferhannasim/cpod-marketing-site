@@ -7,7 +7,9 @@ import {
   LanderHero,
   LanderSection,
 } from "@/components/lander";
+import { ContactSection } from "@/components/sections/contact-section";
 import { about, type AboutListGroup } from "@/content/about";
+import { home } from "@/content/home";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -97,6 +99,8 @@ export default function AboutUsPage() {
           />
         </Lander>
       </div>
+
+      <ContactSection title={home.contact.title} lead={home.contact.lead} />
     </main>
   );
 }

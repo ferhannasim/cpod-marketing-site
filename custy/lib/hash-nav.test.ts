@@ -22,6 +22,6 @@ describe("handleHomeHashNav", () => {
   });
 
   it("leaves non-hash links alone", () => {
-    expect(handleHomeHashNav("/help-centre")).toBe(false);
+    expect(handleHomeHashNav("/help")).toBe(false);
   });
 });

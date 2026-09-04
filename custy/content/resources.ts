@@ -21,7 +21,7 @@ export type ResourceStep = {
 };
 
 export const resourcesHero = {
-  eyebrow: "Help Centre",
+  eyebrow: "Help",
   title: "How to Install and Use Custy on Shopify",
   lead: [
     "Follow this practical setup guide to connect Custy to your Shopify store, turn an existing product into a customizable product, and confirm the customer design experience from start to finish.",
@@ -29,7 +29,7 @@ export const resourcesHero = {
   ],
   ctas: [
     { label: "Install Custy on Shopify", href: APP_URL, variant: "primary" },
-    { label: "See How Custy Works", href: "/how-it-works", variant: "secondary" },
+    { label: "See How Custy Works", href: "/#how-it-works", variant: "secondary" },
   ] satisfies CtaLink[],
   highlight: {
     title: "What you will set up",
@@ -212,6 +212,6 @@ export const resourcesClosing = {
     title: "Ready to set up your first customizable product?",
     text: "Install Custy on your Shopify store and follow this guide from product sync to a tested storefront experience.",
     cta: { label: "Install Custy on Shopify", href: APP_URL, variant: "light" },
-    secondaryCta: { label: "Get Support", href: "/contact", variant: "outline" },
+    secondaryCta: { label: "Get Support", href: "/about#contact", variant: "outline" },
   },
 } satisfies { title: string; paragraphs: string[]; cta: CtaBandProps };

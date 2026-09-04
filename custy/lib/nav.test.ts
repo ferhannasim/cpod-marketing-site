@@ -3,14 +3,14 @@ import { headerNav, footerColumns, socialLinks, headerCta } from "./nav";
 import { APP_URL } from "./site";
 
 describe("nav data", () => {
-  it("header nav scrolls marketing sections and links Help Centre as a plain route", () => {
+  it("header nav lists homepage sections then Help and About / Contact", () => {
     expect(headerNav.map((l) => [l.label, l.href])).toEqual([
-      ["How it Works", "/#how-it-works"],
-      ["Features", "/#features"],
+      ["Home", "/"],
+      ["How It Works", "/#how-it-works"],
       ["Live Demo", "/#live-demo"],
       ["Pricing", "/#pricing"],
-      ["Contact", "/#contact"],
-      ["Help Centre", "/help-centre"],
+      ["Help", "/help"],
+      ["About / Contact", "/about"],
     ]);
   });
 
@@ -33,10 +33,11 @@ describe("nav data", () => {
   it("footer Learn more column lists help and company pages", () => {
     const learnMore = footerColumns.find((c) => c.title === "Learn more");
     expect(learnMore?.links.map((l) => [l.label, l.href])).toEqual([
-      ["Help Centre", "/help-centre"],
+      ["Help", "/help"],
       ["FAQ", "/faq"],
       ["Live Demo", "/#live-demo"],
       ["About Us", "/about"],
+      ["Contact Us", "/about#contact"],
       ["Privacy Policy", "/policies/privacy"],
       ["Terms of Service", "/policies/terms"],
     ]);

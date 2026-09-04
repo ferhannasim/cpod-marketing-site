@@ -9,7 +9,11 @@ it("renders footer columns, socials, and copyright", () => {
   expect(screen.getByRole("heading", { name: "Connect with us" })).toBeInTheDocument();
   expect(screen.getByRole("link", { name: "Privacy Policy" })).toHaveAttribute("href", "/policies/privacy");
   expect(screen.getByRole("link", { name: "Live Demo" })).toHaveAttribute("href", "/#live-demo");
-  expect(screen.getByRole("link", { name: "Help Centre" })).toHaveAttribute("href", "/help-centre");
+  expect(screen.getByRole("link", { name: "Help" })).toHaveAttribute("href", "/help");
+  expect(screen.getByRole("link", { name: "Contact Us" })).toHaveAttribute(
+    "href",
+    "/about#contact",
+  );
   expect(screen.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", "https://www.facebook.com/CustyAPP");
   expect(screen.getByRole("link", { name: "info@CheapestPOD.ca" })).toHaveAttribute(
     "href",

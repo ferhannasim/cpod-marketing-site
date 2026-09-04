@@ -65,7 +65,7 @@ export default function FaqPage() {
           title="Still have a question?"
           text="Install Custy and try it on your own products, or send us the details and we will walk you through it."
           cta={{ label: "Install Now on Shopify", href: APP_URL }}
-          secondaryCta={{ label: "Contact support", href: "/contact" }}
+          secondaryCta={{ label: "Contact support", href: "/about#contact" }}
           tone="light"
         />
       </Container>

@@ -23,10 +23,10 @@ const helpTopics = [
     label: "How it works",
   },
   {
-    title: "Features & setup",
-    text: "Explore the real-time customizer, multi-side printing, and dynamic pricing.",
-    href: "/#features",
-    label: "View features",
+    title: "Try the design studio",
+    text: "Open the live demo and design on real products before you install.",
+    href: "/#live-demo",
+    label: "Live Demo",
   },
   {
     title: "Plans & billing",
@@ -87,7 +87,7 @@ export default function ContactPage() {
           </Reveal>
           <p className="mt-12 text-center text-[15px] text-body">
             Need help with the app itself? Visit{" "}
-            <Link href="/#contact" className="font-semibold text-ink underline underline-offset-4">
+            <Link href="/about#contact" className="font-semibold text-ink underline underline-offset-4">
               Support
             </Link>{" "}
             to send the team a message.

@@ -11,8 +11,8 @@ describe("redirects", () => {
     expect(dest("/pages/how-it-works")).toBe("/#how-it-works");
     expect(dest("/pages/about-us")).toBe("/about");
     expect(dest("/about-us")).toBe("/about");
-    expect(dest("/pages/support")).toBe("/#contact");
-    expect(dest("/pages/contact")).toBe("/#contact");
+    expect(dest("/pages/support")).toBe("/about#contact");
+    expect(dest("/pages/contact")).toBe("/about#contact");
     expect(dest("/pages/custydesignlab")).toBe("/#features");
   });
 
@@ -20,18 +20,19 @@ describe("redirects", () => {
     expect(dest("/features")).toBe("/#features");
     expect(dest("/pricing")).toBe("/#pricing");
     expect(dest("/how-it-works")).toBe("/#how-it-works");
-    expect(dest("/contact")).toBe("/#contact");
-    expect(dest("/support")).toBe("/#contact");
+    expect(dest("/contact")).toBe("/about#contact");
+    expect(dest("/support")).toBe("/about#contact");
     expect(dest("/design-lab")).toBe("/#features");
     expect(dest("/use-cases")).toBe("/#how-it-works");
     expect(dest("/dropshipping")).toBe("/");
-    expect(dest("/resources")).toBe("/help-centre");
+    expect(dest("/resources")).toBe("/help");
+    expect(dest("/help-centre")).toBe("/help");
   });
 
   it("redirects policies and blog paths", () => {
     expect(dest("/policies/privacy-policy")).toBe("/policies/privacy");
     expect(dest("/policies/terms-of-service")).toBe("/policies/terms");
-    expect(dest("/policies/contact-information")).toBe("/#contact");
+    expect(dest("/policies/contact-information")).toBe("/about#contact");
     expect(dest("/blogs/custy-blog")).toBe("/blog");
     expect(dest("/blogs/custy-blog/:slug")).toBe("/blog/:slug");
   });

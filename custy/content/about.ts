@@ -38,10 +38,8 @@ export type AboutCta = {
 // product does today. Card `icon:` values are semantic names resolved to SVG
 // stroke icons by components/lander/icons.tsx.
 //
-// CTA destinations: labels naming a concrete section map there directly; "Install
-// on Shopify" maps to the real App Store listing (`APP_URL`), and the two
-// "Start ... Free Trial" buttons route to the pricing section, avoiding a
-// same-box duplicate destination with the closing band's App Store link.
+// CTA destinations: trial CTAs and "Install on Shopify" both map to the real
+// App Store listing (`APP_URL`).
 export const about = {
   hero: {
     eyebrow: "About Custy • Built for Shopify",
@@ -51,8 +49,7 @@ export const about = {
       "Whether it's a t-shirt, hoodie, cap, mug or any print-on-demand product, shoppers get real creative freedom and you get artwork your production team can actually use.",
     ],
     ctas: [
-      { label: "Start 30-Day Free Trial", href: "/pricing", variant: "primary" },
-      { label: "View Features", href: "/features", variant: "secondary" },
+      { label: "Start 30-Day Free Trial", href: APP_URL, variant: "primary" },
     ],
     highlight: {
       title: "What defines Custy",
@@ -212,7 +209,7 @@ export const about = {
   cta: {
     title: "Build Better Custom Product Experiences with Custy",
     text: "Give your customers the freedom to create products they love while you simplify the workflow behind the scenes. Start with Custy and bring real-time product customization to your Shopify store.",
-    cta: { label: "Start Free Trial", href: "/pricing", variant: "light" },
+    cta: { label: "Start Free Trial", href: APP_URL, variant: "light" },
     secondaryCta: { label: "Install on Shopify", href: APP_URL, variant: "outline" },
   } satisfies AboutCta,
 };

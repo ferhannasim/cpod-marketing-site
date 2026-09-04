@@ -5,12 +5,12 @@ export type FooterColumn = { title: string; blurb?: string; links: NavLink[] };
 export type SocialLink = { label: string; href: string };
 
 export const headerNav: NavLink[] = [
-  { label: "How it Works", href: "/#how-it-works" },
-  { label: "Features", href: "/#features" },
+  { label: "Home", href: "/" },
+  { label: "How It Works", href: "/#how-it-works" },
   { label: "Live Demo", href: "/#live-demo" },
   { label: "Pricing", href: "/#pricing" },
-  { label: "Contact", href: "/#contact" },
-  { label: "Help Centre", href: "/help-centre" },
+  { label: "Help", href: "/help" },
+  { label: "About / Contact", href: "/about" },
 ];
 
 export const headerCta: NavLink = {
@@ -29,10 +29,11 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Learn more",
     links: [
-      { label: "Help Centre", href: "/help-centre" },
+      { label: "Help", href: "/help" },
       { label: "FAQ", href: "/faq" },
       { label: "Live Demo", href: "/#live-demo" },
       { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/about#contact" },
       { label: "Privacy Policy", href: "/policies/privacy" },
       { label: "Terms of Service", href: "/policies/terms" },
     ],

@@ -4,7 +4,7 @@ import { SITE_URL } from "@/lib/site";
 
 const STATIC_ROUTES = [
   "/",
-  "/help-centre",
+  "/help",
   "/live-demo",
   "/about",
   "/faq",

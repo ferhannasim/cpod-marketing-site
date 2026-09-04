@@ -17,7 +17,8 @@ const sectionLinks = headerNav.filter((link) => link.href.startsWith("/#"));
 function activeHrefForPath(pathname: string): string | null | undefined {
   if (pathname === "/") return undefined;
   if (pathname === "/live-demo" || pathname.startsWith("/live-demo/")) return "/#live-demo";
-  if (pathname === "/help-centre" || pathname.startsWith("/help-centre/")) return "/help-centre";
+  if (pathname === "/help" || pathname.startsWith("/help/")) return "/help";
+  if (pathname === "/about" || pathname.startsWith("/about/")) return "/about";
   return null;
 }
 
@@ -61,7 +62,8 @@ export function Header() {
       if (Date.now() < spyLockedUntil.current) return;
 
       const marker = 96;
-      let current = sections[0].href;
+      // Default to Home until a marketing section actually crosses the header.
+      let current = "/";
       for (const section of sections) {
         if (section.el.getBoundingClientRect().top <= marker) {
           current = section.href;
@@ -69,7 +71,12 @@ export function Header() {
       }
       const atBottom =
         window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-      setActiveHref(atBottom ? sections[sections.length - 1].href : current);
+      // Only pin the last nav section at the document bottom when that section
+      // is actually the last content band (avoids Pricing staying active under
+      // trailing non-nav content).
+      const last = sections[sections.length - 1];
+      const lastStillInView = last.el.getBoundingClientRect().bottom > marker;
+      setActiveHref(atBottom && lastStillInView ? last.href : current);
     }
 
     updateActive();
@@ -85,7 +92,18 @@ export function Header() {
     setOpen(false);
   }
 
-  function onHashNav(href: string, event: MouseEvent<HTMLAnchorElement>) {
+  function onNavClick(href: string, event: MouseEvent<HTMLAnchorElement>) {
+    if (href === "/") {
+      setActiveHref("/");
+      if (pathname === "/" || pathname === "") {
+        event.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        window.history.replaceState(null, "", "/");
+        spyLockedUntil.current = Date.now() + 1200;
+      }
+      closeMobileMenu();
+      return;
+    }
     if (!href.startsWith("/#")) return;
     setActiveHref(href);
     const handled = handleHomeHashNav(href, event);
@@ -115,7 +133,7 @@ export function Header() {
               href={link.href}
               className={navItemClass(activeHref === link.href)}
               aria-current={activeHref === link.href ? "page" : undefined}
-              onClick={(event) => onHashNav(link.href, event)}
+              onClick={(event) => onNavClick(link.href, event)}
             >
               {link.label}
             </Link>
@@ -157,7 +175,7 @@ export function Header() {
                 className={navItemClass(activeHref === link.href, true)}
                 aria-current={activeHref === link.href ? "page" : undefined}
                 onClick={(event) => {
-                  onHashNav(link.href, event);
+                  onNavClick(link.href, event);
                   closeMobileMenu();
                 }}
               >

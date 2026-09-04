@@ -25,7 +25,7 @@ export type HowCta = {
   title: string;
   text: string;
   cta: CtaLink;
-  secondaryCta: CtaLink;
+  secondaryCta?: CtaLink;
 };
 
 // Copy is written from docs/CUSTY_APP_MARKETING_SITE_BRIEF.md (derived from the
@@ -150,6 +150,5 @@ export const howItWorks = {
     title: "Start with Custy",
     text: "Install Custy and give your customers the freedom to create products they love while you simplify your custom order workflow behind the scenes.",
     cta: { label: "Start Free Trial", href: "/pricing", variant: "light" },
-    secondaryCta: { label: "View Features", href: "/features", variant: "outline" },
   } satisfies HowCta,
 };

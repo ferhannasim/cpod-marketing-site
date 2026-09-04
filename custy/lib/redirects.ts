@@ -13,24 +13,25 @@ export const redirectList: Redirect[] = [
   to("/pages/how-it-works", "/#how-it-works"),
   to("/pages/about-us", "/about"),
   to("/about-us", "/about"),
-  to("/pages/support", "/#contact"),
-  to("/pages/contact", "/#contact"),
+  to("/pages/support", "/about#contact"),
+  to("/pages/contact", "/about#contact"),
   to("/pages/custydesignlab", "/#features"),
   // folded marketing pages → homepage sections
   to("/features", "/#features"),
   to("/pricing", "/#pricing"),
   to("/how-it-works", "/#how-it-works"),
-  to("/contact", "/#contact"),
-  to("/support", "/#contact"),
+  to("/contact", "/about#contact"),
+  to("/support", "/about#contact"),
   to("/design-lab", "/#features"),
   to("/use-cases", "/#how-it-works"),
   to("/dropshipping", "/"),
-  // Help Centre rename
-  to("/resources", "/help-centre"),
+  // Help rename
+  to("/resources", "/help"),
+  to("/help-centre", "/help"),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),
   to("/policies/terms-of-service", "/policies/terms"),
-  to("/policies/contact-information", "/#contact"),
+  to("/policies/contact-information", "/about#contact"),
   // blog
   to("/blogs/custy-blog", "/blog"),
   to("/blogs/custy-blog/:slug", "/blog/:slug"),

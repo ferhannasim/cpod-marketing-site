@@ -1,11 +1,11 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { resourceSteps } from "@/content/resources";
-import HelpCentrePage, { metadata } from "./page";
+import HelpPage, { metadata } from "./page";
 
-describe("Help Centre page", () => {
+describe("Help page", () => {
   it("renders the guide heading and all seven steps in order", () => {
-    render(<HelpCentrePage />);
+    render(<HelpPage />);
 
     expect(
       screen.getByRole("heading", { level: 1, name: "How to Install and Use Custy on Shopify" }),
@@ -21,7 +21,7 @@ describe("Help Centre page", () => {
   });
 
   it("links every table of contents entry to its guide section", () => {
-    render(<HelpCentrePage />);
+    render(<HelpPage />);
 
     for (const step of resourceSteps) {
       const links = screen.getAllByRole("link", { name: step.title });
@@ -34,7 +34,7 @@ describe("Help Centre page", () => {
   });
 
   it("renders all supplied screenshots with useful alternative text and captions", () => {
-    render(<HelpCentrePage />);
+    render(<HelpPage />);
 
     for (const step of resourceSteps) {
       const image = screen.getByRole("img", { name: step.screenshot.alt });
@@ -51,7 +51,7 @@ describe("Help Centre page", () => {
   });
 
   it("uses safe external install links and an internal support link", () => {
-    render(<HelpCentrePage />);
+    render(<HelpPage />);
 
     const installLinks = screen.getAllByRole("link", { name: "Install Custy on Shopify" });
     expect(installLinks.length).toBeGreaterThan(1);
@@ -63,12 +63,16 @@ describe("Help Centre page", () => {
 
     expect(screen.getByRole("link", { name: "Get Support" })).toHaveAttribute(
       "href",
-      "/contact",
+      "/about#contact",
+    );
+    expect(screen.getByRole("link", { name: "See How Custy Works" })).toHaveAttribute(
+      "href",
+      "/#how-it-works",
     );
   });
 
   it("has guide-specific metadata", () => {
-    expect(metadata.title).toBe("Help Centre: How to Install and Use Custy");
+    expect(metadata.title).toBe("Help: How to Install and Use Custy");
     expect(metadata.description).toMatch(/configure print areas/i);
   });
 });

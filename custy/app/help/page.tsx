@@ -5,12 +5,12 @@ import { ResourceGuide } from "@/components/resource-guide";
 import { resourceSteps, resourcesClosing, resourcesHero } from "@/content/resources";
 
 export const metadata: Metadata = {
-  title: "Help Centre: How to Install and Use Custy",
+  title: "Help: How to Install and Use Custy",
   description:
     "Learn how to install Custy on Shopify, sync products, configure print areas, enable the Customize It button, and test the customer Design Lab.",
 };
 
-export default function HelpCentrePage() {
+export default function HelpPage() {
   return (
     <main>
       <LanderHero

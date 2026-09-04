@@ -15,11 +15,10 @@ describe("homepage", () => {
     expect(container.querySelector("#features")).not.toBeNull();
     expect(container.querySelector("#live-demo")).not.toBeNull();
     expect(container.querySelector("#pricing")).not.toBeNull();
-    expect(container.querySelector("#contact")).not.toBeNull();
+    expect(container.querySelector("#contact")).toBeNull();
 
     expect(screen.getByRole("heading", { name: home.howItWorks.title })).toBeInTheDocument();
     expect(screen.getByRole("heading", { name: pricing.header.title })).toBeInTheDocument();
-    expect(screen.getByRole("heading", { name: home.contact.title })).toBeInTheDocument();
   });
 
   it("pins real content from each section", () => {
@@ -68,11 +67,11 @@ describe("homepage", () => {
     expect(screen.getByRole("link", { name: "Live Demo" })).toHaveAttribute("href", "/live-demo");
   });
 
-  it("includes the contact form and plan guarantees", () => {
+  it("includes plan guarantees", () => {
     render(<HomePage />);
     expect(screen.getByRole("heading", { name: /plan guarantees/i })).toBeInTheDocument();
     expect(screen.getByText("30-day free trial on paid plans")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /send/i })).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: /send/i })).not.toBeInTheDocument();
   });
 
   it("does not tease a separate FAQ, blog, or extra marketing lander", () => {

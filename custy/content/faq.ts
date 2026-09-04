@@ -129,7 +129,7 @@ export const faq = {
         {
           question: "Where do I get help?",
           answer: `Email ${SUPPORT_EMAIL} or use the support contact on our marketing site.`,
-          link: { label: "Go to support", href: "/contact" },
+          link: { label: "Go to support", href: "/about#contact" },
         },
       ],
     },

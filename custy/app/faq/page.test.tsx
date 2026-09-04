@@ -40,7 +40,7 @@ describe("FAQ page", () => {
     );
     expect(screen.getByRole("link", { name: "Go to support" })).toHaveAttribute(
       "href",
-      "/contact",
+      "/about#contact",
     );
   });
 
