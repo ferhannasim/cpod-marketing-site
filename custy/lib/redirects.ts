@@ -28,6 +28,26 @@ export const redirectList: Redirect[] = [
   // Help rename
   to("/resources", "/help"),
   to("/help-centre", "/help"),
+  // Help Centre Getting Started restructure (InkyBay-style sub-categories)
+  to("/help/getting-started/start-here", "/help/getting-started/overview"),
+  to("/help/getting-started/installing-custy", "/help/getting-started/installations/install-custy"),
+  to("/help/getting-started/billing-and-trial", "/help/getting-started/installations/upgrade-your-plan"),
+  to(
+    "/help/getting-started/installations/upgrade-your-package",
+    "/help/getting-started/installations/upgrade-your-plan",
+  ),
+  to(
+    "/help/getting-started/first-product",
+    "/help/getting-started/product-setup/first-product",
+  ),
+  to(
+    "/help/getting-started/print-areas-and-mark-areas",
+    "/help/getting-started/product-setup/print-areas-and-mark-areas",
+  ),
+  to(
+    "/help/getting-started/pricing-rules",
+    "/help/getting-started/product-setup/pricing-rules",
+  ),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),
   to("/policies/terms-of-service", "/policies/terms"),

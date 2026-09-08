@@ -27,6 +27,10 @@ describe("redirects", () => {
     expect(dest("/dropshipping")).toBe("/");
     expect(dest("/resources")).toBe("/help");
     expect(dest("/help-centre")).toBe("/help");
+    expect(dest("/help/getting-started/start-here")).toBe("/help/getting-started/overview");
+    expect(dest("/help/getting-started/installing-custy")).toBe(
+      "/help/getting-started/installations/install-custy",
+    );
   });
 
   it("redirects policies and blog paths", () => {

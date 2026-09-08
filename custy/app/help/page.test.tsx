@@ -1,78 +1,40 @@
 import { describe, expect, it } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { resourceSteps } from "@/content/resources";
-import HelpPage, { metadata } from "./page";
+import { helpHub, helpCategories } from "@/content/help";
+import HelpHubPage, { metadata } from "./page";
 
-describe("Help page", () => {
-  it("renders the guide heading and all seven steps in order", () => {
-    render(<HelpPage />);
+describe("Help hub page", () => {
+  it("renders the Help Centre heading and recommended path", () => {
+    render(<HelpHubPage />);
 
-    expect(
-      screen.getByRole("heading", { level: 1, name: "How to Install and Use Custy on Shopify" }),
-    ).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: helpHub.title })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 2, name: helpHub.pathTitle })).toBeInTheDocument();
 
-    const stepHeadings = resourceSteps.map((step) =>
-      screen.getByRole("heading", { level: 2, name: step.title }),
+    for (const step of helpHub.pathSteps) {
+      expect(screen.getByRole("link", { name: new RegExp(step.title) })).toHaveAttribute(
+        "href",
+        step.href,
+      );
+    }
+  });
+
+  it("lists Getting Started and links FAQ and Contact", () => {
+    render(<HelpHubPage />);
+
+    const category = helpCategories[0];
+    expect(screen.getByRole("link", { name: new RegExp(category.title) })).toHaveAttribute(
+      "href",
+      category.href,
     );
-    const positions = stepHeadings.map((heading) =>
-      Array.from(document.querySelectorAll("h2")).indexOf(heading),
-    );
-    expect(positions).toEqual([...positions].sort((a, b) => a - b));
-  });
-
-  it("links every table of contents entry to its guide section", () => {
-    render(<HelpPage />);
-
-    for (const step of resourceSteps) {
-      const links = screen.getAllByRole("link", { name: step.title });
-      expect(links.length).toBeGreaterThan(0);
-      for (const link of links) {
-        expect(link).toHaveAttribute("href", `#${step.id}`);
-      }
-      expect(document.getElementById(step.id)).toHaveClass("scroll-mt-24");
-    }
-  });
-
-  it("renders all supplied screenshots with useful alternative text and captions", () => {
-    render(<HelpPage />);
-
-    for (const step of resourceSteps) {
-      const image = screen.getByRole("img", { name: step.screenshot.alt });
-      expect(image).toBeInTheDocument();
-      expect(
-        screen.getByText(new RegExp(step.screenshot.caption.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))),
-      ).toBeInTheDocument();
-      expect(
-        screen.getByRole("link", {
-          name: `Open full-size screenshot for step ${step.number}: ${step.title}`,
-        }),
-      ).toHaveAttribute("href", step.screenshot.src);
-    }
-  });
-
-  it("uses safe external install links and an internal support link", () => {
-    render(<HelpPage />);
-
-    const installLinks = screen.getAllByRole("link", { name: "Install Custy on Shopify" });
-    expect(installLinks.length).toBeGreaterThan(1);
-    for (const link of installLinks) {
-      expect(link).toHaveAttribute("href", "https://apps.shopify.com/custy");
-      expect(link).toHaveAttribute("target", "_blank");
-      expect(link).toHaveAttribute("rel", "noopener noreferrer");
-    }
-
-    expect(screen.getByRole("link", { name: "Get Support" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /FAQ/i })).toHaveAttribute("href", "/faq");
+    expect(screen.getByRole("link", { name: /Contact/i })).toHaveAttribute(
       "href",
       "/about#contact",
     );
-    expect(screen.getByRole("link", { name: "See How Custy Works" })).toHaveAttribute(
-      "href",
-      "/#how-it-works",
-    );
   });
 
-  it("has guide-specific metadata", () => {
-    expect(metadata.title).toBe("Help: How to Install and Use Custy");
-    expect(metadata.description).toMatch(/configure print areas/i);
+  it("has Help Centre metadata", () => {
+    expect(metadata.title).toBe("Help Centre");
+    expect(metadata.description).toMatch(/print areas|billing|customizable/i);
   });
 });

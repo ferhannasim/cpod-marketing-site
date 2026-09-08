@@ -33,7 +33,7 @@ describe("nav data", () => {
   it("footer Learn more column lists help and company pages", () => {
     const learnMore = footerColumns.find((c) => c.title === "Learn more");
     expect(learnMore?.links.map((l) => [l.label, l.href])).toEqual([
-      ["Help", "/help"],
+      ["Help Centre", "/help"],
       ["FAQ", "/faq"],
       ["Live Demo", "/#live-demo"],
       ["About Us", "/about"],
