@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "App Activation",
-  description: "Embed the cart editor and add the Customize It button to your theme.",
+  description: "Turn on two theme switches so shoppers see Customize It.",
 };
 
 export default function AppActivationPage() {

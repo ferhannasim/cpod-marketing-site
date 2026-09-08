@@ -6,25 +6,25 @@ export const overview: HelpArticle = {
   subCategorySlug: null,
   title: "Overview",
   description:
-    "Welcome to Custy. Learn what the app does, what it does not do, and how to complete your first setup.",
-  summary: "What Custy is, how it fits Shopify, and where to start after install.",
+    "A simple welcome to Custy. What it does, what it does not do, and what to do first.",
+  summary: "What Custy is, and the easy first steps after you add it.",
   readMinutes: 1,
   updatedOn: "8 September 2026",
   lead: [
     "Welcome to Custy!",
-    "Whether you are starting a new custom business or want to offer customized, personalized, or configurable products on Shopify, you can do so with Custy.",
+    "Custy helps people shop in your store design their own shirts, hats, and other products. You do not need to know coding. Follow the guides one step at a time.",
   ],
-  leadLinks: [{ label: "Visit the Custy live demo to explore", href: "/live-demo" }],
+  leadLinks: [{ label: "Try the live demo first", href: "/live-demo" }],
   sections: [
     {
       id: "best-parts",
       paragraphs: [
-        "Custy’s Shopify app is built around three strengths:",
+        "Here is what Custy helps you do:",
       ],
       highlights: [
-        "Product customization — shoppers design in the Design Lab on your storefront",
-        "Product options — sizes, colors, sides, and print areas you control",
-        "Design and printing pricing — setup fees, per-color, per-side, and quantity discounts",
+        "Shoppers design on your store — they open a simple design screen and make their own look",
+        "You pick the options — sizes, colors, and which sides of the product they can decorate",
+        "You set the prices — extra fees for printing, colors, sides, and buying more at once",
       ],
     },
     {
@@ -32,18 +32,18 @@ export const overview: HelpArticle = {
       paragraphs: [],
       callout: {
         variant: "important",
-        title: "Important",
+        title: "Please read this first",
         bullets: [
-          "Custy is a product customizer. Fulfillment is handled by you or your connected print / POD provider — Custy prepares print-ready design files and order details.",
-          "Custy does not manage shipping, taxes, or checkout; Shopify handles all of those.",
-          "You can turn existing Shopify products into customizable ones, with reusable color sets, size sets, and printing types.",
+          "Custy helps shoppers create the design. You (or your print partner) still make and ship the real product. Custy gives you the design file and the order details.",
+          "Shopify still handles the cart, payment, shipping, and tax. Custy does not take those over.",
+          "You can take products you already sell in Shopify and turn them into custom products. Nothing here deletes your store.",
         ],
       },
     },
     {
       id: "after-install",
       paragraphs: [
-        "After installing Custy and starting a plan or the 30-day trial, follow Getting Started to finish setup. The guides walk you through installations, embedding Custy on your theme, then creating a customizable product with print areas and pricing before you start selling.",
+        "Do the Getting Started guides in order. First add Custy. Then turn it on in your theme. Then set up one product. You can stop and come back anytime. Changing a setting in Custy will not wipe your Shopify store.",
       ],
       links: [
         { label: "How to Install Custy?", href: "/help/getting-started/installations/install-custy" },
@@ -64,7 +64,7 @@ export const overview: HelpArticle = {
         variant: "tip",
         title: "Tip",
         paragraphs: [
-          "To see the shopper experience before you configure your own catalog, open the live demo and try the Design Lab on sample products.",
+          "Want to see what a shopper sees before you set anything up? Open the live demo and tap around. You cannot break anything there.",
         ],
         link: { label: "Open the live demo", href: "/live-demo" },
       },

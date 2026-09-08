@@ -35,6 +35,6 @@ describe("Help hub page", () => {
 
   it("has Help Centre metadata", () => {
     expect(metadata.title).toBe("Help Centre");
-    expect(metadata.description).toMatch(/print areas|billing|customizable/i);
+    expect(metadata.description).toMatch(/print shop|Custy|theme|plan/i);
   });
 });

@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Product Setup",
-  description: "Make a product customizable, define print areas, and configure pricing.",
+  description: "Make a product custom, set print areas, and set prices.",
 };
 
 export default function ProductSetupPage() {

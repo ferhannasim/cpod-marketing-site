@@ -7,73 +7,72 @@ export const installCusty: HelpArticle = {
   subCategorySlug: "installations",
   title: "How to Install Custy?",
   description:
-    "Step-by-step guide to install Custy on Shopify: open Apps, find Custy, approve permissions, and choose a plan.",
-  summary:
-    "Install and synchronize Custy with your Shopify store — no theme coding required for the install itself.",
+    "Add Custy to your Shopify store in simple clicks. No coding needed.",
+  summary: "Add Custy to Shopify with a few clicks. You do not need to write any code.",
   readMinutes: 2,
   updatedOn: "8 September 2026",
   lead: [
-    "Getting started with Custy is quick and easy. No manual coding skill is required to install and synchronize the app with your Shopify store.",
-    "Custy automatically integrates with your Shopify store and works with vintage and Online Store 2.0 themes. After install, finish App Activation so Customize It appears on your product pages.",
+    "Adding Custy is like installing an app on your phone. You click a few buttons. You do not need to write any code.",
+    "After this guide, Custy will be on your store. Next you will turn on a button so shoppers can see it. We will show you that later.",
   ],
   sections: [
     {
       id: "step-by-step-heading",
-      title: "Step-by-step installation guide",
+      title: "Follow these steps in order",
       paragraphs: [
-        "Follow these steps in order. Use the store that will sell customizable products — installing on the wrong store means you will need to repeat the process.",
+        "Use the store where you sell your products. If you have more than one store, double-check the name at the top before you start. You will not break your store by installing an app.",
       ],
     },
     {
       id: "step-1",
-      title: "Step 1: Log in to your Shopify Admin",
+      title: "Step 1: Open Shopify",
       paragraphs: [
-        "Open your browser and sign in to the Shopify Admin for the store where you want Custy installed. Confirm you are in the correct store if you manage more than one.",
+        "Open your web browser. Go to Shopify and sign in, the same way you always do. Make sure you are looking at the right store.",
       ],
     },
     {
       id: "step-2",
-      title: "Step 2: Open Apps from the left navigation",
+      title: "Step 2: Click Apps",
       paragraphs: [
-        "In Shopify Admin, select Apps from the left navigation menu, as shown in the image below.",
+        "On the left side of the screen, look for the word Apps. Click it. The picture below shows where it is.",
       ],
       figure: {
         src: "/images/help/install-shopify-apps-nav.png",
-        alt: "Shopify Admin left navigation with the Apps item highlighted",
-        caption: "Select Apps in the Shopify Admin left navigation.",
+        alt: "Shopify Admin left menu with Apps pointed out",
+        caption: "Click Apps on the left side of Shopify.",
         width: 1600,
         height: 900,
         markers: [
           {
             n: 1,
             title: "Apps",
-            body: "Open Apps to search the App Store or manage installed apps.",
+            body: "Click Apps here. This is where you find and add apps.",
           },
         ],
       },
     },
     {
       id: "step-3",
-      title: "Step 3: Search for Custy",
+      title: "Step 3: Find Custy",
       paragraphs: [
-        "Type Custy in the Apps search bar and select the Custy app from the results. You can also open the official listing directly at apps.shopify.com/custy.",
+        "In the search box, type Custy. Click the Custy app when you see it. You can also open it from this link: apps.shopify.com/custy.",
       ],
       figure: {
         src: "/images/help/install-apps-search.png",
-        alt: "Shopify Apps search showing Custy in the results",
-        caption: "Search for Custy and open the official app from the results.",
+        alt: "Search results showing the Custy app",
+        caption: "Type Custy, then click the Custy app.",
         width: 1600,
         height: 900,
         markers: [
           {
             n: 1,
             title: "Search",
-            body: "Type Custy in the Apps search field.",
+            body: "Type the word Custy in the search box.",
           },
           {
             n: 2,
-            title: "Custy result",
-            body: "Select the official Custy app from the list.",
+            title: "Custy",
+            body: "Click the official Custy app in the list.",
           },
         ],
       },
@@ -81,98 +80,98 @@ export const installCusty: HelpArticle = {
     },
     {
       id: "step-4",
-      title: "Step 4: Select Install on the Shopify App Store page",
+      title: "Step 4: Click Install",
       paragraphs: [
-        "You will be taken to the Shopify App Store listing for Custy. On this page, select the Install button.",
+        "You will see a page about Custy. Find the button that says Install. Click it.",
       ],
       figure: {
         src: "/images/help/install-app-store.png",
-        alt: "Custy listing in the Shopify App Store with the Install button visible",
-        caption: "On the Custy App Store page, select Install.",
+        alt: "Custy page in the Shopify App Store with Install pointed out",
+        caption: "Click Install on the Custy page.",
         width: 1408,
         height: 830,
         markers: [
           {
             n: 1,
             title: "Install",
-            body: "Select Install to begin connecting Custy to your store.",
+            body: "Click Install to add Custy to your store.",
           },
         ],
       },
     },
     {
       id: "step-5",
-      title: "Step 5: Review permissions and privacy",
+      title: "Step 5: Read what Shopify asks you to allow",
       paragraphs: [
-        "Shopify shows the permissions Custy needs to work with your products, orders, theme, and related store data. Review the permission list and privacy details so you understand how Custy uses store information.",
+        "Shopify will show a list of things Custy needs to work (like products and orders). This is normal for every app. Read it if you want. You are not giving away your store — you are letting Custy help with custom products.",
       ],
     },
     {
       id: "step-6",
-      title: "Step 6: Authorize the installation",
+      title: "Step 6: Click Install again to finish",
       paragraphs: [
-        "To authorize the app and complete installation, select Install again on the permission screen. Shopify then opens Custy inside your Admin.",
+        "Click Install one more time on that screen. Shopify will open Custy for you. You did it.",
       ],
       figure: {
         src: "/images/help/install-permissions.png",
-        alt: "Shopify app permission approval screen for Custy with Install highlighted",
-        caption: "Review permissions, then select Install to authorize Custy.",
+        alt: "Shopify permission screen with Install pointed out",
+        caption: "Click Install again to finish adding Custy.",
         width: 1600,
         height: 900,
         markers: [
           {
             n: 1,
-            title: "Permissions",
-            body: "Read the scopes Custy requests for your store.",
+            title: "What Custy can use",
+            body: "This list is what Custy needs to work with your products and orders.",
           },
           {
             n: 2,
             title: "Install",
-            body: "Confirm to finish installing Custy on this store.",
+            body: "Click Install to finish.",
           },
         ],
       },
       note: {
-        title: "What Custy creates on setup",
-        body: "Custy creates or updates the Design Lab page at handle custydesignlab (/pages/custydesignlab) and registers the metafields it needs. If that page is missing later, open Settings and select Sync Shopify Resources.",
+        title: "What Custy sets up for you",
+        body: "Custy makes a design page for shoppers and connects a few settings in the background. You do not need to do that by hand. If the design page ever goes missing, open Settings in Custy and click Sync Shopify Resources.",
       },
     },
     {
       id: "step-7",
-      title: "Step 7: Choose your subscription plan",
+      title: "Step 7: Pick a plan",
       paragraphs: [
-        "After installation, Custy usually opens Plans. New stores often need an active plan before Products and other areas unlock. Select Start Free for the Free plan, or Start free trial / Subscribe on Starter or Pro, then approve the Shopify charge when prompted.",
+        "Custy will usually open a page of plans. Pick one so you can keep going. Click Start Free for the free plan. Or on Starter or Pro, click Start free trial or Subscribe. If Shopify asks you to approve a charge, click to approve it.",
       ],
       figure: {
         src: "/images/help/install-plans-gate.png",
-        alt: "Custy Plans and Pricing screen after install with Free, Starter, and Pro",
-        caption: "Choose Free, or start the 30-day trial on Starter or Pro.",
+        alt: "Custy plans screen with Free, Starter, and Pro",
+        caption: "Pick Free, or start a free trial on Starter or Pro.",
         width: 1903,
         height: 933,
         markers: [
           {
             n: 1,
-            title: "Monthly / Annual",
-            body: "Switch billing cycle. Annual shows Save 20%.",
+            title: "Monthly or Annual",
+            body: "Choose how often you want to be billed. Annual shows Save 20%.",
           },
           {
             n: 2,
             title: "Free",
-            body: "Start Free with no trial if you only need a small catalog.",
+            body: "Click Start Free if you want the free plan. There is no trial on Free.",
           },
           {
             n: 3,
             title: "Starter or Pro",
-            body: "Start free trial (once per store) or Subscribe if the trial was already used.",
+            body: "Click Start free trial (one time per store) or Subscribe.",
           },
         ],
       },
     },
     {
       id: "congratulations",
-      title: "Congratulations",
+      title: "You are done with install",
       paragraphs: [
-        "You successfully installed Custy on your Shopify store. Next, start the free trial if you chose a paid plan, embed Custy on your theme, then make your first product customizable so shoppers can open the Design Lab.",
+        "Custy is on your store. Nice work. Next: start the free trial if you want a paid plan, turn Custy on in your theme, then set up your first product so shoppers can design.",
       ],
       links: [
         {
@@ -192,7 +191,7 @@ export const installCusty: HelpArticle = {
         variant: "tip",
         title: "Tip",
         paragraphs: [
-          "Try Custy’s 30-day free trial on Starter or Pro to test customization, print areas, and printing pricing in real time before you commit to a paid subscription.",
+          "The 30-day free trial on Starter or Pro lets you try everything before you pay. You can cancel or change plans later. See the free trial guide if you want that path.",
         ],
         link: {
           label: "Start from the Custy App Store listing",
@@ -202,10 +201,10 @@ export const installCusty: HelpArticle = {
     },
     {
       id: "supported-browsers",
-      title: "Supported browsers",
+      title: "Which browser to use",
       paragraphs: [
-        "Custy is compatible with modern, up-to-date web browsers. Merchants typically configure the app on desktop for the best admin experience. Shoppers can design on desktop and mobile in the Design Lab.",
-        `If you encounter any issues, contact support at ${SUPPORT_EMAIL} or use Contact on this Help Centre.`,
+        "Use a normal, up-to-date browser such as Chrome, Safari, Firefox, or Edge. Setting things up is easiest on a computer. Shoppers can design on a phone or a computer.",
+        `If something looks wrong, email ${SUPPORT_EMAIL} or use Contact in this Help Centre. We are happy to help.`,
       ],
       links: [{ label: "Contact support", href: "/about#contact" }],
     },

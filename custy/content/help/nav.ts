@@ -35,7 +35,7 @@ export const helpCategories: HelpNavCategory[] = [
     slug: "getting-started",
     title: "Getting Started",
     description:
-      "Discover a simple installation guide, subscription plans, theme activation, and first product setup.",
+      "Add Custy, pick a plan, turn it on in your theme, and set up your first custom product — one step at a time.",
     href: "/help/getting-started",
     icon: "zap",
     overviewArticles: [toNavArticle(overview)],
@@ -43,21 +43,21 @@ export const helpCategories: HelpNavCategory[] = [
       {
         slug: "installations",
         title: "Installations",
-        description: "Install Custy, start the free trial, and manage your plan.",
+        description: "Add Custy, start the free trial, and change your plan.",
         href: "/help/getting-started/installations",
         articles: installationsArticles.map(toNavArticle),
       },
       {
         slug: "app-activation",
         title: "App Activation",
-        description: "Embed the cart editor and add the Customize It button to your theme.",
+        description: "Turn on two theme switches so shoppers see Customize It.",
         href: "/help/getting-started/app-activation",
         articles: appActivationArticles.map(toNavArticle),
       },
       {
         slug: "product-setup",
         title: "Product Setup",
-        description: "Make a product customizable, define print areas, and configure pricing.",
+        description: "Make a product custom, set print areas, and set prices.",
         href: "/help/getting-started/product-setup",
         articles: productSetupArticles.map(toNavArticle),
       },
@@ -76,11 +76,11 @@ export const gettingStartedReadingOrder = [
 export const helpHub: HelpHub = {
   title: "Custy Help Centre",
   lead: [
-    "Guides for Shopify merchants who are installing Custy, activating the storefront, and setting up customizable products.",
-    "Start with Getting Started — the same path as Overview, Installations, App Activation, then Product Setup.",
+    "Plain guides for print shop owners using Custy on Shopify. No coding. One click at a time.",
+    "Start with Getting Started: Overview, then Installations, App Activation, then Product Setup.",
   ],
-  pathTitle: "Recommended path",
-  pathLead: "Complete Getting Started in order the first time you set up a store.",
+  pathTitle: "Best path the first time",
+  pathLead: "Do Getting Started in order when you set up a store for the first time. You can pause anytime.",
   pathSteps: [
     {
       title: overview.title,

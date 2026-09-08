@@ -6,7 +6,7 @@ import { getAdjacentArticles, getArticle } from "@/content/help";
 export const metadata: Metadata = {
   title: "Overview",
   description:
-    "Welcome to Custy. Learn what the app does, what it does not do, and how to complete your first setup.",
+    "A simple welcome to Custy. What it does, what it does not do, and what to do first.",
 };
 
 export default function OverviewPage() {

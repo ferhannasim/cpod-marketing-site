@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Installations",
-  description: "Install Custy, start the free trial, and manage your package.",
+  description: "Add Custy, start the free trial, and change your plan.",
 };
 
 export default function InstallationsPage() {

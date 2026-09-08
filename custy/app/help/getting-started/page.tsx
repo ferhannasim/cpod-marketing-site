@@ -6,7 +6,7 @@ import { getCategory } from "@/content/help";
 export const metadata: Metadata = {
   title: "Getting Started",
   description:
-    "Install Custy on Shopify, start your free trial, embed the storefront, and set up your first customizable product.",
+    "Add Custy, pick a plan, turn it on in your theme, and set up your first custom product — one step at a time.",
 };
 
 export default function GettingStartedPage() {
