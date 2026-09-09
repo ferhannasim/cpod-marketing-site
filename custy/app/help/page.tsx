@@ -8,7 +8,7 @@ import { APP_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Help Centre",
   description:
-    "Plain guides for print shop owners: add Custy, turn it on in your theme, set up a product, and change your plan — one step at a time.",
+    "Plain guides for print shop owners: add Custy, turn it on in your theme, set up products, and learn the Design Lab — one step at a time.",
 };
 
 export default function HelpHubPage() {

@@ -36,17 +36,28 @@ export const redirectList: Redirect[] = [
     "/help/getting-started/installations/upgrade-your-package",
     "/help/getting-started/installations/upgrade-your-plan",
   ),
+  // Products moved out of Getting Started → Products category
+  to("/help/getting-started/product-setup", "/help/products"),
   to(
-    "/help/getting-started/first-product",
     "/help/getting-started/product-setup/first-product",
+    "/help/products/custom-products/first-product",
   ),
   to(
-    "/help/getting-started/print-areas-and-mark-areas",
     "/help/getting-started/product-setup/print-areas-and-mark-areas",
+    "/help/products/custom-products/print-areas-and-mark-areas",
+  ),
+  to(
+    "/help/getting-started/product-setup/pricing-rules",
+    "/help/products/printing-types-and-pricing/pricing-rules",
+  ),
+  to("/help/getting-started/first-product", "/help/products/custom-products/first-product"),
+  to(
+    "/help/getting-started/print-areas-and-mark-areas",
+    "/help/products/custom-products/print-areas-and-mark-areas",
   ),
   to(
     "/help/getting-started/pricing-rules",
-    "/help/getting-started/product-setup/pricing-rules",
+    "/help/products/printing-types-and-pricing/pricing-rules",
   ),
   // policies
   to("/policies/privacy-policy", "/policies/privacy"),

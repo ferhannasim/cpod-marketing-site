@@ -2,8 +2,8 @@ import type { HelpArticle } from "./types";
 
 export const firstProduct: HelpArticle = {
   slug: "first-product",
-  categorySlug: "getting-started",
-  subCategorySlug: "product-setup",
+  categorySlug: "products",
+  subCategorySlug: "custom-products",
   title: "Setting Up Your First Product",
   description:
     "Bring a Shopify product into Custy, make it customizable, pick sizes and colors, then save.",

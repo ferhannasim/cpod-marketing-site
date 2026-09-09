@@ -184,7 +184,7 @@ export const installCusty: HelpArticle = {
         },
         {
           label: "Setting Up Your First Product",
-          href: "/help/getting-started/product-setup/first-product",
+          href: "/help/products/custom-products/first-product",
         },
       ],
       callout: {

@@ -4,13 +4,15 @@ import { installCusty } from "./install-custy";
 import { freeTrial } from "./free-trial";
 import { upgradeYourPlan } from "./upgrade-your-plan";
 import { embedCusty } from "./embed-custy";
+import { overviewOfTheDesignLab } from "./overview-of-the-design-lab";
 import { firstProduct } from "./first-product";
 import { printAreasAndMarkAreas } from "./print-areas-and-mark-areas";
 import { pricingRules } from "./pricing-rules";
 
 const installationsArticles = [installCusty, freeTrial, upgradeYourPlan] as const;
 const appActivationArticles = [embedCusty] as const;
-const productSetupArticles = [firstProduct, printAreasAndMarkAreas, pricingRules] as const;
+const customProductsArticles = [firstProduct, printAreasAndMarkAreas] as const;
+const printingTypesArticles = [pricingRules] as const;
 
 function toNavArticle(article: {
   slug: string;
@@ -35,7 +37,7 @@ export const helpCategories: HelpNavCategory[] = [
     slug: "getting-started",
     title: "Getting Started",
     description:
-      "Add Custy, pick a plan, turn it on in your theme, and set up your first custom product — one step at a time.",
+      "Add Custy, pick a plan, and turn it on in your theme — one step at a time.",
     href: "/help/getting-started",
     icon: "zap",
     overviewArticles: [toNavArticle(overview)],
@@ -54,12 +56,58 @@ export const helpCategories: HelpNavCategory[] = [
         href: "/help/getting-started/app-activation",
         articles: appActivationArticles.map(toNavArticle),
       },
+    ],
+  },
+  {
+    slug: "products",
+    title: "Products",
+    description:
+      "Make custom products, set colors and sizes, print areas, pricing, and see how the Design Lab works for shoppers.",
+    href: "/help/products",
+    icon: "package",
+    overviewArticles: [toNavArticle(overviewOfTheDesignLab)],
+    subCategories: [
       {
-        slug: "product-setup",
-        title: "Product Setup",
-        description: "Make a product custom, set print areas, and set prices.",
-        href: "/help/getting-started/product-setup",
-        articles: productSetupArticles.map(toNavArticle),
+        slug: "custom-products",
+        title: "Custom Products",
+        description: "Turn a Shopify product into a custom product and set print areas.",
+        href: "/help/products/custom-products",
+        articles: customProductsArticles.map(toNavArticle),
+      },
+      {
+        slug: "colors",
+        title: "Colors",
+        description: "Build shared color lists and add extra prices for colors.",
+        href: "/help/products/colors",
+        articles: [],
+      },
+      {
+        slug: "sizes",
+        title: "Sizes",
+        description: "Build shared size lists and optional extra prices per size.",
+        href: "/help/products/sizes",
+        articles: [],
+      },
+      {
+        slug: "printing-types-and-pricing",
+        title: "Printing Types & Pricing",
+        description: "Set printing methods, fees, and attach them to products.",
+        href: "/help/products/printing-types-and-pricing",
+        articles: printingTypesArticles.map(toNavArticle),
+      },
+      {
+        slug: "quantity-discount",
+        title: "Quantity Discount",
+        description: "Reward shoppers who buy more with percent or fixed discounts.",
+        href: "/help/products/quantity-discount",
+        articles: [],
+      },
+      {
+        slug: "restrictions-and-inventory",
+        title: "Restrictions & Inventory",
+        description: "Limit design tools and track stock by size, color, and style.",
+        href: "/help/products/restrictions-and-inventory",
+        articles: [],
       },
     ],
   },
@@ -70,17 +118,23 @@ export const gettingStartedReadingOrder = [
   overview,
   ...installationsArticles,
   ...appActivationArticles,
-  ...productSetupArticles,
+] as const;
+
+/** Flat reading order for Previous / Next across Products. */
+export const productsReadingOrder = [
+  overviewOfTheDesignLab,
+  ...customProductsArticles,
+  ...printingTypesArticles,
 ] as const;
 
 export const helpHub: HelpHub = {
   title: "Custy Help Centre",
   lead: [
     "Plain guides for print shop owners using Custy on Shopify. No coding. One click at a time.",
-    "Start with Getting Started: Overview, then Installations, App Activation, then Product Setup.",
+    "Start with Getting Started, then open Products to set up custom products and learn the Design Lab.",
   ],
   pathTitle: "Best path the first time",
-  pathLead: "Do Getting Started in order when you set up a store for the first time. You can pause anytime.",
+  pathLead: "Do Getting Started in order, then continue in Products. You can pause anytime.",
   pathSteps: [
     {
       title: overview.title,
@@ -103,19 +157,14 @@ export const helpHub: HelpHub = {
       summary: embedCusty.summary,
     },
     {
+      title: overviewOfTheDesignLab.title,
+      href: toNavArticle(overviewOfTheDesignLab).href,
+      summary: overviewOfTheDesignLab.summary,
+    },
+    {
       title: firstProduct.title,
       href: toNavArticle(firstProduct).href,
       summary: firstProduct.summary,
-    },
-    {
-      title: printAreasAndMarkAreas.title,
-      href: toNavArticle(printAreasAndMarkAreas).href,
-      summary: printAreasAndMarkAreas.summary,
-    },
-    {
-      title: pricingRules.title,
-      href: toNavArticle(pricingRules).href,
-      summary: pricingRules.summary,
     },
   ],
 };

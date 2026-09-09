@@ -4,13 +4,13 @@ import { HelpCategoryView } from "@/components/help";
 import { getCategory } from "@/content/help";
 
 export const metadata: Metadata = {
-  title: "Getting Started",
+  title: "Products",
   description:
-    "Add Custy, pick a plan, and turn it on in your theme — one step at a time.",
+    "Make custom products, set colors and sizes, print areas, pricing, and see how the Design Lab works for shoppers.",
 };
 
-export default function GettingStartedPage() {
-  const category = getCategory("getting-started");
+export default function ProductsPage() {
+  const category = getCategory("products");
   if (!category) notFound();
   return <HelpCategoryView category={category} />;
 }

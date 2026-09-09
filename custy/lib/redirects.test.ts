@@ -31,6 +31,12 @@ describe("redirects", () => {
     expect(dest("/help/getting-started/installing-custy")).toBe(
       "/help/getting-started/installations/install-custy",
     );
+    expect(dest("/help/getting-started/product-setup/first-product")).toBe(
+      "/help/products/custom-products/first-product",
+    );
+    expect(dest("/help/getting-started/first-product")).toBe(
+      "/help/products/custom-products/first-product",
+    );
   });
 
   it("redirects policies and blog paths", () => {

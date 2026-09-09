@@ -43,7 +43,7 @@ export const overview: HelpArticle = {
     {
       id: "after-install",
       paragraphs: [
-        "Do the Getting Started guides in order. First add Custy. Then turn it on in your theme. Then set up one product. You can stop and come back anytime. Changing a setting in Custy will not wipe your Shopify store.",
+        "Do the Getting Started guides in order. First add Custy. Then turn it on in your theme. After that, open Products to set up a custom product. You can stop and come back anytime. Changing a setting in Custy will not wipe your Shopify store.",
       ],
       links: [
         { label: "How to Install Custy?", href: "/help/getting-started/installations/install-custy" },
@@ -53,7 +53,7 @@ export const overview: HelpArticle = {
         },
         {
           label: "Setting Up Your First Product",
-          href: "/help/getting-started/product-setup/first-product",
+          href: "/help/products/custom-products/first-product",
         },
       ],
     },

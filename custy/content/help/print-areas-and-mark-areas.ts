@@ -2,8 +2,8 @@ import type { HelpArticle } from "./types";
 
 export const printAreasAndMarkAreas: HelpArticle = {
   slug: "print-areas-and-mark-areas",
-  categorySlug: "getting-started",
-  subCategorySlug: "product-setup",
+  categorySlug: "products",
+  subCategorySlug: "custom-products",
   title: "Print Areas & Mark Areas",
   description:
     "Add each side of the product, upload a photo, and draw the box where artwork can go.",

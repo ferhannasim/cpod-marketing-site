@@ -1,15 +1,26 @@
 import type { HelpArticle, HelpNavCategory, HelpSubCategory } from "./types";
-import { helpCategories, gettingStartedReadingOrder } from "./nav";
+import {
+  helpCategories,
+  gettingStartedReadingOrder,
+  productsReadingOrder,
+} from "./nav";
 import { overview } from "./overview";
 import { installCusty } from "./install-custy";
 import { freeTrial } from "./free-trial";
 import { upgradeYourPlan } from "./upgrade-your-plan";
 import { embedCusty } from "./embed-custy";
+import { overviewOfTheDesignLab } from "./overview-of-the-design-lab";
 import { firstProduct } from "./first-product";
 import { printAreasAndMarkAreas } from "./print-areas-and-mark-areas";
 import { pricingRules } from "./pricing-rules";
 
-export { helpCategories, helpHub, helpSidebarLinks, gettingStartedReadingOrder } from "./nav";
+export {
+  helpCategories,
+  helpHub,
+  helpSidebarLinks,
+  gettingStartedReadingOrder,
+  productsReadingOrder,
+} from "./nav";
 export type {
   AnnotatedFigure,
   HelpArticle,
@@ -37,6 +48,7 @@ const allArticles: HelpArticle[] = [
   freeTrial,
   upgradeYourPlan,
   embedCusty,
+  overviewOfTheDesignLab,
   firstProduct,
   printAreasAndMarkAreas,
   pricingRules,
@@ -45,6 +57,11 @@ const allArticles: HelpArticle[] = [
 const articlesByKey: Record<string, HelpArticle> = Object.fromEntries(
   allArticles.map((article) => [articleKey(article), article]),
 );
+
+const readingOrderByCategory: Record<string, readonly HelpArticle[]> = {
+  "getting-started": gettingStartedReadingOrder,
+  products: productsReadingOrder,
+};
 
 export function getCategory(slug: string): HelpNavCategory | undefined {
   return helpCategories.find((category) => category.slug === slug);
@@ -72,13 +89,13 @@ export function getArticle(
 }
 
 export function listAllArticles(): HelpArticle[] {
-  return [...gettingStartedReadingOrder];
+  return [...gettingStartedReadingOrder, ...productsReadingOrder];
 }
 
 export function getAdjacentArticles(
   article: HelpArticle,
 ): { previous: HelpArticle | null; next: HelpArticle | null } {
-  const order = [...gettingStartedReadingOrder];
+  const order = [...(readingOrderByCategory[article.categorySlug] ?? [])];
   const index = order.findIndex(
     (item) =>
       item.slug === article.slug &&

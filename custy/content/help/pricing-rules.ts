@@ -2,8 +2,8 @@ import type { HelpArticle } from "./types";
 
 export const pricingRules: HelpArticle = {
   slug: "pricing-rules",
-  categorySlug: "getting-started",
-  subCategorySlug: "product-setup",
+  categorySlug: "products",
+  subCategorySlug: "printing-types-and-pricing",
   title: "Pricing Rules",
   description:
     "Set up printing methods with fees and discounts, then attach them to a product.",

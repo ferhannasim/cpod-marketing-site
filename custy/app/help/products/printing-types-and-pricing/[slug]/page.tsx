@@ -12,20 +12,20 @@ type PageProps = {
 };
 
 export function generateStaticParams() {
-  const sub = getSubCategory("getting-started", "product-setup");
+  const sub = getSubCategory("products", "printing-types-and-pricing");
   return (sub?.articles ?? []).map((article) => ({ slug: article.slug }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const article = getArticle("getting-started", slug, "product-setup");
+  const article = getArticle("products", slug, "printing-types-and-pricing");
   if (!article) return {};
   return { title: article.title, description: article.description };
 }
 
-export default async function ProductSetupArticlePage({ params }: PageProps) {
+export default async function PrintingTypesArticlePage({ params }: PageProps) {
   const { slug } = await params;
-  const article = getArticle("getting-started", slug, "product-setup");
+  const article = getArticle("products", slug, "printing-types-and-pricing");
   if (!article) notFound();
   const { previous, next } = getAdjacentArticles(article);
   return <HelpArticleView article={article} previous={previous} next={next} />;

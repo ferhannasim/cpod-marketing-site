@@ -73,28 +73,30 @@ function SubCategoryCard({ sub }: { sub: HelpSubCategory }) {
         />
       </Link>
 
-      <ul className="mt-4 space-y-2 border-t border-line pt-4">
-        {sub.articles.map((article) => (
-          <li key={article.slug}>
-            <Link
-              href={article.href}
-              className="group flex items-start gap-2 rounded-lg px-1.5 py-1.5 -mx-1.5 text-[14px] leading-5 font-medium text-[#0b7fad] transition-colors hover:bg-[#f3faff] hover:text-ink hover:underline hover:underline-offset-2"
-            >
-              <FileText
-                className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0b7fad] transition-colors group-hover:text-ink"
-                aria-hidden
-              />
-              <span>{article.title}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {sub.articles.length > 0 ? (
+        <ul className="mt-4 space-y-2 border-t border-line pt-4">
+          {sub.articles.map((article) => (
+            <li key={article.slug}>
+              <Link
+                href={article.href}
+                className="group flex items-start gap-2 rounded-lg px-1.5 py-1.5 -mx-1.5 text-[14px] leading-5 font-medium text-[#0b7fad] transition-colors hover:bg-[#f3faff] hover:text-ink hover:underline hover:underline-offset-2"
+              >
+                <FileText
+                  className="mt-0.5 h-3.5 w-3.5 shrink-0 text-[#0b7fad] transition-colors group-hover:text-ink"
+                  aria-hidden
+                />
+                <span>{article.title}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      ) : null}
 
       <Link
         href={sub.href}
         className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-lander-light px-3 py-1.5 text-[13px] font-semibold text-ink transition-colors hover:bg-[#e8f6fc] hover:text-[#0b7fad]"
       >
-        See all Articles
+        {sub.articles.length > 0 ? "See all Articles" : "Open section"}
         <ArrowRight className="h-3.5 w-3.5" aria-hidden />
       </Link>
     </div>
@@ -129,30 +131,36 @@ export function HelpSubCategoryView({
       </header>
 
       <ul className="mt-10 space-y-3">
-        {subCategory.articles.map((article) => (
-          <li key={article.slug}>
-            <Link
-              href={article.href}
-              className="group flex items-start gap-4 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.12)]"
-            >
-              <FileText className="mt-0.5 h-5 w-5 shrink-0 text-muted" aria-hidden />
-              <span className="min-w-0 flex-1">
-                <span className="flex items-center justify-between gap-3">
-                  <span className="text-[16px] font-semibold text-ink">{article.title}</span>
-                  <ArrowRight
-                    className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-ink"
-                    aria-hidden
-                  />
-                </span>
-                {article.summary ? (
-                  <span className="mt-1 block text-[14.5px] leading-6 text-body">
-                    {article.summary}
-                  </span>
-                ) : null}
-              </span>
-            </Link>
+        {subCategory.articles.length === 0 ? (
+          <li className="rounded-2xl border border-dashed border-line bg-white px-5 py-8 text-[15px] leading-6 text-body">
+            More guides for this section are coming soon.
           </li>
-        ))}
+        ) : (
+          subCategory.articles.map((article) => (
+            <li key={article.slug}>
+              <Link
+                href={article.href}
+                className="group flex items-start gap-4 rounded-2xl border border-line bg-white p-5 transition-all hover:-translate-y-0.5 hover:border-[#d3dce8] hover:shadow-[0_16px_40px_-12px_rgba(16,24,40,0.12)]"
+              >
+                <FileText className="mt-0.5 h-5 w-5 shrink-0 text-muted" aria-hidden />
+                <span className="min-w-0 flex-1">
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="text-[16px] font-semibold text-ink">{article.title}</span>
+                    <ArrowRight
+                      className="h-4 w-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5 group-hover:text-ink"
+                      aria-hidden
+                    />
+                  </span>
+                  {article.summary ? (
+                    <span className="mt-1 block text-[14.5px] leading-6 text-body">
+                      {article.summary}
+                    </span>
+                  ) : null}
+                </span>
+              </Link>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );

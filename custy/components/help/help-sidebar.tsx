@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ChevronDown, FileText, Rocket } from "lucide-react";
+import { ChevronDown, FileText, Package, Rocket } from "lucide-react";
 import { helpCategories, helpSidebarLinks } from "@/content/help";
 import { cn } from "@/lib/utils";
 
 const categoryIcons: Record<string, typeof Rocket> = {
   "getting-started": Rocket,
+  products: Package,
 };
 
 function NavTree({ onNavigate }: { onNavigate?: () => void }) {

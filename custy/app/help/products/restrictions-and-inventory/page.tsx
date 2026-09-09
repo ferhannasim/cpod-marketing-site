@@ -4,13 +4,13 @@ import { HelpSubCategoryView } from "@/components/help";
 import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
-  title: "Product Setup",
-  description: "Make a product custom, set print areas, and set prices.",
+  title: "Restrictions & Inventory",
+  description: "Limit design tools and track stock by size, color, and style.",
 };
 
-export default function ProductSetupPage() {
-  const category = getCategory("getting-started");
-  const subCategory = getSubCategory("getting-started", "product-setup");
+export default function RestrictionsAndInventoryPage() {
+  const category = getCategory("products");
+  const subCategory = getSubCategory("products", "restrictions-and-inventory");
   if (!category || !subCategory) notFound();
   return <HelpSubCategoryView category={category} subCategory={subCategory} />;
 }

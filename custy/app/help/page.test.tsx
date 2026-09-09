@@ -18,14 +18,15 @@ describe("Help hub page", () => {
     }
   });
 
-  it("lists Getting Started and links FAQ and Contact", () => {
+  it("lists Getting Started and Products and links FAQ and Contact", () => {
     render(<HelpHubPage />);
 
-    const category = helpCategories[0];
-    expect(screen.getByRole("link", { name: new RegExp(category.title) })).toHaveAttribute(
-      "href",
-      category.href,
-    );
+    for (const category of helpCategories) {
+      expect(screen.getByRole("link", { name: new RegExp(category.title) })).toHaveAttribute(
+        "href",
+        category.href,
+      );
+    }
     expect(screen.getByRole("link", { name: /FAQ/i })).toHaveAttribute("href", "/faq");
     expect(screen.getByRole("link", { name: /Contact/i })).toHaveAttribute(
       "href",
@@ -35,6 +36,6 @@ describe("Help hub page", () => {
 
   it("has Help Centre metadata", () => {
     expect(metadata.title).toBe("Help Centre");
-    expect(metadata.description).toMatch(/print shop|Custy|theme|plan/i);
+    expect(metadata.description).toMatch(/print shop|Custy|theme|Design Lab/i);
   });
 });
