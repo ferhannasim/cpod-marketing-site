@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Restrictions & Inventory",
-  description: "Limit design tools and track stock by size, color, and style.",
+  description: "Turn tools on or off, and track stock by size, color, and style.",
 };
 
 export default function RestrictionsAndInventoryPage() {

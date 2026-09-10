@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AlertTriangle, Lightbulb } from "lucide-react";
 import type { HelpCallout, HelpLink } from "@/content/help/types";
 import { cn } from "@/lib/utils";
+import { HelpInline } from "./help-inline";
 
 const calloutStyles: Record<
   HelpCallout["variant"],
@@ -31,7 +32,7 @@ export function HelpCalloutBox({ callout }: { callout: HelpCallout }) {
           <p className="text-[15px] font-bold text-ink">{callout.title}</p>
           {callout.paragraphs?.map((paragraph) => (
             <p key={paragraph} className="mt-2 text-[14.5px] leading-6 text-body">
-              {paragraph}
+              <HelpInline text={paragraph} />
             </p>
           ))}
           {callout.bullets && callout.bullets.length > 0 ? (
@@ -39,7 +40,9 @@ export function HelpCalloutBox({ callout }: { callout: HelpCallout }) {
               {callout.bullets.map((bullet) => (
                 <li key={bullet} className="flex gap-2 text-[14.5px] leading-6 text-body">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-ink/40" aria-hidden />
-                  <span>{bullet}</span>
+                  <span>
+                    <HelpInline text={bullet} />
+                  </span>
                 </li>
               ))}
             </ul>

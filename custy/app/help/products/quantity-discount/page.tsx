@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Quantity Discount",
-  description: "Reward shoppers who buy more with percent or fixed discounts.",
+  description: "Give a discount when shoppers buy more pieces.",
 };
 
 export default function QuantityDiscountPage() {

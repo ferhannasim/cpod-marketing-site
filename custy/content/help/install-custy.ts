@@ -34,19 +34,19 @@ export const installCusty: HelpArticle = {
       id: "step-2",
       title: "Step 2: Click Apps",
       paragraphs: [
-        "On the left side of the screen, look for the word Apps. Click it. The picture below shows where it is.",
+        "On the left side of the screen, look for the word **Apps**. Click it. The picture below shows where it is.",
       ],
       figure: {
         src: "/images/help/install-shopify-apps-nav.png",
         alt: "Shopify Admin left menu with Apps pointed out",
-        caption: "Click Apps on the left side of Shopify.",
+        caption: "Click **Apps** on the left side of Shopify.",
         width: 1600,
         height: 900,
         markers: [
           {
             n: 1,
             title: "Apps",
-            body: "Click Apps here. This is where you find and add apps.",
+            body: "Click **Apps** here. This is where you find and add apps.",
           },
         ],
       },
@@ -82,19 +82,19 @@ export const installCusty: HelpArticle = {
       id: "step-4",
       title: "Step 4: Click Install",
       paragraphs: [
-        "You will see a page about Custy. Find the button that says Install. Click it.",
+        "You will see a page about Custy. Find the button that says **Install**. Click it.",
       ],
       figure: {
         src: "/images/help/install-app-store.png",
         alt: "Custy page in the Shopify App Store with Install pointed out",
-        caption: "Click Install on the Custy page.",
+        caption: "Click **Install** on the Custy page.",
         width: 1408,
         height: 830,
         markers: [
           {
             n: 1,
             title: "Install",
-            body: "Click Install to add Custy to your store.",
+            body: "Click **Install** to add Custy to your store.",
           },
         ],
       },
@@ -103,19 +103,19 @@ export const installCusty: HelpArticle = {
       id: "step-5",
       title: "Step 5: Read what Shopify asks you to allow",
       paragraphs: [
-        "Shopify will show a list of things Custy needs to work (like products and orders). This is normal for every app. Read it if you want. You are not giving away your store — you are letting Custy help with custom products.",
+        "Shopify will show a list of things Custy needs to work (like products and orders). This is normal for every app. Read it if you want. You are not giving away your store. You are letting Custy help with custom products.",
       ],
     },
     {
       id: "step-6",
       title: "Step 6: Click Install again to finish",
       paragraphs: [
-        "Click Install one more time on that screen. Shopify will open Custy for you. You did it.",
+        "Click **Install** one more time on that screen. Shopify will open Custy for you. You did it.",
       ],
       figure: {
         src: "/images/help/install-permissions.png",
         alt: "Shopify permission screen with Install pointed out",
-        caption: "Click Install again to finish adding Custy.",
+        caption: "Click **Install** again to finish adding Custy.",
         width: 1600,
         height: 900,
         markers: [
@@ -127,42 +127,42 @@ export const installCusty: HelpArticle = {
           {
             n: 2,
             title: "Install",
-            body: "Click Install to finish.",
+            body: "Click **Install** to finish.",
           },
         ],
       },
       note: {
         title: "What Custy sets up for you",
-        body: "Custy makes a design page for shoppers and connects a few settings in the background. You do not need to do that by hand. If the design page ever goes missing, open Settings in Custy and click Sync Shopify Resources.",
+        body: "Custy makes a design page for shoppers and connects a few settings in the background. You do not need to do that by hand. If the design page ever goes missing, open **Settings** in Custy and click **Sync Shopify Resources**.",
       },
     },
     {
       id: "step-7",
       title: "Step 7: Pick a plan",
       paragraphs: [
-        "Custy will usually open a page of plans. Pick one so you can keep going. Click Start Free for the free plan. Or on Starter or Pro, click Start free trial or Subscribe. If Shopify asks you to approve a charge, click to approve it.",
+        "Custy will usually open a page of plans. Pick one so you can keep going. Click **Start Free** for the free plan. Or on **Starter** or **Pro**, click **Start free trial** or **Subscribe**. If Shopify asks you to approve a charge, click to approve it.",
       ],
       figure: {
         src: "/images/help/install-plans-gate.png",
         alt: "Custy plans screen with Free, Starter, and Pro",
-        caption: "Pick Free, or start a free trial on Starter or Pro.",
+        caption: "Pick **Free**, or start a free trial on **Starter** or **Pro**.",
         width: 1903,
         height: 933,
         markers: [
           {
             n: 1,
             title: "Monthly or Annual",
-            body: "Choose how often you want to be billed. Annual shows Save 20%.",
+            body: "Choose how often you want to be billed. Annual shows **Save 20%**.",
           },
           {
             n: 2,
             title: "Free",
-            body: "Click Start Free if you want the free plan. There is no trial on Free.",
+            body: "Click **Start Free** if you want the free plan. There is no trial on **Free**.",
           },
           {
             n: 3,
             title: "Starter or Pro",
-            body: "Click Start free trial (one time per store) or Subscribe.",
+            body: "Click **Start free trial** (one time per store) or **Subscribe**.",
           },
         ],
       },
@@ -183,7 +183,7 @@ export const installCusty: HelpArticle = {
           href: "/help/getting-started/app-activation/embed-custy",
         },
         {
-          label: "Setting Up Your First Product",
+          label: "How to Set Up Your First Customizable Product?",
           href: "/help/products/custom-products/first-product",
         },
       ],
@@ -191,7 +191,7 @@ export const installCusty: HelpArticle = {
         variant: "tip",
         title: "Tip",
         paragraphs: [
-          "The 30-day free trial on Starter or Pro lets you try everything before you pay. You can cancel or change plans later. See the free trial guide if you want that path.",
+          "The 30-day free trial on **Starter** or **Pro** lets you try everything before you pay. You can cancel or change plans later. See the free trial guide if you want that path.",
         ],
         link: {
           label: "Start from the Custy App Store listing",

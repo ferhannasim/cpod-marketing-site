@@ -1,10 +1,11 @@
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import type { AnnotatedFigure } from "@/content/help";
+import { HelpInline } from "./help-inline";
 
 /**
  * Docs screenshots must stay pixel-sharp (UI text + red markers). Use the
- * original file — do not let next/image downscale via a narrow `sizes` hint.
+ * original file; do not let next/image downscale via a narrow `sizes` hint.
  */
 export function AnnotatedFigure({ figure }: { figure: AnnotatedFigure }) {
   return (
@@ -32,7 +33,7 @@ export function AnnotatedFigure({ figure }: { figure: AnnotatedFigure }) {
         </span>
       </a>
       <figcaption className="border-t border-line px-5 py-4 text-[14px] leading-6 text-body">
-        {figure.caption}
+        <HelpInline text={figure.caption} />
       </figcaption>
       {figure.markers.length > 0 ? (
         <ol className="space-y-4 border-t border-line bg-lander-light px-5 py-5 md:px-6 md:py-6">
@@ -42,8 +43,12 @@ export function AnnotatedFigure({ figure }: { figure: AnnotatedFigure }) {
                 {marker.n}
               </span>
               <div className="min-w-0 pt-0.5">
-                <p className="text-[15px] font-semibold text-ink">{marker.title}</p>
-                <p className="mt-1 text-[14.5px] leading-6 text-body">{marker.body}</p>
+                <p className="text-[15px] font-semibold text-ink">
+                  <HelpInline text={marker.title} />
+                </p>
+                <p className="mt-1 text-[14.5px] leading-6 text-body">
+                  <HelpInline text={marker.body} />
+                </p>
               </div>
             </li>
           ))}

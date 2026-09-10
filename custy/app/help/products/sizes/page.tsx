@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Sizes",
-  description: "Build shared size lists and optional extra prices per size.",
+  description: "Build size lists you can reuse, with optional extra prices.",
 };
 
 export default function SizesPage() {

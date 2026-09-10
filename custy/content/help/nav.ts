@@ -37,7 +37,7 @@ export const helpCategories: HelpNavCategory[] = [
     slug: "getting-started",
     title: "Getting Started",
     description:
-      "Add Custy, pick a plan, and turn it on in your theme — one step at a time.",
+      "Add Custy, pick a plan, and turn it on in your theme.",
     href: "/help/getting-started",
     icon: "zap",
     overviewArticles: [toNavArticle(overview)],
@@ -62,7 +62,7 @@ export const helpCategories: HelpNavCategory[] = [
     slug: "products",
     title: "Products",
     description:
-      "Make custom products, set colors and sizes, print areas, pricing, and see how the Design Lab works for shoppers.",
+      "Make a product custom, set colors and sizes, draw print areas, set prices, and see what shoppers see in the Design Lab.",
     href: "/help/products",
     icon: "package",
     overviewArticles: [toNavArticle(overviewOfTheDesignLab)],
@@ -77,35 +77,35 @@ export const helpCategories: HelpNavCategory[] = [
       {
         slug: "colors",
         title: "Colors",
-        description: "Build shared color lists and add extra prices for colors.",
+        description: "Build color lists you can reuse, with optional extra prices.",
         href: "/help/products/colors",
         articles: [],
       },
       {
         slug: "sizes",
         title: "Sizes",
-        description: "Build shared size lists and optional extra prices per size.",
+        description: "Build size lists you can reuse, with optional extra prices.",
         href: "/help/products/sizes",
         articles: [],
       },
       {
         slug: "printing-types-and-pricing",
         title: "Printing Types & Pricing",
-        description: "Set printing methods, fees, and attach them to products.",
+        description: "Set printing methods and fees, then attach them to products.",
         href: "/help/products/printing-types-and-pricing",
         articles: printingTypesArticles.map(toNavArticle),
       },
       {
         slug: "quantity-discount",
         title: "Quantity Discount",
-        description: "Reward shoppers who buy more with percent or fixed discounts.",
+        description: "Give a discount when shoppers buy more pieces.",
         href: "/help/products/quantity-discount",
         articles: [],
       },
       {
         slug: "restrictions-and-inventory",
         title: "Restrictions & Inventory",
-        description: "Limit design tools and track stock by size, color, and style.",
+        description: "Turn tools on or off, and track stock by size, color, and style.",
         href: "/help/products/restrictions-and-inventory",
         articles: [],
       },
@@ -130,11 +130,11 @@ export const productsReadingOrder = [
 export const helpHub: HelpHub = {
   title: "Custy Help Centre",
   lead: [
-    "Plain guides for print shop owners using Custy on Shopify. No coding. One click at a time.",
-    "Start with Getting Started, then open Products to set up custom products and learn the Design Lab.",
+    "Plain guides for print shop owners using Custy on Shopify. No coding. One click at a time. You will not break your store by following these steps.",
+    "Start with **Getting Started**, then open **Products** to set up custom products and see what shoppers see in the **Design Lab**.",
   ],
   pathTitle: "Best path the first time",
-  pathLead: "Do Getting Started in order, then continue in Products. You can pause anytime.",
+  pathLead: "Do **Getting Started** in order, then continue in **Products**. You can pause anytime.",
   pathSteps: [
     {
       title: overview.title,

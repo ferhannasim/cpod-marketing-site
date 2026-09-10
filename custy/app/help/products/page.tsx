@@ -6,7 +6,7 @@ import { getCategory } from "@/content/help";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Make custom products, set colors and sizes, print areas, pricing, and see how the Design Lab works for shoppers.",
+    "Make a product custom, set colors and sizes, draw print areas, set prices, and see what shoppers see in the Design Lab.",
 };
 
 export default function ProductsPage() {

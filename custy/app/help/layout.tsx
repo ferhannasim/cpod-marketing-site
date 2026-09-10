@@ -3,7 +3,7 @@ import { HelpSidebar } from "@/components/help";
 
 export default function HelpLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen flex-col bg-white">
+    <div className="help-docs flex min-h-screen flex-col bg-white font-sans">
       <DocsHeader />
       <div className="flex min-h-0 flex-1 flex-col lg:flex-row">
         <HelpSidebar />

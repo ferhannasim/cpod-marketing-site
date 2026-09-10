@@ -6,7 +6,7 @@ import { getAdjacentArticles, getArticle } from "@/content/help";
 export const metadata: Metadata = {
   title: "Overview of the Design Lab",
   description:
-    "A plain tour of every main button in the Custy Design Lab — the screen shoppers use to decorate your products.",
+    "A simple tour of the Design Lab, the screen shoppers use to decorate your products. No coding needed.",
 };
 
 export default function DesignLabOverviewPage() {

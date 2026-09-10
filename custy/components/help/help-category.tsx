@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, FileText, List } from "lucide-react";
 import type { HelpNavCategory, HelpSubCategory } from "@/content/help";
 import { HelpBreadcrumbs } from "./help-breadcrumbs";
+import { HelpInline } from "./help-inline";
 
 export function HelpCategoryView({ category }: { category: HelpNavCategory }) {
   return (
@@ -13,7 +14,9 @@ export function HelpCategoryView({ category }: { category: HelpNavCategory }) {
         <h1 className="mt-2 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-tight font-extrabold text-ink">
           {category.title}
         </h1>
-        <p className="mt-4 text-[16px] leading-[1.65] text-body">{category.description}</p>
+        <p className="mt-4 text-[16px] leading-[1.65] text-body">
+          <HelpInline text={category.description} />
+        </p>
       </header>
 
       <section className="mt-12">
@@ -65,7 +68,9 @@ function SubCategoryCard({ sub }: { sub: HelpSubCategory }) {
               {sub.articles.length}
             </span>
           </div>
-          <p className="mt-1 text-[14px] leading-5 text-body">{sub.description}</p>
+          <p className="mt-1 text-[14px] leading-5 text-body">
+            <HelpInline text={sub.description} />
+          </p>
         </div>
         <ArrowRight
           className="mt-1 h-4 w-4 shrink-0 text-muted transition-transform group-hover:translate-x-0.5"
@@ -127,7 +132,9 @@ export function HelpSubCategoryView({
         <h1 className="mt-2 text-[clamp(1.75rem,3.4vw,2.5rem)] leading-tight font-extrabold text-ink">
           {subCategory.title}
         </h1>
-        <p className="mt-4 text-[16px] leading-[1.65] text-body">{subCategory.description}</p>
+        <p className="mt-4 text-[16px] leading-[1.65] text-body">
+          <HelpInline text={subCategory.description} />
+        </p>
       </header>
 
       <ul className="mt-10 space-y-3">
@@ -153,7 +160,7 @@ export function HelpSubCategoryView({
                   </span>
                   {article.summary ? (
                     <span className="mt-1 block text-[14.5px] leading-6 text-body">
-                      {article.summary}
+                      <HelpInline text={article.summary} />
                     </span>
                   ) : null}
                 </span>

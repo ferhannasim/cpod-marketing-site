@@ -6,20 +6,21 @@ export const pricingRules: HelpArticle = {
   subCategorySlug: "printing-types-and-pricing",
   title: "Pricing Rules",
   description:
-    "Set up printing methods with fees and discounts, then attach them to a product.",
+    "Set up printing methods with fees, then attach them to a product. You can change fees later.",
   summary:
-    "Tell Custy how to add printing fees and quantity discounts to the shopper’s price.",
+    "Tell Custy how to add printing fees (and optional quantity discounts) to the shopper’s price.",
   readMinutes: 6,
+  updatedOn: "10 September 2026",
   lead: [
-    "Pricing lives under Products → Printing Types & Pricing. You make a printing type once (for example Screen Print or DTG), set the fees, then attach that type to each product that uses it.",
-    "The shopper’s price is built from the product price plus extras you set — colors, sides, printing fees, clipart, and quantity discounts. You can change fees later without starting over.",
+    "Pricing lives under **Products** → **Printing Types & Pricing**. You make a printing type once (for example Screen Print or DTG), set the fees, then attach that type to each product that uses it.",
+    "The shopper’s price is the product price plus extras you set: colors, sides, printing fees, clipart, and optional **quantity discounts**. You can change fees later without starting over. Changing prices does not delete your products.",
   ],
   sections: [
     {
       id: "open-printing-types",
       title: "Open Printing Types & Pricing",
       paragraphs: [
-        "From Products, open the Printing Types & Pricing tab. Add one printing type for each method you sell (Screen Print, DTG, Embroidery, and so on). Edit a type anytime — products that already use it will pick up the new fees.",
+        "From **Products**, open the **Printing Types & Pricing** tab. Add one printing type for each method you sell (Screen Print, DTG, Embroidery, and so on). Edit a type anytime. Products that already use it will pick up the new fees.",
       ],
       actions: [
         "Click Add Printing Type, or open Edit on a type you already have.",
@@ -54,7 +55,7 @@ export const pricingRules: HelpArticle = {
       id: "basic-pricing",
       title: "Set Basic Pricing",
       paragraphs: [
-        "The Basic Pricing tab is where most of your fees live. You can set a setup fee, prices for uploaded pictures, library clipart, text, photo prints, price per character, price per square inch, and an extra charge when someone designs more than one side. You can also waive the setup fee above a certain quantity.",
+        "The Basic Pricing tab is where most of your fees live. You can set a setup fee, prices for uploaded pictures, library clipart, text, photo prints, price per letter, price per square inch, and an extra charge when someone designs more than one side. You can also skip the setup fee above a certain quantity.",
       ],
       figure: {
         src: "/images/help/printing-type-basic-pricing.png",
@@ -86,7 +87,7 @@ export const pricingRules: HelpArticle = {
           {
             n: 5,
             title: "Text",
-            body: "Starting price for text, plus price per character if you turn that on.",
+            body: "Starting price for text, plus price per letter if you turn that on.",
           },
           {
             n: 6,
@@ -106,6 +107,7 @@ export const pricingRules: HelpArticle = {
       title: "Colors, size ranges, and limits",
       paragraphs: [
         "Use the other tabs only if you need them. Printing Colors lets you set colors and extra prices. Price Per Color builds tables by how many colors and how many pieces. Price Per Size Range uses light and dark price grids. Restrictions set the smallest and largest order size and rules for uploaded images.",
+        "If you are not sure, start with Basic Pricing only. You can add more later.",
       ],
       figure: {
         src: "/images/help/printing-type-other-tabs.png",
@@ -138,19 +140,19 @@ export const pricingRules: HelpArticle = {
       },
       note: {
         title: "Plan note",
-        body: "Some advanced pricing needs Starter or higher. Location pricing is Pro only.",
+        body: "Some advanced pricing needs **Starter** or higher. Location pricing is **Pro** only.",
       },
     },
     {
       id: "quantity-discounts",
       title: "Quantity discounts (Starter and up)",
       paragraphs: [
-        "Open Products → Quantity Discount to reward people who buy more. You can take off a percent or a fixed amount at different quantity ranges. On Free, you will see a message that this needs Starter or higher.",
+        "Open **Products** → Quantity Discount if you want to reward people who buy more. You can take off a percent or a fixed amount at different quantity ranges. On **Free**, you will see a message that this needs **Starter** or higher.",
       ],
       actions: [
         "Click Add Quantity Discount, or edit one you already have.",
         "Choose Percent discount or Fixed discount.",
-        "Add quantity ranges that match how you sell (for example 1–11, 12–23).",
+        "Add quantity ranges that match how you sell (for example 1 to 11, 12 to 23).",
       ],
       figure: {
         src: "/images/help/quantity-discount.png",
@@ -181,7 +183,7 @@ export const pricingRules: HelpArticle = {
       id: "assign-to-product",
       title: "Attach printing to a product",
       paragraphs: [
-        "On Customize Product, open Printing Types & Pricing. Click the printing types this product can use. Pick a quantity discount list if you have one. Click Save so the design screen and price chart use the new rules.",
+        "On **Customize Product**, open **Printing Types & Pricing**. Click the printing types this product can use. Pick a **quantity discount** list if you have one. Click Save so the design screen uses the new rules.",
       ],
       figure: {
         src: "/images/help/product-assign-printing.png",
@@ -198,8 +200,15 @@ export const pricingRules: HelpArticle = {
           {
             n: 2,
             title: "Quantity discount",
-            body: "Optional. Attach a discount list if you use one (Starter and up).",
+            body: "Optional. Attach a discount list if you use one (**Starter** and up).",
           },
+        ],
+      },
+      callout: {
+        variant: "tip",
+        title: "Tip",
+        paragraphs: [
+          "Start simple. One printing type and Basic Pricing is enough for most shops. You can add more later without losing your products.",
         ],
       },
     },

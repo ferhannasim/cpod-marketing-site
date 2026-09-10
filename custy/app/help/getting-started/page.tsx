@@ -6,7 +6,7 @@ import { getCategory } from "@/content/help";
 export const metadata: Metadata = {
   title: "Getting Started",
   description:
-    "Add Custy, pick a plan, and turn it on in your theme — one step at a time.",
+    "Add Custy, pick a plan, and turn it on in your theme.",
 };
 
 export default function GettingStartedPage() {

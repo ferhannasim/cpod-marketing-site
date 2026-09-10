@@ -3,5 +3,6 @@ export { DocsHeader } from "./docs-header";
 export { HelpArticleView } from "./help-article";
 export { HelpBreadcrumbs } from "./help-breadcrumbs";
 export { HelpCategoryView, HelpSubCategoryView } from "./help-category";
+export { HelpInline } from "./help-inline";
 export { HelpPager } from "./help-pager";
 export { HelpSidebar } from "./help-sidebar";

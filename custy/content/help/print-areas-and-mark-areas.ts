@@ -10,28 +10,29 @@ export const printAreasAndMarkAreas: HelpArticle = {
   summary:
     "Show Custy where shoppers may place text and pictures on each side of the product.",
   readMinutes: 5,
+  updatedOn: "10 September 2026",
   lead: [
-    "Think of a print area like the printable window on a shirt. You tell Custy: “artwork can go here, and nowhere else.” Mark areas are optional helper shapes inside that window. They are guides only — printing still follows the print area.",
-    "Plan limits: Free allows 1 print side. Starter allows up to 6. Pro allows as many as you need.",
+    "Think of a **print area** like the printable window on a shirt. You tell Custy: artwork can go here, and nowhere else. Mark areas are optional helper shapes inside that window. They are guides only. Printing still follows the **print area**.",
+    "Plan limits: **Free** allows 1 print side. **Starter** allows up to 6. **Pro** allows as many as you need. Changing these settings does not wipe your store.",
   ],
   sections: [
     {
       id: "design-tool-setup",
       title: "Open Design Tool Setup",
       paragraphs: [
-        "On Customize Product, scroll to Design Tool Setup. Here you add sides such as Front and Back. For each side you will upload a photo and set the print area.",
+        "On **Customize Product**, scroll to **Design Tool Setup**. Here you add sides such as Front and Back. For each side you will upload a photo and set the **print area**.",
       ],
       actions: [
         "Click Add Side and give it a clear name (Front, Back, Left Sleeve, and so on).",
         "Drag sides into the order you want shoppers to see first.",
-        "Click Advanced Settings on the side you are working on.",
+        "Click **Advanced Settings** on the side you are working on.",
       ],
       figure: {
         src: "/images/help/design-tool-setup-sides.png",
         alt: "Design Tool Setup with sides and Advanced Settings",
-        caption: "Add every side shoppers can design, then open Advanced Settings.",
-        width: 1718,
-        height: 916,
+        caption: "Add every side shoppers can design, then open **Advanced Settings**.",
+        width: 3808,
+        height: 4072,
         markers: [
           {
             n: 1,
@@ -46,7 +47,7 @@ export const printAreasAndMarkAreas: HelpArticle = {
           {
             n: 3,
             title: "Advanced Settings",
-            body: "Click here to upload photos and set the print area for this side.",
+            body: "Open **Advanced Settings** on a side. Use **Upload Images & Styles** to add the product photo, then set the **print area**.",
           },
         ],
       },
@@ -55,17 +56,17 @@ export const printAreasAndMarkAreas: HelpArticle = {
       id: "upload-images-styles",
       title: "Upload your product photos",
       paragraphs: [
-        "In Advanced Settings, open Upload Images & Styles. Upload a clear photo of the product on that side — the picture shoppers will see while they design. If one photo cannot show every color well, you can add a photo per color.",
+        "In **Advanced Settings**, open **Upload Images & Styles**. Upload a clear photo of the product on that side (the picture shoppers will see while they design). If one photo cannot show every color well, you can add a photo per color.",
       ],
       actions: [
         "Upload at least one clear product photo for the side.",
         "Add per-color photos if you need them.",
-        "Check that the part on the left is selected (Custy makes a default part for you).",
+        "Leave the default selection on the left as it is unless you know you need something else.",
       ],
       figure: {
         src: "/images/help/advanced-upload-styles.png",
         alt: "Upload Images and Styles tab for a product side",
-        caption: "Upload product photos so the design screen shows the right mockup.",
+        caption: "Upload product photos so the design screen shows the right picture.",
         width: 1718,
         height: 916,
         markers: [
@@ -76,8 +77,8 @@ export const printAreasAndMarkAreas: HelpArticle = {
           },
           {
             n: 2,
-            title: "Parts",
-            body: "Parts for this side appear on the left.",
+            title: "Left list",
+            body: "Custy sets this up for you. You usually do not need to change it.",
           },
           {
             n: 3,
@@ -91,73 +92,68 @@ export const printAreasAndMarkAreas: HelpArticle = {
       id: "define-print-area",
       title: "Set the Print Area",
       paragraphs: [
-        "Open the Print Area tab. You will see a dashed box on the photo. That box is the printable window. Choose INCH or CM. Fill in Actual Width, Height, Left, and Top so the dashed box sits on the real printable part of the garment. Click Save when it looks right.",
+        "Open the **Print Area** tab. You will see a dashed box on the photo. That box is the printable window. Choose **INCH** or **CM**. Fill in **Actual Width** and **Height** so the file matches real print size. Drag the box (or adjust Left and Top) until it sits on the printable part of the garment. Click **Update** when it looks right.",
       ],
       actions: [
-        "Choose INCH or CM — use the same units you use when you measure for print.",
-        "Set Actual Width and Height to the real printable size.",
-        "Move Left and Top until the dashed box sits on the printable area of the photo.",
-        "Click Save. Repeat for every side that accepts artwork.",
+        "Choose **INCH** or **CM**. Use the same units you use when you measure for print.",
+        "Set **Actual Width** and **Height** to the real printable size.",
+        "Drag the dashed box (or use Left and Top) until it sits on the printable area of the photo.",
+        "Click **Update**. Repeat for every side that accepts artwork.",
       ],
       figure: {
         src: "/images/help/advanced-print-area.png",
         alt: "Print Area tab with dashed box on the product photo",
-        caption: "Line up the dashed Print Area with the real printable spot.",
+        caption: "Line up the dashed **print area** with the real printable spot, then click **Update**.",
         width: 1718,
         height: 916,
         markers: [
           {
             n: 1,
-            title: "Print Area tab",
-            body: "Controls for the printable window on this side.",
+            title: "Side tabs",
+            body: "Switch between Front, Back, and other sides you added.",
           },
           {
             n: 2,
-            title: "Unit",
-            body: "Pick INCH or CM.",
+            title: "Upload Images & Styles",
+            body: "Upload the product photo shoppers see while designing.",
           },
           {
             n: 3,
-            title: "Actual Width",
-            body: "How wide the printable area is in real life.",
+            title: "Print Area",
+            body: "Drag and resize the dashed box over the printable surface.",
           },
           {
             n: 4,
-            title: "Height",
-            body: "How tall the printable area is in real life.",
+            title: "Unit (INCH / CM)",
+            body: "Use the same units you use when you measure for print.",
           },
           {
             n: 5,
-            title: "Left",
-            body: "Moves the box left or right on the photo.",
+            title: "Actual Width / Height",
+            body: "Real print size for the output file. Left and Top help fine-tune placement.",
           },
           {
             n: 6,
-            title: "Top",
-            body: "Moves the box up or down on the photo.",
+            title: "Mark Areas",
+            body: "Optional guides inside the **print area**. Printing still follows the print area.",
           },
           {
             n: 7,
-            title: "Dashed box",
-            body: "Shoppers must keep their design inside this box.",
-          },
-          {
-            n: 8,
-            title: "Save",
-            body: "Click Save when the box looks correct.",
+            title: "Update",
+            body: "Save these Advanced Settings for this side.",
           },
         ],
       },
       note: {
         title: "Why this matters",
-        body: "Shoppers can only place designs inside the print area you set. Match it to how you really print so artwork does not shift or get cut off.",
+        body: "Shoppers can only place designs inside the **print area** you set. Match it to how you really print so artwork does not shift or get cut off.",
       },
     },
     {
       id: "mark-areas",
       title: "Add Mark Areas (optional)",
       paragraphs: [
-        "Mark areas are extra shapes inside the print area. Use them as placement guides (for example “put the logo here”). Printing still follows the Print Area, not the mark areas alone.",
+        "Mark areas are extra shapes inside the **print area**. Use them as placement guides (for example “put the logo here”). Printing still follows the Print Area, not the **mark areas** alone. You can skip this step if you do not need guides.",
       ],
       actions: [
         "Open the Mark Areas tab.",
@@ -168,14 +164,14 @@ export const printAreasAndMarkAreas: HelpArticle = {
       figure: {
         src: "/images/help/advanced-mark-areas.png",
         alt: "Mark Areas tab with rectangle and circle tools",
-        caption: "Optional mark areas help show where to place artwork.",
+        caption: "Optional **mark areas** help show where to place artwork.",
         width: 1718,
         height: 916,
         markers: [
           {
             n: 1,
             title: "Mark Areas tab",
-            body: "Optional guide shapes inside the print area.",
+            body: "Optional guide shapes inside the **print area**.",
           },
           {
             n: 2,

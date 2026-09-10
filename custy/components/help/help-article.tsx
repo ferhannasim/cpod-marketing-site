@@ -5,6 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 import { AnnotatedFigure } from "./annotated-figure";
 import { HelpBreadcrumbs } from "./help-breadcrumbs";
 import { HelpCalloutBox, HelpLinkList } from "./help-callout";
+import { HelpInline } from "./help-inline";
 import { HelpPager } from "./help-pager";
 
 export function HelpArticleView({
@@ -65,7 +66,9 @@ export function HelpArticleView({
           className={`mt-5 space-y-4 text-body ${isOverview ? "text-[17px] leading-[1.7]" : "max-w-[720px] text-[16px] leading-[1.65]"}`}
         >
           {article.lead.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>
+              <HelpInline text={paragraph} />
+            </p>
           ))}
         </div>
 
@@ -101,7 +104,9 @@ export function HelpArticleView({
                   }`}
                 >
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>
+                      <HelpInline text={paragraph} />
+                    </p>
                   ))}
                 </div>
               ) : null}
@@ -116,7 +121,9 @@ export function HelpArticleView({
                       <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink text-[12px] font-bold text-white">
                         {index + 1}
                       </span>
-                      <span className="pt-0.5">{item}</span>
+                      <span className="pt-0.5">
+                        <HelpInline text={item} />
+                      </span>
                     </li>
                   ))}
                 </ol>
@@ -135,7 +142,9 @@ export function HelpArticleView({
                       >
                         <Check className="h-3 w-3 text-[#0b7fad]" strokeWidth={3} />
                       </span>
-                      <span>{action}</span>
+                      <span>
+                        <HelpInline text={action} />
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -158,7 +167,9 @@ export function HelpArticleView({
                     {section.note.title ? (
                       <p className="font-semibold text-ink">{section.note.title}</p>
                     ) : null}
-                    <p className={section.note.title ? "mt-1" : undefined}>{section.note.body}</p>
+                    <p className={section.note.title ? "mt-1" : undefined}>
+                      <HelpInline text={section.note.body} />
+                    </p>
                   </div>
                 </div>
               ) : null}

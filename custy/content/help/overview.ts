@@ -22,9 +22,9 @@ export const overview: HelpArticle = {
         "Here is what Custy helps you do:",
       ],
       highlights: [
-        "Shoppers design on your store — they open a simple design screen and make their own look",
-        "You pick the options — sizes, colors, and which sides of the product they can decorate",
-        "You set the prices — extra fees for printing, colors, sides, and buying more at once",
+        "Shoppers design on your store. They open a simple design screen and make their own look",
+        "You pick the options: **sizes**, **colors**, and which **sides** of the product they can decorate",
+        "You set the prices: extra fees for **printing**, colors, sides, and buying more at once",
       ],
     },
     {
@@ -43,7 +43,7 @@ export const overview: HelpArticle = {
     {
       id: "after-install",
       paragraphs: [
-        "Do the Getting Started guides in order. First add Custy. Then turn it on in your theme. After that, open Products to set up a custom product. You can stop and come back anytime. Changing a setting in Custy will not wipe your Shopify store.",
+        "Do the **Getting Started** guides in order. First add Custy. Then turn it on in your theme. After that, open **Products** to set up a custom product. You can stop and come back anytime. Changing a setting in Custy will not wipe your Shopify store.",
       ],
       links: [
         { label: "How to Install Custy?", href: "/help/getting-started/installations/install-custy" },
@@ -52,7 +52,7 @@ export const overview: HelpArticle = {
           href: "/help/getting-started/app-activation/embed-custy",
         },
         {
-          label: "Setting Up Your First Product",
+          label: "How to Set Up Your First Customizable Product?",
           href: "/help/products/custom-products/first-product",
         },
       ],
@@ -64,7 +64,7 @@ export const overview: HelpArticle = {
         variant: "tip",
         title: "Tip",
         paragraphs: [
-          "Want to see what a shopper sees before you set anything up? Open the live demo and tap around. You cannot break anything there.",
+          "Want to see what a shopper sees before you set anything up? Open the **live demo** and tap around. You cannot break anything there.",
         ],
         link: { label: "Open the live demo", href: "/live-demo" },
       },

@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Colors",
-  description: "Build shared color lists and add extra prices for colors.",
+  description: "Build color lists you can reuse, with optional extra prices.",
 };
 
 export default function ColorsPage() {

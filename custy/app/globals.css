@@ -113,3 +113,32 @@
     color: #0b1220;
   }
 }
+
+/* Help Centre: Inter throughout (same stack as Mintlify / GitBook-style docs).
+   Marketing pages keep Plus Jakarta Sans on headings; docs stay flatter and more readable. */
+@layer components {
+  .help-docs {
+    font-feature-settings: "cv11", "ss01", "kern";
+  }
+
+  .help-docs h1,
+  .help-docs h2,
+  .help-docs h3,
+  .help-docs h4,
+  .help-docs h5,
+  .help-docs h6 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.018em;
+  }
+
+  .help-docs article p,
+  .help-docs article li {
+    letter-spacing: -0.006em;
+  }
+
+  .help-docs strong,
+  .help-docs b {
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+}

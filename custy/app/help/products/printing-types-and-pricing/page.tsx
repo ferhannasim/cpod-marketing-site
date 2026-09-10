@@ -5,7 +5,7 @@ import { getCategory, getSubCategory } from "@/content/help";
 
 export const metadata: Metadata = {
   title: "Printing Types & Pricing",
-  description: "Set printing methods, fees, and attach them to products.",
+  description: "Set printing methods and fees, then attach them to products.",
 };
 
 export default function PrintingTypesAndPricingPage() {

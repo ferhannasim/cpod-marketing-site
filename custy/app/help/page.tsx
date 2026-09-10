@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { CtaBand } from "@/components/lander";
+import { HelpInline } from "@/components/help";
 import { helpCategories, helpHub } from "@/content/help";
 import { APP_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Help Centre",
   description:
-    "Plain guides for print shop owners: add Custy, turn it on in your theme, set up products, and learn the Design Lab — one step at a time.",
+    "Plain guides for print shop owners: add Custy, turn it on in your theme, set up products, and learn the Design Lab.",
 };
 
 export default function HelpHubPage() {
@@ -21,7 +22,9 @@ export default function HelpHubPage() {
         </h1>
         <div className="mt-4 space-y-3 text-[16px] leading-[1.65] text-body">
           {helpHub.lead.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
+            <p key={paragraph}>
+              <HelpInline text={paragraph} />
+            </p>
           ))}
         </div>
       </header>
@@ -30,7 +33,9 @@ export default function HelpHubPage() {
         <h2 className="text-[clamp(1.35rem,2.4vw,1.7rem)] font-extrabold text-ink">
           {helpHub.pathTitle}
         </h2>
-        <p className="mt-2 max-w-[640px] text-[15.5px] leading-[1.65] text-body">{helpHub.pathLead}</p>
+        <p className="mt-2 max-w-[640px] text-[15.5px] leading-[1.65] text-body">
+          <HelpInline text={helpHub.pathLead} />
+        </p>
         <ol className="mt-6 space-y-3">
           {helpHub.pathSteps.map((step, index) => (
             <li key={step.href}>
@@ -49,7 +54,9 @@ export default function HelpHubPage() {
                       aria-hidden
                     />
                   </span>
-                  <span className="mt-1 block text-[14.5px] leading-6 text-body">{step.summary}</span>
+                  <span className="mt-1 block text-[14.5px] leading-6 text-body">
+                    <HelpInline text={step.summary} />
+                  </span>
                 </span>
               </Link>
             </li>
@@ -72,7 +79,9 @@ export default function HelpHubPage() {
                 guides
               </p>
               <h3 className="mt-2 text-[20px] font-bold text-ink">{category.title}</h3>
-              <p className="mt-2 text-[15px] leading-6 text-body">{category.description}</p>
+              <p className="mt-2 text-[15px] leading-6 text-body">
+                <HelpInline text={category.description} />
+              </p>
             </Link>
           ))}
         </div>
