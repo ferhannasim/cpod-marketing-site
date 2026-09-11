@@ -11,6 +11,8 @@ import { upgradeYourPlan } from "./upgrade-your-plan";
 import { embedCusty } from "./embed-custy";
 import { overviewOfTheDesignLab } from "./overview-of-the-design-lab";
 import { firstProduct } from "./first-product";
+import { productSizes } from "./product-sizes";
+import { productColors } from "./product-colors";
 import { printAreasAndMarkAreas } from "./print-areas-and-mark-areas";
 import { pricingRules } from "./pricing-rules";
 
@@ -50,6 +52,8 @@ const allArticles: HelpArticle[] = [
   embedCusty,
   overviewOfTheDesignLab,
   firstProduct,
+  productSizes,
+  productColors,
   printAreasAndMarkAreas,
   pricingRules,
 ];

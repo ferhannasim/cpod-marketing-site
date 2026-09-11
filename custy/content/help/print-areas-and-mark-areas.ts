@@ -103,9 +103,9 @@ export const printAreasAndMarkAreas: HelpArticle = {
       figure: {
         src: "/images/help/advanced-print-area.png",
         alt: "Print Area tab with dashed box on the product photo",
-        caption: "Line up the dashed **print area** with the real printable spot, then click **Update**.",
-        width: 1718,
-        height: 916,
+        caption: "Upload the photo, set the **print area**, add optional mark areas, then click **Update**.",
+        width: 3804,
+        height: 6060,
         markers: [
           {
             n: 1,

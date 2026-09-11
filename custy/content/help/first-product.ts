@@ -5,6 +5,7 @@ const FIG_OVERVIEW = { width: 3808, height: 4670 } as const;
 const FIG_LIST = { width: 1600, height: 900 } as const;
 const FIG_SIDES = { width: 1718, height: 916 } as const;
 const FIG_DESIGN_TOOL = { width: 3808, height: 4072 } as const;
+const FIG_PRINT_AREA = { width: 3804, height: 6060 } as const;
 const FIG_RESTRICTIONS = { width: 3804, height: 4052 } as const;
 const FIG_SAVE = { width: 3804, height: 4046 } as const;
 
@@ -349,8 +350,8 @@ export const firstProduct: HelpArticle = {
       figure: {
         src: "/images/help/advanced-print-area.png",
         alt: "Advanced Settings Print Area tab with box, units, and dimensions",
-        caption: "Set the **print area** box and real width/height, then click **Update**.",
-        ...FIG_SIDES,
+        caption: "Upload the photo, set the **print area**, add optional mark areas, then click **Update**.",
+        ...FIG_PRINT_AREA,
         markers: [
           {
             n: 1,
@@ -494,9 +495,13 @@ export const firstProduct: HelpArticle = {
       id: "whats-next",
       title: "What to do next",
       paragraphs: [
-        "If **Customize It** is missing on the storefront, finish App Activation (theme block + cart editor). Then open the Design Lab overview so you know what shoppers see.",
+        "Next, set up product sizes if you have not already, then set print areas so artwork stays in the right place.",
       ],
       links: [
+        {
+          label: "How to Set Up Product Sizes?",
+          href: "/help/products/custom-products/product-sizes",
+        },
         {
           label: "Print Areas & Mark Areas",
           href: "/help/products/custom-products/print-areas-and-mark-areas",
@@ -504,10 +509,6 @@ export const firstProduct: HelpArticle = {
         {
           label: "Printing Types & Pricing",
           href: "/help/products/printing-types-and-pricing/pricing-rules",
-        },
-        {
-          label: "Overview of the Design Lab",
-          href: "/help/products/overview-of-the-design-lab",
         },
       ],
     },

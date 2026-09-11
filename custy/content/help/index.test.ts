@@ -50,6 +50,8 @@ describe("help content registry", () => {
     const sub = getSubCategory("products", "custom-products");
     expect(sub?.articles.map((a) => a.slug)).toEqual([
       "first-product",
+      "product-sizes",
+      "product-colors",
       "print-areas-and-mark-areas",
     ]);
 
@@ -69,6 +71,8 @@ describe("help content registry", () => {
     expect(paths).toContain("/help/products");
     expect(paths).toContain("/help/products/overview-of-the-design-lab");
     expect(paths).toContain("/help/products/custom-products/first-product");
+    expect(paths).toContain("/help/products/custom-products/product-sizes");
+    expect(paths).toContain("/help/products/custom-products/product-colors");
     expect(paths).toContain(
       "/help/products/custom-products/print-areas-and-mark-areas",
     );

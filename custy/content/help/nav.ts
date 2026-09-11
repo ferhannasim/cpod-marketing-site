@@ -6,12 +6,19 @@ import { upgradeYourPlan } from "./upgrade-your-plan";
 import { embedCusty } from "./embed-custy";
 import { overviewOfTheDesignLab } from "./overview-of-the-design-lab";
 import { firstProduct } from "./first-product";
+import { productSizes } from "./product-sizes";
+import { productColors } from "./product-colors";
 import { printAreasAndMarkAreas } from "./print-areas-and-mark-areas";
 import { pricingRules } from "./pricing-rules";
 
 const installationsArticles = [installCusty, freeTrial, upgradeYourPlan] as const;
 const appActivationArticles = [embedCusty] as const;
-const customProductsArticles = [firstProduct, printAreasAndMarkAreas] as const;
+const customProductsArticles = [
+  firstProduct,
+  productSizes,
+  productColors,
+  printAreasAndMarkAreas,
+] as const;
 const printingTypesArticles = [pricingRules] as const;
 
 function toNavArticle(article: {
@@ -79,14 +86,14 @@ export const helpCategories: HelpNavCategory[] = [
         title: "Colors",
         description: "Build color lists you can reuse, with optional extra prices.",
         href: "/help/products/colors",
-        articles: [],
+        articles: [toNavArticle(productColors)],
       },
       {
         slug: "sizes",
         title: "Sizes",
         description: "Build size lists you can reuse, with optional extra prices.",
         href: "/help/products/sizes",
-        articles: [],
+        articles: [toNavArticle(productSizes)],
       },
       {
         slug: "printing-types-and-pricing",
@@ -165,6 +172,16 @@ export const helpHub: HelpHub = {
       title: firstProduct.title,
       href: toNavArticle(firstProduct).href,
       summary: firstProduct.summary,
+    },
+    {
+      title: productSizes.title,
+      href: toNavArticle(productSizes).href,
+      summary: productSizes.summary,
+    },
+    {
+      title: productColors.title,
+      href: toNavArticle(productColors).href,
+      summary: productColors.summary,
     },
   ],
 };
